@@ -1,0 +1,260 @@
+{
+    "settings" : {
+        "index.highlight.max_analyzed_offset": 1000000000
+    },
+    "mappings" : {
+        "properties": {
+            "author": {
+                "type": "text",
+                "fields": {
+                    "keyword": {
+                        "type": "keyword",
+                        "ignore_above": 256
+                    }
+                }
+            },
+            "category": {
+                "type": "keyword",
+                "ignore_above": 256
+            },
+            "content": {
+                "type": "text"
+            },
+            "content_encoding": {
+                "type": "keyword",
+                "ignore_above": 256
+            },
+            "content_type": {
+                "type": "keyword",
+                "ignore_above": 256
+            },
+            "creation_date": {
+                "type": "date"
+            },
+            "dirname": {
+                "type": "text",
+                "fields": {
+                    "keyword": {
+                        "type": "keyword",
+                        "ignore_above": 256
+                    }
+                }
+            },
+            "email_created": {
+                "type": "date",
+                "fields": {
+                    "keyword": {
+                        "type": "keyword",
+                        "ignore_above": 256
+                    }
+                }
+            },
+            "email_delivered_to": {
+                "type": "text",
+                "fields": {
+                    "keyword": {
+                        "type": "keyword",
+                        "ignore_above": 256
+                    }
+                }
+            },
+            "email_dkim": {
+                "type": "text"
+            },
+            "email_from": {
+                "type": "text",
+                "fields": {
+                    "keyword": {
+                        "type": "keyword",
+                        "ignore_above": 256
+                    }
+                }
+            },
+            "email_from_mail": {
+                "type": "text",
+                "fields": {
+                    "keyword": {
+                        "type": "keyword",
+                        "ignore_above": 256
+                    }
+                }
+            },
+            "email_from_name": {
+                "type": "text",
+                "fields": {
+                    "keyword": {
+                        "type": "keyword",
+                        "ignore_above": 256
+                    }
+                }
+            },
+            "email_inreplyto": {
+                "type": "text",
+                "fields": {
+                    "keyword": {
+                        "type": "keyword",
+                        "ignore_above": 256
+                    }
+                }
+            },
+            "email_messageid": {
+                "type": "text",
+                "fields": {
+                    "keyword": {
+                        "type": "keyword",
+                        "ignore_above": 256
+                    }
+                }
+            },
+            "email_modified": {
+                "type": "date",
+                "fields": {
+                    "keyword": {
+                        "type": "keyword",
+                        "ignore_above": 256
+                    }
+                }
+            },
+            "email_received": {
+                "type": "date",
+                "fields": {
+                    "keyword": {
+                        "type": "keyword",
+                        "ignore_above": 256
+                    }
+                }
+            },
+            "email_sent": {
+                "type": "date",
+                "fields": {
+                    "keyword": {
+                        "type": "keyword",
+                        "ignore_above": 256
+                    }
+                }
+            },
+            "email_subject": {
+                "type": "text",
+                "fields": {
+                    "keyword": {
+                        "type": "keyword",
+                        "ignore_above": 256
+                    }
+                }
+            },
+            "email_to": {
+                "type": "text",
+                "fields": {
+                    "keyword": {
+                        "type": "keyword",
+                        "ignore_above": 256
+                    }
+                }
+            },
+            "email_sent_or_received": {
+                "type": "keyword",
+                "ignore_above": 16
+            },
+            "embedded_path": {
+                "type": "text",
+                "fields": {
+                    "keyword": {
+                        "type": "keyword",
+                        "ignore_above": 256
+                    }
+                }
+            },
+            "containerid": {
+                "type": "keyword",
+                "ignore_above": 256
+            },
+            "extension": {
+                "type": "keyword",
+                "ignore_above": 256
+            },
+            "file_access": {
+                "type": "date"
+            },
+            "file_birth": {
+                "type": "date"
+            },
+            "file_changerecord": {
+                "type": "date"
+            },
+            "file_gid": {
+                "type": "long"
+            },
+            "file_mode": {
+                "type": "keyword",
+                "ignore_above": 32
+            },
+            "file_modified": {
+                "type": "date"
+            },
+            "file_size": {
+                "type": "long"
+            },
+            "file_uid": {
+                "type": "long"
+            },
+            "filename": {
+                "type": "text",
+                "fields": {
+                    "keyword": {
+                        "type": "keyword",
+                        "ignore_above": 256
+                    }
+                }
+            },
+            "initial_author": {
+                "type": "text",
+                "fields": {
+                    "keyword": {
+                        "type": "keyword",
+                        "ignore_above": 256
+                    }
+                }
+            },
+            "last_author": {
+                "type": "text",
+                "fields": {
+                    "keyword": {
+                        "type": "keyword",
+                        "ignore_above": 256
+                    }
+                }
+            },
+            "last_modified": {
+                "type": "date"
+            },
+            "location": {
+                "type": "geo_point"
+            },
+            "path": {
+                "type": "text",
+                "fields": {
+                    "keyword": {
+                        "type": "keyword",
+                        "ignore_above": 256
+                    }
+                }
+            },
+            "tags": {
+                "type": "keyword",
+                "ignore_above": 256
+            },
+            "tika_status": {
+                "type": "long"
+            },
+            "title": {
+                "type": "text",
+                "fields": {
+                    "keyword": {
+                        "type": "keyword",
+                        "ignore_above": 256
+                    }
+                }
+            }
+        }
+    }
+}

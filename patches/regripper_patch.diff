@@ -1,0 +1,34 @@
+--- rip.ori	2020-02-20 16:46:46.000000000 +0100
++++ rip.pl	2020-03-02 12:46:49.320184233 +0100
+@@ -1,4 +1,4 @@
+-#! c:\perl\bin\perl.exe
++#!/usr/bin/perl
+ #-------------------------------------------------------------------------
+ # Rip - RegRipper, CLI version
+ # Use this utility to run a plugins file or a single plugin against a Reg
+@@ -64,7 +64,7 @@
+ ($^O eq "MSWin32") ? ($plugindir = $str."plugins/")
+                    : ($plugindir = File::Spec->catfile("plugins"));
+ #my $plugindir = $str."plugins/";
+-#my $plugindir = File::Spec->catfile("plugins");
++my $plugindir = "/opt/regripper/plugins/";
+ #print "Plugins Dir = ".$plugindir."\n";
+ # End code update
+ my $VERSION = "2\.8_20190318";
+@@ -246,7 +246,7 @@
+ 
+   -r Reg hive file...Registry hive file to parse
+   -g ................Guess the hive file (experimental)
+-  -f [profile].......use the plugin file (default: plugins\\plugins)
++  -f [profile].......use the plugin file (default: plugins/plugins)
+   -p plugin module...use only this module
+   -l ................list all plugins
+   -c ................Output list in CSV format (use with -l)
+@@ -401,4 +401,4 @@
+ 	};
+ 	$t = 0 if ($t < 0);
+ 	return $t;
+-}
+\ No newline at end of file
++}
++

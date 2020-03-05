@@ -1,0 +1,93 @@
+{
+  "21": {
+    "description": "Remote Desktop Services: Session logon succeeded",
+    "provider": "Microsoft-Windows-TerminalServices-LocalSessionManager",
+    "path": {
+      "UserData/EventXML":{
+         "Name": ["User", "SessionID", "Address"],
+         "transform": {"User": "destination.user.name", "Address": "source.address"}
+      },
+      "System/Correlation/#attributes":{
+        "Name": ["ActivityID"]
+      }
+    }
+  },
+  "22": {
+    "description": "Remote Desktop Services: Shell start notification received",
+    "provider": "Microsoft-Windows-TerminalServices-LocalSessionManager",
+    "path": {
+      "UserData/EventXML": {
+         "Name": ["User", "SessionID", "Address"],
+         "transform": {"User": "destination.user.name","Address": "source.address"}
+      },
+      "System/Correlation/#attributes":{
+        "Name": ["ActivityID"]
+      }
+    }
+  },
+  "23": {
+    "description": "Remote Desktop Services: Session logoff succeeded",
+    "provider": "Microsoft-Windows-TerminalServices-LocalSessionManager",
+    "path": {
+      "UserData/EventXML": {
+         "Name": ["User", "SessionID"],
+         "transform": {"User": "destination.user.name"}
+      },
+      "System/Correlation/#attributes":{
+        "Name": ["ActivityID"]
+      }
+    }
+  },
+  "24": {
+    "description": "Remote Desktop Services: Session has been disconnected",
+    "provider": "Microsoft-Windows-TerminalServices-LocalSessionManager",
+    "path": {
+      "UserData/EventXML": {
+         "Name": ["User", "SessionID", "Address"],
+         "transform": {"User": "destination.user.name", "Address": "source.address"}
+      },
+      "System/Correlation/#attributes":{
+        "Name": ["ActivityID"]
+      }
+    }
+  },
+  "25": {
+    "description": "Remote Desktop Services: Session reconnection succeeded",
+    "provider": "Microsoft-Windows-TerminalServices-LocalSessionManager",
+    "path": {
+      "UserData/EventXML": {
+         "Name": ["User", "SessionID", "Address"],
+         "transform": {"User": "destination.user.name", "Address": "source.address"}
+      },
+      "System/Correlation/#attributes":{
+        "Name": ["ActivityID"]
+      }
+    }
+  },
+  "39": {
+    "description": "Session <X> has been disconnected by session <Y>",
+    "provider": "Microsoft-Windows-TerminalServices-LocalSessionManager",
+    "path": {
+      "UserData/EventXML": {
+         "Name": ["TargetSession", "Source"],
+         "transform": {"TargetSession": "SessionID"}
+      },
+      "System/Correlation/#attributes":{
+        "Name": ["ActivityID"]
+      }
+    }
+  },
+  "40": {
+    "description": "Session <X> has been disconnected, reason code <Z>",
+    "provider": "Microsoft-Windows-TerminalServices-LocalSessionManager",
+    "path": {
+      "UserData/EventXML":{
+         "Name": ["Session", "Reason"],
+         "transform": {"Session": "SessionID"}
+      },
+      "System/Correlation/#attributes":{
+        "Name": ["ActivityID"]
+      }
+    }
+  }
+}

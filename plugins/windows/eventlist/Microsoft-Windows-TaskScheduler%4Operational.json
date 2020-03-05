@@ -1,0 +1,39 @@
+{
+  "106": {
+    "description": "Scheduled task registered",
+    "provider": "Microsoft-Windows-TaskScheduler",
+    "path": {
+      "EventData": {
+         "Name": ["TaskName", "UserContext"],
+         "transform": {"UserContext": "User"}
+      }
+    }
+  },
+  "141": {
+    "description": "Scheduled Task Deleted",
+    "provider": "Microsoft-Windows-TaskScheduler",
+    "path": {
+      "EventData": {
+         "Name": ["TaskName", "UserName"]
+      }
+    }
+  },
+  "200": {
+    "description": "Scheduled Task launched",
+    "provider": "Microsoft-Windows-TaskScheduler",
+    "path": {
+      "EventData": {
+         "Name": ["TaskName", "ActionName"]
+      }
+    }
+  },
+  "201": {
+    "description": "Scheduled Task finished",
+    "provider": "Microsoft-Windows-TaskScheduler",
+    "path": {
+      "EventData": {
+         "Name": ["TaskName", "ActionName", "ResultCode"]
+      }
+    }
+  }
+}

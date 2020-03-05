@@ -1,0 +1,96 @@
+{
+  "1024": {
+    "description": "RDP ClientActiveX is trying to connect to the server",
+    "provider": "Microsoft-Windows-TerminalServices-ClientActiveXCore",
+    "path": {
+      "EventData": {
+        "Name": ["Name", "Value"]
+      },
+      "System/Correlation/#attributes":{
+        "Name": ["ActivityID"]
+      }
+    }
+  },
+  "1025": {
+    "description": "RDP ClientActiveX has connected to the server",
+    "provider": "Microsoft-Windows-TerminalServices-ClientActiveXCore",
+    "path": {
+      "System/Correlation/#attributes":{
+        "Name": ["ActivityID"]
+      }
+    }
+  },
+  "1026": {
+    "description": "RDP ClientActiveX has been disconnected",
+    "provider": "Microsoft-Windows-TerminalServices-ClientActiveXCore",
+    "path": {
+      "EventData": {
+        "Name": ["Name", "Value"],
+        "transform": {"Value": "Error"}
+      },
+      "System/Correlation/#attributes":{
+        "Name": ["ActivityID"]
+      }
+    }
+  },
+  "1027": {
+    "description": "Connected to domain X with sessionRDP Y",
+    "provider": "Microsoft-Windows-TerminalServices-ClientActiveXCore",
+    "path": {
+      "EventData": {
+        "Name": ["DomainName", "SessionID"],
+        "transform": {"DomainName": "destination.domain"}
+      },
+      "System/Correlation/#attributes":{
+        "Name": ["ActivityID"]
+      }
+    }
+  },
+  "1029": {
+    "description": "Base64(SHA256(UserName)) is",
+    "provider": "Microsoft-Windows-TerminalServices-ClientActiveXCore",
+    "path": {
+      "EventData": {
+        "Name": ["TraceMessage"],
+        "transform": {"TraceMessage": "Base64Hash"}
+      },
+      "System/Correlation/#attributes":{
+        "Name": ["ActivityID"]
+      }
+    }
+  },
+  "1102": {
+    "description": "The client has initiated a multi-transport connection to the server",
+    "provider": "Microsoft-Windows-TerminalServices-ClientActiveXCore",
+    "path": {
+      "EventData": {
+        "Name": ["Name","Value"],
+        "transform": {"Name": "DataType", "Value": "destination.address"}
+      },
+      "System/Correlation/#attributes":{
+        "Name": ["ActivityID"]
+      }
+    }
+  },
+  "1103": {
+    "description": "The client has stablished a multi-transport connection to the server",
+    "provider": "Microsoft-Windows-TerminalServices-ClientActiveXCore",
+    "path": {
+      "System/Correlation/#attributes":{
+        "Name": ["ActivityID"]
+      }
+    }
+  },
+  "1105": {
+    "description": "The multi-transport connection has been disconnected.",
+    "provider": "Microsoft-Windows-TerminalServices-ClientActiveXCore",
+    "path": {
+      "EventData": {
+        "Name": ["Name", "Value"]
+      },
+      "System/Correlation/#attributes":{
+        "Name": ["ActivityID"]
+      }
+    }
+  }
+}

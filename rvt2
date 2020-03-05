@@ -1,0 +1,48 @@
+#!/bin/bash
+
+# Detect automatically the base dir of the rvt2
+if hash greadlink 2>/dev/null ; then
+  # OSX
+  READLINK=greadlink
+else
+  # Linux
+  READLINK=readlink
+fi
+if [ -z "$RVT2HOME" ]; then
+    RVT2HOME=$(dirname $($READLINK -f "$0"))
+    if [ ! -e "$RVT2HOME/rvt2.py" ]; then
+        echo $RVT2HOME
+        echo 'I cannot automatically find the root directory of RVT2. Please, define the variable RVT2HOME'
+        exit 1
+    fi
+fi
+
+# check if a virtual environment inside the project exists. If not, create it
+MYPYTHON="$RVT2HOME/.venv/bin/python"
+if [ ! -e "$MYPYTHON" ]; then
+    (
+        cd $RVT2HOME
+        env PIPENV_VENV_IN_PROJECT=1 pipenv --python /usr/bin/python3
+        #env PIPENV_VENV_IN_PROJECT=1 pipenv --three
+        pipenv install
+    )
+fi
+
+# Set PDB_ENABLE=1 to enable Python Debugger (pdb).
+if [ -n "$PDB_ENABLE" ]; then
+    set -x
+    #MYPYTHON="$MYPYTHON -m pdb"
+    MYPYTHON="$MYPYTHON -m pudb"
+fi
+
+
+if [ -e "$RVT2HOME/conf/local.cfg" ]; then
+  EXTRA_RVT2_CONF="--config ${RVT2HOME}/conf/local.cfg"
+fi
+
+if [ -e "rvt2.cfg" ]; then
+    # if a rvt2.conf file exits in the current directory, load it
+    EXTRA_RVT2_CONF="$EXTRA_RVT2_CONF --config rvt2.cfg"
+fi
+
+$MYPYTHON "$RVT2HOME/rvt2.py" --config "$RVT2HOME/conf" $EXTRA_RVT2_CONF "$@"

@@ -1,0 +1,177 @@
+{
+  "1": {
+    "description": "The system has resumed from Sleep",
+    "provider": "Microsoft-Windows-Power-Troubleshooter",
+    "path": {
+      "EventData": {
+         "Name": ["NewTime", "OldTime"]
+      }
+    }
+  },
+  "12": {
+    "description": "The operating system started",
+    "provider": "Microsoft-Windows-Kernel-General",
+    "path": {
+      "EventData": {
+        "Name": ["BootMode", "StartTime"]
+      }
+    }
+  },
+  "13": {
+    "description": "The operating system is shutting down",
+    "provider": "Microsoft-Windows-Kernel-General",
+    "path": {
+      "EventData": {
+        "Name": ["StopTime"]
+      }
+    }
+  },
+  "19": {
+    "description": "Installation Successful: Windows successfully installed the following update",
+    "provider": "Microsoft-Windows-WindowsUpdateClient",
+    "path": {
+      "EventData": {
+        "Name": ["updateTitle", "updateRevisionNumber"]
+      }
+    }
+  },
+  "20": {
+    "description": "Installation Failure: Windows failed to install the following update with error X: Y",
+    "provider": "Microsoft-Windows-WindowsUpdateClient",
+    "path": {
+      "EventData": {
+        "Name": ["LastShutdownGood", "LastBootGood"]
+      }
+    }
+  },
+  "27":{
+    "description": "Boot event",
+    "provider": "Microsoft-Windows-Kernel-Boot",
+    "path": {}
+  },
+  "41":{
+    "description": "The system has rebooted without cleanly shutting",
+    "provider": "Microsoft-Windows-Kernel-Power",
+    "path": {
+      "EventData": {
+        "Name": ["BugcheckCode"]
+      }
+    }
+  },
+  "42": {
+    "description": "The system is entering sleep",
+    "provider": "Microsoft-Windows-Kernel-Power",
+    "path": {
+      "EventData": {
+        "Name": ["Reason"]
+      }
+    }
+  },
+  "43":{
+    "description": "Windows started the following update",
+    "provider": "Microsoft-Windows-WindowsUpdateClient"
+  },
+  "44":{
+    "description": "Windows started downloading the following update",
+    "provider": "Microsoft-Windows-WindowsUpdateClient"
+  },
+  "104":{
+    "description": "The X log file was cleared.",
+    "provider": "Microsoft-Windows-Eventlog",
+    "path": {
+      "UserData/LogFileCleared": {
+         "Name": ["SubjectUserName", "SubjectDomainName", "Channel"],
+         "transform": {"SubjectUserName": "source.user.name", "SubjectDomainName": "source.domain", "Channel": "LogCleared"}
+      }
+    }
+  },
+  "1074":{
+    "description": "an application causes the system to restart, or user initiates a restart or shutdown",
+    "provider": "USER32",
+    "path": {"EventData": {"Name": ["Data"]}}
+  },
+  "6005":{
+    "description": "Event log service was started",
+    "provider": "EventLog",
+    "path": {"EventData": {"Name": ["Binary"]}}
+  },
+  "6006":{
+    "description": "Event log service was stopped",
+    "provider": "EventLog",
+    "path": {"EventData": {"Name": ["Binary"]}}
+  },
+  "6008":{
+    "description": "Previous system shutdown unexpected",
+    "provider": "EventLog",
+    "path": {"EventData": {"Name": ["Data"]}}
+  },
+  "7034":{
+    "description": "Service crashed unexpectedly",
+    "provider": "Service Control Manager",
+    "path": {
+      "EventData": {
+        "Name": ["param1","param2"],
+        "transform": {"param1":"service.name", " param2":"n"}
+      }
+    }
+  },
+  "7036":{
+    "description": "The service entered the state.",
+    "provider": "Service Control Manager",
+    "path": {
+      "EventData": {
+        "Name": ["param1", "param2"],
+        "transform": {"param1": "service.name", "param2": "service.state"}
+      }
+    }
+  },
+  "7040":{
+    "description": "The start type of the service was changed from disabled to auto start.",
+    "provider": "Service Control Manager",
+    "path": {
+      "EventData": {
+        "Name": ["param1", "param2", "param3", "param4"],
+        "transform": {"param1": "service.name", "param2": "Old_Status", "param3": "New_Status"}
+      }
+    }
+  },
+  "7045":{
+    "description": "A service was installed in the system",
+    "provider": "Service Control Manager",
+    "path": {
+      "EventData": {
+        "Name": ["ServiceName", "ImagePath", "ServiceType", "StartType"],
+        "transform": {"ServiceName": "service.name", "ServiceType": "service.type", "ImagePath": "file.path"}
+      }
+    }
+  },
+  "10000":{
+    "description": "driver package is being installed",
+    "provider": "Microsoft-Windows-DriverFrameworks-UserMode",
+    "path": {
+      "UserData": {
+         "Name": ["UMDFDeviceInstallBegin"],
+         "transform": {"UMDFDeviceInstallBegin": "DeviceId"}
+      }
+    }
+  },
+  "20001":{
+    "description": "Installation or Update",
+    "provider": "Microsoft-Windows-UserPnp",
+    "path": {
+      "UserData": {
+        "Name": ["DeviceInstanceID"]
+      }
+    }
+  },
+  "20003":{
+    "description": "Service Installation or Update",
+    "provider": "Microsoft-Windows-UserPnp",
+    "path": {
+      "UserData": {
+        "Name": ["AddServiceID"],
+        "transform": {"AddServiceID": "DeviceInstanceID"}
+      }
+    }
+  }
+}

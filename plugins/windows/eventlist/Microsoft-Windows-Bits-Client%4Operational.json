@@ -1,0 +1,30 @@
+{
+  "3": {
+    "description": "BITS service created a new job",
+    "provider": "Microsoft-Windows-Bits-Client",
+    "path": {
+      "EventData":{
+        "Name": ["string", "string2", "string3"],
+        "transform": {"string": "Name", "string2": "Owner"}
+      }
+    }
+  },
+  "59": {
+    "description": "BITS is starting to transfer",
+    "provider": "Microsoft-Windows-Bits-Client",
+    "path": {
+      "EventData":{
+        "Name": ["name", "url", "peer", "fileTime", "fileLength", "bytesTotal", "bytesTransferred"]
+      }
+    }
+  },
+  "60": {
+    "description": "BITS has stopped transferring",
+    "provider": "Microsoft-Windows-Bits-Client",
+    "path": {
+      "EventData":{
+        "Name": ["name", "url", "peer", "fileTime", "fileLength", "bytesTotal", "bytesTransferred", "proxy"]
+      }
+    }
+  }
+}

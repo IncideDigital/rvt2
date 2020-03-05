@@ -1,0 +1,44 @@
+{
+  "8000": {
+    "description": "WLAN AutoConfig service started a connection to a wireless network.",
+    "provider": "Microsoft-Windows-WLAN-AutoConfig",
+    "category": ["process"],
+    "type": ["start"],
+    "path": {
+      "EventData": {
+        "Name": ["InterfaceDescription", "ConnectionMode", "SSID", "BSSType", "ConnectionId"]
+      }
+    }
+  },
+  "8001": {
+    "description": "WLAN AutoConfig service has successfully connected to a wireless network",
+    "provider": "Microsoft-Windows-WLAN-AutoConfig",
+    "category": ["process"],
+    "type": ["access"],
+    "path": {
+      "EventData": {
+        "Name": ["InterfaceDescription", "ConnectionMode", "SSID", "BSSType", "BSSID", "PHYType", "ConnectionId"]
+      }
+    }
+  },
+  "8003": {
+    "description": "WLAN AutoConfig service has successfully disconnected from a wireless network",
+    "provider": "Microsoft-Windows-WLAN-AutoConfig",
+    "category": ["process"],
+    "type": ["end"],
+    "path": {
+      "EventData": {
+        "Name": ["InterfaceDescription", "ConnectionMode", "SSID", "BSSType", "Reason", "ConnectionId"]
+      }
+    }
+  },
+  "11001": {
+    "description": "Wireless network association succeeded.",
+    "provider": "Microsoft-Windows-WLAN-AutoConfig",
+    "path": {
+      "EventData": {
+        "Name": ["Adapter", "LocalMac", "SSID", "BSSType", "PeerMac", "ConnectionId"]
+      }
+    }
+  }
+}

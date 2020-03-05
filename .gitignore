@@ -1,0 +1,13 @@
+*.pyc
+conf/local.cfg
+rvt2.log
+.venv
+*.swp
+rvt2.log.*
+*log
+cases
+*.lock
+.vscode
+external_tools/tika/*jar
+external_tools/elastic/data
+plugins/ai/models

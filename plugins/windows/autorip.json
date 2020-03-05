@@ -1,0 +1,364 @@
+[
+    {
+        "file": "01_operating_system_information",
+        "description": "General Information about the Operating System and Its Configuration",
+        "plugins": [
+            "winnt_cv",
+            "producttype",
+            "win_cv",
+            "timezone",
+            "shutdown",
+            "shutdowncount",
+            "polacdms",
+            "winlogon",
+            "lastloggedon",
+            "logmein",
+            "uac",
+            "disablesr",
+            "diag_sr",
+            "spp_clients",
+            "backuprestore",
+            "winbackup",
+            "bitbucket",
+            "disablelastaccess",
+            "dfrg",
+            "secctr",
+            "pagefile",
+            "hibernate",
+            "processor_architecture",
+            "crashcontrol",
+            "regback",
+            "ctrlpnl",
+            "banner",
+            "nolmhash",
+            "susclient",
+            "gpohist"
+        ]
+    },
+    {
+        "file": "02_user_account_information",
+        "description": "User Account Information",
+        "plugins": [
+            "samparse",
+            "profilelist",
+            "codeid",
+            "logonstats"
+        ]
+    },
+    {
+        "file": "03_installed_software_information",
+        "description": "Installed Software Information",
+        "plugins": [
+            "uninstall",
+            "apppaths",
+            "assoc",
+            "installedcomp",
+            "msis",
+            "product",
+            "installer",
+            "clsid",
+            "listsoft",
+            "fileexts",
+            "arpcache",
+            "startpage",
+            "licenses"
+        ]
+    },
+    {
+        "file": "04_network_configuration_information",
+        "description": "Networking Configuration Information",
+        "plugins": [
+            "compname",
+            "networkcards",
+            "nic",
+            "nic2",
+            "macaddr",
+            "shares",
+            "fw_config",
+            "routes",
+            "networklist",
+            "ssid",
+            "networkuid",
+            "network",
+            "termserv",
+            "termcert",
+            "rdpport",
+            "remoteaccess",
+            "teamviewer",
+            "sql_lastconnect",
+            "dcom"
+        ]
+    },
+    {
+        "file": "05_storage_information",
+        "description": "Storage Information",
+        "plugins": [
+            "mountdev2",
+            "ide",
+            "usbdevices",
+            "usbstor",
+            "devclass",
+            "emdmgmt",
+            "wpdbusenum",
+            "bthport",
+            "btconfig",
+            "imagedev",
+            "stillimage",
+            "mp2",
+            "removdev",
+            "mndmru",
+            "knowndev",
+            "ddo"
+        ]
+    },
+    {
+        "file": "06_device_information",
+        "description": "Device Information",
+        "plugins": [
+            "audiodev"
+        ]
+    },
+    {
+        "file": "07_program_execution_information",
+        "description": "Program Execution Information",
+        "plugins": [
+            "prefetch",
+            "appcompatcache",
+            "shimcache",
+            "syscache_tln",
+            "legacy",
+            "tracing",
+            "at",
+            "direct",
+            "amcache",
+            "bam",
+            "muicache",
+            "userassist",
+            "appcompatflags",
+            "winscp",
+            "mixer"
+        ]
+    },
+    {
+        "file": "08_autoruns_information",
+        "description": "Autostart Locations Information",
+        "plugins": [
+            "soft_run",
+            "user_run",
+            "runonceex",
+            "services",
+            "svc",
+            "svcdll",
+            "appinitdlls",
+            "init_dlls",
+            "bho",
+            "installedcomp",
+            "imagefile",
+            "winlogon",
+            "svchost",
+            "drivers32",
+            "cmd_shell",
+            "shellexec",
+            "shellext",
+            "schedagent",
+            "appcertdlls",
+            "lsa_packages",
+            "safeboot",
+            "dllsearch",
+            "securityproviders",
+            "profiler",
+            "load",
+            "winlogon_u",
+            "cmdproc",
+            "startup",
+            "cached",
+            "cmd_shell_u"
+        ]
+    },
+    {
+        "file": "09_log_information",
+        "description": "Logging Information",
+        "plugins": [
+            "mrt",
+            "auditpol",
+            "eventlog",
+            "eventlogs",
+            "winevt",
+            "auditfail",
+            "drwatson"
+        ]
+    },
+    {
+        "file": "10_malware_indicators",
+        "description": "Malware Indicators",
+        "plugins": [
+            "pending",
+            "netsvcs",
+            "inprocserver",
+            "fileless",
+            "ahaha",
+            "angelfire",
+            "appcertdlls",
+            "attachmgr",
+            "brisv",
+            "cached",
+            "cached_tln",
+            "cmdproc",
+            "comfoo",
+            "cpldontload",
+            "dnschanger",
+            "etos",
+            "gauss",
+            "handler",
+            "iejava",
+            "imagefile",
+            "init_dlls",
+            "installedcomp",
+            "wow64",
+            "kankan",
+            "lazyshell",
+            "lsa_packages",
+            "malware",
+            "mmo",
+            "null",
+            "opencandy",
+            "phdet",
+            "regin",
+            "renocide",
+            "reveton",
+            "rlo",
+            "vawtrak"
+        ]
+    },
+    {
+        "file": "11_web-browsing_information",
+        "description": "Web Browsing Information",
+        "plugins": [
+            "defbrowser",
+            "startmenuinternetapps_lm",
+            "ie_version",
+            "ie_zones",
+            "javasoft",
+            "startmenuinternetapps_cu",
+            "proxysettings",
+            "menuorder",
+            "ie_settings",
+            "internet_settings_cu",
+            "internet_explorer_cu",
+            "domains",
+            "typedurls"
+        ]
+    },
+    {
+        "file": "12_user-configuration_information",
+        "description": "User Account Configuration Information",
+        "plugins": [
+            "shellfolders",
+            "policies_u",
+            "environment",
+            "userinfo",
+            "vista_bitbucket",
+            "autorun",
+            "attachmgr",
+            "autoendtasks",
+            "winlogon_u",
+            "user_win",
+            "gpohist",
+            "ccleaner",
+            "sysinternals",
+            "logonusername",
+            "ntusernetwork",
+            "printers",
+            "winvnc",
+            "userlocsvc"
+        ]
+    },
+    {
+        "file": "13_user-account-general-activity",
+        "description": "User Account General Activity",
+        "plugins": [
+            "typedpaths",
+            "mmc",
+            "runmru",
+            "applets",
+            "acmru",
+            "wordwheelquery",
+            "cdstaginginfo",
+            "gthist",
+            "recentapps",
+            "controlpanel"
+        ]
+    },
+    {
+        "file": "14_user-account-network-activity",
+        "description": "User Account Network Activity",
+        "plugins": [
+            "mndmru",
+            "compdesc",
+            "tsclient",
+            "rdphint",
+            "ssh_host_keys",
+            "winscp_sessions",
+            "vncviewer",
+            "vnchooksapplicationprefs"
+        ]
+    },
+    {
+        "file": "15_user-account-file-access-activity",
+        "description": "User Account File/Folder Access Activity",
+        "plugins": [
+            "shellbags",
+            "itempos",
+            "comdlg32",
+            "cortana",
+            "jumplistdata",
+            "recentdocs",
+            "winzip",
+            "winrar",
+            "sevenzip",
+            "mspaper",
+            "nero",
+            "officedocs",
+            "officedocs2010",
+            "reading_locations",
+            "oisc",
+            "trustrecords",
+            "snapshot_viewer",
+            "adoberdr",
+            "foxitrdr",
+            "wallpaper",
+            "mpmru",
+            "realplayer6"
+        ]
+    },
+    {
+        "file": "16_user-account-virtual-access",
+        "description": "User Account Virtualization Access Activity",
+        "plugins": [
+            "vmplayer",
+            "vmware_vsphere_client"
+        ]
+    },
+    {
+        "file": "17_communications_information",
+        "description": "Communication Software Information",
+        "plugins": [
+            "outlook",
+            "outlook2",
+            "outlook_search",
+            "olsearch",
+            "unreadmail",
+            "skype",
+            "aim",
+            "liveContactsGUID",
+            "yahoo_cu"
+        ]
+    },
+    {
+        "file": "18_deleted_entries",
+        "description": "Deleted entries",
+        "plugins": [
+            "del"
+        ]
+    }
+]

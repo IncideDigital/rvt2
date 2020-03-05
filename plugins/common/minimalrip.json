@@ -1,0 +1,28 @@
+[
+    {
+        "file": "01_operating_system_information",
+        "description": "General Information about the Operating System and Its Configuration",
+        "plugins": [
+            "winnt_cv",
+            "timezone",
+            "shutdown",
+            "lastloggedon",
+            "processor_architecture"
+        ]
+    },
+    {
+        "file": "02_user_account_information",
+        "description": "User Account Information",
+        "plugins": [
+            "samparse",
+            "profilelist"
+        ]
+    },
+    {
+        "file": "04_network_configuration_information",
+        "description": "Networking Configuration Information",
+        "plugins": [
+            "compname"
+        ]
+    }
+]

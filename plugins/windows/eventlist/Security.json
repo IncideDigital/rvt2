@@ -1,0 +1,320 @@
+{
+  "1102":{
+    "description": "The audit log was cleared",
+    "provider": "Microsoft-Windows-Eventlog",
+    "path": {
+      "UserData/LogFileCleared":{
+        "Name": ["SubjectUserName", "SubjectDomainName", "SubjectLogonId", "Channel"],
+        "transform": {"SubjectUserName": "source.user.name", "SubjectDomainName": "source.domain", "Channel": "LogCleared"}
+       }
+    }
+  },
+  "4624":{
+    "description": "An account was successfully logged on.",
+    "provider": "Microsoft-Windows-Security-Auditing",
+    "category": ["authentication"],
+    "type": ["start"],
+    "action": "account-logged-on",
+    "path": {
+      "EventData":{
+        "Name": ["SubjectUserName", "SubjectDomainName", "TargetUserName", "TargetDomainName", "TargetLogonId", "LogonType", "LogonProcessName", "AuthenticationPackageName", "ProcessName", "IpAddress", "IpPort"],
+        "transform": {"SubjectUserName": "source.user.name", "SubjectDomainName": "source.domain", "TargetUserName": "destination.user.name", "TargetDomainName": "destination.domain", "IpAddress": "source.ip", "IpPort": "source.port", "ProcessName": "process.name"}
+      }
+    }
+  },
+  "4625":{
+    "description": "An account failed to log on.",
+    "provider": "Microsoft-Windows-Security-Auditing",
+    "category": ["authentication"],
+    "type": ["info", "error"],
+    "path": {
+      "EventData":{
+        "Name": ["SubjectUserName", "SubjectDomainName", "TargetUserName", "TargetDomainName", "FailureReason", "SubStatus", "TargetLogonId", "LogonType", "LogonProcessName", "AuthenticationPackageName", "ProcessName", "IpAddress", "IpPort"],
+        "transform": {"SubjectUserName": "source.user.name", "SubjectDomainName": "source.domain", "TargetUserName": "destination.user.name", "TargetDomainName": "destination.domain", "IpAddress": "source.ip", "IpPort": "source.port", "ProcessName": "process.name"}
+      }
+    }
+  },
+  "4634":{
+    "description": "An account was logged off.",
+    "provider": "Microsoft-Windows-Security-Auditing",
+    "category": ["authentication"],
+    "type": ["end"],
+    "path": {
+      "EventData":{
+        "Name": ["TargetUserName", "TargetDomainName", "TargetLogonId", "LogonType"],
+        "transform": {"TargetUserName": "destination.user.name", "TargetDomainName": "destination.domain"}
+      }
+    }
+  },
+  "4647":{
+    "description": "User initiated logoff.",
+    "provider": "Microsoft-Windows-Security-Auditing",
+    "path": {
+      "EventData":{
+        "Name": ["TargetUserName", "TargetDomainName", "TargetLogonId"],
+        "transform": {"TargetUserName": "destination.user.name", "TargetDomainName": "destination.domain"}
+      }
+    }
+  },
+  "4648":{
+    "description": "A logon was attempted using explicit credentials.",
+    "provider": "Microsoft-Windows-Security-Auditing",
+    "category": ["authentication"],
+    "type": ["info"],
+    "path": {
+      "EventData":{
+        "Name": ["SubjectUserName", "SubjectDomainName", "TargetUserName", "TargetDomainName", "SubjectLogonId", "ProcessName", "IpAddress", "IpPort"],
+        "transform": {"SubjectUserName": "source.user.name", "SubjectDomainName": "source.domain", "TargetUserName": "destination.user.name", "TargetDomainName": "destination.domain", "IpAddress": "source.ip", "IpPort": "source.port", "ProcessName": "process.name"}
+      }
+    }
+  },
+  "4656":{
+    "description": "A handle to a Registry key or Registry Value was requested.",
+    "provider": "Microsoft-Windows-Security-Auditing",
+    "path": {
+      "EventData":{
+        "Name": ["SubjectUserName", "SubjectDomainName", "SubjectLogonId", "ObjectServer", "ObjectType", "ObjectName", "AccessReason", "ProcessName"],
+        "transform": {"SubjectUserName": "source.user.name", "SubjectDomainName": "source.domain", "ObjectServer": "file.name", "ObjectType": "registry.data.type", "ObjectName": "registry.key", "ProcessName": "process.name"}
+      }
+    }
+  },
+  "4657":{
+    "description": "A registry value was modified.",
+    "provider": "Microsoft-Windows-Security-Auditing",
+    "category": ["database"],
+    "type": ["change"],
+    "path": {
+      "EventData":{
+        "Name": ["SubjectUserName", "SubjectDomainName", "SubjectLogonId", "ObjectName", "ObjectValueName", "OperationType", "OldValueType", "OldValue", "NewValueType", "NewValue", "ProcessName"],
+        "transform": {"SubjectUserName": "source.user.name", "SubjectDomainName": "source.domain",  "ObjectName": "registry.key", "ObjectValueName": "registry.value", "NewValueType": "registry.data.strings", "ProcessName": "process.name"}
+      }
+    }
+  },
+  "4660":{
+    "description": "An registry key or value was deleted or removed.  TODO",
+    "provider": "Microsoft-Windows-Security-Auditing",
+    "path": {
+      "EventData":{}
+    }
+  },
+  "4663":{
+    "description": "An attempt was made to access a Registry key or Registry Value",
+    "provider": "Microsoft-Windows-Security-Auditing",
+    "category": ["database"],
+    "type": ["access", "info"],
+    "path": {
+      "EventData":{
+        "Name": ["SubjectUserName", "SubjectDomainName", "SubjectLogonId", "ObjectServer", "ObjectType", "ObjectName", "AccessReason", "ProcessName"],
+        "transform": {"SubjectUserName": "source.user.name", "SubjectDomainName": "source.domain", "ObjectServer": "file.name", "ObjectType": "registry.data.type", "ObjectName": "registry.key", "ProcessName": "process.name"}
+      }
+    }
+  },
+  "4672":{
+    "description": "Special privileges assigned to new logon",
+    "provider": "Microsoft-Windows-Security-Auditing",
+    "path": {
+      "EventData":{
+        "Name": ["SubjectUserName", "SubjectDomainName", "SubjectLogonId", "PrivilegeList"],
+        "transform": {"SubjectUserName": "source.user.name", "SubjectDomainName": "source.domain"}
+      }
+    }
+  },
+  "4688":{
+    "description": "A new process has been created.",
+    "provider": "Microsoft-Windows-Security-Auditing",
+    "category": ["process"],
+    "type": ["start"],
+    "path": {
+      "EventData":{
+        "Name": ["SubjectUserName", "SubjectDomainName", "SubjectLogonId", "NewProcessID", "NewProcessName", "ParentProcessName", "CommandLine", "TargetUserName", "TargetDomainName"],
+        "transform": {"SubjectUserName": "source.user.name", "SubjectDomainName": "source.domain", "NewProcessName": "process.name", "ParentProcessName": "process.parent.name", "CommandLine": "process.command_line", "TargetUserName": "destination.user.name", "TargetDomainName": "destination.domain"}
+      }
+    }
+  },
+  "4689":{
+    "description": "A process has exited",
+    "provider": "Microsoft-Windows-Security-Auditing",
+    "category": ["process"],
+    "type": ["end"],
+    "path": {
+      "EventData":{
+        "Name": ["SubjectUserName", "SubjectDomainName", "SubjectLogonId", "Status", "ProcessId", "ProcessName"],
+        "transform": {"SubjectUserName": "source.user.name", "SubjectDomainName": "source.domain", "ProcessId":"process.id", "ProcessName": "process.name"}
+      }
+    }
+  },
+  "4697":{
+    "description": "A service was installed in the system",
+    "provider": "Microsoft-Windows-Security-Auditing",
+    "category": ["process"],
+    "type": ["installation"],
+    "path": {
+      "EventData":{
+        "Name": ["SubjectUserName", "SubjectDomainName", "SubjectLogonId", "ServiceName", "ServiceFileName", "ServiceStartType", "ServiceAccount", "ServiceType"],
+        "transform": {"SubjectUserName": "source.user.name", "SubjectDomainName": "source.domain", "ServiceName": "service.name", "ServiceFileName": "file.path", "ServiceType": "service.type"}
+      }
+    }
+  },
+  "4719":{
+    "description": "System audit policy was changed",
+    "provider": "Microsoft-Windows-Security-Auditing",
+    "category": ["database"],
+    "type": ["change"],
+    "path": {
+      "EventData":{
+        "Name": ["SubjectUserName", "SubjectDomainName", "SubjectLogonId", "CategoryId", "SubcategoryGuid", "AuditPolicyChanges"],
+        "transform": {"SubjectUserName": "source.user.name", "SubjectDomainName": "source.domain"}
+      }
+    }
+  },
+  "4720":{
+    "description": "A user account was created.",
+    "provider": "Microsoft-Windows-Security-Auditing",
+    "path": {
+      "EventData":{
+        "Name": ["TargetUserName", "TargetDomainName", "SubjectUserName", "SubjectDomainName", "SubjectLogonId", "CategoryId"],
+        "transform": {"TargetUserName": "destination.user.name", "TargetDomainName": "destination.domain", "SubjectUserName": "source.user.name", "SubjectDomainName": "source.domain"}
+      }
+    }
+  },
+  "4722":{
+    "description": "A user account was enabled.",
+    "provider": "Microsoft-Windows-Security-Auditing",
+    "path": {
+      "EventData":{
+        "Name": ["TargetUserName", "TargetDomainName", "SubjectUserName", "SubjectDomainName", "SubjectLogonId"],
+        "transform": {"TargetUserName": "destination.user.name", "TargetDomainName": "destination.domain", "SubjectUserName": "source.user.name", "SubjectDomainName": "source.domain"}
+      }
+    }
+  },
+  "4724":{
+    "description": "An attempt was made to reset an account's password.",
+    "provider": "Microsoft-Windows-Security-Auditing",
+    "path": {
+      "EventData":{
+        "Name": ["TargetUserName", "TargetDomainName", "SubjectUserName", "SubjectDomainName", "SubjectLogonId"],
+        "transform": {"TargetUserName": "destination.user.name", "TargetDomainName": "destination.domain", "SubjectUserName": "source.user.name", "SubjectDomainName": "source.domain"}
+      }
+    }
+  },
+  "4726":{
+    "description": "A user account was deleted ",
+    "provider": "Microsoft-Windows-Security-Auditing",
+    "path": {
+      "EventData":{
+        "Name": ["TargetUserName", "TargetDomainName", "SubjectUserName", "SubjectDomainName", "SubjectLogonId"],
+        "transform": {"TargetUserName": "destination.user.name", "TargetDomainName": "destination.domain", "SubjectUserName": "source.user.name", "SubjectDomainName": "source.domain"}
+      }
+    }
+  },
+  "4728":{
+    "description": "A member was added to a security-enabled global group.",
+    "provider": "Microsoft-Windows-Security-Auditing",
+    "path": {
+      "EventData":{
+        "Name": ["TargetUserName", "TargetDomainName", "SubjectUserName", "SubjectDomainName", "SubjectLogonId", "MemberName"],
+        "transform": {"TargetUserName": "destination.user.name", "TargetDomainName": "destination.domain", "SubjectUserName": "source.user.name", "SubjectDomainName": "source.domain"}
+      }
+    }
+  },
+  "4732":{
+    "description": "A member was added to a security-enabled local group.",
+    "provider": "Microsoft-Windows-Security-Auditing",
+    "path": {
+      "EventData":{
+        "Name": ["TargetUserName", "TargetDomainName", "SubjectUserName", "SubjectDomainName", "SubjectLogonId", "MemberName"],
+        "transform": {"TargetUserName": "destination.user.name", "TargetDomainName": "destination.domain", "SubjectUserName": "source.user.name", "SubjectDomainName": "source.domain"}
+      }
+    }
+  },
+  "4738":{
+    "description":"A user account was changed.",
+    "provider": "Microsoft-Windows-Security-Auditing",
+    "path": {
+      "EventData":{
+        "Name": ["TargetUserName", "TargetDomainName", "SubjectUserName", "SubjectDomainName", "SubjectLogonId", "OldUacValue", "NewUacValue"],
+        "transform": {"TargetUserName": "destination.user.name", "TargetDomainName": "destination.domain", "SubjectUserName": "source.user.name", "SubjectDomainName": "source.domain"}
+      }
+    }
+  },
+  "4756":{
+    "description":"A member was added to a security-enabled universal group",
+    "provider": "Microsoft-Windows-Security-Auditing",
+    "path": {
+      "EventData":{
+        "Name": ["MemberName", "TargetUserName", "TargetDomainName", "SubjectUserName", "SubjectDomainName", "SubjectLogonId"],
+        "transform": {"TargetUserName": "destination.user.name", "TargetDomainName": "destination.domain", "SubjectUserName": "source.user.name", "SubjectDomainName": "source.domain"}
+      }
+    }
+  },
+  "4768":{
+    "description":"A Kerberos authentication ticket (TGT) was requested",
+    "provider": "Microsoft-Windows-Security-Auditing",
+    "path": {
+      "EventData":{
+        "Name": ["TargetUserName", "TargetDomainName", "ServiceName", "TicketOptions", "Status", "IpAddress", "IpPort", "CertIssuerName", "CertSerialNumber"],
+        "transform": {"TargetUserName": "destination.user.name", "TargetDomainName": "destination.domain", "ServiceName": "service.name", "IpAddress": "source.ip", "IpPort": "source.port"}
+      }
+    }
+  },
+  "4769":{
+    "description":"A Kerberos service ticket was requested",
+    "provider": "Microsoft-Windows-Security-Auditing",
+    "path": {
+      "EventData":{
+        "Name": ["TargetUserName", "TargetDomainName", "ServiceName", "TicketOptions", "Status", "IpAddress", "IpPort", "TransmittedServices"],
+        "transform": {"TargetUserName": "destination.user.name", "TargetDomainName": "destination.domain", "ServiceName": "service.name", "IpAddress": "source.ip", "IpPort": "source.port"}
+      }
+    }
+  },
+  "4776":{
+    "description": "The computer attempted to validate the credentials for an account",
+    "provider": "Microsoft-Windows-Security-Auditing",
+    "path": {
+      "EventData":{
+        "Name": ["PackageName", "TargetUserName", "Workstation", "Status"],
+        "transform": {"TargetUserName": "destination.user.name", "ClientAddress": "source.address"}
+      }
+    }
+  },
+  "4778":{
+    "description": "A session was reconnected to a Window Station.",
+    "provider": "Microsoft-Windows-Security-Auditing",
+    "path": {
+      "EventData":{
+        "Name": ["AccountName", "AccountDomain", "LogonID", "SessionName", "ClientName", "ClientAddress"],
+        "transform": {"AccountName": "destination.user.name", "AccountDomain": "destination.domain", "ClientName": "client.user.name", "ClientAddress": "client.address"}
+      }
+    }
+  },
+  "4779":{
+    "description": "A session was disconnected from a Window Station.",
+    "provider": "Microsoft-Windows-Security-Auditing",
+    "path": {
+      "EventData":{
+        "Name": ["AccountName", "AccountDomain", "LogonID", "SessionName", "ClientName", "ClientAddress"],
+        "transform": {"AccountName": "destination.user.name", "AccountDomain": "destination.domain", "ClientName": "client.user.name", "ClientAddress": "client.address"}
+      }
+    }
+  },
+  "5140":{
+    "description": "A network share object was accessed.",
+    "provider": "Microsoft-Windows-Security-Auditing",
+    "path": {
+      "EventData":{
+        "Name": ["SubjectUserName", "SubjectDomainName", "SubjectLogonId", "ObjectType", "ShareName", "ShareLocalPath"],
+        "transform": {"SubjectUserName": "source.user.name", "SubjectDomainName": "source.domain"}
+      }
+    }
+  },
+  "5145":{
+    "description": "A network share object was checked to see whether client can be granted desired access",
+    "provider": "Microsoft-Windows-Security-Auditing",
+    "path": {
+      "EventData":{
+        "Name": ["SubjectUserName", "SubjectDomainName", "SubjectLogonId", "ObjectType", "IpAddress", "IpPort", "ShareName", "ShareLocalPath", "RelativeTargetName"],
+        "transform": {"SubjectUserName": "source.user.name", "SubjectDomainName": "source.domain", "IpAddress": "source.address", "IpPort": "source.port"}
+      }
+    }
+  }
+}

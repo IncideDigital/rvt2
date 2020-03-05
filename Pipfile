@@ -1,0 +1,49 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+python-mimeparse = "*"
+elasticsearch = "*"
+dateutils = "*"
+pylint = "*"
+biplist = "*"
+python-registry = "*"
+olefile = "*"
+lxml = "*"
+openpyxl = "*"
+colorama = "*"
+dkimpy = "*"
+dnspython = "*"
+mako = "*"
+jinja2 = "*"
+Pillow = "*"
+mac_alias = "*"
+hexdump = "*"
+pytsk3 = "*"
+liblnk-python = "*"
+libscca-python = "*"
+requests = "*"
+pylnk = "*"
+libesedb-python = "*"
+tqdm = "*"
+ujson = "*"
+ActivitiesCacheParser = {git = "https://github.com/forensicmatt/ActivitiesCacheParser.git",ref = "master"}
+lz4 = "*"
+chardet = "*"
+pyyaml = "*"
+yara-python = "*"
+leveldb = "*"
+evtx = "*"
+regipy = "*"
+
+[dev-packages]
+sphinx = "*"
+sphinx-rtd-theme = "*"
+pudb = "*"
+flake8 = "*"
+coverage = "*"
+
+[requires]
+python_version = "3.7"

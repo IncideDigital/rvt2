@@ -1,0 +1,44 @@
+{
+  "2003": {
+    "description": "ask to load driver for device",
+    "provider": "Microsoft-Windows-DriverFrameworks-UserMode",
+    "path": {
+      "UserData/UMDFHostDeviceArrivalBegin/#attributes": {
+        "Name": ["instance", "lifetime"]
+      }
+    }
+  },
+  "2010": {
+    "description": "successfully loaded drivers for device",
+    "provider": "Microsoft-Windows-DriverFrameworks-UserMode",
+    "path": {
+      "UserData/UMDFHostDeviceArrivalEnd/#attributes": {
+        "Name": ["instance", "lifetime"]
+      }
+    }
+  },
+  "2100": {
+    "description": "received a PnP or Power operation",
+    "provider": "Microsoft-Windows-DriverFrameworks-UserMode",
+    "path": {
+      "UserData/UMDFHostDeviceRequest/#attributes": {
+        "Name": ["instance", "lifetime"]
+      },
+      "UserData/UMDFHostDeviceRequest": {
+         "Name": ["Status"]
+      }
+    }
+  },
+  "2101": {
+    "description": "completed a Pnp or Power operation",
+    "provider": "Microsoft-Windows-DriverFrameworks-UserMode",
+    "path": {
+      "UserData/UMDFHostDeviceRequest/#attributes": {
+        "Name": ["instance", "lifetime"]
+      },
+      "UserData/UMDFHostDeviceRequest": {
+         "Name": ["Status"]
+      }
+    }
+  }
+}

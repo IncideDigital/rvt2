@@ -1,0 +1,73 @@
+{
+  "65": {
+    "description": "Connection RDP-Tcp#xx created",
+    "provider": "Microsoft-Windows-RemoteDesktopServices-RdpCoreTS",
+    "path": {
+      "EventData": {
+        "Name": ["ConnectionName"]
+      },
+      "System/Correlation/#attributes":{
+         "Name": ["ActivityID"]
+      }
+    }
+  },
+  "66": {
+    "description": "The connection RDP-Tcp#xx was assigned to session Y",
+    "provider": "Microsoft-Windows-RemoteDesktopServices-RdpCoreTS",
+    "path": {
+      "EventData": {
+        "Name": ["ConnectionName", "SessionID"]
+      },
+      "System/Correlation/#attributes":{
+         "Name": ["ActivityID"]
+      }
+    }
+  },
+  "102": {
+    "description": "The server has terminated main RDP connection with the client",
+    "provider": "Microsoft-Windows-RemoteDesktopServices-RdpCoreTS",
+    "path": {
+      "System/Correlation/#attributes":{
+         "Name": ["ActivityID"]
+      }
+    }
+  },
+  "103": {
+    "description": "The disconnect reason is ",
+    "provider": "Microsoft-Windows-RemoteDesktopServices-RdpCoreTS",
+    "path": {
+      "EventData": {
+        "Name": ["ReasonCode"]
+      },
+      "System/Correlation/#attributes":{
+         "Name": ["ActivityID"]
+      }
+    }
+  },
+  "131": {
+    "description": "the server accepted a new TCP connection from client ",
+    "provider": "Microsoft-Windows-RemoteDesktopServices-RdpCoreTS",
+    "path": {
+      "EventData": {
+        "Name": ["ConnType", "ClientIP"],
+        "transform": {"ConnType": "network.transport", "ClientIP": "client.ip"}
+      },
+      "System/Correlation/#attributes":{
+         "Name": ["ActivityID"]
+      }
+    }
+  },
+  "140": {
+    "description": "A connection from the client computer with an IP address of X failed because the user name or password is not correct.",
+    "provider": "Microsoft-Windows-RemoteDesktopServices-RdpCoreTS",
+    "path": {
+      "EventData": {
+        "Name": ["IPString"],
+        "transform": {"IPString": "source.ip"}
+      },
+      "System/Correlation/#attributes":{
+         "Name": ["ActivityID"]
+      }
+    }
+  }
+}

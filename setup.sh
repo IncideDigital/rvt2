@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# This script contains functions to setup a Debian Stretch environment to use rvt2 on it.
-# It contains functions that:
-# - setup folders, users, sudoers.
-# - install necessary packages from APT to build dependencies.
-# - install python3 and pip from APT to run rvt2 and install rvt2 module dependencies.
-# - install rvt2 binary dependencies from APT (those that aren't python3 modules).
-# - download, build and install rvt2 binary dependencies that aren't available in Debian Stretch.
+# Script with functions to setup a Debian Stretch environment ready for RVT2.
+# Functions included do next:
+# - Setup folders, users, sudoers.
+# - Install necessary packages from APT to build dependencies.
+# - Install python3 and pip from APT to run rvt2 and install rvt2 module dependencies.
+# - Install rvt2 binary dependencies from APT (those that aren't python3 modules).
+# - Download, build and install rvt2 binary dependencies that aren't available in Debian Stretch.
 
 # TODO: give user permissions to group 'disk'
 
@@ -21,6 +21,7 @@ prepare_debian() {
     apt-get update
 }
 
+# Prepare RVT2 folders
 prepare() {
     mkdir -p "${RVT2HOME}"
     mkdir -p "${SRCDIR}"
@@ -28,6 +29,39 @@ prepare() {
 
 prepare_copy() {
     cp -rp * "${RVT2HOME}"
+}
+
+
+# Install Debian build tools
+install_debian_buildtools() {
+    apt-get install -y \
+        unzip wget git \
+        build-essential debhelper apt-utils fakeroot cmake \
+        python-all-dev python3-all-dev \
+        pkg-config libssl-dev autotools-dev zlib1g-dev
+}
+
+# Install Debian useful tools
+install_debian_utils() {
+    apt-get install -y \
+        sudo curl vim less procps \
+        silversearcher-ag fd-find tree \
+        p7zip bzip2 libbz2-dev \
+        gnupg dirmngr
+}
+
+# Install rvt2 dependencies available in Debian
+install_debian_deps() {
+    apt-get install -y \
+        sleuthkit \
+        bindfs dislocker ewf-tools testdisk \
+        volatility volatility-tools \
+        libimage-exiftool-perl \
+        libscca1 libscca-utils python3-libscca \
+        libmsiecf1 libmsiecf-utils python3-libmsiecf \
+        liblnk1 liblnk-utils python3-liblnk \
+        fuse3 libfuse3-dev libicu-dev libattr1-dev
+    apt-get install -y libparse-win32registry-perl # regripper
 }
 
 # Install python3 and pip3
@@ -46,43 +80,29 @@ install_pip_deps() (
     pipenv install
 )
 
-# Install Debian build tools
-install_debian_buildtools() {
-    apt-get install -y \
-        unzip wget \
-        build-essential debhelper fakeroot python-all-dev python3-all-dev \
-        pkg-config libssl-dev autotools-dev zlib1g-dev git
-}
+build_install_sleuthkit() (
+    cd "${SRCDIR}"
+    git clone "https://github.com/sleuthkit/sleuthkit.git"
+    cd sleuthkit
+    ./bootstrap
+    ./configure
+    make
+    make install
+)
 
-# Install Debian useful tools
-install_debian_utils() {
-    apt-get install -y \
-        vim procps less dislocker silversearcher-ag sleuthkit
-}
+build_install_sleuthkit_APFS() (
+    cd "${SRCDIR}"
+    git clone "https://github.com/blackbagtech/sleuthkit-APFS.git"
+    cd sleuthkit-APFS
+    ./bootstrap
+    ./configure
+    make
+)
 
-# Install rvt2 dependencies available in Debian
-install_debian_deps() {
-    apt-get install -y \
-        sudo \
-        bindfs \
-        p7zip \
-        cmake \
-        volatility volatility-tools \
-        libimage-exiftool-perl \
-        testdisk \
-        libscca1 libscca-utils python3-libscca \
-        libmsiecf1 libmsiecf-utils python3-libmsiecf \
-        liblnk1 liblnk-utils python3-liblnk
-    apt-get install -y libparse-win32registry-perl # regripper
-    apt-get install -y libdatetime-perl libcarp-assert-perl # Evtx-Parser
-    apt-get install -y fuse libfuse-dev libicu-dev bzip2 libbz2-dev libattr1-dev
-    apt-get install -y curl gnupg dirmngr tree
-    apt-get install -y ewf-tools fd-find
-}
-
-# Download the contents of $1 and verify that the sha256 matches $2.
-# If the hash doesn't match, return 1.
+# Verify the download hash
 _download_verify() (
+    # Download the contents of $1 and verify that the sha256 matches $2.
+    # If the hash doesn't match, return 1.
     local url="$1"
     local sha256="$2"
     local filename=$(basename "$url")
@@ -168,42 +188,23 @@ build_install_libvshadow() {
 
 build_install_libfvde() {
     local VERSION=$(curl -s "https://github.com/libyal/libfvde/releases" \
-    | grep "libfvde-alpha-.*.tar.gz" | head -1 \
+    | grep "libfvde-experimental-.*.tar.gz" | head -1 \
     | sed -rn "s/.*([0-9]{8}).*/\1/p")
 
-    _build_install_libyal libfvde alpha "${VERSION}"
+    _build_install_libyal libfvde experimental "${VERSION}"
     # sed -i "s/.user_allow_other/user_allow_other/" /etc/fuser.conf
 }
-
-build_install_sleuthkit() (
-    cd "${SRCDIR}"
-    git clone "https://github.com/sleuthkit/sleuthkit.git"
-    cd sleuthkit
-    ./bootstrap
-    ./configure
-    make
-    make install
-)
-
-build_install_sleuthkit_APFS() (
-    cd "${SRCDIR}"
-    git clone "https://github.com/blackbagtech/sleuthkit-APFS.git"
-    cd sleuthkit-APFS
-    ./bootstrap
-    ./configure
-    make
-)
 
 build_install_regripper() (
     local NAME="RegRipper2.8"
     local COMMIT="ee874d5245fb4f26147c29dc1db02b8e68a88698"
+    [ -d /tmp/patches ] || cp -rp patches /tmp/
     cd "${SRCDIR}"
     _download_verify "https://github.com/keydet89/${NAME}/archive/${COMMIT}.zip" \
         "9cea8786588417b89a6f9497d8d97222f5f7daeaf276b40a2cd02157ea121b2e"
     mv "${COMMIT}".zip ${NAME}-${COMMIT}.zip
     unzip ${NAME}-${COMMIT}.zip
     cd ${NAME}-${COMMIT}
-    [ -d /tmp/patches ] || cp -rp patches /tmp/
 
     patch rip.pl < /tmp/patches/regripper_patch.diff
 
@@ -229,36 +230,6 @@ build_install_regripper() (
     sudo cp -p Key.pm "$WIN32REGISTRY/WinNT/"
 )
 
-build_install_evtxparser() (
-    local NAME="Parse-Evtx"
-    local VER="1.1.1"
-    cd "${SRCDIR}"
-    echo "yes" | perl -MCPAN -e "install Carp::Assert"
-    echo "yes" | perl -MCPAN -e "install DateTime"
-    echo "yes" | perl -MCPAN -e "install Digest::CRC"
-    perl -MCPAN -e "install Data::Hexify"
-    _download_verify "https://computer.forensikblog.de/files/evtx/${NAME}-${VER}.zip" \
-        "a1909810bedc709e2fa87f6603e52c62e60086bf1ce064bd839fc5873abf8512"
-    unzip ${NAME}-1.1.1.zip
-    cd ${NAME}-1.1.1
-    perl Makefile.PL
-    make
-    make install
-)
-
-build_install_ntfs3g() (
-    local NAME="ntfs-3g_ntfsprogs"
-    local VER="2017.3.23"
-    cd "${SRCDIR}"
-    _download_verify "https://tuxera.com/opensource/${NAME}-${VER}.tgz" \
-        "3e5a021d7b761261836dcb305370af299793eedbded731df3d6943802e1262d5"
-    tar xzf ${NAME}-${VER}.tgz
-    cd ${NAME}-${VER}/
-    ./configure
-    make
-    make install
-)
-
 build_install_ntfs3g_system_compression() (
     local NAME="ntfs-3g-system-compression"
     local VER="1.0"
@@ -273,7 +244,7 @@ build_install_ntfs3g_system_compression() (
     make install
 )
 
-build_install_apf_fuse() (
+build_install_apfs_fuse() (
     cd "${SRCDIR}"
     git clone https://github.com/sgan81/apfs-fuse.git
     cd apfs-fuse
@@ -312,6 +283,14 @@ build_install_hindsight() (
     ln -s ${SRCDIR}/hindsight/hindsight.py /usr/local/bin/hindsight.py
 )
 
+# Clone submodules and make some patches to submodules in order to work as RVT2 expects
+submodules() (
+    git submodule init
+    git submodule update
+    # srumpdump includes a graphical interface not needed in RVT2
+    sed '19d' plugins/external/srum-dump/srum_dump2.py > tempfile && mv tempfile plugins/external/srum-dump/srum_dump2.py
+)
+
 install_rvt_bin() {
     cat << EOF > /usr/local/bin/rvt2
 #!/bin/sh
@@ -321,19 +300,11 @@ EOF
     chmod +x /usr/local/bin/rvt2
 }
 
-install_rvt_bin_no_sudo() {
-    cat << EOF > /usr/local/bin/rvt2
-#!/bin/sh
-
-/opt/rvt2/rvt2 "\$@"
-EOF
-    chmod +x /usr/local/bin/rvt2
-}
-
 # Add rvt user and allow execution of special programs as root
 prepare_sudo() {
     useradd --user-group --create-home --shell /bin/bash rvt
-    echo '%rvt ALL=(root) NOPASSWD: /bin/mount, /bin/umount, /sbin/losetup, /usr/local/bin/vshadowmount, /usr/bin/bindfs, /usr/local/bin/icat, /usr/local/bin/apfs-fuse' >> /etc/sudoers
+    APPS='/bin/mount, /bin/umount, /sbin/losetup, /usr/local/bin/vshadowmount, /usr/bin/bindfs, /usr/local/bin/icat, /usr/local/bin/apfs-fuse'
+    echo "%rvt ALL=(root) NOPASSWD: ${APPS}" >> /etc/sudoers
 }
 
 # Give /morgue group rvt permissions
@@ -343,54 +314,64 @@ prepare_morgue() {
     chmod 775 /morgue
 }
 
+# Links rvt2 executable to /usr/local/bin
 create_link_bin() {
     ln -s /opt/rvt2/rvt2 /usr/local/bin/rvt2
 }
 
-fix_submodules() {
-    cd $RVT2HOME
-    # srumpdump includes a graphical interface not needed in RVT2
-    sed '19d' plugins/external/srum-dump/srum_dump2.py > tempfile && mv tempfile plugins/external/srum-dump/srum_dump2.py
-}
-
 # Remove unnecessary source files
-clean_sources() {
+clean_sources() (
   cd "${SRCDIR}"
-  rm -rf libvshadow* libesedb* libpff*
-  rm -f Parse-Evtx*.zip* RegRipper2*.zip
-}
+  rm -rf libvshadow* libesedb* libpff* libfvde* apfs-fuse ntfs-3g*
+  rm -f Parse-Evtx*.zip* RegRipper2*
+)
 
 # Use this function to install all dependencies on Debian stretch and setup rvt2
 setup_debian_full() {
+    # Basic preparation
     prepare_debian
     prepare
     prepare_copy
 
-    install_debian_python
-    install_pip_deps
+    # Debian Tools
     install_debian_buildtools
     install_debian_utils
     install_debian_deps
+    install_debian_python
 
+    # Extra Tools
+      # build_install_sleuthkit
+      # build_install_sleuthkit_APFS
     build_install_libesedb
     build_install_libpff
     build_install_libvshadow
     build_install_libfvde
-
-    build_install_sleuthkit
-    build_install_sleuthkit_APFS
     build_install_regripper
-    build_install_evtxparser
-    # build_install_ntfs3g
     build_install_ntfs3g_system_compression
-    build_install_apf_fuse
+    build_install_apfs_fuse
     build_install_yara
-    build_install_hindsight
+      # build_install_hindsight
 
-    #install_rvt_bin
-    #prepare_sudo
-    #prepare_morgue
-    fix_submodules
+    # Install pip dependencies
+    install_pip_deps
+
+    # Download submodules
+    submodules
+
+    # Permissions and links
+    prepare_sudo
+    prepare_morgue
+      # install_rvt_bin
     create_link_bin
     clean_sources
 }
+
+# Dummy functions related to old dependencies. rvt2-docker still calls them
+
+build_install_evtxparser() {
+  :
+}
+
+if [ $1 = "run" ]; then
+  setup_debian_full
+fi

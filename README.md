@@ -12,7 +12,7 @@ RVT2 is developed and continously used in [INCIDE](https://www.incide.es/), a Sp
 
 It is designed to run on Debian Buster stable version, but can also be installed with `docker` if desired.
 
-The analyst/user manual for RVT2 is available at [rvt2-docs](https://github.com/IncideDigital/rvt2-docs/tree/master/rvt2). For a more in depth description of the modules, packages and classes in the RVT2, check the Developers manual (soon to be realeased).
+The analyst/user manual for RVT2 is available at [rvt2-docs](https://incidedigital.github.io/rvt2-docs). For a more in depth description of the modules, packages and classes in the RVT2, check the Developers manual [rvt2-devel](https://incidedigital.github.io/rvt2) (soon to be realeased).
 
 ## Installation
 

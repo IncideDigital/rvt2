@@ -16,6 +16,8 @@
 
 import json
 import os
+import re
+import ast
 from evtx import PyEvtxParser
 import base.job
 from plugins.common.RVT_files import GetFiles
@@ -65,7 +67,7 @@ class GetEvents(object):
                 pass
 
             # Events not defined in data_json
-            if not data['event.code'] in self.data_json.keys() or data['event.provider'] != self.data_json[data['event.code']]['provider']:
+            if not data['event.code'] in self.data_json.keys() or not re.search(self.data_json[data['event.code']]['provider'], data['event.provider']):
                 # EventData, UserData are just reproduced as dictionaries
                 if 'EventData' in rec:
                     data['EventData'] = rec['EventData']
@@ -75,7 +77,7 @@ class GetEvents(object):
                 continue
 
             # Selected events
-            data['description'] = self.data_json[data['event.code']]["description"]
+            data['event.action'] = self.data_json[data['event.code']]["description"]
             for field in ['category', 'type', 'action']:
                 if field in self.data_json[data['event.code']]:
                     data['event.{}'.format(field)] = self.data_json[data['event.code']][field]
@@ -299,21 +301,21 @@ class Security(EventJob):
         json_file = self.config.config[self.config.job_name]['json_conf']
 
         for ev in GetEvents(path, json_file).parse():
-            if "LogonType" in ev.keys():
-                ev["LogonTypeStr"] = LogonTypeStr.get(ev["LogonType"], "Unknown")
-            if "SubStatus" in ev.keys() and ev["SubStatus"] != "0x00000000":
-                ev["Error"] = errordict.get(ev["SubStatus"], '')
-            elif "Status" in ev.keys():
-                ev["Error"] = errordict.get(ev["Status"], '')
-            if "CategoryId" in ev.keys():
-                ev["Category"] = category_id.get(ev["CategoryId"], "")
-            if "SubcategoryGuid" in ev.keys():
-                ev["Subcategory"] = subcategory_guid.get(ev["SubcategoryGuid"], "")
-            if "AuditPolicyChanges" in ev.keys():
+            if "data.LogonType" in ev.keys():
+                ev["data.LogonTypeStr"] = LogonTypeStr.get(ev["data.LogonType"], "Unknown")
+            if "data.SubStatus" in ev.keys() and ev["data.SubStatus"] != "0x00000000":
+                ev["data.Error"] = errordict.get(ev["data.SubStatus"], '')
+            elif "data.Status" in ev.keys():
+                ev["data.Error"] = errordict.get(ev["data.Status"], '')
+            if "data.CategoryId" in ev.keys():
+                ev["data.Category"] = category_id.get(ev["data.CategoryId"], "")
+            if "data.SubcategoryGuid" in ev.keys():
+                ev["data.Subcategory"] = subcategory_guid.get(ev["data.SubcategoryGuid"], "")
+            if "data.AuditPolicyChanges" in ev.keys():
                 temp_aud = []
-                for i in ev["AuditPolicyChanges"].split(","):
+                for i in ev["data.AuditPolicyChanges"].split(","):
                     temp_aud.append(audit_policy_changes.get(i.lstrip(), ""))
-                ev["AuditPolicyChangesStr"] = ", ".join(temp_aud)
+                ev["data.AuditPolicyChangesStr"] = ", ".join(temp_aud)
             yield ev
 
 
@@ -341,10 +343,10 @@ class System(EventJob):
         json_file = self.config.config[self.config.job_name]['json_conf']
 
         for ev in GetEvents(path, json_file).parse():
-            if "BootType" in ev.keys():
-                ev["BootTypeStr"] = boot_type.get(ev["BootType"], "Unknown")
-            if "Reason" in ev.keys():
-                ev["reasonStr"] = reason_sleep.get(ev.get('Reason'), 'Unknown')
+            if "data.BootType" in ev.keys():
+                ev["data.BootTypeStr"] = boot_type.get(ev["data.BootType"], "Unknown")
+            if "data.Reason" in ev.keys():
+                ev["data.reasonStr"] = reason_sleep.get(ev.get('data.Reason'), 'Unknown')
             yield ev
 
 
@@ -378,8 +380,8 @@ class RDPLocal(EventJob):
         json_file = self.config.config[self.config.job_name]['json_conf']
 
         for ev in GetEvents(path, json_file).parse():
-            if "Reason" in ev.keys():
-                ev["reasonStr"] = error_reason.get(ev.get('Reason'), '')
+            if "data.Reason" in ev.keys():
+                ev["data.reasonStr"] = error_reason.get(ev.get('data.Reason'), '')
             yield ev
 
 
@@ -501,8 +503,31 @@ class RDPClient(EventJob):
         json_file = self.config.config[self.config.job_name]['json_conf']
 
         for ev in GetEvents(path, json_file).parse():
-            if "Reason" in ev.keys() and ev["event.code"] == "39":
-                ev['reasonStr'] = "SessionID {} disconnected by session {}".format(ev["SessionID"], ev["Source"])
-            elif "Reason" in ev.keys() and ev["event.code"] == "1026":
-                ev["reasonStr"] = error_reason.get(ev.get('Reason'), '')
+            if "data.Reason" in ev.keys() and ev["event.code"] == "39":
+                ev['data.reasonStr'] = "SessionID {} disconnected by session {}".format(ev["data.SessionID"], ev["data.Source"])
+            elif "data.Reason" in ev.keys() and ev["event.code"] == "1026":
+                ev["data.reasonStr"] = error_reason.get(ev.get('data.Reason'), '')
+            yield ev
+
+
+class OAlerts(EventJob):
+    """ Extracts events of parsed OAlerts.evtx """
+
+    def run(self, path=None):
+        """
+        Attrs:
+            path (str): Absolute path to Microsoft-Windows-TerminalServices-LocalSessionManager%4Operational.evtx
+        """
+        path = self.get_evtx(path, r"/OAlerts.evtx$")
+        if not path:
+            return []
+
+        json_file = self.config.config[self.config.job_name]['json_conf']
+
+        for ev in GetEvents(path, json_file).parse():
+            if "#text" in ev.keys():
+                content = ast.literal_eval(ev['#text'])
+                ev['data.office_software'] = content[0].rstrip()
+                ev['data.message_alert'] = content[1].strip()
+                ev.pop('#text')
             yield ev

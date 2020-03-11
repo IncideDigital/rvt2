@@ -292,3 +292,34 @@ class AddFields(base.job.BaseModule):
                         raise
                     self.logger().warning('Key not found: %s', exc)
             yield newdata
+
+
+class GetFields(base.job.BaseModule):
+    """ Get data from from_module, yield fields specified.
+
+    Module description:
+        - **path**: not used, passed to *from_module*.
+        - **from_module**: Data dict.
+        - **yields**: The updated dict data.
+
+    Configuration:
+        - **section**: Section from configuration where new values are to be retrieved
+        - **fields**: A list of fields to be yielded.
+    """
+
+    def read_config(self):
+        super().read_config()
+        self.set_default_config('section', 'DEFAULT')
+        self.set_default_config('fields', '')
+
+    def run(self, path=None):
+        self.check_params(path, check_from_module=True)
+
+        fields = ast.literal_eval(self.myconfig('fields'))
+
+        for data in self.from_module.run(path):
+            newdata = {}
+            for item, val in data.items():
+                if item in fields:
+                    newdata[item] = val
+            yield newdata

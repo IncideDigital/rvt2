@@ -1,0 +1,11 @@
+{
+  "300": {
+    "description": "Microsoft Office alert",
+    "provider": "Microsoft Office.*",
+    "path": {
+      "EventData/Data": {
+        "Name": ["#text"]
+      }
+    }
+  }
+}

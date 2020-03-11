@@ -212,6 +212,7 @@ class MailParser(base.job.BaseModule):
             if not os.path.isdir(outputpstfile):
                 continue
             parsePffObject = PffExportParseObject(self.config)
+            outputpstfile = os.path.join(self.myconfig('exportdir'), '{}.export'.format(pstfile['outdir']))
             with tqdm(total=int(sum([len(folder) for r, folder, file in os.walk(outputpstfile)])), desc='indexing {}'.format(pstfile['outdir'])) as pbar:
                 for root, dirs, files in os.walk(outputpstfile):
                     for dirpath in dirs:
@@ -308,7 +309,7 @@ class PffExportParseObject(base.job.BaseModule):
                 # change the embedded path of these files, to point to the mail container and not the attachment
                 filemetadata['embedded_path'] = os.path.join("Attachments", filemetadata['filename'])
                 filemetadata['dirname'] = base.utils.relative_path(message_path, self.myconfig('casedir'))
-                filemetadata['path'] = os.path.join(filemetadata['dirname'], 'Message.html')
+                filemetadata['path'] = os.path.join(filemetadata['dirname'], 'index.html')
                 # if the attachment is an image, create a preview
                 if filemetadata.get('category', '') == 'image':
                     filemetadata['preview'] = base.utils.relative_path(os.path.join(attachpath, f), self.myconfig('casedir'))
@@ -356,6 +357,14 @@ class PffExportParseObject(base.job.BaseModule):
             'size': decodeEmailHeader(msg.get('size', None)),
             'email_conversation_topic': decodeEmailHeader(msg.get('conversation topic', None))
         }
+        sn = decodeEmailHeader(msg.get('sender name', None))
+        sea = decodeEmailHeader(msg.get('sender email address', None))
+        if sn:
+            if sea:
+                data['email_from'] = "{} ({})".format(sn, sea)
+            else:
+                data['email_from'] = sn
+
         subject = decodeEmailHeader(msg.get('subject', None))
         if subject:
             # if a subject is present in the properties, include it. It MIGHT overwrite the subject from other files, such as InternetHeaders
@@ -408,11 +417,9 @@ class PffExportParseMessage(PffExportParseObject):
     def run(self, path, containerid=None):
         info = {}
         # parse the Message.html or Message.rtf file in the directory: this is the content
-        email_body = ''
         for f in os.listdir(path):
             if f.startswith("Message"):
                 info = self.tika_parser.run(os.path.join(path, f))[0]
-                email_body = f
                 break
         info['content_type'] = "pst/Message"
         info["category"] = "email"
@@ -431,7 +438,7 @@ class PffExportParseMessage(PffExportParseObject):
         except Exception:
             info['email_guid'] = ""
         info['dirname'] = base.utils.relative_path(path, self.myconfig('casedir'))
-        info['path'] = os.path.join(info['dirname'], email_body)
+        info['path'] = os.path.join(info['dirname'], 'index.html')
         info['filename'] = os.path.basename(path)
         containerid = self._setContainerID(info, containerid)
         yield info
@@ -462,7 +469,7 @@ class PffExportParseContact(PffExportParseObject):
         info['creation_time'] = decodeEmailDateHeader(contactinfo.get('creation time', None))
         info['modification_time'] = decodeEmailDateHeader(contactinfo.get('modification time', None))
         info['dirname'] = base.utils.relative_path(path, self.myconfig('casedir'))
-        info['path'] = os.path.join(info['dirname'], 'Contact.txt')
+        info['path'] = os.path.join(info['dirname'], 'index.html')
         info['filename'] = os.path.basename(path)
         containerid = self._setContainerID(info, containerid)
         yield info
@@ -480,6 +487,7 @@ class PffExportParseAppointment(PffExportParseObject):
     """
     def run(self, path, containerid=None):
         info = {}
+        info["content_type"] = "pst/Appointment"
         info["category"] = "email"
         info["extension"] = None
         appointment = readMessageFile(os.path.join(path, 'Appointment.txt'), stop_on_empty_line=False)
@@ -491,7 +499,7 @@ class PffExportParseAppointment(PffExportParseObject):
         info['event_location'] = appointment.get('location', None)
         info.update(self._getRecipients(os.path.join(path, "Recipients.txt")))
         info['dirname'] = base.utils.relative_path(path, self.myconfig('casedir'))
-        info['path'] = os.path.join(info['dirname'], 'Appointment.txt')
+        info['path'] = os.path.join(info['dirname'], 'index.html')
         info['filename'] = os.path.basename(path)
         containerid = self._setContainerID(info, containerid)
         yield info
@@ -510,11 +518,9 @@ class PffExportParseMeeting(PffExportParseObject):
     def run(self, path, containerid=None):
         info = {}
         # parse the Message.html or rtf file in the directory: this is the content
-        meeting_content = ''
         for f in os.listdir(path):
             if f.startswith("Message"):
                 info = self.tika_parser.run(os.path.join(path, f))[0]
-                meeting_content = f
                 break
         info["content_type"] = "pst/Meeting"
         info["category"] = "email"
@@ -525,7 +531,7 @@ class PffExportParseMeeting(PffExportParseObject):
         info['modification_time'] = decodeEmailDateHeader(meeting.get('modification time', None))
         info.update(self._getRecipients(os.path.join(path, "Recipients.txt")))
         info['dirname'] = base.utils.relative_path(path, self.myconfig('casedir'))
-        info['path'] = os.path.join(info['dirname'], meeting_content)
+        info['path'] = os.path.join(info['dirname'], 'index.html')
         info['filename'] = os.path.basename(path)
         containerid = self._setContainerID(info, containerid)
         yield info
@@ -558,7 +564,7 @@ class PffExportParseTask(PffExportParseObject):
         info.update(self._getRecipients(os.path.join(path, "Recipients.txt")))
         containerid = self._setContainerID(info, containerid)
         info['dirname'] = base.utils.relative_path(path, self.myconfig('casedir'))
-        info['path'] = os.path.join(info['dirname'], 'Message.html')
+        info['path'] = os.path.join(info['dirname'], 'index.html')
         info['filename'] = os.path.basename(path)
         yield info
 

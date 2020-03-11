@@ -170,8 +170,7 @@ def configure_logging(config, verbose=False, jobname=None):
 
     Attrs:
         verbose (boolean): If true, set the logging to verbose regardless what the configuration says.
-        jobname (String): The name of the job to be run. If None, use basic configuration.
-            If the job defines in its section `register: False`, use basic configuration.
+        jobname (String): The name of the job to be run. If None, use basic configuration. If the job defines in its section `register: False`, use basic configuration.
     """
     if verbose:
         config.config['logging']['console.level'] = 'DEBUG'

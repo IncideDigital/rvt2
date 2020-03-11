@@ -167,7 +167,6 @@ class CSVSink(BaseSink):
         - **extrasaction** (String): The extrasaction parameter of the csv.DictWriter. Defaults to "raise".
         - **restval** (String): The restval parameter of the csv.DictWriter. Defaults to the empty string.
         - **write_header** (boolean): If True (default), writes the header of the CSV file.
-        - **append_header** (boolean): If False (default), do not write header in a non empty file where appending content
         - **quoting** (int): The quoting parameter of the csv.DictWriter.
         - **fieldnames**: If present, use these fieldsnames instead of the fields in the dictionary. You can use this option to order the fields
         - **field_size_limit**: maximum field size allowed by the parser. Default "sys.maxsize". Lower the value to skip writing large inputs.
@@ -184,7 +183,6 @@ class CSVSink(BaseSink):
         self.set_default_config('extrasaction', 'raise')
         self.set_default_config('restval', '')
         self.set_default_config('write_header', 'True')
-        self.set_default_config('append_header', 'False')
         self.set_default_config('quoting', '2')  # QUOTE_MINIMAL=0, QUOTE_ALL=1, QUOTE_NONNUMERIC=2, QUOTE_NONE=3
         self.set_default_config('field_size_limit', sys.maxsize)  # Default csv max is 131072
 
@@ -209,7 +207,7 @@ class CSVSink(BaseSink):
                     delimiter=delimiter,
                     quotechar=self.myconfig('quotechar'),
                     quoting=int(self.myconfig('quoting')))
-                if self.myflag('write_header') and not (not self.myflag('append_header') and outputfile.tell()):
+                if self.myflag('write_header'):
                     csvwriter.writeheader()
             try:
                 csvwriter.writerow(fileinfo)

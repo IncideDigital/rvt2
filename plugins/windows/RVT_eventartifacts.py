@@ -15,6 +15,7 @@
 
 
 import os
+import ast
 import base.job
 import dateutil.parser
 
@@ -46,6 +47,17 @@ def writemd(outfile, fields, eventlist, sorted=True):
             fout.write("\n")
 
 
+class Filter_Events(base.job.BaseModule):
+    """ Filters events for generating a csv file """
+
+    def run(self, path=None):
+        events = ast.literal_eval(self.config.config[self.config.job_name]['events_dict'])
+
+        for event in self.from_module.run(path):
+            if event['event.code'] in events.keys() and event['event.provider'] == events[event['event.code']]:
+                yield event
+
+
 class Logon_rdp(base.job.BaseModule):
     """ Extracts logon and rdp artifacts """
 
@@ -57,45 +69,19 @@ class Logon_rdp(base.job.BaseModule):
 
         self.check_params(path, check_path=True, check_path_exists=True)
 
-        events = {
-            "21": "Microsoft-Windows-TerminalServices-LocalSessionManager",
-            # "22": "Microsoft-Windows-TerminalServices-LocalSessionManager",
-            "23": "Microsoft-Windows-TerminalServices-LocalSessionManager",
-            "24": "Microsoft-Windows-TerminalServices-LocalSessionManager",
-            "25": "Microsoft-Windows-TerminalServices-LocalSessionManager",
-            "39": "Microsoft-Windows-TerminalServices-LocalSessionManager",
-            "40": "Microsoft-Windows-TerminalServices-LocalSessionManager",
-            "65": "Microsoft-Windows-RemoteDesktopServices-RdpCoreTS",
-            "66": "Microsoft-Windows-RemoteDesktopServices-RdpCoreTS",
-            "102": "Microsoft-Windows-RemoteDesktopServices-RdpCoreTS",
-            # "103": "Microsoft-Windows-RemoteDesktopServices-RdpCoreTS",
-            "131": "Microsoft-Windows-RemoteDesktopServices-RdpCoreTS",
-            "140": "Microsoft-Windows-RemoteDesktopServices-RdpCoreTS",
-            "1149": "Microsoft-Windows-TerminalServices-RemoteConnectionManager",
-            "4624": "Microsoft-Windows-Security-Auditing",
-            "4625": "Microsoft-Windows-Security-Auditing",
-            "4634": "Microsoft-Windows-Security-Auditing",
-            "4647": "Microsoft-Windows-Security-Auditing",
-            "4648": "Microsoft-Windows-Security-Auditing",
-            "4778": "Microsoft-Windows-Security-Auditing",
-            "4779": "Microsoft-Windows-Security-Auditing"
-        }
-
         logID = {}
         actID = {}
 
         for event in self.from_module.run(path):
-            if event['event.code'] not in events.keys() or event['event.provider'] != events[event['event.code']]:
-                continue
             ev = dict()
-            ev['TimeCreated'] = event.get('@timestamp', '')
+            ev['TimeCreated'] = event.get('event.created', '')
             ev['EventID'] = event.get('event.code', '')
             ev['Description'] = event.get('event.action', '')
-            ev['ActivityID'] = event.get('ActivityID', )
-            ev['SessionID'] = event.get('SessionID', '')
-            ev['ConnType'] = event.get('ConnType', '')
-            ev['LogonType'] = event.get('LogonType', '')
-            ev['ProcessName'] = event.get('ProcessName', '')
+            ev['ActivityID'] = event.get('data.ActivityID', )
+            ev['SessionID'] = event.get('data.SessionID', '')
+            ev['ConnType'] = event.get('data.ConnType', '')
+            ev['LogonType'] = event.get('data.LogonType', '')
+            ev['ProcessName'] = event.get('process.name', '')
 
             if "client.ip" in event.keys():
                 ev['source.ip'] = event['client.ip']
@@ -105,15 +91,15 @@ class Logon_rdp(base.job.BaseModule):
                 ev['source.ip'] = event['source.address']
 
             if "ConnectionName" in event.keys():
-                ev['ConnectionName'] = event['ConnectionName']
+                ev['ConnectionName'] = event['data.ConnectionName']
             else:
-                ev['ConnectionName'] = event.get('SessionName')
-            if 'reasonStr' in event.keys():
-                ev['reasonStr'] = event['reasonStr']
-            elif 'Error' in event.keys():
-                ev['reasonStr'] = event['Error']
+                ev['ConnectionName'] = event.get('data.SessionName')
+            if 'data.reasonStr' in event.keys():
+                ev['reasonStr'] = event['data.reasonStr']
+            elif 'data.Error' in event.keys():
+                ev['reasonStr'] = event['data.Error']
             else:
-                ev['reasonStr'] = event.get('Reason', '')
+                ev['reasonStr'] = event.get('data.Reason', '')
             if 'source.user.name' in event.keys():
                 if event['source.user.name'] != '-':
                     ev['User'] = "{}\\{}".format(event['source.domain'], event['source.user.name'])
@@ -134,9 +120,9 @@ class Logon_rdp(base.job.BaseModule):
             else:
                 ev['TargetUser'] = ''
             if 'TargetLogonId' in event.keys():
-                ev['LogonID'] = event['TargetLogonId']
+                ev['LogonID'] = event['data.TargetLogonId']
             else:
-                ev['LogonID'] = event.get('LogonID', '')
+                ev['LogonID'] = event.get('data.LogonID', '')
 
             if ev['EventID'] in ("4624", "4634", "4647", "4648"):
                 if ev['LogonID'] not in logID.keys():
@@ -251,7 +237,7 @@ class Logon_rdp(base.job.BaseModule):
                     if self.__difTimestamp__(v['TimeCreated'], auxtime) < 2:
                         act['subjectUser'] = suser
                 elif v['EventID'] == '1149':
-                    suser = v['subjectUser']
+                    act['TargetUser'] = v['TargetUser']
                     auxtime = v['TimeCreated']
 
             if ('t0' in act.keys() and act['t0'] not in ('', '-')) or ('t1' in act.keys() and act['t1'] not in ('', '-')):  # for writing unclosed event
@@ -272,24 +258,11 @@ class Poweron(base.job.BaseModule):
 
         self.check_params(path, check_path=True, check_path_exists=True)
 
-        events = {"1": "Microsoft-Windows-Power-Troubleshooter",
-                  "12": "Microsoft-Windows-Kernel-General",
-                  "13": "Microsoft-Windows-Kernel-General",
-                  "27": "Microsoft-Windows-Kernel-Boot",
-                  "41": "Microsoft-Windows-Kernel-Power",
-                  "42": "Microsoft-Windows-Kernel-Power",
-                  "1074": "USER32",
-                  "6005": "EventLog",
-                  "6006": "EventLog",
-                  "6008": "EventLog"}
-
         eventlist = []
 
         for event in self.from_module.run(path):
-            if event['event.code'] not in events.keys() or event['event.provider'] != events[event['event.code']]:
-                continue
             ev = dict()
-            ev['TimeCreated'] = event.get('@timestamp', '')
+            ev['TimeCreated'] = event.get('event.created', '')
             ev['EventID'] = event.get('event.code', '')
             ev['Description'] = event.get('event.action', '')
             ev['reason'] = event.get('reasonStr', '')
@@ -312,24 +285,111 @@ class Poweron(base.job.BaseModule):
                 act['t0'] = ev['TimeCreated']
                 act['d0'] = 'Sleep'
             elif ev['EventID'] == '12':
-                if not inpower:
-                    results.append()
                 inpower = True
                 act['t0'] = ev['TimeCreated']
                 act['d0'] = 'StartBoot'
             elif ev['EventID'] == '13':
-                results.append()
                 inpower = False
                 act['t1'] = ev['TimeCreated']
                 act['d1'] = 'Shutdown'
+                results.append([act.get('t0', '-'), 'Shut down', act['t1']])
             elif ev['EventID'] == '41':
                 if not inpower:
-                    results.append()
+                    results.append([act.get('t0', '-'), 'Unexpected shutdown', '-'])
                 inpower = True
                 act['t0'] = ev['TimeCreated']
                 act['d0'] = 'Unexpected reboot'
             elif ev['EventID'] == '42':
-                results.append()
+                results.append([act.get('t0', '-'), 'Sleeping', act['t1']])
                 inpower = False
                 act['t1'] = ev['TimeCreated']
                 act['d1'] = 'Sleeping'
+
+
+class Network(base.job.BaseModule):
+    """ Extracts events related with wireless networking
+
+    Events should be sorted"""
+
+    def run(self, path=None):
+        """
+        Attrs:
+            path (str): Absolute path to the parsed Security.xml
+        """
+
+        self.check_params(path, check_path=True, check_path_exists=True)
+
+        net_up = []
+        net_down = []
+
+        for event in self.from_module.run(path):
+            yield event
+
+            if event["event.code"] == "8003":
+                net_down.append(event)
+            elif event["event.code"] == "8001":
+                net_up.append(event)
+
+        results = []
+
+        for e in net_up:
+            flag = True
+            for ev in net_down:
+                if ev['ConnectionId'] == e['ConnectionId'] and ev['event.created'] > e['event.created']:
+                    results.append([e['event.created'], ev['event.created'], e['SSID'], e['BSSID'], ev['Reason']])
+                    flag = False
+                    break
+            if flag:
+                results.append([e['event.created'], e['SSID'], e['BSSID']])
+        writemd(os.path.join(self.config.config[self.config.job_name]['outdir'], 'network.md'), ['Wireless Up', 'Wireless Down', 'SSID', 'MAC', 'Reason'], results)
+
+
+class USB(base.job.BaseModule):
+    """ Extracts events related with usb plugs
+
+    Events should be sorted"""
+    def run(self, path=None):
+        """ Extracts USB sticks' plugins and plugoffs data """
+
+        PluginsIds = ('2003', '2010')
+        PlugoffsIds = ('2100', '2101')
+        plugins = []
+        plugoffs = []
+
+        results = []
+
+        for event in self.from_module.run(path):
+            yield event
+
+            if event['event.code'] in PluginsIds and self.check(event, 0, plugins, plugoffs):
+                plugins.append(event)
+            elif event['event.code'] in PlugoffsIds and self.check(event, 1, plugins, plugoffs):
+                plugoffs.append(event)
+
+        for e in plugins:
+            flag = True
+            for ev in plugoffs:
+                if ev['lifetime'] == e['lifetime'] and ev['instance'] == e['instance'] and ev['event.created'] > e['event.created']:
+                    results.append([e['event.created'], ev['event.created'], e['instance']])
+                    flag = False
+                    break
+            if flag:
+                results.append([e['event.created'], '', e['instance']])
+        writemd(os.path.join(self.config.config[self.config.job_name]['outdir'], 'usb_plug.md'), ['Plugin', 'Plugoff', 'Device'], results)
+
+    def check(self, e, flag, plugins, plugoffs):
+        """
+        usb_main auxiliary function
+        """
+        if flag == 0:
+            for event in plugins:
+                if event['event.created'] == e['event.created'] and event["instance"] == e["instance"] and event["lifetime"] == e["lifetime"]:
+                    return False  # already used
+        else:
+            for event in plugoffs:
+                if event['event.created'] == e['event.created'] and event["instance"] == e["instance"] and event["lifetime"] == e["lifetime"]:
+                    return False  # already used
+            for evento in plugins:
+                if event['event.created'] == e['event.created'] and event["instance"] == e["instance"] and event["lifetime"] == e["lifetime"]:
+                    return False  # same time, does not used
+        return True

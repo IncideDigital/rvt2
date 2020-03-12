@@ -90,7 +90,7 @@ class Logon_rdp(base.job.BaseModule):
             elif "source.address" in event.keys():
                 ev['source.ip'] = event['source.address']
 
-            if "ConnectionName" in event.keys():
+            if "data.ConnectionName" in event.keys():
                 ev['ConnectionName'] = event['data.ConnectionName']
             else:
                 ev['ConnectionName'] = event.get('data.SessionName')
@@ -119,7 +119,7 @@ class Logon_rdp(base.job.BaseModule):
                     ev['TargetUser'] = '-'
             else:
                 ev['TargetUser'] = ''
-            if 'TargetLogonId' in event.keys():
+            if 'data.TargetLogonId' in event.keys():
                 ev['LogonID'] = event['data.TargetLogonId']
             else:
                 ev['LogonID'] = event.get('data.LogonID', '')
@@ -168,7 +168,7 @@ class Logon_rdp(base.job.BaseModule):
         t0 = dateutil.parser.parse(ev['TimeCreated'])
         for k, v in actID.items():
             for event in v:
-                if "ConnectionName" in event.keys() and ev['ConnectionName'] == event['ConnectionName']:
+                if "data.ConnectionName" in event.keys() and ev['ConnectionName'] == event['data.ConnectionName']:
                     d1 = abs((dateutil.parser.parse(event['TimeCreated']) - t0).total_seconds())
                     if d1 < d0:
                         actual_actID = event['ActivityID']
@@ -335,12 +335,12 @@ class Network(base.job.BaseModule):
         for e in net_up:
             flag = True
             for ev in net_down:
-                if ev['ConnectionId'] == e['ConnectionId'] and ev['event.created'] > e['event.created']:
-                    results.append([e['event.created'], ev['event.created'], e['SSID'], e['BSSID'], ev['Reason']])
+                if ev['data.ConnectionId'] == e['data.ConnectionId'] and ev['event.created'] > e['event.created']:
+                    results.append([e['event.created'], ev['event.created'], e['data.SSID'], e['data.BSSID'], ev['data.Reason']])
                     flag = False
                     break
             if flag:
-                results.append([e['event.created'], e['SSID'], e['BSSID']])
+                results.append([e['event.created'], e['data.SSID'], e['data.BSSID']])
         writemd(os.path.join(self.config.config[self.config.job_name]['outdir'], 'network.md'), ['Wireless Up', 'Wireless Down', 'SSID', 'MAC', 'Reason'], results)
 
 

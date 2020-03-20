@@ -1,0 +1,1822 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>plugins.windows package &mdash; RVT2 2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="static/documentation_options.js"></script>
+        <script src="static/jquery.js"></script>
+        <script src="static/underscore.js"></script>
+        <script src="static/doctools.js"></script>
+        <script src="static/language_data.js"></script>
+    
+    <script type="text/javascript" src="static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="rvt2 module" href="rvt2.html" />
+    <link rel="prev" title="plugins.macos package" href="plugins.macos.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> RVT2
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="base.html">base package</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="plugins.html">plugins package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="plugins.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="plugins.ai.html">plugins.ai package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.android.html">plugins.android package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.common.html">plugins.common package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.external.html">plugins.external package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.indexer.html">plugins.indexer package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.ios.html">plugins.ios package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.macos.html">plugins.macos package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">plugins.windows package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-plugins.windows.RVT_I30">plugins.windows.RVT_I30 module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-plugins.windows.RVT_UsnJrnl">plugins.windows.RVT_UsnJrnl module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-plugins.windows.RVT_activity_cache">plugins.windows.RVT_activity_cache module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-plugins.windows.RVT_autorip">plugins.windows.RVT_autorip module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#plugins-windows-rvt-bits-module">plugins.windows.RVT_bits module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#plugins-windows-rvt-deleted-module">plugins.windows.RVT_deleted module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-plugins.windows.RVT_eventartifacts">plugins.windows.RVT_eventartifacts module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-plugins.windows.RVT_events">plugins.windows.RVT_events module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-plugins.windows.RVT_exec">plugins.windows.RVT_exec module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-plugins.windows.RVT_hiberfil">plugins.windows.RVT_hiberfil module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-plugins.windows.RVT_hives">plugins.windows.RVT_hives module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-plugins.windows.RVT_lnk">plugins.windows.RVT_lnk module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-plugins.windows.RVT_recycle">plugins.windows.RVT_recycle module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-plugins.windows.RVT_registry">plugins.windows.RVT_registry module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-plugins.windows.RVT_srum">plugins.windows.RVT_srum module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-plugins.windows.RVT_usb">plugins.windows.RVT_usb module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rvt2.html">rvt2 module</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RVT2</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="plugins.html">plugins package</a> &raquo;</li>
+        
+      <li>plugins.windows package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/plugins.windows.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-plugins.windows">
+<span id="plugins-windows-package"></span><h1>plugins.windows package<a class="headerlink" href="#module-plugins.windows" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-plugins.windows.RVT_I30">
+<span id="plugins-windows-rvt-i30-module"></span><h2>plugins.windows.RVT_I30 module<a class="headerlink" href="#module-plugins.windows.RVT_I30" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="plugins.windows.RVT_I30.Block">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.windows.RVT_I30.</code><code class="sig-name descname">Block</code><span class="sig-paren">(</span><em class="sig-param">buf</em>, <em class="sig-param">offset</em>, <em class="sig-param">parent=False</em>, <em class="sig-param">inode_fls=None</em>, <em class="sig-param">dir_inode=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.Block" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class for structure blocks in the NTFS INDX format. A block is associated with an offset into a byte-string.</p>
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.Block.absolute_offset">
+<code class="sig-name descname">absolute_offset</code><span class="sig-paren">(</span><em class="sig-param">offset</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.Block.absolute_offset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the absolute offset from an offset relative to this block</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.Block.align">
+<em class="property">static </em><code class="sig-name descname">align</code><span class="sig-paren">(</span><em class="sig-param">offset</em>, <em class="sig-param">alignment</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.Block.align" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the offset aligned to the nearest greater given alignment
+Arguments:
+- <cite>offset</cite>: An integer
+- <cite>alignment</cite>: An integer</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.Block.blk_offset">
+<code class="sig-name descname">blk_offset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.Block.blk_offset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the block offset respective to the beggining of the partition.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.Block.offset">
+<code class="sig-name descname">offset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.Block.offset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Equivalent to self.absolute_offset(0x0), which is the starting offset of this block.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.Block.pack_integer">
+<code class="sig-name descname">pack_integer</code><span class="sig-paren">(</span><em class="sig-param">offset</em>, <em class="sig-param">us_integer</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.Block.pack_integer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inserts the little-endian unsigned short ‘us_integer’ to the relative ‘offset’.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.Block.parent">
+<code class="sig-name descname">parent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.Block.parent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the parent block. See the class documentation for what the parent link is.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.Block.unpack_bytestring">
+<code class="sig-name descname">unpack_bytestring</code><span class="sig-paren">(</span><em class="sig-param">offset</em>, <em class="sig-param">length</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.Block.unpack_bytestring" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a byte-string from the relative ‘offset’ with the given ‘length’.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.Block.unpack_integer">
+<code class="sig-name descname">unpack_integer</code><span class="sig-paren">(</span><em class="sig-param">offset=0</em>, <em class="sig-param">format='&lt;B'</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.Block.unpack_integer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an integer from the buffer at ‘offset’, extracting in the specified ‘format’.</p>
+<p>Arguments:
+- <cite>offset</cite>: The relative offset from the start of the block.
+- <cite>format</cite>: Struct format string.
+Throws:
+- <cite>OverrunBufferException</cite></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.windows.RVT_I30.NTATTR_DIRECTORY_INDEX_ENTRY">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.windows.RVT_I30.</code><code class="sig-name descname">NTATTR_DIRECTORY_INDEX_ENTRY</code><span class="sig-paren">(</span><em class="sig-param">buf</em>, <em class="sig-param">offset</em>, <em class="sig-param">parent</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.NTATTR_DIRECTORY_INDEX_ENTRY" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#plugins.windows.RVT_I30.NTATTR_STANDARD_INDEX_ENTRY" title="plugins.windows.RVT_I30.NTATTR_STANDARD_INDEX_ENTRY"><code class="xref py py-class docutils literal notranslate"><span class="pre">plugins.windows.RVT_I30.NTATTR_STANDARD_INDEX_ENTRY</span></code></a></p>
+<p>Main class for individual entries related to directory INDX records.</p>
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.NTATTR_DIRECTORY_INDEX_ENTRY.accessed_time">
+<code class="sig-name descname">accessed_time</code><span class="sig-paren">(</span><em class="sig-param">safe=True</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.NTATTR_DIRECTORY_INDEX_ENTRY.accessed_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.NTATTR_DIRECTORY_INDEX_ENTRY.annotation">
+<code class="sig-name descname">annotation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.NTATTR_DIRECTORY_INDEX_ENTRY.annotation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Text for marking unreliable complete names of different sort.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="plugins.windows.RVT_I30.NTATTR_DIRECTORY_INDEX_ENTRY.attributes">
+<code class="sig-name descname">attributes</code><em class="property"> = {'MFTRecordChangeTime': (40, '&lt;Q'), 'creationTime': (24, '&lt;Q'), 'filenameLength': (80, '&lt;B'), 'flags': (12, '&lt;H'), 'lastAccessTime': (48, '&lt;Q'), 'lastModifiedTime': (32, '&lt;Q'), 'logicalSizeOfFile': (64, '&lt;Q'), 'mftReference': (0, '&lt;I'), 'padding': (14, '&lt;B'), 'physicalSizeOfFile': (56, '&lt;Q'), 'refParentDirectory': (16, '&lt;I'), 'sizeOfIndexEntry': (8, '&lt;H'), 'sizeOfStream': (10, '&lt;H')}</em><a class="headerlink" href="#plugins.windows.RVT_I30.NTATTR_DIRECTORY_INDEX_ENTRY.attributes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.NTATTR_DIRECTORY_INDEX_ENTRY.changed_time">
+<code class="sig-name descname">changed_time</code><span class="sig-paren">(</span><em class="sig-param">safe=True</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.NTATTR_DIRECTORY_INDEX_ENTRY.changed_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.NTATTR_DIRECTORY_INDEX_ENTRY.complete_name">
+<code class="sig-name descname">complete_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.NTATTR_DIRECTORY_INDEX_ENTRY.complete_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compare full path from MFTName attribute with join(refParentDirectory, filename).
+Return a complete path if there is a match. Otherwise, mark the entries.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.NTATTR_DIRECTORY_INDEX_ENTRY.created_time">
+<code class="sig-name descname">created_time</code><span class="sig-paren">(</span><em class="sig-param">safe=True</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.NTATTR_DIRECTORY_INDEX_ENTRY.created_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.NTATTR_DIRECTORY_INDEX_ENTRY.end_offset">
+<code class="sig-name descname">end_offset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.NTATTR_DIRECTORY_INDEX_ENTRY.end_offset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the first address (offset) not a part of this entry.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.NTATTR_DIRECTORY_INDEX_ENTRY.entry_inode">
+<code class="sig-name descname">entry_inode</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.NTATTR_DIRECTORY_INDEX_ENTRY.entry_inode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.NTATTR_DIRECTORY_INDEX_ENTRY.filename">
+<code class="sig-name descname">filename</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.NTATTR_DIRECTORY_INDEX_ENTRY.filename" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get filename from FILE_NAME attribute. Mark short format Windows filenames.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.NTATTR_DIRECTORY_INDEX_ENTRY.flags">
+<code class="sig-name descname">flags</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.NTATTR_DIRECTORY_INDEX_ENTRY.flags" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.NTATTR_DIRECTORY_INDEX_ENTRY.get_inode">
+<code class="sig-name descname">get_inode</code><span class="sig-paren">(</span><em class="sig-param">attr</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.NTATTR_DIRECTORY_INDEX_ENTRY.get_inode" title="Permalink to this definition">¶</a></dt>
+<dd><p>For inode associated attributes, extract and return the inode number.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.NTATTR_DIRECTORY_INDEX_ENTRY.is_valid">
+<code class="sig-name descname">is_valid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.NTATTR_DIRECTORY_INDEX_ENTRY.is_valid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check whether entry got the minimum significant info right.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.NTATTR_DIRECTORY_INDEX_ENTRY.logical_size">
+<code class="sig-name descname">logical_size</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.NTATTR_DIRECTORY_INDEX_ENTRY.logical_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.NTATTR_DIRECTORY_INDEX_ENTRY.mft_name">
+<code class="sig-name descname">mft_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.NTATTR_DIRECTORY_INDEX_ENTRY.mft_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the list of files associated with the entry inode.
+‘NO FILENAME ASSOCIATED WITH INODE’ is returned if inode have no names associated.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.NTATTR_DIRECTORY_INDEX_ENTRY.modified_time">
+<code class="sig-name descname">modified_time</code><span class="sig-paren">(</span><em class="sig-param">safe=True</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.NTATTR_DIRECTORY_INDEX_ENTRY.modified_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.NTATTR_DIRECTORY_INDEX_ENTRY.parent_directory">
+<code class="sig-name descname">parent_directory</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.NTATTR_DIRECTORY_INDEX_ENTRY.parent_directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the list of directories associated with the entry parent inode. Mark unreliable directories.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.NTATTR_DIRECTORY_INDEX_ENTRY.parent_inode">
+<code class="sig-name descname">parent_inode</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.NTATTR_DIRECTORY_INDEX_ENTRY.parent_inode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.NTATTR_DIRECTORY_INDEX_ENTRY.parse_time">
+<code class="sig-name descname">parse_time</code><span class="sig-paren">(</span><em class="sig-param">timestamp</em>, <em class="sig-param">safe=True</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.NTATTR_DIRECTORY_INDEX_ENTRY.parse_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a datetime object from a Windows timestamp
+Arguments:
+- <cite>timestamp</cite>: Windows timestamp value
+- <cite>safe</cite>: if True return the date of the UNIX epoch if there is an exception parsing the date</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.NTATTR_DIRECTORY_INDEX_ENTRY.physical_size">
+<code class="sig-name descname">physical_size</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.NTATTR_DIRECTORY_INDEX_ENTRY.physical_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.windows.RVT_I30.NTATTR_DIRECTORY_INDEX_SLACK_ENTRY">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.windows.RVT_I30.</code><code class="sig-name descname">NTATTR_DIRECTORY_INDEX_SLACK_ENTRY</code><span class="sig-paren">(</span><em class="sig-param">buf</em>, <em class="sig-param">offset</em>, <em class="sig-param">parent</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.NTATTR_DIRECTORY_INDEX_SLACK_ENTRY" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#plugins.windows.RVT_I30.NTATTR_DIRECTORY_INDEX_ENTRY" title="plugins.windows.RVT_I30.NTATTR_DIRECTORY_INDEX_ENTRY"><code class="xref py py-class docutils literal notranslate"><span class="pre">plugins.windows.RVT_I30.NTATTR_DIRECTORY_INDEX_ENTRY</span></code></a></p>
+<p>Specific methods related to INDX entries in the slack space of blocks.</p>
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.NTATTR_DIRECTORY_INDEX_SLACK_ENTRY.is_empty">
+<code class="sig-name descname">is_empty</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.NTATTR_DIRECTORY_INDEX_SLACK_ENTRY.is_empty" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.NTATTR_DIRECTORY_INDEX_SLACK_ENTRY.is_valid">
+<code class="sig-name descname">is_valid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.NTATTR_DIRECTORY_INDEX_SLACK_ENTRY.is_valid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check whether entry got the minimum significant info right.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.windows.RVT_I30.NTATTR_INDEX_ROOT_HEADER">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.windows.RVT_I30.</code><code class="sig-name descname">NTATTR_INDEX_ROOT_HEADER</code><span class="sig-paren">(</span><em class="sig-param">buf</em>, <em class="sig-param">offset=0</em>, <em class="sig-param">parent=False</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.NTATTR_INDEX_ROOT_HEADER" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#plugins.windows.RVT_I30.Block" title="plugins.windows.RVT_I30.Block"><code class="xref py py-class docutils literal notranslate"><span class="pre">plugins.windows.RVT_I30.Block</span></code></a></p>
+<p>INDX_ROOT block header fields. Methods to generate entry instances for the block.</p>
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.NTATTR_INDEX_ROOT_HEADER.entries">
+<code class="sig-name descname">entries</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.NTATTR_INDEX_ROOT_HEADER.entries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gnerator of INDX entries in INDX_ROOT data</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.NTATTR_INDEX_ROOT_HEADER.entries_allocated_size">
+<code class="sig-name descname">entries_allocated_size</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.NTATTR_INDEX_ROOT_HEADER.entries_allocated_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the offset at which all entries end. Relative to node header.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.NTATTR_INDEX_ROOT_HEADER.entries_size">
+<code class="sig-name descname">entries_size</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.NTATTR_INDEX_ROOT_HEADER.entries_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the offset at which assigned entries end. Relative to node header.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.NTATTR_INDEX_ROOT_HEADER.entry_offset">
+<code class="sig-name descname">entry_offset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.NTATTR_INDEX_ROOT_HEADER.entry_offset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the offset of the first entry in this record. Relative to node header.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="plugins.windows.RVT_I30.NTATTR_INDEX_ROOT_HEADER.root_header_attr">
+<code class="sig-name descname">root_header_attr</code><em class="property"> = {'EntryAllocatedSizeOffset': (24, '&lt;I'), 'EntrySizeOffset': (20, '&lt;I'), 'EntryStartOffset': (16, '&lt;I'), 'IndexRecordSizeInBytes': (8, '&lt;I'), 'TypeOfAttributeInIndex': (0, '&lt;I'), 'flags': (28, '&lt;B')}</em><a class="headerlink" href="#plugins.windows.RVT_I30.NTATTR_INDEX_ROOT_HEADER.root_header_attr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.windows.RVT_I30.NTATTR_SDH_INDEX_ENTRY">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.windows.RVT_I30.</code><code class="sig-name descname">NTATTR_SDH_INDEX_ENTRY</code><span class="sig-paren">(</span><em class="sig-param">buf</em>, <em class="sig-param">offset</em>, <em class="sig-param">parent</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.NTATTR_SDH_INDEX_ENTRY" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#plugins.windows.RVT_I30.NTATTR_STANDARD_INDEX_ENTRY" title="plugins.windows.RVT_I30.NTATTR_STANDARD_INDEX_ENTRY"><code class="xref py py-class docutils literal notranslate"><span class="pre">plugins.windows.RVT_I30.NTATTR_STANDARD_INDEX_ENTRY</span></code></a></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.windows.RVT_I30.NTATTR_SII_INDEX_ENTRY">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.windows.RVT_I30.</code><code class="sig-name descname">NTATTR_SII_INDEX_ENTRY</code><span class="sig-paren">(</span><em class="sig-param">buf</em>, <em class="sig-param">offset</em>, <em class="sig-param">parent</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.NTATTR_SII_INDEX_ENTRY" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#plugins.windows.RVT_I30.NTATTR_STANDARD_INDEX_ENTRY" title="plugins.windows.RVT_I30.NTATTR_STANDARD_INDEX_ENTRY"><code class="xref py py-class docutils literal notranslate"><span class="pre">plugins.windows.RVT_I30.NTATTR_STANDARD_INDEX_ENTRY</span></code></a></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.windows.RVT_I30.NTATTR_STANDARD_INDEX_ENTRY">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.windows.RVT_I30.</code><code class="sig-name descname">NTATTR_STANDARD_INDEX_ENTRY</code><span class="sig-paren">(</span><em class="sig-param">buf</em>, <em class="sig-param">offset</em>, <em class="sig-param">parent</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.NTATTR_STANDARD_INDEX_ENTRY" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#plugins.windows.RVT_I30.Block" title="plugins.windows.RVT_I30.Block"><code class="xref py py-class docutils literal notranslate"><span class="pre">plugins.windows.RVT_I30.Block</span></code></a></p>
+<p>Generic index entry block node fields.</p>
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.NTATTR_STANDARD_INDEX_ENTRY.end_offset">
+<code class="sig-name descname">end_offset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.NTATTR_STANDARD_INDEX_ENTRY.end_offset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the first address (offset) not a part of this entry.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="plugins.windows.RVT_I30.NTATTR_STANDARD_INDEX_ENTRY.generic_attr">
+<code class="sig-name descname">generic_attr</code><em class="property"> = {'flags': (12, '&lt;H'), 'sizeOfIndexEntry': (8, '&lt;H'), 'sizeOfStream': (10, '&lt;H')}</em><a class="headerlink" href="#plugins.windows.RVT_I30.NTATTR_STANDARD_INDEX_ENTRY.generic_attr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.NTATTR_STANDARD_INDEX_ENTRY.has_next">
+<code class="sig-name descname">has_next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.NTATTR_STANDARD_INDEX_ENTRY.has_next" title="Permalink to this definition">¶</a></dt>
+<dd><p>True if the end offset of the entry does not overrun the total entries size.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.NTATTR_STANDARD_INDEX_ENTRY.next">
+<code class="sig-name descname">next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.NTATTR_STANDARD_INDEX_ENTRY.next" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an instance of NTATTR_STANDARD_INDEX_ENTRY, which is the next entry after this one</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.NTATTR_STANDARD_INDEX_ENTRY.size">
+<code class="sig-name descname">size</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.NTATTR_STANDARD_INDEX_ENTRY.size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the size of the index entry.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.windows.RVT_I30.NTATTR_STANDARD_INDEX_HEADER">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.windows.RVT_I30.</code><code class="sig-name descname">NTATTR_STANDARD_INDEX_HEADER</code><span class="sig-paren">(</span><em class="sig-param">buf</em>, <em class="sig-param">offset</em>, <em class="sig-param">parent</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.NTATTR_STANDARD_INDEX_HEADER" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#plugins.windows.RVT_I30.Block" title="plugins.windows.RVT_I30.Block"><code class="xref py py-class docutils literal notranslate"><span class="pre">plugins.windows.RVT_I30.Block</span></code></a></p>
+<p>INDX_ALLOC block header fields. Methods to generate entry instances for the block.</p>
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.NTATTR_STANDARD_INDEX_HEADER.block_end_offset">
+<code class="sig-name descname">block_end_offset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.NTATTR_STANDARD_INDEX_HEADER.block_end_offset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the first address (offset) not a part of this block.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.NTATTR_STANDARD_INDEX_HEADER.entries">
+<code class="sig-name descname">entries</code><span class="sig-paren">(</span><em class="sig-param">indext='dir'</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.NTATTR_STANDARD_INDEX_HEADER.entries" title="Permalink to this definition">¶</a></dt>
+<dd><p>A generator that returns each INDX entry associated with this header.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.NTATTR_STANDARD_INDEX_HEADER.entries_allocated_size">
+<code class="sig-name descname">entries_allocated_size</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.NTATTR_STANDARD_INDEX_HEADER.entries_allocated_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the offset at which all entries end. Relative to node header.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.NTATTR_STANDARD_INDEX_HEADER.entries_size">
+<code class="sig-name descname">entries_size</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.NTATTR_STANDARD_INDEX_HEADER.entries_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the offset at which assigned entries end. Relative to node header.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.NTATTR_STANDARD_INDEX_HEADER.entry_offset">
+<code class="sig-name descname">entry_offset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.NTATTR_STANDARD_INDEX_HEADER.entry_offset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the offset of the first entry in this record. Relative to node header.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.NTATTR_STANDARD_INDEX_HEADER.first_entry">
+<code class="sig-name descname">first_entry</code><span class="sig-paren">(</span><em class="sig-param">indext='dir'</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.NTATTR_STANDARD_INDEX_HEADER.first_entry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the first entry in the allocated space, if it’s a valid one.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="plugins.windows.RVT_I30.NTATTR_STANDARD_INDEX_HEADER.header_attr">
+<code class="sig-name descname">header_attr</code><em class="property"> = {'EntryAllocatedSizeOffset': (32, '&lt;I'), 'EntrySizeOffset': (28, '&lt;I'), 'NumFixupsOffset': (6, '&lt;H'), 'fixupValueOffset': (40, '&lt;H')}</em><a class="headerlink" href="#plugins.windows.RVT_I30.NTATTR_STANDARD_INDEX_HEADER.header_attr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.NTATTR_STANDARD_INDEX_HEADER.set_directory_inode">
+<code class="sig-name descname">set_directory_inode</code><span class="sig-paren">(</span><em class="sig-param">first_entry=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.NTATTR_STANDARD_INDEX_HEADER.set_directory_inode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the inode of the directory associated with this block.
+Arguments:
+- <cite>entry</cite>: the first entry of the block, to be taken as reference</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.NTATTR_STANDARD_INDEX_HEADER.slack_entries">
+<code class="sig-name descname">slack_entries</code><span class="sig-paren">(</span><em class="sig-param">indexdt='dir'</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.NTATTR_STANDARD_INDEX_HEADER.slack_entries" title="Permalink to this definition">¶</a></dt>
+<dd><p>A generator that yields INDX entries found in the slack space associated with this header.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="plugins.windows.RVT_I30.OverrunBufferException">
+<em class="property">exception </em><code class="sig-prename descclassname">plugins.windows.RVT_I30.</code><code class="sig-name descname">OverrunBufferException</code><span class="sig-paren">(</span><em class="sig-param">readOffs</em>, <em class="sig-param">bufLen</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.OverrunBufferException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.windows.RVT_I30.ParseINDX">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.windows.RVT_I30.</code><code class="sig-name descname">ParseINDX</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.ParseINDX" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Parse INDX records in a disk through carving.</p>
+<dl class="simple">
+<dt>Configuration:</dt><dd><ul class="simple">
+<li><p><strong>root</strong>: If True, parse also INDX_ROOT attributes.</p></li>
+<li><p><strong>skip_short</strong>: If True, do not output Windows short format filenames.</p></li>
+<li><p><strong>only_slack</strong>: If True, parse only the slack space in INDX_ALLOC blocks.</p></li>
+<li><p><strong>use_localstore</strong>: If True, store information about last parsed block in case execution is interrupted</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.ParseINDX.get_INDX_ALLOC_files">
+<code class="sig-name descname">get_INDX_ALLOC_files</code><span class="sig-paren">(</span><em class="sig-param">partition</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.ParseINDX.get_INDX_ALLOC_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Yields INDX_ALLOC records (single clusters), parsing the partition block by block.
+Only blocks starting with “INDX(” signature header are returned to be parsed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>partition</strong> – Partition object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.ParseINDX.get_INDX_ROOT_files">
+<code class="sig-name descname">get_INDX_ROOT_files</code><span class="sig-paren">(</span><em class="sig-param">partition</em>, <em class="sig-param">deleted=0</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.ParseINDX.get_INDX_ROOT_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Yields INDX_ROOT attribute records, scanning each directory recursively in MFT.</p>
+<p>Arguments
+partition: Partition object.
+deleted: Get only deleted (True) or undeleted (False) directories</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.ParseINDX.parse_INDX">
+<code class="sig-name descname">parse_INDX</code><span class="sig-paren">(</span><em class="sig-param">partition=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.ParseINDX.parse_INDX" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main function to parse I30 files.
+Parse and yield INDX records for both ROOT and ALLOC entries in a partition.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.ParseINDX.parse_INDX_ALLOC_records">
+<code class="sig-name descname">parse_INDX_ALLOC_records</code><span class="sig-paren">(</span><em class="sig-param">partition=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.ParseINDX.parse_INDX_ALLOC_records" title="Permalink to this definition">¶</a></dt>
+<dd><p>Yield dicts of parsed INDX_ALLOC entries for a partition.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.ParseINDX.parse_INDX_ROOT_records">
+<code class="sig-name descname">parse_INDX_ROOT_records</code><span class="sig-paren">(</span><em class="sig-param">partition=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.ParseINDX.parse_INDX_ROOT_records" title="Permalink to this definition">¶</a></dt>
+<dd><p>Yield dicts of parsed INDX_ROOT entries for a partition.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.ParseINDX.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.ParseINDX.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_I30.ParseINDX.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=''</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.ParseINDX.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generator of INDX entries as dictionaries. Also writes to csv files</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="plugins.windows.RVT_I30.datetime_to_windows_timestamp">
+<code class="sig-prename descclassname">plugins.windows.RVT_I30.</code><code class="sig-name descname">datetime_to_windows_timestamp</code><span class="sig-paren">(</span><em class="sig-param">dt</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.datetime_to_windows_timestamp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plugins.windows.RVT_I30.entry_as_dict">
+<code class="sig-prename descclassname">plugins.windows.RVT_I30.</code><code class="sig-name descname">entry_as_dict</code><span class="sig-paren">(</span><em class="sig-param">entry</em>, <em class="sig-param">filename=False</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.entry_as_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a dictionary with the relevant information for a parsed INDX entry.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="plugins.windows.RVT_I30.parse_windows_timestamp">
+<code class="sig-prename descclassname">plugins.windows.RVT_I30.</code><code class="sig-name descname">parse_windows_timestamp</code><span class="sig-paren">(</span><em class="sig-param">timestamp</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_I30.parse_windows_timestamp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a datetime object from a windows timestamp (only up to the second precission, strips nanoseconds).</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-plugins.windows.RVT_UsnJrnl">
+<span id="plugins-windows-rvt-usnjrnl-module"></span><h2>plugins.windows.RVT_UsnJrnl module<a class="headerlink" href="#module-plugins.windows.RVT_UsnJrnl" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="plugins.windows.RVT_UsnJrnl.Usn">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.windows.RVT_UsnJrnl.</code><code class="sig-name descname">Usn</code><span class="sig-paren">(</span><em class="sig-param">infile</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_UsnJrnl.Usn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="plugins.windows.RVT_UsnJrnl.Usn.convertAttributes">
+<code class="sig-name descname">convertAttributes</code><span class="sig-paren">(</span><em class="sig-param">fileAttributes</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_UsnJrnl.Usn.convertAttributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the USN file attributes in a human-readable format</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_UsnJrnl.Usn.convertFileReference">
+<code class="sig-name descname">convertFileReference</code><span class="sig-paren">(</span><em class="sig-param">buf</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_UsnJrnl.Usn.convertFileReference" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_UsnJrnl.Usn.convertReason">
+<code class="sig-name descname">convertReason</code><span class="sig-paren">(</span><em class="sig-param">reason</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_UsnJrnl.Usn.convertReason" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the USN reasons attribute in a human-readable format</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_UsnJrnl.Usn.convertTimestamp">
+<code class="sig-name descname">convertTimestamp</code><span class="sig-paren">(</span><em class="sig-param">timestamp</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_UsnJrnl.Usn.convertTimestamp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a Win32 FILETIME value in a human-readable format</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_UsnJrnl.Usn.usn">
+<code class="sig-name descname">usn</code><span class="sig-paren">(</span><em class="sig-param">infile</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_UsnJrnl.Usn.usn" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.windows.RVT_UsnJrnl.UsnJrnl">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.windows.RVT_UsnJrnl.</code><code class="sig-name descname">UsnJrnl</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_UsnJrnl.UsnJrnl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<dl class="method">
+<dt id="plugins.windows.RVT_UsnJrnl.UsnJrnl.complete_dir">
+<code class="sig-name descname">complete_dir</code><span class="sig-paren">(</span><em class="sig-param">folders</em>, <em class="sig-param">partition</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_UsnJrnl.UsnJrnl.complete_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reconstructs absolutepaths of inodes from information of UsnJrnl.
+If it’s not possible to reach root folder (inode 5), it uses $MFT entry. Such files are marked as unreliable</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>folders</strong> (<em>list</em>) – folders</p></li>
+<li><p><strong>partition</strong> (<em>str</em>) – partiton name</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_UsnJrnl.UsnJrnl.findFirstRecord">
+<em class="property">static </em><code class="sig-name descname">findFirstRecord</code><span class="sig-paren">(</span><em class="sig-param">infile</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_UsnJrnl.UsnJrnl.findFirstRecord" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a pointer to the first USN record found</p>
+<p>Modified version of Dave Lassalle’s “parseusn.py”
+<a class="reference external" href="https://github.com/sans-dfir/sift-files/blob/master/scripts/parseusn.py">https://github.com/sans-dfir/sift-files/blob/master/scripts/parseusn.py</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>infile</strong> (<em>str</em>) – filename</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_UsnJrnl.UsnJrnl.findNextRecord">
+<em class="property">static </em><code class="sig-name descname">findNextRecord</code><span class="sig-paren">(</span><em class="sig-param">infile</em>, <em class="sig-param">journalSize</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_UsnJrnl.UsnJrnl.findNextRecord" title="Permalink to this definition">¶</a></dt>
+<dd><p>Often there are runs of null bytes between USN records</p>
+<p>This function reads through them and returns a pointer to the start of the next USN record</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>infile</strong> (<em>str</em>) – filename</p></li>
+<li><p><strong>journalSize</strong> (<em>int</em>) – size of journal file</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_UsnJrnl.UsnJrnl.parseUsn">
+<code class="sig-name descname">parseUsn</code><span class="sig-paren">(</span><em class="sig-param">infile</em>, <em class="sig-param">partition</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_UsnJrnl.UsnJrnl.parseUsn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generator that returns a dictionary for every parsed record in UsnJrnl file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_file</strong> (<em>str</em>) – path to UsnJrnl file</p></li>
+<li><p><strong>partition</strong> (<em>str</em>) – partition name</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_UsnJrnl.UsnJrnl.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=''</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_UsnJrnl.UsnJrnl.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse UsnJrnl files of a disk</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_UsnJrnl.UsnJrnl.summaryUsn">
+<code class="sig-name descname">summaryUsn</code><span class="sig-paren">(</span><em class="sig-param">infile</em>, <em class="sig-param">partition</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_UsnJrnl.UsnJrnl.summaryUsn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the relevant records from the UsnJrnl, adding full_path to filename</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-plugins.windows.RVT_activity_cache">
+<span id="plugins-windows-rvt-activity-cache-module"></span><h2>plugins.windows.RVT_activity_cache module<a class="headerlink" href="#module-plugins.windows.RVT_activity_cache" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="plugins.windows.RVT_activity_cache.ActivitiesCache">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.windows.RVT_activity_cache.</code><code class="sig-name descname">ActivitiesCache</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_activity_cache.ActivitiesCache" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<dl class="method">
+<dt id="plugins.windows.RVT_activity_cache.ActivitiesCache.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=''</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_activity_cache.ActivitiesCache.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses activities cache</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-plugins.windows.RVT_autorip">
+<span id="plugins-windows-rvt-autorip-module"></span><h2>plugins.windows.RVT_autorip module<a class="headerlink" href="#module-plugins.windows.RVT_autorip" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="plugins.windows.RVT_autorip.Autorip">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.windows.RVT_autorip.</code><code class="sig-name descname">Autorip</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_autorip.Autorip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Uses multiple regripper plugins to parse the Windows registry and create a series of reports organized by theme.</p>
+<dl class="simple">
+<dt>Configuration:</dt><dd><ul class="simple">
+<li><p><strong>outdir</strong>: output directory for generated files</p></li>
+<li><p><strong>voutdir</strong>: output directory for generated files in case of Volume Snapshots (vss)</p></li>
+<li><p><strong>errorfile</strong>: path to log file to register regripper errors</p></li>
+<li><p><strong>ripplugins</strong>: path to json file containing the organixed list of regripper plugins to run</p></li>
+<li><p><strong>pluginshives</strong>: path to json file associating each regripper plugin with a list of hives</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="plugins.windows.RVT_autorip.Autorip.generate_registry_output">
+<code class="sig-name descname">generate_registry_output</code><span class="sig-paren">(</span><em class="sig-param">p</em>, <em class="sig-param">regfiles</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_autorip.Autorip.generate_registry_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates registry output files for a partition</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>p</strong> (<em>str</em>) – partition number. Ex: ‘p03’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_autorip.Autorip.get_hives">
+<code class="sig-name descname">get_hives</code><span class="sig-paren">(</span><em class="sig-param">p</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_autorip.Autorip.get_hives" title="Permalink to this definition">¶</a></dt>
+<dd><p>Obtain the paths to registry hives</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>p</strong> (<em>str</em>) – partition number. Ex: ‘p03’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_autorip.Autorip.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_autorip.Autorip.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_autorip.Autorip.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=''</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_autorip.Autorip.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main function to generate report files</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="plugins.windows.RVT_autorip.write_registry_file">
+<code class="sig-prename descclassname">plugins.windows.RVT_autorip.</code><code class="sig-name descname">write_registry_file</code><span class="sig-paren">(</span><em class="sig-param">filename</em>, <em class="sig-param">pluginlist</em>, <em class="sig-param">hivedict</em>, <em class="sig-param">title</em>, <em class="sig-param">regfiles</em>, <em class="sig-param">rip='/opt/regripper/rip.pl'</em>, <em class="sig-param">logger=&lt;module 'logging' from '/usr/lib/python3.7/logging/__init__.py'&gt;</em>, <em class="sig-param">logfile=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_autorip.write_registry_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a report file for a group of related regripper plugins.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>str</em>) – report filename</p></li>
+<li><p><strong>pluginlist</strong> (<em>list</em>) – list of plugins to execute</p></li>
+<li><p><strong>hivedict</strong> (<em>dict</em>) – relates plugin to hive files</p></li>
+<li><p><strong>title</strong> (<em>str</em>) – title of report file</p></li>
+<li><p><strong>regfiles</strong> (<em>list</em>) – list of hive files paths</p></li>
+<li><p><strong>rip</strong> (<em>str</em>) – path to rip.pl executable</p></li>
+<li><p><strong>logger</strong> (<em>logging</em>) – logging instance</p></li>
+<li><p><strong>logfile</strong> (<em>file</em>) – stream related to logfile</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="plugins-windows-rvt-bits-module">
+<h2>plugins.windows.RVT_bits module<a class="headerlink" href="#plugins-windows-rvt-bits-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="plugins-windows-rvt-deleted-module">
+<h2>plugins.windows.RVT_deleted module<a class="headerlink" href="#plugins-windows-rvt-deleted-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-plugins.windows.RVT_eventartifacts">
+<span id="plugins-windows-rvt-eventartifacts-module"></span><h2>plugins.windows.RVT_eventartifacts module<a class="headerlink" href="#module-plugins.windows.RVT_eventartifacts" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="plugins.windows.RVT_eventartifacts.Filter_Events">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.windows.RVT_eventartifacts.</code><code class="sig-name descname">Filter_Events</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_eventartifacts.Filter_Events" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Filters events for generating a csv file</p>
+<dl class="method">
+<dt id="plugins.windows.RVT_eventartifacts.Filter_Events.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_eventartifacts.Filter_Events.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.windows.RVT_eventartifacts.Logon_rdp">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.windows.RVT_eventartifacts.</code><code class="sig-name descname">Logon_rdp</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_eventartifacts.Logon_rdp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Extracts logon and rdp artifacts</p>
+<dl class="method">
+<dt id="plugins.windows.RVT_eventartifacts.Logon_rdp.extractLogon">
+<code class="sig-name descname">extractLogon</code><span class="sig-paren">(</span><em class="sig-param">logID</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_eventartifacts.Logon_rdp.extractLogon" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_eventartifacts.Logon_rdp.extractRDP">
+<code class="sig-name descname">extractRDP</code><span class="sig-paren">(</span><em class="sig-param">actID</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_eventartifacts.Logon_rdp.extractRDP" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_eventartifacts.Logon_rdp.relateIDs">
+<code class="sig-name descname">relateIDs</code><span class="sig-paren">(</span><em class="sig-param">ev</em>, <em class="sig-param">actID</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_eventartifacts.Logon_rdp.relateIDs" title="Permalink to this definition">¶</a></dt>
+<dd><p>relates events 4778 and 4779 with RDP events
+:param ev: event 4778 or 4779 to relate
+:type ev: dict
+:param actID: dict with list of RDP events with key ActivityID and values a list of events
+:type actID: dict</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>activityID closer to ev</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_eventartifacts.Logon_rdp.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_eventartifacts.Logon_rdp.run" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Attrs:</dt><dd><p>path (str): Absolute path to the parsed Security.xml</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.windows.RVT_eventartifacts.Network">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.windows.RVT_eventartifacts.</code><code class="sig-name descname">Network</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_eventartifacts.Network" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Extracts events related with wireless networking</p>
+<p>Events should be sorted</p>
+<dl class="method">
+<dt id="plugins.windows.RVT_eventartifacts.Network.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_eventartifacts.Network.run" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Attrs:</dt><dd><p>path (str): Absolute path to the parsed Security.xml</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.windows.RVT_eventartifacts.Poweron">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.windows.RVT_eventartifacts.</code><code class="sig-name descname">Poweron</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_eventartifacts.Poweron" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Extracts events of parsed Security.evtx</p>
+<p>Events should be sorted</p>
+<dl class="method">
+<dt id="plugins.windows.RVT_eventartifacts.Poweron.extractPower">
+<code class="sig-name descname">extractPower</code><span class="sig-paren">(</span><em class="sig-param">events</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_eventartifacts.Poweron.extractPower" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_eventartifacts.Poweron.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_eventartifacts.Poweron.run" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Attrs:</dt><dd><p>path (str): Absolute path to the parsed Security.xml</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.windows.RVT_eventartifacts.USB">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.windows.RVT_eventartifacts.</code><code class="sig-name descname">USB</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_eventartifacts.USB" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Extracts events related with usb plugs</p>
+<p>Events should be sorted</p>
+<dl class="method">
+<dt id="plugins.windows.RVT_eventartifacts.USB.check">
+<code class="sig-name descname">check</code><span class="sig-paren">(</span><em class="sig-param">e</em>, <em class="sig-param">flag</em>, <em class="sig-param">plugins</em>, <em class="sig-param">plugoffs</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_eventartifacts.USB.check" title="Permalink to this definition">¶</a></dt>
+<dd><p>usb_main auxiliary function</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_eventartifacts.USB.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_eventartifacts.USB.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extracts USB sticks’ plugins and plugoffs data</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="plugins.windows.RVT_eventartifacts.writemd">
+<code class="sig-prename descclassname">plugins.windows.RVT_eventartifacts.</code><code class="sig-name descname">writemd</code><span class="sig-paren">(</span><em class="sig-param">outfile</em>, <em class="sig-param">fields</em>, <em class="sig-param">eventlist</em>, <em class="sig-param">sorted=True</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_eventartifacts.writemd" title="Permalink to this definition">¶</a></dt>
+<dd><p>writes md table sorting by first item and removing repeated rows
+:param outfile: output filename
+:type outfile: str
+:param fields: list of fields
+:type fields: list
+:param eventlist: list of rows of table
+:type eventlist: list of lists</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-plugins.windows.RVT_events">
+<span id="plugins-windows-rvt-events-module"></span><h2>plugins.windows.RVT_events module<a class="headerlink" href="#module-plugins.windows.RVT_events" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="plugins.windows.RVT_events.EventJob">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.windows.RVT_events.</code><code class="sig-name descname">EventJob</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_events.EventJob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Base class to parse event log sources</p>
+<dl class="method">
+<dt id="plugins.windows.RVT_events.EventJob.get_evtx">
+<code class="sig-name descname">get_evtx</code><span class="sig-paren">(</span><em class="sig-param">path</em>, <em class="sig-param">regex_search</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_events.EventJob.get_evtx" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve the evtx file to parse.
+Take ‘path’ if is defined and exists.
+Otherwise take first coincidence of the corresponding evtx file in the filesystem</p>
+<dl class="simple">
+<dt>Attrs:</dt><dd><p>path: path to evtx as defined in job
+regex_search: regex expression to search in file system allocated files</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.windows.RVT_events.GetEvents">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.windows.RVT_events.</code><code class="sig-name descname">GetEvents</code><span class="sig-paren">(</span><em class="sig-param">eventfile</em>, <em class="sig-param">config_file</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_events.GetEvents" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Extracts relevant event logs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>vss_dir</strong> (<em>str</em>) – vss folder or empty for normal allocated file</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="plugins.windows.RVT_events.GetEvents.get_xpath_data">
+<code class="sig-name descname">get_xpath_data</code><span class="sig-paren">(</span><em class="sig-param">path</em>, <em class="sig-param">item</em>, <em class="sig-param">event</em>, <em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_events.GetEvents.get_xpath_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_events.GetEvents.parse">
+<code class="sig-name descname">parse</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_events.GetEvents.parse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.windows.RVT_events.OAlerts">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.windows.RVT_events.</code><code class="sig-name descname">OAlerts</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_events.OAlerts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#plugins.windows.RVT_events.EventJob" title="plugins.windows.RVT_events.EventJob"><code class="xref py py-class docutils literal notranslate"><span class="pre">plugins.windows.RVT_events.EventJob</span></code></a></p>
+<p>Extracts events of parsed OAlerts.evtx</p>
+<dl class="method">
+<dt id="plugins.windows.RVT_events.OAlerts.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_events.OAlerts.run" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Attrs:</dt><dd><p>path (str): Absolute path to Microsoft-Windows-TerminalServices-LocalSessionManager%4Operational.evtx</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.windows.RVT_events.ParseEvents">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.windows.RVT_events.</code><code class="sig-name descname">ParseEvents</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_events.ParseEvents" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#plugins.windows.RVT_events.EventJob" title="plugins.windows.RVT_events.EventJob"><code class="xref py py-class docutils literal notranslate"><span class="pre">plugins.windows.RVT_events.EventJob</span></code></a></p>
+<p>Extracts events of default evtx logs</p>
+<dl class="method">
+<dt id="plugins.windows.RVT_events.ParseEvents.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_events.ParseEvents.run" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Attrs:</dt><dd><p>path (str): Absolute path to evtx file</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.windows.RVT_events.RDPClient">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.windows.RVT_events.</code><code class="sig-name descname">RDPClient</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_events.RDPClient" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#plugins.windows.RVT_events.EventJob" title="plugins.windows.RVT_events.EventJob"><code class="xref py py-class docutils literal notranslate"><span class="pre">plugins.windows.RVT_events.EventJob</span></code></a></p>
+<p>Extracts events of Microsoft-Windows-TerminalServices-RDPClient%4Operational.evtx</p>
+<dl class="method">
+<dt id="plugins.windows.RVT_events.RDPClient.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_events.RDPClient.run" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Attrs:</dt><dd><p>path (str): Absolute path to Microsoft-Windows-TerminalServices-RDPClient%4Operational.evtx</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.windows.RVT_events.RDPLocal">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.windows.RVT_events.</code><code class="sig-name descname">RDPLocal</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_events.RDPLocal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#plugins.windows.RVT_events.EventJob" title="plugins.windows.RVT_events.EventJob"><code class="xref py py-class docutils literal notranslate"><span class="pre">plugins.windows.RVT_events.EventJob</span></code></a></p>
+<p>Extracts events of parsed Microsoft-Windows-TerminalServices-LocalSessionManager%4Operational.evtx</p>
+<dl class="method">
+<dt id="plugins.windows.RVT_events.RDPLocal.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_events.RDPLocal.run" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Attrs:</dt><dd><p>path (str): Absolute path to Microsoft-Windows-TerminalServices-LocalSessionManager%4Operational.evtx</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.windows.RVT_events.Security">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.windows.RVT_events.</code><code class="sig-name descname">Security</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_events.Security" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#plugins.windows.RVT_events.EventJob" title="plugins.windows.RVT_events.EventJob"><code class="xref py py-class docutils literal notranslate"><span class="pre">plugins.windows.RVT_events.EventJob</span></code></a></p>
+<p>Extracts events of Security.evtx</p>
+<dl class="method">
+<dt id="plugins.windows.RVT_events.Security.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_events.Security.run" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Attrs:</dt><dd><p>path (str): Path to Security.evtx</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.windows.RVT_events.System">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.windows.RVT_events.</code><code class="sig-name descname">System</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_events.System" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#plugins.windows.RVT_events.EventJob" title="plugins.windows.RVT_events.EventJob"><code class="xref py py-class docutils literal notranslate"><span class="pre">plugins.windows.RVT_events.EventJob</span></code></a></p>
+<p>Extracts events of System.evtx</p>
+<dl class="method">
+<dt id="plugins.windows.RVT_events.System.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_events.System.run" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Attrs:</dt><dd><p>path (str): Path to System.evtx</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-plugins.windows.RVT_exec">
+<span id="plugins-windows-rvt-exec-module"></span><h2>plugins.windows.RVT_exec module<a class="headerlink" href="#module-plugins.windows.RVT_exec" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="plugins.windows.RVT_exec.BAM">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.windows.RVT_exec.</code><code class="sig-name descname">BAM</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_exec.BAM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<dl class="method">
+<dt id="plugins.windows.RVT_exec.BAM.parse_BAM">
+<code class="sig-name descname">parse_BAM</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_exec.BAM.parse_BAM" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_exec.BAM.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=''</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_exec.BAM.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.windows.RVT_exec.Prefetch">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.windows.RVT_exec.</code><code class="sig-name descname">Prefetch</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_exec.Prefetch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Parse prefetch</p>
+<dl class="method">
+<dt id="plugins.windows.RVT_exec.Prefetch.parse_Prefetch">
+<code class="sig-name descname">parse_Prefetch</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_exec.Prefetch.parse_Prefetch" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_exec.Prefetch.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=''</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_exec.Prefetch.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.windows.RVT_exec.RFC">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.windows.RVT_exec.</code><code class="sig-name descname">RFC</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_exec.RFC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Parses RecentFileCache.bcf</p>
+<dl class="method">
+<dt id="plugins.windows.RVT_exec.RFC.parse_RFC">
+<code class="sig-name descname">parse_RFC</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_exec.RFC.parse_RFC" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_exec.RFC.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=''</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_exec.RFC.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="plugins.windows.RVT_exec.parse_RFC_file">
+<code class="sig-prename descclassname">plugins.windows.RVT_exec.</code><code class="sig-name descname">parse_RFC_file</code><span class="sig-paren">(</span><em class="sig-param">fname</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_exec.parse_RFC_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses RecentFileCache.bcf</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fname</strong> (<em>str</em>) – file path</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="plugins.windows.RVT_exec.parse_prefetch_file">
+<code class="sig-prename descclassname">plugins.windows.RVT_exec.</code><code class="sig-name descname">parse_prefetch_file</code><span class="sig-paren">(</span><em class="sig-param">pf_file</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_exec.parse_prefetch_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse individual file. Output is placed in ‘output’ dictionary</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pf_file</strong> (<em>str</em>) – list of filenames</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>dict with prefetch file information</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-plugins.windows.RVT_hiberfil">
+<span id="plugins-windows-rvt-hiberfil-module"></span><h2>plugins.windows.RVT_hiberfil module<a class="headerlink" href="#module-plugins.windows.RVT_hiberfil" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="plugins.windows.RVT_hiberfil.Hiberfil">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.windows.RVT_hiberfil.</code><code class="sig-name descname">Hiberfil</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_hiberfil.Hiberfil" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<dl class="method">
+<dt id="plugins.windows.RVT_hiberfil.Hiberfil.get_win_profile">
+<code class="sig-name descname">get_win_profile</code><span class="sig-paren">(</span><em class="sig-param">partition</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_hiberfil.Hiberfil.get_win_profile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets volatility profile and windows version from reg_Info file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>partition</strong> (<em>str</em>) – partition number to get volatility profile</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>tuple of volatility profile and windows version</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_hiberfil.Hiberfil.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=''</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_hiberfil.Hiberfil.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get information of hiberfil.sys</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_hiberfil.Hiberfil.vol_extract">
+<code class="sig-name descname">vol_extract</code><span class="sig-paren">(</span><em class="sig-param">archive</em>, <em class="sig-param">profile</em>, <em class="sig-param">version</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_hiberfil.Hiberfil.vol_extract" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extracts data from decompressed hiberfil files</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>archive</strong> (<em>str</em>) – file to extract information</p></li>
+<li><p><strong>profile</strong> (<em>str</em>) – volatility profile</p></li>
+<li><p><strong>version</strong> (<em>str</em>) – windows version</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-plugins.windows.RVT_hives">
+<span id="plugins-windows-rvt-hives-module"></span><h2>plugins.windows.RVT_hives module<a class="headerlink" href="#module-plugins.windows.RVT_hives" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="plugins.windows.RVT_hives.AmCache">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.windows.RVT_hives.</code><code class="sig-name descname">AmCache</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_hives.AmCache" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Parses Amcache.hve registry hive.</p>
+<dl class="method">
+<dt id="plugins.windows.RVT_hives.AmCache.parse_amcache_entries">
+<code class="sig-name descname">parse_amcache_entries</code><span class="sig-paren">(</span><em class="sig-param">registry</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_hives.AmCache.parse_amcache_entries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a generator of dictionaries describing each entry in the hive.</p>
+<dl class="simple">
+<dt>Fields:</dt><dd><ul class="simple">
+<li><p>KeyLastWrite: Possible application first executed time (must be tested)</p></li>
+<li><p>AppPath: application path inside the volume</p></li>
+<li><p>AppName: friendly name for application, if any</p></li>
+<li><p>Sha1Hash: binary file SHA-1 hash value</p></li>
+<li><p>GUID: Volume GUID the application was executed from</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_hives.AmCache.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=''</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_hives.AmCache.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.windows.RVT_hives.ScheduledTasks">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.windows.RVT_hives.</code><code class="sig-name descname">ScheduledTasks</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_hives.ScheduledTasks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Parses job files and schedlgu.txt.</p>
+<dl class="method">
+<dt id="plugins.windows.RVT_hives.ScheduledTasks.parse_Task">
+<code class="sig-name descname">parse_Task</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_hives.ScheduledTasks.parse_Task" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_hives.ScheduledTasks.parse_schedlgu">
+<code class="sig-name descname">parse_schedlgu</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_hives.ScheduledTasks.parse_schedlgu" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_hives.ScheduledTasks.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=''</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_hives.ScheduledTasks.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.windows.RVT_hives.ShimCache">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.windows.RVT_hives.</code><code class="sig-name descname">ShimCache</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_hives.ShimCache" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Extracts ShimCache information from registry hives.</p>
+<dl class="method">
+<dt id="plugins.windows.RVT_hives.ShimCache.parse_ShimCache_hive">
+<code class="sig-name descname">parse_ShimCache_hive</code><span class="sig-paren">(</span><em class="sig-param">sysfile</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_hives.ShimCache.parse_ShimCache_hive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Launch shimcache regripper plugin and parse results</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_hives.ShimCache.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=''</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_hives.ShimCache.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.windows.RVT_hives.SysCache">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.windows.RVT_hives.</code><code class="sig-name descname">SysCache</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_hives.SysCache" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<dl class="method">
+<dt id="plugins.windows.RVT_hives.SysCache.parse_SysCache_hive">
+<code class="sig-name descname">parse_SysCache_hive</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_hives.SysCache.parse_SysCache_hive" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_hives.SysCache.parse_syscache_csv">
+<code class="sig-name descname">parse_syscache_csv</code><span class="sig-paren">(</span><em class="sig-param">partition</em>, <em class="sig-param">text</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_hives.SysCache.parse_syscache_csv" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_hives.SysCache.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=''</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_hives.SysCache.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.windows.RVT_hives.TaskFolder">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.windows.RVT_hives.</code><code class="sig-name descname">TaskFolder</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_hives.TaskFolder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<dl class="method">
+<dt id="plugins.windows.RVT_hives.TaskFolder.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=''</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_hives.TaskFolder.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prints prefetch info from folder</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="plugins.windows.RVT_hives.parse_windows_timestamp">
+<code class="sig-prename descclassname">plugins.windows.RVT_hives.</code><code class="sig-name descname">parse_windows_timestamp</code><span class="sig-paren">(</span><em class="sig-param">value</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_hives.parse_windows_timestamp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-plugins.windows.RVT_lnk">
+<span id="plugins-windows-rvt-lnk-module"></span><h2>plugins.windows.RVT_lnk module<a class="headerlink" href="#module-plugins.windows.RVT_lnk" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="plugins.windows.RVT_lnk.Lnk">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.windows.RVT_lnk.</code><code class="sig-name descname">Lnk</code><span class="sig-paren">(</span><em class="sig-param">infile</em>, <em class="sig-param">encoding='cp1252'</em>, <em class="sig-param">logger=''</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_lnk.Lnk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class to parse information from an lnk file.
+:param : infile (str): absolute path to lnk file
+:param : encoding (str): lnk file encoding</p>
+<dl class="method">
+<dt id="plugins.windows.RVT_lnk.Lnk.convertAttributes">
+<code class="sig-name descname">convertAttributes</code><span class="sig-paren">(</span><em class="sig-param">fileAttributes</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_lnk.Lnk.convertAttributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the file attributes in a human-readable format</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_lnk.Lnk.convertFileReference">
+<code class="sig-name descname">convertFileReference</code><span class="sig-paren">(</span><em class="sig-param">buf</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_lnk.Lnk.convertFileReference" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_lnk.Lnk.get_lnk_info">
+<code class="sig-name descname">get_lnk_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_lnk.Lnk.get_lnk_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>gets information about lnk file</p>
+<dl class="simple">
+<dt>Output fields:</dt><dd><p>drive_type; drive_sn; machine_id; path; network_path; size; atributes; description;
+command line arguments; file_id; volume_id; birth_file_id; birth_volume_id; f_mtime; f_atime; f_ctime</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.windows.RVT_lnk.LnkExtract">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.windows.RVT_lnk.</code><code class="sig-name descname">LnkExtract</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_lnk.LnkExtract" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<dl class="method">
+<dt id="plugins.windows.RVT_lnk.LnkExtract.automaticDest_parser">
+<code class="sig-name descname">automaticDest_parser</code><span class="sig-paren">(</span><em class="sig-param">files_list</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_lnk.LnkExtract.automaticDest_parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses automaticDest files</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>files_list</strong> (<em>list</em>) – list of automaticDestinations-ms files to parse</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_lnk.LnkExtract.customDest_parser">
+<code class="sig-name descname">customDest_parser</code><span class="sig-paren">(</span><em class="sig-param">files_list</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_lnk.LnkExtract.customDest_parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses customDest files</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>files_list</strong> (<em>list</em>) – list of customDestinations-ms files to parse</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_lnk.LnkExtract.lnk_parser">
+<code class="sig-name descname">lnk_parser</code><span class="sig-paren">(</span><em class="sig-param">files_list</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_lnk.LnkExtract.lnk_parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses all ‘.lnk’ files found for a user.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>files_list</strong> (<em>list</em>) – list of automaticDestinations-ms files to parse (relative to casedir)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_lnk.LnkExtract.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_lnk.LnkExtract.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_lnk.LnkExtract.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=''</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_lnk.LnkExtract.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses lnk files, jumlists and customdestinations</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.windows.RVT_lnk.LnkExtractAnalysis">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.windows.RVT_lnk.</code><code class="sig-name descname">LnkExtractAnalysis</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_lnk.LnkExtractAnalysis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<dl class="method">
+<dt id="plugins.windows.RVT_lnk.LnkExtractAnalysis.report_recent">
+<code class="sig-name descname">report_recent</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_lnk.LnkExtractAnalysis.report_recent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a unique csv combining output from lnk and jumplists</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_lnk.LnkExtractAnalysis.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=''</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_lnk.LnkExtractAnalysis.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a report based on the output of LnkExtract.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.windows.RVT_lnk.LnkExtractFolder">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.windows.RVT_lnk.</code><code class="sig-name descname">LnkExtractFolder</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_lnk.LnkExtractFolder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<dl class="method">
+<dt id="plugins.windows.RVT_lnk.LnkExtractFolder.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_lnk.LnkExtractFolder.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses lnk files from a folder</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>string</em>) – path with lnk files</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="plugins.windows.RVT_lnk.getFileTime">
+<code class="sig-prename descclassname">plugins.windows.RVT_lnk.</code><code class="sig-name descname">getFileTime</code><span class="sig-paren">(</span><em class="sig-param">data0</em>, <em class="sig-param">data1</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_lnk.getFileTime" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plugins.windows.RVT_lnk.get_user_list">
+<code class="sig-prename descclassname">plugins.windows.RVT_lnk.</code><code class="sig-name descname">get_user_list</code><span class="sig-paren">(</span><em class="sig-param">mount_path</em>, <em class="sig-param">vss=False</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_lnk.get_user_list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plugins.windows.RVT_lnk.load_appID">
+<code class="sig-prename descclassname">plugins.windows.RVT_lnk.</code><code class="sig-name descname">load_appID</code><span class="sig-paren">(</span><em class="sig-param">myconfig=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_lnk.load_appID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a dictionary associating JumpList ID with applications.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-plugins.windows.RVT_recycle">
+<span id="plugins-windows-rvt-recycle-module"></span><h2>plugins.windows.RVT_recycle module<a class="headerlink" href="#module-plugins.windows.RVT_recycle" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="plugins.windows.RVT_recycle.Recycle">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.windows.RVT_recycle.</code><code class="sig-name descname">Recycle</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_recycle.Recycle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Obtain a summary of all files found in the Recycle Bin</p>
+<dl class="simple">
+<dt>Output file fields description:</dt><dd><ul class="simple">
+<li><p>Date: original file deletion date</p></li>
+<li><p>Size: original deleted file size in bytes</p></li>
+<li><p>File: path to file in Recycle Bin</p></li>
+<li><p>OriginalName: original deleted file path</p></li>
+<li><p>Inode: Inode number of the deleted file (it may not be allocated)</p></li>
+<li><p>Status: allocation status of the Recycle Bin file.</p></li>
+<li><p>User: user the recycle bin belongs to. If not found a SID is shown</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="plugins.windows.RVT_recycle.Recycle.generate_SID_user">
+<code class="sig-name descname">generate_SID_user</code><span class="sig-paren">(</span><em class="sig-param">partition</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_recycle.Recycle.generate_SID_user" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_recycle.Recycle.get_bin_name">
+<em class="property">static </em><code class="sig-name descname">get_bin_name</code><span class="sig-paren">(</span><em class="sig-param">fname</em>, <em class="sig-param">I_file=True</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_recycle.Recycle.get_bin_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract the 6 characters name assigned by the Recycle Bin</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_recycle.Recycle.get_data">
+<code class="sig-name descname">get_data</code><span class="sig-paren">(</span><em class="sig-param">file</em>, <em class="sig-param">filepath</em>, <em class="sig-param">status='allocated'</em>, <em class="sig-param">inode=0</em>, <em class="sig-param">user=''</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_recycle.Recycle.get_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a new record parsing file’s metadata.
+:param file: $I url or byte-string containing the data
+:type file: str or bytes
+:param filepath: name of the mount path to $I file
+:type filepath: str
+:param status: allocated, deleted, realloc
+:type status: str
+:param inode: inode of the $R file
+:type inode: int</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>keys = [Date, Size, File, OriginalName, Inode, Status, User]</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_recycle.Recycle.get_metadata">
+<code class="sig-name descname">get_metadata</code><span class="sig-paren">(</span><em class="sig-param">f</em>, <em class="sig-param">filepath</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_recycle.Recycle.get_metadata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse $I file and obtain metadata
+:param f: $I file_object
+:type f: str
+:param filepath: name of the mount path to $I file
+:type filepath: str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>keys = [Date, Size, File, OriginalName]</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_recycle.Recycle.get_user_from_SID">
+<code class="sig-name descname">get_user_from_SID</code><span class="sig-paren">(</span><em class="sig-param">SID</em>, <em class="sig-param">partition</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_recycle.Recycle.get_user_from_SID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the user associated with a SID.
+Search in other partitions and vss for a user with same SID if not found in current partition.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_recycle.Recycle.locate_hives">
+<code class="sig-name descname">locate_hives</code><span class="sig-paren">(</span><em class="sig-param">partition</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_recycle.Recycle.locate_hives" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the path to the main hives, as a dictionary.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_recycle.Recycle.parse_RecycleBin">
+<code class="sig-name descname">parse_RecycleBin</code><span class="sig-paren">(</span><em class="sig-param">partition=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_recycle.Recycle.parse_RecycleBin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search all Recycle.Bin files found on the timeline. Both allocated and deleted.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_recycle.Recycle.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=''</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_recycle.Recycle.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main function to extract $Recycle.bin files.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_recycle.Recycle.save_recycle_files">
+<code class="sig-name descname">save_recycle_files</code><span class="sig-paren">(</span><em class="sig-param">output_file</em>, <em class="sig-param">partition=None</em>, <em class="sig-param">sorting=True</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_recycle.Recycle.save_recycle_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sort recycle bin files by date and save to ‘output_file’ csv.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_recycle.Recycle.update_inode">
+<code class="sig-name descname">update_inode</code><span class="sig-paren">(</span><em class="sig-param">inode</em>, <em class="sig-param">bin_code</em>, <em class="sig-param">file_status</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_recycle.Recycle.update_inode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="plugins.windows.RVT_recycle.filter_deleted_ending">
+<code class="sig-prename descclassname">plugins.windows.RVT_recycle.</code><code class="sig-name descname">filter_deleted_ending</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_recycle.filter_deleted_ending" title="Permalink to this definition">¶</a></dt>
+<dd><p>Strips ‘ (deleted)’ or ‘ (deleted-realloc)’ from the end of a path as given by ‘fls’.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="plugins.windows.RVT_recycle.ms_time_to_unix">
+<code class="sig-prename descclassname">plugins.windows.RVT_recycle.</code><code class="sig-name descname">ms_time_to_unix</code><span class="sig-paren">(</span><em class="sig-param">windows_time</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_recycle.ms_time_to_unix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-plugins.windows.RVT_registry">
+<span id="plugins-windows-rvt-registry-module"></span><h2>plugins.windows.RVT_registry module<a class="headerlink" href="#module-plugins.windows.RVT_registry" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="plugins.windows.RVT_registry.RegistryDump">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.windows.RVT_registry.</code><code class="sig-name descname">RegistryDump</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_registry.RegistryDump" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<dl class="method">
+<dt id="plugins.windows.RVT_registry.RegistryDump.get_hive_files">
+<code class="sig-name descname">get_hive_files</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_registry.RegistryDump.get_hive_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves all hives found in source if path is not specified.</p>
+<dl class="simple">
+<dt>Attrs:</dt><dd><p>path: path to registry hive</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_registry.RegistryDump.parse_hive">
+<code class="sig-name descname">parse_hive</code><span class="sig-paren">(</span><em class="sig-param">hive_file</em>, <em class="sig-param">hive_name</em>, <em class="sig-param">user=''</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_registry.RegistryDump.parse_hive" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_registry.RegistryDump.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=''</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_registry.RegistryDump.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dumps all registry in json format</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-plugins.windows.RVT_srum">
+<span id="plugins-windows-rvt-srum-module"></span><h2>plugins.windows.RVT_srum module<a class="headerlink" href="#module-plugins.windows.RVT_srum" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="plugins.windows.RVT_srum.Srum">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.windows.RVT_srum.</code><code class="sig-name descname">Srum</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_srum.Srum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<dl class="method">
+<dt id="plugins.windows.RVT_srum.Srum.convert_to_csv">
+<code class="sig-name descname">convert_to_csv</code><span class="sig-paren">(</span><em class="sig-param">folder</em>, <em class="sig-param">partition</em>, <em class="sig-param">sheets=''</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_srum.Srum.convert_to_csv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert xlsx sheets to multiple csv’s.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_srum.Srum.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=''</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_srum.Srum.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extracts SRUM artifacts of a disk</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-plugins.windows.RVT_usb">
+<span id="plugins-windows-rvt-usb-module"></span><h2>plugins.windows.RVT_usb module<a class="headerlink" href="#module-plugins.windows.RVT_usb" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="plugins.windows.RVT_usb.USBAnalysis">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.windows.RVT_usb.</code><code class="sig-name descname">USBAnalysis</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_usb.USBAnalysis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.windows.RVT_usb.USBSetupAPI">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.windows.RVT_usb.</code><code class="sig-name descname">USBSetupAPI</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_usb.USBSetupAPI" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<dl class="method">
+<dt id="plugins.windows.RVT_usb.USBSetupAPI.parse_setupapi">
+<code class="sig-name descname">parse_setupapi</code><span class="sig-paren">(</span><em class="sig-param">setupapi_file</em>, <em class="sig-param">partition</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_usb.USBSetupAPI.parse_setupapi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extracts USB sticks’ data about drivers installation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>setupapi_file</strong> (<em>str</em>) – path to setupapi.dev.log file</p></li>
+<li><p><strong>partition</strong> (<em>str</em>) – partition identifier (ex: ‘p05’)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.windows.RVT_usb.USBSetupAPI.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=''</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.windows.RVT_usb.USBSetupAPI.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="rvt2.html" class="btn btn-neutral float-right" title="rvt2 module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="plugins.macos.html" class="btn btn-neutral float-left" title="plugins.macos package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, INCIDE Digital Data S.L.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

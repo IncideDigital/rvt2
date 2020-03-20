@@ -1,0 +1,19 @@
+plugins.ai package
+==================
+
+.. automodule:: plugins.ai
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Submodules
+----------
+
+plugins.ai.classify module
+--------------------------
+
+.. automodule:: plugins.ai.classify
+   :members:
+   :undoc-members:
+   :show-inheritance:
+

@@ -1,0 +1,59 @@
+plugins.indexer package
+=======================
+
+.. automodule:: plugins.indexer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Submodules
+----------
+
+plugins.indexer.blindsearches module
+------------------------------------
+
+.. automodule:: plugins.indexer.blindsearches
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+plugins.indexer.elastic module
+------------------------------
+
+.. automodule:: plugins.indexer.elastic
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+plugins.indexer.events module
+-----------------------------
+
+.. automodule:: plugins.indexer.events
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+plugins.indexer.export\_pst module
+----------------------------------
+
+.. automodule:: plugins.indexer.export_pst
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+plugins.indexer.pstparser module
+--------------------------------
+
+.. automodule:: plugins.indexer.pstparser
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+plugins.indexer.tikaparser module
+---------------------------------
+
+.. automodule:: plugins.indexer.tikaparser
+   :members:
+   :undoc-members:
+   :show-inheritance:
+

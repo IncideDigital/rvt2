@@ -1,0 +1,370 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Welcome to rvt2’s documentation! &mdash; RVT2 2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="static/documentation_options.js"></script>
+        <script src="static/jquery.js"></script>
+        <script src="static/underscore.js"></script>
+        <script src="static/doctools.js"></script>
+        <script src="static/language_data.js"></script>
+    
+    <script type="text/javascript" src="static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="base package" href="base.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="#" class="icon icon-home"> RVT2
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="base.html">base package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plugins.html">plugins package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rvt2.html">rvt2 module</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">RVT2</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#">Docs</a> &raquo;</li>
+        
+      <li>Welcome to rvt2’s documentation!</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="welcome-to-rvt2-s-documentation">
+<h1>Welcome to rvt2’s documentation!<a class="headerlink" href="#welcome-to-rvt2-s-documentation" title="Permalink to this headline">¶</a></h1>
+<p>Revealer Toolkit 2 (RVT2) is a framework for computer forensics. It is written
+in Python 3 and internally many open source tools like <em>The Sleuth Kit</em> or
+<em>regripper</em>.</p>
+<p>RVT2 aims to automate rutinary tasks and analysis when managing forensic
+images, or <em>sources</em>. RVT2 is specially useful in an environment with many
+<em>cases</em> and many <em>sources</em>.</p>
+<p>RVT2 is developed and continously used at INCIDE, a Spanish DFIR company sited
+at the beautiful city of Barcelona (see <a class="reference external" href="http://www.incide.es">http://www.incide.es</a>)
+for more details), and is designed to work on Debian stable version, althought
+it is possible to adapt it to other other linux flavours.</p>
+<p>This is the documentation for developers of the rvt2. You can find the
+docs for the users of the RVT at <a class="reference external" href="https://incidedigital.github.io/rvt2-docs/">https://incidedigital.github.io/rvt2-docs/</a>.</p>
+</div>
+<div class="section" id="coding-style">
+<h1>Coding style<a class="headerlink" href="#coding-style" title="Permalink to this headline">¶</a></h1>
+<p>The source code must be linted using flake8
+<a class="reference external" href="http://flake8.pycqa.org/en/latest/">http://flake8.pycqa.org/en/latest/</a>, but we prefer ignoring messages E501
+(line too long) and W293 (blank line contains whitespace, many text editors
+don’t have this option). This rules are defined in the file <code class="docutils literal notranslate"><span class="pre">.flake8rc</span></code>, in
+the root of the project.</p>
+<p>Comments must be in in Google Style Python Docstring
+(<a class="reference external" href="https://www.sphinx-doc.org/en/1.5/ext/example_google.html">https://www.sphinx-doc.org/en/1.5/ext/example_google.html</a>) in English, with
+these additional styles:</p>
+<ul class="simple">
+<li><p>The options that can be set in the <code class="docutils literal notranslate"><span class="pre">.cfg</span></code> files MUST be described in a section named <em>Configuration</em> at the module class docstring.</p></li>
+</ul>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Get data from from_module, set or update some if its fields and yield again.
+
+Configuration:
+    - **presets**: A dictionary of fields to be set, unless already set by data yielded by from_module.
+    - **fields**: A dictionary of fields to be set. `fields` will be managed as a string template, passing the data yielded by from_module as parameter.
+</pre></div>
+</div>
+<p>The default behaviour of the log messages is as follows. You can change this
+default behaviour in the configuration files.</p>
+<ul class="simple">
+<li><p>DEBUG: messages to assist while debugging but not the normal use. These
+messages won’t be included in the logfiles, but they will be shown on screen if
+the rvt2 is run with the <code class="docutils literal notranslate"><span class="pre">-v</span></code> parameter.</p></li>
+<li><p>INFO: messages to assist the normal use. The messages will be included in the
+logfiles, and they won’t be shown on screen unless the <code class="docutils literal notranslate"><span class="pre">-v</span></code> parameter is used.</p></li>
+<li><p>WARNING: the module found an error or thinks something funny happened, but the
+execution will continue. These messages are included in the logfiles as well
+as shown on the screen.</p></li>
+<li><p>ERROR: the module found an error and it can’t continue the execution. The
+current job will stop, but the rest of scheduled jobs will try to run unless
+the <code class="docutils literal notranslate"><span class="pre">stop_on_error</span></code> flag is set. These messages are included in the
+logfiles as well as shown on the screen.</p></li>
+<li><p>CRITICAL: the rvt found an error and the execution won’t continue. These
+messages are included in the logfiles as well as shown on the screen.</p></li>
+</ul>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="base.html">base package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="base.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="base.html#module-base.commands">base.commands module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="base.html#module-base.config">base.config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="base.html#module-base.directory">base.directory module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="base.html#module-base.help">base.help module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="base.html#module-base.input">base.input module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="base.html#module-base.job">base.job module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="base.html#module-base.mutations">base.mutations module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="base.html#module-base.output">base.output module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="base.html#module-base.templates">base.templates module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="base.html#module-base.threads">base.threads module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="base.html#module-base.utils">base.utils module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="plugins.html">plugins package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="plugins.ai.html">plugins.ai package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="plugins.ai.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.ai.html#plugins-ai-classify-module">plugins.ai.classify module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.android.html">plugins.android package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="plugins.android.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.android.html#module-plugins.android.whatsapp">plugins.android.whatsapp module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.common.html">plugins.common package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="plugins.common.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.common.html#module-plugins.common.RVT_browsers">plugins.common.RVT_browsers module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.common.html#module-plugins.common.RVT_characterization">plugins.common.RVT_characterization module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.common.html#module-plugins.common.RVT_disk">plugins.common.RVT_disk module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.common.html#module-plugins.common.RVT_files">plugins.common.RVT_files module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.common.html#module-plugins.common.RVT_filesystem">plugins.common.RVT_filesystem module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.common.html#module-plugins.common.RVT_gmail_mailbox">plugins.common.RVT_gmail_mailbox module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.common.html#module-plugins.common.RVT_mails">plugins.common.RVT_mails module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.common.html#module-plugins.common.RVT_mount">plugins.common.RVT_mount module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.common.html#module-plugins.common.RVT_partition">plugins.common.RVT_partition module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.common.html#module-plugins.common.RVT_search">plugins.common.RVT_search module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.common.html#module-plugins.common.RVT_skype">plugins.common.RVT_skype module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.common.html#module-plugins.common.RVT_string">plugins.common.RVT_string module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.common.html#module-plugins.common.RVT_timelines">plugins.common.RVT_timelines module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.common.html#module-plugins.common.case_solve">plugins.common.case_solve module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.external.html">plugins.external package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="plugins.external.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.external.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.external.html#module-plugins.external.amcache">plugins.external.amcache module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.external.html#module-plugins.external.jobparser">plugins.external.jobparser module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.indexer.html">plugins.indexer package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="plugins.indexer.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.indexer.html#module-plugins.indexer.blindsearches">plugins.indexer.blindsearches module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.indexer.html#module-plugins.indexer.elastic">plugins.indexer.elastic module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.indexer.html#module-plugins.indexer.events">plugins.indexer.events module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.indexer.html#module-plugins.indexer.export_pst">plugins.indexer.export_pst module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.indexer.html#module-plugins.indexer.pstparser">plugins.indexer.pstparser module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.indexer.html#module-plugins.indexer.tikaparser">plugins.indexer.tikaparser module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.ios.html">plugins.ios package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="plugins.ios.html#jobs">Jobs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.ios.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.ios.html#module-plugins.ios.adv_whatsapp">plugins.ios.adv_whatsapp module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.ios.html#module-plugins.ios.characterization">plugins.ios.characterization module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.ios.html#module-plugins.ios.cookies">plugins.ios.cookies module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.ios.html#module-plugins.ios.timeline">plugins.ios.timeline module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.ios.html#module-plugins.ios.unback">plugins.ios.unback module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.ios.html#module-plugins.ios.whatsapp">plugins.ios.whatsapp module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.macos.html">plugins.macos package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="plugins.macos.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.macos.html#plugins-macos-rvt-macos-module">plugins.macos.RVT_macos module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.windows.html">plugins.windows package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="plugins.windows.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.windows.html#module-plugins.windows.RVT_I30">plugins.windows.RVT_I30 module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.windows.html#module-plugins.windows.RVT_UsnJrnl">plugins.windows.RVT_UsnJrnl module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.windows.html#module-plugins.windows.RVT_activity_cache">plugins.windows.RVT_activity_cache module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.windows.html#module-plugins.windows.RVT_autorip">plugins.windows.RVT_autorip module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.windows.html#plugins-windows-rvt-bits-module">plugins.windows.RVT_bits module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.windows.html#plugins-windows-rvt-deleted-module">plugins.windows.RVT_deleted module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.windows.html#module-plugins.windows.RVT_eventartifacts">plugins.windows.RVT_eventartifacts module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.windows.html#module-plugins.windows.RVT_events">plugins.windows.RVT_events module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.windows.html#module-plugins.windows.RVT_exec">plugins.windows.RVT_exec module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.windows.html#module-plugins.windows.RVT_hiberfil">plugins.windows.RVT_hiberfil module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.windows.html#module-plugins.windows.RVT_hives">plugins.windows.RVT_hives module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.windows.html#module-plugins.windows.RVT_lnk">plugins.windows.RVT_lnk module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.windows.html#module-plugins.windows.RVT_recycle">plugins.windows.RVT_recycle module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.windows.html#module-plugins.windows.RVT_registry">plugins.windows.RVT_registry module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.windows.html#module-plugins.windows.RVT_srum">plugins.windows.RVT_srum module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plugins.windows.html#module-plugins.windows.RVT_usb">plugins.windows.RVT_usb module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rvt2.html">rvt2 module</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="base.html" class="btn btn-neutral float-right" title="base package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, INCIDE Digital Data S.L.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

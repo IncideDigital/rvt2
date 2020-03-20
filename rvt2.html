@@ -1,0 +1,319 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>rvt2 module &mdash; RVT2 2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="static/documentation_options.js"></script>
+        <script src="static/jquery.js"></script>
+        <script src="static/underscore.js"></script>
+        <script src="static/doctools.js"></script>
+        <script src="static/language_data.js"></script>
+    
+    <script type="text/javascript" src="static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="plugins.windows package" href="plugins.windows.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> RVT2
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="base.html">base package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plugins.html">plugins package</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">rvt2 module</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RVT2</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>rvt2 module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/rvt2.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-rvt2">
+<span id="rvt2-module"></span><h1>rvt2 module<a class="headerlink" href="#module-rvt2" title="Permalink to this headline">¶</a></h1>
+<p>The entry point to the system.</p>
+<dl class="class">
+<dt id="rvt2.StoreDict">
+<em class="property">class </em><code class="sig-prename descclassname">rvt2.</code><code class="sig-name descname">StoreDict</code><span class="sig-paren">(</span><em class="sig-param">option_strings</em>, <em class="sig-param">dest</em>, <em class="sig-param">nargs=None</em>, <em class="sig-param">const=None</em>, <em class="sig-param">default=None</em>, <em class="sig-param">type=None</em>, <em class="sig-param">choices=None</em>, <em class="sig-param">required=False</em>, <em class="sig-param">help=None</em>, <em class="sig-param">metavar=None</em><span class="sig-paren">)</span><a class="headerlink" href="#rvt2.StoreDict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">argparse.Action</span></code></p>
+<p>An argparse.Action to parse additional parameters as a dictionary.</p>
+<p>Parameters have the syntax <cite>name=value</cite>. Only the first _=_ is relevant. If the value part is not provided, assign the string ‘True’ to the name.</p>
+<p>Example::</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">argparse</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">prog</span><span class="o">=</span><span class="s1">&#39;PROG&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">_</span><span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-p&#39;</span><span class="p">,</span> <span class="s1">&#39;--params&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="n">StoreDict</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="p">{})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">([</span><span class="s1">&#39;-p&#39;</span><span class="p">,</span> <span class="s1">&#39;one=one_value&#39;</span><span class="p">,</span> <span class="s1">&#39;-p&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="s1">&#39;--params&#39;</span><span class="p">,</span> <span class="s1">&#39;three=three_value1=three_value2&#39;</span><span class="p">,</span> <span class="s1">&#39;four=four_value&#39;</span><span class="p">])</span>
+<span class="go">Namespace(params={&#39;one&#39;: &#39;one_value&#39;, &#39;two&#39;: &#39;True&#39;, &#39;three&#39;: &#39;three_value1=three_value2&#39;, &#39;four&#39;: &#39;four_value&#39;})</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="rvt2.configure_logging">
+<code class="sig-prename descclassname">rvt2.</code><code class="sig-name descname">configure_logging</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">verbose=False</em>, <em class="sig-param">jobname=None</em><span class="sig-paren">)</span><a class="headerlink" href="#rvt2.configure_logging" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configure the logging subsystem.</p>
+<dl class="simple">
+<dt>Attrs:</dt><dd><p>verbose (boolean): If true, set the logging to verbose regardless what the configuration says.
+jobname (String): The name of the job to be run. If None, use basic configuration. If the job defines in its section <cite>register: False</cite>, use basic configuration.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="rvt2.load_configpaths">
+<code class="sig-prename descclassname">rvt2.</code><code class="sig-name descname">load_configpaths</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">configpaths</em><span class="sig-paren">)</span><a class="headerlink" href="#rvt2.load_configpaths" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load configuration from an array of paths.</p>
+<dl class="simple">
+<dt>Attrs:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">configpaths</dt>
+<dd class="field-odd"><p>Array of paths to load configuration from. Unexisting paths are ignored</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="rvt2.load_default_vars">
+<code class="sig-prename descclassname">rvt2.</code><code class="sig-name descname">load_default_vars</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">morgue</em>, <em class="sig-param">casename</em>, <em class="sig-param">source</em>, <em class="sig-param">jobid</em><span class="sig-paren">)</span><a class="headerlink" href="#rvt2.load_default_vars" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add to the configuration object the default variables: morgue, casename, source and jobid</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="rvt2.load_plugin">
+<code class="sig-prename descclassname">rvt2.</code><code class="sig-name descname">load_plugin</code><span class="sig-paren">(</span><em class="sig-param">pluginpath</em>, <em class="sig-param">config</em><span class="sig-paren">)</span><a class="headerlink" href="#rvt2.load_plugin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a plugin from a path.</p>
+<p>Load all cfg files inside the path.
+if configuration section ‘pluginame.pythonpath exists, load the python path in this section
+If funcion plugin.load_plugin() exists, run it.</p>
+<dl class="simple">
+<dt>Attrs:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">pluginpath</dt>
+<dd class="field-odd"><p>The absolute path to the plugin</p>
+</dd>
+<dt class="field-even">config</dt>
+<dd class="field-even"><p>The configuration object</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="rvt2.main">
+<code class="sig-prename descclassname">rvt2.</code><code class="sig-name descname">main</code><span class="sig-paren">(</span><em class="sig-param">params=['-b', 'html', 'source', 'build']</em><span class="sig-paren">)</span><a class="headerlink" href="#rvt2.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>The entry point of the system. Run from the command line and get help using –help.</p>
+<p>Read configuration files and run jobs.</p>
+<dl class="simple">
+<dt>Attrs:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">params</dt>
+<dd class="field-odd"><p>The parameters to configure the system</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="rvt2.registerExecution">
+<code class="sig-prename descclassname">rvt2.</code><code class="sig-name descname">registerExecution</code><span class="sig-paren">(</span><em class="sig-param">jobid</em>, <em class="sig-param">config</em>, <em class="sig-param">conffiles</em>, <em class="sig-param">job</em>, <em class="sig-param">params</em>, <em class="sig-param">paths</em>, <em class="sig-param">status</em>, <em class="sig-param">ellapsed=0.0</em><span class="sig-paren">)</span><a class="headerlink" href="#rvt2.registerExecution" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register the execution of the rvt2 in a file with a timestamp.</p>
+<dl class="simple">
+<dt>Attrs:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">config</dt>
+<dd class="field-odd"><p>The configuration object. morgue, casename and source will be get from the DEFAULT section.
+The filename is in “rvt2:register”. If filename is empty, do not register.
+If “jobname:register” is False, do not register</p>
+</dd>
+<dt class="field-even">conffiles</dt>
+<dd class="field-even"><p>List of extra configuration files</p>
+</dd>
+<dt class="field-odd">job</dt>
+<dd class="field-odd"><p>The name of the job</p>
+</dd>
+<dt class="field-even">params</dt>
+<dd class="field-even"><p>Any extra params</p>
+</dd>
+<dt class="field-odd">paths</dt>
+<dd class="field-odd"><p>The list of paths</p>
+</dd>
+<dt class="field-even">status</dt>
+<dd class="field-even"><p>either ‘start’, ‘end’, ‘interrupted’ or ‘error’</p>
+</dd>
+<dt class="field-odd">ellapsed (float)</dt>
+<dd class="field-odd"><p>elapsed time (in hours)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="plugins.windows.html" class="btn btn-neutral float-left" title="plugins.windows package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, INCIDE Digital Data S.L.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

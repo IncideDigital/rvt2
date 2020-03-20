@@ -1,0 +1,2237 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>base package &mdash; RVT2 2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="static/documentation_options.js"></script>
+        <script src="static/jquery.js"></script>
+        <script src="static/underscore.js"></script>
+        <script src="static/doctools.js"></script>
+        <script src="static/language_data.js"></script>
+    
+    <script type="text/javascript" src="static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="plugins package" href="plugins.html" />
+    <link rel="prev" title="Welcome to rvt2’s documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> RVT2
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">base package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-base.commands">base.commands module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-base.config">base.config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-base.directory">base.directory module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-base.help">base.help module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-base.input">base.input module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-base.job">base.job module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-base.mutations">base.mutations module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-base.output">base.output module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-base.templates">base.templates module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-base.threads">base.threads module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-base.utils">base.utils module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="plugins.html">plugins package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rvt2.html">rvt2 module</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RVT2</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>base package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/base.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-base">
+<span id="base-package"></span><h1>base package<a class="headerlink" href="#module-base" title="Permalink to this headline">¶</a></h1>
+<p>The base classes and function helpers for the RVT2.</p>
+<p>It includes the base RVT2 modules, the configuration manager and helper functions and some general jobs.</p>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-base.commands">
+<span id="base-commands-module"></span><h2>base.commands module<a class="headerlink" href="#module-base.commands" title="Permalink to this headline">¶</a></h2>
+<p>Utility functions and modules to run commands.</p>
+<dl class="class">
+<dt id="base.commands.Command">
+<em class="property">class </em><code class="sig-prename descclassname">base.commands.</code><code class="sig-name descname">Command</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.commands.Command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Run a command before or after the execution of other modules.</p>
+<dl class="simple">
+<dt>Configuration section:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">run_before</dt>
+<dd class="field-odd"><p>If True, run the command before the execution of <code class="docutils literal notranslate"><span class="pre">from_module</span></code>.</p>
+</dd>
+<dt class="field-even">run_after</dt>
+<dd class="field-even"><p>If True, run the command after the execution of <code class="docutils literal notranslate"><span class="pre">from_module</span></code>.</p>
+</dd>
+<dt class="field-odd">from_dir</dt>
+<dd class="field-odd"><p>Run the external command from this directory</p>
+</dd>
+<dt class="field-even">cmd</dt>
+<dd class="field-even"><p>The external command to run. It is a python string template with two optional parameters: <code class="docutils literal notranslate"><span class="pre">infile</span></code> and <code class="docutils literal notranslate"><span class="pre">outfile</span></code></p>
+</dd>
+<dt class="field-odd">infile</dt>
+<dd class="field-odd"><p>The <code class="docutils literal notranslate"><span class="pre">infile</span></code> parameter, if needed. Default: empty.</p>
+</dd>
+<dt class="field-even">outfile</dt>
+<dd class="field-even"><p>The <code class="docutils literal notranslate"><span class="pre">outfile</span></code> parameter, if needed. Default: empty.</p>
+</dd>
+<dt class="field-odd">delete_exists</dt>
+<dd class="field-odd"><p>If <em>True</em>, delete the <code class="docutils literal notranslate"><span class="pre">outfile</span></code>, if exists</p>
+</dd>
+<dt class="field-even">stdout</dt>
+<dd class="field-even"><p>If empty, do not overwrite <code class="docutils literal notranslate"><span class="pre">stdout</span></code>. If provided, save <code class="docutils literal notranslate"><span class="pre">stdout</span></code> to this filename</p>
+</dd>
+<dt class="field-odd">append</dt>
+<dd class="field-odd"><p>If <em>True</em>, append to the <code class="docutils literal notranslate"><span class="pre">output</span></code> file. If <em>False</em> and the file exists, remove it</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="base.commands.Command.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#base.commands.Command.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="base.commands.Command.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.commands.Command.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="base.commands.RegexFilter">
+<em class="property">class </em><code class="sig-prename descclassname">base.commands.</code><code class="sig-name descname">RegexFilter</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.commands.RegexFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>A module to select lines that match a list of regex expressions.
+Yields a dict with the line, regex, tag and keyword_file as keys.</p>
+<dl class="simple">
+<dt>Configuration:</dt><dd><ul class="simple">
+<li><p><strong>keyword_file</strong>: The keyword file to use. One keyword per line.
+Empty lines are ignored. Format: <code class="docutils literal notranslate"><span class="pre">ANNOTATION:::REGEX</span></code> or <code class="docutils literal notranslate"><span class="pre">REGEX</span></code>.
+In the last case, the annotation will be the regex.</p></li>
+<li><p><strong>keyword_list</strong>: A list of regex expressions to execute.
+Overwrites keyword_file if not empty. Same format as keyword_file.</p></li>
+<li><p><strong>keyword_dir</strong>: Load keyword files form this directory.</p></li>
+<li><p><strong>cmd</strong>: Run this external command to perform a search.</p></li>
+<li><p><strong>from_dir</strong>: Run the external command from this directory. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, run from current directory.</p></li>
+<li><p><strong>encoding</strong>: The encoding to decode subprocess binary output</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="base.commands.RegexFilter.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#base.commands.RegexFilter.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="base.commands.RegexFilter.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.commands.RegexFilter.run" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> – Search regex in this file.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>For each line that matches, a dictionary where <code class="docutils literal notranslate"><span class="pre">match</span></code> is the matching line, <code class="docutils literal notranslate"><span class="pre">regex</span></code> is the
+regex that matched, <code class="docutils literal notranslate"><span class="pre">tag</span></code> the tag of the regex and <code class="docutils literal notranslate"><span class="pre">keyword_file</span></code> the file where the regex were read from, or <em>None</em>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="base.commands.estimate_iterations">
+<code class="sig-prename descclassname">base.commands.</code><code class="sig-name descname">estimate_iterations</code><span class="sig-paren">(</span><em class="sig-param">path</em>, <em class="sig-param">cmd</em>, <em class="sig-param">from_dir=None</em>, <em class="sig-param">logger=&lt;module 'logging' from '/usr/lib/python3.7/logging/__init__.py'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#base.commands.estimate_iterations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Estimate the number of iterations using an external command.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cmd</strong> (<em>str</em>) – The path to use on the command.</p></li>
+<li><p><strong>from_dir</strong> (<em>str</em>) – If specified, run the external command from this directory.</p></li>
+<li><p><strong>cmd</strong> – The external command to run, as a string or an array. If <em>cmd</em> is a string, run the command as a shell command.
+It is a tempalte that will be formated as <code class="docutils literal notranslate"><span class="pre">cmd.format(path=path)</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The estimated number of iterations as an integer number. <code class="docutils literal notranslate"><span class="pre">float('inf')</span></code> if the number of iterations cannot be estimated.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="base.commands.run_command">
+<code class="sig-prename descclassname">base.commands.</code><code class="sig-name descname">run_command</code><span class="sig-paren">(</span><em class="sig-param">cmd</em>, <em class="sig-param">stdout=None</em>, <em class="sig-param">stderr=None</em>, <em class="sig-param">logger=&lt;module 'logging' from '/usr/lib/python3.7/logging/__init__.py'&gt;</em>, <em class="sig-param">from_dir=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.commands.run_command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs an external command using <em>subprocess</em>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cmd</strong> (<em>str</em>) – The command to run, as a string or an array. If <em>cmd</em> is a string, run the command as a shell command.</p></li>
+<li><p><strong>stdout</strong> (<em>file</em>) – If provided, set the stdout to this stream</p></li>
+<li><p><strong>stderr</strong> (<em>file</em>) – If provided, set the stderr to this stream</p></li>
+<li><p><strong>logger</strong> (<em>logging.Logger</em>) – If provided, use this logger. If not, use the global <em>logging</em> system.</p></li>
+<li><p><strong>from_dir</strong> (<em>str</em>) – Run the external command from this directory. If None, run from current directory.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>If <em>stdout</em> is provided, returns <code class="docutils literal notranslate"><span class="pre">None</span></code>. If no <em>stdout</em>, returns the decoded UTF-8 output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="base.commands.yield_command">
+<code class="sig-prename descclassname">base.commands.</code><code class="sig-name descname">yield_command</code><span class="sig-paren">(</span><em class="sig-param">cmd</em>, <em class="sig-param">stderr=None</em>, <em class="sig-param">logger=&lt;module 'logging' from '/usr/lib/python3.7/logging/__init__.py'&gt;</em>, <em class="sig-param">from_dir=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.commands.yield_command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs an external command using <em>subprocess</em> and yields the output line by line.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cmd</strong> – The command to run, as a string or an array. If <em>cmd</em> is a string, run the command as a shell command.</p></li>
+<li><p><strong>logger</strong> – If provided, use this logger. If not, use the global <em>logging</em> system.</p></li>
+<li><p><strong>from_dir</strong> – Run the external command from this directory. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, run from current directory.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>UTF-8 decoded lines from the output of the command.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-base.config">
+<span id="base-config-module"></span><h2>base.config module<a class="headerlink" href="#module-base.config" title="Permalink to this headline">¶</a></h2>
+<p>Classes and helper functions to manage the global, local and job configuration.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Since this module is used to configure the logging system, it cannot log any message.</p>
+</div>
+<dl class="class">
+<dt id="base.config.ColoredFormatter">
+<em class="property">class </em><code class="sig-prename descclassname">base.config.</code><code class="sig-name descname">ColoredFormatter</code><span class="sig-paren">(</span><em class="sig-param">fmt=None</em>, <em class="sig-param">datefmt=None</em>, <em class="sig-param">style='%'</em><span class="sig-paren">)</span><a class="headerlink" href="#base.config.ColoredFormatter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">logging.Formatter</span></code></p>
+<p>A formatter with colors for the logging system.</p>
+<p>Based on ideas from: &lt;<a class="reference external" href="https://stackoverflow.com/questions/384076/how-can-i-color-python-logging-output">https://stackoverflow.com/questions/384076/how-can-i-color-python-logging-output</a>&gt; and &lt;<a class="reference external" href="https://github.com/borntyping/python-colorlog">https://github.com/borntyping/python-colorlog</a>&gt;</p>
+<dl class="attribute">
+<dt id="base.config.ColoredFormatter.use_color">
+<code class="sig-name descname">use_color</code><a class="headerlink" href="#base.config.ColoredFormatter.use_color" title="Permalink to this definition">¶</a></dt>
+<dd><p>If True, use color on the output. If False, this formatters is the same than a regular Formatter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="base.config.ColoredFormatter.format">
+<code class="sig-name descname">format</code><span class="sig-paren">(</span><em class="sig-param">record</em><span class="sig-paren">)</span><a class="headerlink" href="#base.config.ColoredFormatter.format" title="Permalink to this definition">¶</a></dt>
+<dd><p>Format the specified record as text.</p>
+<p>The record’s attribute dictionary is used as the operand to a
+string formatting operation which yields the returned string.
+Before formatting the dictionary, a couple of preparatory steps
+are carried out. The message attribute of the record is computed
+using LogRecord.getMessage(). If the formatting string uses the
+time (as determined by a call to usesTime(), formatTime() is
+called to format the event time. If there is exception information,
+it is formatted using formatException() and appended to the message.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="sig-name descname">use_color</code><em class="property"> = True</em></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="base.config.Config">
+<em class="property">class </em><code class="sig-prename descclassname">base.config.</code><code class="sig-name descname">Config</code><span class="sig-paren">(</span><em class="sig-param">filenames=None</em>, <em class="sig-param">config=None</em>, <em class="sig-param">job_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.config.Config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Configuration of modules and jobs.
+It is a wrapper on configparser.SafeConfigParser object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filenames</strong> (<em>array of str</em>) – if not None, read configuration from these files</p></li>
+<li><p><strong>job_name</strong> (<em>str</em>) – The name of the job currently in execution.</p></li>
+<li><p><strong>config</strong> (<em>configparser.SafeConfigParser</em>) – the actual configuration object.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="attribute">
+<dt id="base.config.Config.config">
+<code class="sig-name descname">config</code><a class="headerlink" href="#base.config.Config.config" title="Permalink to this definition">¶</a></dt>
+<dd><p>the actual configuration object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>configparser.SafeConfigParser</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="base.config.Config.copy">
+<code class="sig-name descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#base.config.Config.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a deep copy of this configuration object</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="base.config.Config.get">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param">section</em>, <em class="sig-param">option</em>, <em class="sig-param">default=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.config.Config.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a configuration value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>section</strong> (<em>str</em>) – name of the section.</p></li>
+<li><p><strong>option</strong> (<em>str</em>) – name of the option</p></li>
+<li><p><strong>default</strong> (<em>Object</em>) – if not None, the default value to return.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The value of the option.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="base.config.Config.has_section">
+<code class="sig-name descname">has_section</code><span class="sig-paren">(</span><em class="sig-param">section</em><span class="sig-paren">)</span><a class="headerlink" href="#base.config.Config.has_section" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if the configuration has a section</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="base.config.Config.options">
+<code class="sig-name descname">options</code><span class="sig-paren">(</span><em class="sig-param">section</em><span class="sig-paren">)</span><a class="headerlink" href="#base.config.Config.options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the options in a section</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="base.config.Config.read">
+<code class="sig-name descname">read</code><span class="sig-paren">(</span><em class="sig-param">path</em>, <em class="sig-param">pattern='**/*.cfg'</em><span class="sig-paren">)</span><a class="headerlink" href="#base.config.Config.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read configuration from a file or directory. The configuration file is appended to the current configuration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em>) – The path of the single file or directory to read the configuration from.</p></li>
+<li><p><strong>pattern</strong> (<em>regex</em>) – If the path is a directory, use this pattern to select configuration files.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="base.config.Config.sections">
+<code class="sig-name descname">sections</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#base.config.Config.sections" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of sections in this config</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="base.config.Config.set">
+<code class="sig-name descname">set</code><span class="sig-paren">(</span><em class="sig-param">section</em>, <em class="sig-param">option</em>, <em class="sig-param">value</em><span class="sig-paren">)</span><a class="headerlink" href="#base.config.Config.set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a configuration to a section. If the section does not exists, add it.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="base.config.Config.store_get">
+<code class="sig-name descname">store_get</code><span class="sig-paren">(</span><em class="sig-param">option</em>, <em class="sig-param">default</em>, <em class="sig-param">job_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.config.Config.store_get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read and returns an option from the local store.</p>
+<p>A <em>local store</em> can be used to save and retrieve options between runnings or communicate modules in
+in the save job. Do not rely on these options to exist and always use a default value.</p>
+<p>The local store is saved optionally in the file configured in section <em>job_name</em>, option <em>localstore</em>.
+Options are saved in a section named after the current <em>job_name</em>. Notice you can read from any job_name, but only save
+options on your own job_name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>option</strong> – the name of the option</p></li>
+<li><p><strong>default</strong> – the default value of the option. Do not rely on these options to exist an always use a default value.</p></li>
+<li><p><strong>job_name</strong> – if provided, read the option from this job_name.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="base.config.Config.store_set">
+<code class="sig-name descname">store_set</code><span class="sig-paren">(</span><em class="sig-param">option=None</em>, <em class="sig-param">value=None</em>, <em class="sig-param">save=False</em><span class="sig-paren">)</span><a class="headerlink" href="#base.config.Config.store_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Store an option from the local store.</p>
+<p>A <em>local store</em> can be used to save and retrieve options between runnings or communicate modules in
+in the save job. Do not rely on these options to exist and always use a default value.</p>
+<p>The local store is saved optionally in the file configured in section <em>job_name</em>, option <em>localstore</em>.
+Options are saved in a section named after the current <em>job_name</em>. Notice you can read from any job_name, but only save
+options on your own job_name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>option</strong> (<em>str</em>) – the name of the option. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, do not store an option. The local store can be saved id <code class="docutils literal notranslate"><span class="pre">option=None</span></code> and <code class="docutils literal notranslate"><span class="pre">save=True</span></code>.</p></li>
+<li><p><strong>value</strong> (<em>str</em>) – the value of the option. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, remove the option.</p></li>
+<li><p><strong>save</strong> (<em>Boolean</em>) – whether the local store must be saved inmediately in the file configured in section <em>job_name</em>, option <em>localstore</em>.
+If there is no file configured, do not save the localstore. If the localStore was not dirty, it is not saved.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="base.config.MyExtendedInterpolation">
+<em class="property">class </em><code class="sig-prename descclassname">base.config.</code><code class="sig-name descname">MyExtendedInterpolation</code><a class="headerlink" href="#base.config.MyExtendedInterpolation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">configparser.ExtendedInterpolation</span></code></p>
+<p>Adds support to inheritance to the extended interpolator.</p>
+<p>When getting the value of an option from a section, if
+the option is not defined in the current section, check
+if the section has an inherits options. If there is
+an inherits options, look for the option in the inherits
+section and then the DEFAULTS section.</p>
+<dl class="method">
+<dt id="base.config.MyExtendedInterpolation.before_get">
+<code class="sig-name descname">before_get</code><span class="sig-paren">(</span><em class="sig-param">parser</em>, <em class="sig-param">section</em>, <em class="sig-param">option</em>, <em class="sig-param">value</em>, <em class="sig-param">defaults</em><span class="sig-paren">)</span><a class="headerlink" href="#base.config.MyExtendedInterpolation.before_get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="base.config.TelegramHandler">
+<em class="property">class </em><code class="sig-prename descclassname">base.config.</code><code class="sig-name descname">TelegramHandler</code><span class="sig-paren">(</span><em class="sig-param">level=20</em>, <em class="sig-param">token=''</em>, <em class="sig-param">chatids=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#base.config.TelegramHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">logging.Handler</span></code></p>
+<p>A logging handler to send messages to a list of telegram chatids</p>
+<dl class="method">
+<dt id="base.config.TelegramHandler.emit">
+<code class="sig-name descname">emit</code><span class="sig-paren">(</span><em class="sig-param">record</em><span class="sig-paren">)</span><a class="headerlink" href="#base.config.TelegramHandler.emit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do whatever it takes to actually log the specified logging record.</p>
+<p>This version is intended to be implemented by subclasses and so
+raises a NotImplementedError.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="base.config.check_server">
+<code class="sig-prename descclassname">base.config.</code><code class="sig-name descname">check_server</code><span class="sig-paren">(</span><em class="sig-param">server</em><span class="sig-paren">)</span><a class="headerlink" href="#base.config.check_server" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check whether a server cab be reached.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">check_server</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">check_server</span><span class="p">(</span><span class="s1">&#39;https://www.google.es&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">check_server</span><span class="p">(</span><span class="s1">&#39;https://www.google.es:443&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>server</strong> (<em>str</em>) – a URL to connect to a server, such as “<a class="reference external" href="http://localhost:9998">http://localhost:9998</a>”.
+<strong>A scheme, hostname and port</strong> must be provided. A malformatted server will return False.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True is the server is listening</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="base.config.configure_logging">
+<code class="sig-prename descclassname">base.config.</code><code class="sig-name descname">configure_logging</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">basic=False</em><span class="sig-paren">)</span><a class="headerlink" href="#base.config.configure_logging" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configure the logging system. Some variables can be configured from the [logging] section in the configuration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> (<a class="reference internal" href="#base.config.Config" title="base.config.Config"><em>config.Config</em></a>) – the global configuration object.</p></li>
+<li><p><strong>basic</strong> (<em>Boolean</em>) – if True, configure a basic but colored logging system to the console.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>We couldn’t find a way to configure log filename easily for each case using configuration files.
+Temporally, the logging subsystem is configured using a dictionary and not a configuration file.</p>
+</div>
+<dl class="simple">
+<dt>Configuration:</dt><dd><ul class="simple">
+<li><p><em>console.level</em>: The logging level for the console handler. Defaults to WARN.</p></li>
+<li><p><em>file.level</em>: The logging level for the file handler. Defaults to INFO.</p></li>
+<li><p><em>file.logfile</em>: The filename for the file handler. Defaults to rvt2.log.</p></li>
+<li><p><em>telegram.level</em>: The logging level for the telegram handler. Defaults to INFO.</p></li>
+<li><p><em>telegram.token</em>: the token for the telegram bot. Defaults to None (do not send messages)</p></li>
+<li><p><em>telegram.chatids</em>”: a space separated list of chatids to send messages.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="base.config.parse_conf_array">
+<code class="sig-prename descclassname">base.config.</code><code class="sig-name descname">parse_conf_array</code><span class="sig-paren">(</span><em class="sig-param">value</em><span class="sig-paren">)</span><a class="headerlink" href="#base.config.parse_conf_array" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses a value in an option and returns it as an array.</p>
+<p>Values are sepparated using spaces or new lines.
+Double quotes can be used as quoting chars.
+Spaces can be espaced with a backslash.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parse_conf_array</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">)</span>
+<span class="go">[&#39;hello&#39;]</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parse_conf_array</span><span class="p">(</span><span class="s1">&#39;hello world&#39;</span><span class="p">)</span>
+<span class="go">[&#39;hello&#39;, &#39;world&#39;]</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parse_conf_array</span><span class="p">(</span><span class="s1">&#39;hello\ world&#39;</span><span class="p">)</span>
+<span class="go">[&#39;hello world&#39;]</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parse_conf_array</span><span class="p">(</span><span class="s1">&#39;&quot;hello world&quot; bye&#39;</span><span class="p">)</span>
+<span class="go">[&#39;hello world&#39;, &#39;bye&#39;]</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parse_conf_array</span><span class="p">(</span><span class="s1">&#39;base.module.test{&quot;param&quot;:&quot;value1\ value2&quot;}&#39;</span><span class="p">)</span>
+<span class="go">[&#39;base.module.test{&quot;param&quot;:&quot;value1 value2&quot;}&#39;]</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parse_conf_array</span><span class="p">(</span><span class="s1">&#39;base.module.test{&quot;param&quot;:&quot;value1\ value2&quot;} base.module.test{&quot;param&quot;:&quot;value3\ value4&quot;}&#39;</span><span class="p">)</span>
+<span class="go">[&#39;base.module.test{&quot;param&quot;:&quot;value1 value2&quot;}&#39;, &#39;base.module.test{&quot;param&quot;:&quot;value3 value4&quot;}&#39;]</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parse_conf_array</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parse_conf_array</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – The value to parse.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>An array of strings.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-base.directory">
+<span id="base-directory-module"></span><h2>base.directory module<a class="headerlink" href="#module-base.directory" title="Permalink to this headline">¶</a></h2>
+<p>Modules to parse directories and subdirectories.</p>
+<dl class="class">
+<dt id="base.directory.DirectoryClear">
+<em class="property">class </em><code class="sig-prename descclassname">base.directory.</code><code class="sig-name descname">DirectoryClear</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.directory.DirectoryClear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Remove the the file or directory specified by ‘target’.
+Useful when certain jobs that append results to file are called again, avoiding duplication of output.</p>
+<dl class="method">
+<dt id="base.directory.DirectoryClear.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.directory.DirectoryClear.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="base.directory.DirectoryFilter">
+<em class="property">class </em><code class="sig-prename descclassname">base.directory.</code><code class="sig-name descname">DirectoryFilter</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.directory.DirectoryFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>The module gets a <em>path</em> to a directory and sends to <em>from_module</em> the path to all files inside this path.
+Optionally, the walker only manages a set of extensions, or excludes files using a regular expression.</p>
+<dl class="simple">
+<dt>Module description:</dt><dd><ul class="simple">
+<li><p><strong>path</strong>: the abolute path to a file or directory.</p></li>
+<li><dl class="simple">
+<dt><strong>from_module</strong>: mandatory. If path is a file, this module is transparent.</dt><dd><p>If <em>path</em> is a directory, list all the files to the subdirectories (filters might apply) and call to <em>from_module</em>
+for each one of them.</p>
+</dd>
+</dl>
+</li>
+<li><p><strong>yields</strong>: whatever <em>from_module</em> yields each time is called.</p></li>
+</ul>
+</dd>
+<dt>Configuration:</dt><dd><ul class="simple">
+<li><p><strong>void_extension</strong> (Boolean): If True, files without an extension are always parsed even if a filter is set.</p></li>
+<li><p><strong>followlinks</strong> (Boolean): If True, follow symbolic links</p></li>
+<li><p><strong>filter</strong>: List of file categories to parse. If not provided, parse all files. Categories are section names to be read.</p></li>
+<li><p><strong>progress.disable</strong> (Boolean): If True, disable the progress bar.</p></li>
+<li><p><strong>progress.cmd</strong> (String): The shell command to run to estimate the number of subdirectories in the path.</p></li>
+<li><p><strong>exclude_pattern</strong>: If the path of the files matches this pattern, exclude the file.</p></li>
+<li><p><strong>restartable</strong>: If True, use the local store to save the name of the last directory fully parsed.
+The parsing won’t continue until this directory is found.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition-todo admonition" id="id2">
+<p class="admonition-title">Todo</p>
+<p>Files in the last parsed directory might be parsed twice</p>
+</div>
+<dl class="method">
+<dt id="base.directory.DirectoryFilter.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#base.directory.DirectoryFilter.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="base.directory.DirectoryFilter.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.directory.DirectoryFilter.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a path and calls to from_module for each file in the directory or subdirectories.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="base.directory.FileClassifier">
+<em class="property">class </em><code class="sig-prename descclassname">base.directory.</code><code class="sig-name descname">FileClassifier</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#base.directory.FileClassifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Classifies a piece of data according to its content-type, extension or path.</p>
+<p>This class can be used as a module or as a stand-alone object.</p>
+<dl class="simple">
+<dt>Configuration section:</dt><dd><ul class="simple">
+<li><p><strong>categories</strong>: list of categories to use. Categories are section names with extension and content type.</p></li>
+<li><p><strong>check_extension</strong>: When used as module: if True, check path extension; if False, check only content_type to decide a the category.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">base.config</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">base.job</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">Config</span><span class="p">(</span><span class="n">filenames</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;conf/file_categories.cfg&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fc</span> <span class="o">=</span> <span class="n">FileClassifier</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">local_config</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">categories</span><span class="o">=</span><span class="s1">&#39;compressed office&#39;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">fc</span><span class="o">.</span><span class="n">classifyByExtension</span><span class="p">(</span><span class="s1">&#39;.docx&#39;</span><span class="p">))</span>
+<span class="go">office</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">fc</span><span class="o">.</span><span class="n">classifyByContentType</span><span class="p">(</span><span class="s1">&#39;application/x-compress&#39;</span><span class="p">))</span>
+<span class="go">compressed</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">fc</span><span class="o">.</span><span class="n">classify</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">extension</span><span class="o">=</span><span class="s1">&#39;.docx&#39;</span><span class="p">)))</span>
+<span class="go">office</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">fc</span><span class="o">.</span><span class="n">classify</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">extension</span><span class="o">=</span><span class="s1">&#39;.docx&#39;</span><span class="p">,</span> <span class="n">content_type</span><span class="o">=</span><span class="s1">&#39;application/x-compress&#39;</span><span class="p">)))</span>
+<span class="go">compressed</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">fc</span><span class="o">.</span><span class="n">classify</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s1">&#39;filename&#39;</span><span class="p">)))</span>
+<span class="go">None</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">fc</span><span class="o">.</span><span class="n">classify</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s1">&#39;filename.docx&#39;</span><span class="p">)))</span>
+<span class="go">office</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="base.directory.FileClassifier.classify">
+<code class="sig-name descname">classify</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#base.directory.FileClassifier.classify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Classifies a piece of data. Data is a dictionary that must include either <cite>content_type</cite>, <cite>extension</cite> or <cite>path</cite>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="base.directory.FileClassifier.classifyByContentType">
+<code class="sig-name descname">classifyByContentType</code><span class="sig-paren">(</span><em class="sig-param">content_type</em><span class="sig-paren">)</span><a class="headerlink" href="#base.directory.FileClassifier.classifyByContentType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Classifies a content type.</p>
+<p>:param : extension: The extension to classify. For example, ‘application/x-msaccess’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The name of the category, or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="base.directory.FileClassifier.classifyByExtension">
+<code class="sig-name descname">classifyByExtension</code><span class="sig-paren">(</span><em class="sig-param">extension</em><span class="sig-paren">)</span><a class="headerlink" href="#base.directory.FileClassifier.classifyByExtension" title="Permalink to this definition">¶</a></dt>
+<dd><p>Classifies an extension.</p>
+<p>:param : extension: The extension to classify. For example, ‘.docx’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The name of the category, or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="base.directory.FileClassifier.classifyByPath">
+<code class="sig-name descname">classifyByPath</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#base.directory.FileClassifier.classifyByPath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Classifies a path. This method extracts the extension from the path and calls to <cite>classifiyByExtension</cite>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="base.directory.FileClassifier.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#base.directory.FileClassifier.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="base.directory.FileClassifier.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.directory.FileClassifier.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Classifies all items sent by <cite>from_module</cite></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="base.directory.FileParser">
+<em class="property">class </em><code class="sig-prename descclassname">base.directory.</code><code class="sig-name descname">FileParser</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.directory.FileParser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Call a job for each file in a path that matches a regex.</p>
+<dl class="simple">
+<dt>Module description:</dt><dd><ul class="simple">
+<li><p><strong>path</strong>: run <em>from_module</em> on this <em>path</em>. If the <em>path</em> matches a regex, call also to a configured <em>jobname</em></p></li>
+<li><p><strong>from_module</strong>: optional. If None, not used.</p></li>
+<li><p><strong>yields</strong>: whatever <em>from_module</em> and <em>jobname</em> yield each time they are called.</p></li>
+</ul>
+</dd>
+<dt>Configuration:</dt><dd><ul class="simple">
+<li><p><strong>parsers</strong>: A list of regex and modules. First, the regular expression matching a filename; second, the jobname to run on this filename.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="base.directory.FileParser.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#base.directory.FileParser.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="base.directory.FileParser.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.directory.FileParser.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="base.directory.GlobFilter">
+<em class="property">class </em><code class="sig-prename descclassname">base.directory.</code><code class="sig-name descname">GlobFilter</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.directory.GlobFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>The module gets a <em>glob pattern</em> as a path, and runs to <em>from_module</em> all items matching the pattern.</p>
+<p>See: <a class="reference external" href="https://docs.python.org/3.6/library/glob.html">https://docs.python.org/3.6/library/glob.html</a></p>
+<dl class="simple">
+<dt>Module description:</dt><dd><ul class="simple">
+<li><p><strong>path</strong>: a glob pattern. Run <em>from_module</em> on all items matching this pattern.</p></li>
+<li><p><strong>from_module</strong>: mandatory.</p></li>
+<li><p><strong>yields</strong>: whatever <em>from_module</em> yields each time it is called.</p></li>
+</ul>
+</dd>
+<dt>Configuration:</dt><dd><ul class="simple">
+<li><p><strong>recursive</strong>: Passes this parameters to <code class="docutils literal notranslate"><span class="pre">glob.iglob</span></code>: whether the path must run recursively or not.</p></li>
+<li><p><strong>ftype</strong>: either “file”, “directory” or “all”.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="base.directory.GlobFilter.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#base.directory.GlobFilter.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="base.directory.GlobFilter.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.directory.GlobFilter.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses objects matching a glob pattern.</p>
+<p>If the glob can match files and directories, you probably want to feed the results to a <cite>DirectoryFilter</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the glob pattern. It will be recursive. See <a class="reference external" href="https://docs.python.org/3.6/library/glob.html">https://docs.python.org/3.6/library/glob.html</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="base.directory.MirrorOptions">
+<em class="property">class </em><code class="sig-prename descclassname">base.directory.</code><code class="sig-name descname">MirrorOptions</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.directory.MirrorOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Return the value of the local options</p>
+<dl class="method">
+<dt id="base.directory.MirrorOptions.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.directory.MirrorOptions.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-base.help">
+<span id="base-help-module"></span><h2>base.help module<a class="headerlink" href="#module-base.help" title="Permalink to this headline">¶</a></h2>
+<p>Jobs to assist in the use of the RVT2: list available jobs, show help about a job or module.</p>
+<dl class="class">
+<dt id="base.help.AvailableJobs">
+<em class="property">class </em><code class="sig-prename descclassname">base.help.</code><code class="sig-name descname">AvailableJobs</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.help.AvailableJobs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>A module to list all avaiable jobs in the rvt</p>
+<dl class="method">
+<dt id="base.help.AvailableJobs.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.help.AvailableJobs.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="base.help.Help">
+<em class="property">class </em><code class="sig-prename descclassname">base.help.</code><code class="sig-name descname">Help</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.help.Help" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>A module to show help about a job or module whose name is passed as the path of the module.</p>
+<dl class="simple">
+<dt>Configuration section:</dt><dd><ul class="simple">
+<li><p><strong>show_vars</strong>: List of variables in the section to show. If “ALL”, show all variables. If Empty, do not show context variables.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="base.help.Help.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#base.help.Help.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="base.help.Help.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.help.Help.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-base.input">
+<span id="base-input-module"></span><h2>base.input module<a class="headerlink" href="#module-base.input" title="Permalink to this headline">¶</a></h2>
+<p>Some simple file readers to be used as input for other modules.</p>
+<dl class="class">
+<dt id="base.input.AllLinesInFile">
+<em class="property">class </em><code class="sig-prename descclassname">base.input.</code><code class="sig-name descname">AllLinesInFile</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.input.AllLinesInFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Yields every line in a file as a string</p>
+<dl class="simple">
+<dt>Configuration:</dt><dd><ul class="simple">
+<li><p><strong>encoding</strong> (String): The encoding to use. Defaults to utf-8</p></li>
+<li><p><strong>progress.disable</strong> (Boolean): If True, disable the progress bar.</p></li>
+<li><p><strong>progress.cmd</strong> (String): The shell command to run to estimate the number of lines in the file.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="base.input.AllLinesInFile.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#base.input.AllLinesInFile.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="base.input.AllLinesInFile.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#base.input.AllLinesInFile.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read all lines from the path. from_module is ignored</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="base.input.CSVReader">
+<em class="property">class </em><code class="sig-prename descclassname">base.input.</code><code class="sig-name descname">CSVReader</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.input.CSVReader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Yields every line in a CSV file.</p>
+<dl class="simple">
+<dt>Configuration:</dt><dd><ul class="simple">
+<li><p><strong>encoding</strong> (String): The encoding to use. Defaults to “utf-8”</p></li>
+<li><p><strong>delimiter</strong> (String): The delimiter to use. Defaults to ;</p></li>
+<li><p><strong>quotechar</strong> (String): The quotechar. Defaults to “</p></li>
+<li><p><strong>restkey</strong> (String): The restkey of the DictReader. Defaults to “extra”.</p></li>
+<li><p><strong>restval</strong> (String): The restval of the DictReader. Defaults to the empty string.</p></li>
+<li><p><strong>content_type</strong>: The content_type to set, if fill_common_fields is set</p></li>
+<li><p><strong>fieldnames</strong>: A space separated list of header names. If None, use the first line.
+Warning: if provided, the first line will be considered data unless ignore_lines is set to &gt;0</p></li>
+<li><p><strong>ignore_lines</strong> (int): Ignore this numner of initial lines. If fieldnames is provided, the first line is also ignored.</p></li>
+<li><p><strong>progress.disable</strong> (Boolean): If True, disable the progress bar.</p></li>
+<li><p><strong>progress.cmd</strong> (String): The shell command to run to estimate the number of lines in the file.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="base.input.CSVReader.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#base.input.CSVReader.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="base.input.CSVReader.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#base.input.CSVReader.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read CSV file in the path. from_module is ignored</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="base.input.DummyReader">
+<em class="property">class </em><code class="sig-prename descclassname">base.input.</code><code class="sig-name descname">DummyReader</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.input.DummyReader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>A dummy reader that creates as many empty dictionaries as requested in _number_.</p>
+<p>Use for debugging.</p>
+<dl class="simple">
+<dt>Configuration:</dt><dd><ul class="simple">
+<li><p><strong>number</strong>: Yields this many of empty dictionaries</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="base.input.DummyReader.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#base.input.DummyReader.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="base.input.DummyReader.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#base.input.DummyReader.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>path and from_module are ignored</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="base.input.ForAllLinesInFile">
+<em class="property">class </em><code class="sig-prename descclassname">base.input.</code><code class="sig-name descname">ForAllLinesInFile</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.input.ForAllLinesInFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Pass to from_module each line in a file as the path.</p>
+<dl class="simple">
+<dt>Configuration:</dt><dd><ul class="simple">
+<li><p><strong>encoding</strong> (String): The encoding to use. Defaults to utf-8</p></li>
+<li><p><strong>progress.disable</strong> (Boolean): If True, disable the progress bar.</p></li>
+<li><p><strong>progress.cmd</strong> (String): The shell command to run to estimate the number of lines in the file.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="base.input.ForAllLinesInFile.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#base.input.ForAllLinesInFile.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="base.input.ForAllLinesInFile.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#base.input.ForAllLinesInFile.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read all lines from the path and pass them to from_module</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="base.input.GeneratorReader">
+<em class="property">class </em><code class="sig-prename descclassname">base.input.</code><code class="sig-name descname">GeneratorReader</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.input.GeneratorReader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Manages <cite>from_module</cite> as a generator, not a module, and yields it contents.</p>
+<p>You can use this module to inject an array into another module down in the chain.</p>
+<p class="rubric">Example</p>
+<p>Save a list in a CSV file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="nb">dict</span><span class="p">(</span><span class="n">greeting</span><span class="o">=</span><span class="s1">&#39;Hello&#39;</span><span class="p">,</span> <span class="n">language</span><span class="o">=</span><span class="s1">&#39;English&#39;</span><span class="p">),</span>
+    <span class="nb">dict</span><span class="p">(</span><span class="n">greeting</span><span class="o">=</span><span class="s1">&#39;Hola&#39;</span><span class="p">,</span> <span class="n">language</span><span class="o">=</span><span class="s1">&#39;Spanish&#39;</span><span class="p">)</span>
+<span class="p">]</span>
+<span class="n">base</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">CSVSink</span><span class="p">(</span>
+    <span class="n">config</span><span class="p">,</span>
+    <span class="n">from_module</span><span class="o">=</span><span class="n">GeneratorReader</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">from_module</span><span class="o">=</span><span class="n">data</span><span class="p">),</span>
+    <span class="n">local_config</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">outfile</span><span class="o">=</span><span class="s1">&#39;outfile.csv&#39;</span><span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="attribute">
+<dt id="base.input.GeneratorReader.from_module">
+<code class="sig-name descname">from_module</code><a class="headerlink" href="#base.input.GeneratorReader.from_module" title="Permalink to this definition">¶</a></dt>
+<dd><p>Any generator-like object such a list. Yields its contents.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="base.input.GeneratorReader.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.input.GeneratorReader.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Path is ignored.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="base.input.JSONReader">
+<em class="property">class </em><code class="sig-prename descclassname">base.input.</code><code class="sig-name descname">JSONReader</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.input.JSONReader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#base.input.AllLinesInFile" title="base.input.AllLinesInFile"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.input.AllLinesInFile</span></code></a></p>
+<p>Load every line in a file as a JSON dictionary and yields it.</p>
+<dl class="method">
+<dt id="base.input.JSONReader.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#base.input.JSONReader.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read JSON file in the path. from_module is ignored</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="base.input.SQLiteReader">
+<em class="property">class </em><code class="sig-prename descclassname">base.input.</code><code class="sig-name descname">SQLiteReader</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.input.SQLiteReader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Returns the cursor of a query on a sqlite database.</p>
+<p>Rows in the database are returned as dictionaries.</p>
+<dl class="simple">
+<dt>Configuration:</dt><dd><ul class="simple">
+<li><p><strong>query</strong>: The SQL query to run.</p></li>
+</ul>
+</dd>
+<dt>Current job section:</dt><dd><ul class="simple">
+<li><p><strong>query</strong>: If the query in the module section is empty, read the SQL query from the job section.</p></li>
+<li><p><strong>read_only</strong>: If True, open the database in read_only mode</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="base.input.SQLiteReader.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#base.input.SQLiteReader.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="base.input.SQLiteReader.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#base.input.SQLiteReader.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read database from the path. from_module is ignored</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-base.job">
+<span id="base-job-module"></span><h2>base.job module<a class="headerlink" href="#module-base.job" title="Permalink to this headline">¶</a></h2>
+<p>Jobs and modules.</p>
+<dl class="class">
+<dt id="base.job.BaseModule">
+<em class="property">class </em><code class="sig-prename descclassname">base.job.</code><code class="sig-name descname">BaseModule</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.job.BaseModule" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The base for all modules. Do not use this module directly, always extend it.</p>
+<dl class="simple">
+<dt>Configuration:</dt><dd><ul class="simple">
+<li><p><strong>stop_on_error</strong>: If True, stop the execution on an error.</p></li>
+<li><p><strong>logger_name</strong>: The name of the logger to use.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> (<a class="reference internal" href="#base.config.Config" title="base.config.Config"><em>base.config.Config</em></a>) – Global configuration for the application.</p></li>
+<li><p><strong>section</strong> (<em>str</em>) – the name of the configuration section for this module in the global configuration object.. If None, use the classname.</p></li>
+<li><p><strong>local_config</strong> (<em>dict</em>) – local configuration for this module. This configuration overrides the values in the section in the global configuration.</p></li>
+<li><p><strong>from_module</strong> (<a class="reference internal" href="#base.job.BaseModule" title="base.job.BaseModule"><em>base.job.BaseModule</em></a>) – If in a chain, the next module in the chain, or None.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="base.job.BaseModule.check_params">
+<code class="sig-name descname">check_params</code><span class="sig-paren">(</span><em class="sig-param">path</em>, <em class="sig-param">check_from_module=False</em>, <em class="sig-param">check_path=False</em>, <em class="sig-param">check_path_exists=False</em><span class="sig-paren">)</span><a class="headerlink" href="#base.job.BaseModule.check_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check the module is configured correctly.
+Extend this function to run your own tests.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em>) – The path passed to the run() method.</p></li>
+<li><p><strong>check_from_module</strong> (<em>boolean</em>) – If True, check a from_module is defined.</p></li>
+<li><p><strong>check_path</strong> (<em>boolean</em>) – If True, check the path is not None.</p></li>
+<li><p><strong>check_path_exists</strong> (<em>boolean</em>) – If True, check the path exists.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>RVTError if the tests are not passed.</strong> – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="base.job.BaseModule.logger">
+<code class="sig-name descname">logger</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#base.job.BaseModule.logger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the logger for this parser.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do not store the logger as an internal variable: the user may want to change the logger at any time.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="base.job.BaseModule.myconfig">
+<code class="sig-name descname">myconfig</code><span class="sig-paren">(</span><em class="sig-param">option</em>, <em class="sig-param">default=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.job.BaseModule.myconfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the value of a configuration for this module.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>option</strong> (<em>str</em>) – the name of the option</p></li>
+<li><p><strong>default</strong> – the dafault value of the option</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="base.job.BaseModule.myflag">
+<code class="sig-name descname">myflag</code><span class="sig-paren">(</span><em class="sig-param">option</em>, <em class="sig-param">default=False</em><span class="sig-paren">)</span><a class="headerlink" href="#base.job.BaseModule.myflag" title="Permalink to this definition">¶</a></dt>
+<dd><p>A convenience method for self.config.getboolean(self.section, option, False)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="base.job.BaseModule.options">
+<code class="sig-name descname">options</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#base.job.BaseModule.options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a dictionary with the available options to this job</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="base.job.BaseModule.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#base.job.BaseModule.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="base.job.BaseModule.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.job.BaseModule.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="base.job.BaseModule.set_default_config">
+<code class="sig-name descname">set_default_config</code><span class="sig-paren">(</span><em class="sig-param">option</em>, <em class="sig-param">default=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.job.BaseModule.set_default_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the value of a configuration for this module.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>option</strong> (<em>str</em>) – the name of the option</p></li>
+<li><p><strong>default</strong> (<em>str</em>) – the dafault value of the option. It MUST be a string.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="base.job.BaseModule.shutdown">
+<code class="sig-name descname">shutdown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#base.job.BaseModule.shutdown" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function will be called at the end of the execution of a job.</p>
+<p>The shutdown() function of the from_module is called recursively.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="base.job.CascadeWrapper">
+<em class="property">class </em><code class="sig-prename descclassname">base.job.</code><code class="sig-name descname">CascadeWrapper</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#base.job.CascadeWrapper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<dl class="method">
+<dt id="base.job.CascadeWrapper.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#base.job.CascadeWrapper.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="base.job.RVTCritical">
+<em class="property">exception </em><code class="sig-prename descclassname">base.job.</code><code class="sig-name descname">RVTCritical</code><a class="headerlink" href="#base.job.RVTCritical" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>A special class for Exceptions inside the RVT. The rvt2 cannot continue.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="base.job.RVTError">
+<em class="property">exception </em><code class="sig-prename descclassname">base.job.</code><code class="sig-name descname">RVTError</code><a class="headerlink" href="#base.job.RVTError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>A special class for Exceptions inside the RVT. The module or job cannot continue.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="base.job.get_path_array">
+<code class="sig-prename descclassname">base.job.</code><code class="sig-name descname">get_path_array</code><span class="sig-paren">(</span><em class="sig-param">job_name</em>, <em class="sig-param">myparams</em>, <em class="sig-param">extra_config</em>, <em class="sig-param">default_path</em>, <em class="sig-param">config</em><span class="sig-paren">)</span><a class="headerlink" href="#base.job.get_path_array" title="Permalink to this definition">¶</a></dt>
+<dd><p>get path array from 1. myparams (job_with params); 2. extra_config; 3. parameter 4. config</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="base.job.load_module">
+<code class="sig-prename descclassname">base.job.</code><code class="sig-name descname">load_module</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">confsection</em>, <em class="sig-param">from_module=None</em>, <em class="sig-param">extra_config=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.job.load_module" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads a module from a section name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> (<a class="reference internal" href="#base.config.Config" title="base.config.Config"><code class="xref py py-obj docutils literal notranslate"><span class="pre">base.config.Config</span></code></a>) – global configuration object to pass to the module.</p></li>
+<li><p><strong>confsection</strong> (<em>str</em>) – The section name, and optional local configuration.
+The section name is searched in the configuration. If the section is present and it has a “module” attribute,
+load the class “module”. If the section is not present or it doesn’t have a “module” attribute,
+try to load the section name as a class.
+Format: SECTIONAME{‘OPTION’: ‘VALUE’, ‘OPTION2’: ‘VALUE2’}.</p></li>
+<li><p><strong>from_module</strong> (<a class="reference internal" href="#base.job.BaseModule" title="base.job.BaseModule"><em>base.job.BaseModule</em></a>) – pass this value as the from_module configuration. Default: None</p></li>
+<li><p><strong>extra_config</strong> (<em>dict</em>) – extra local configuration for the module. Default: None.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="base.job.parse_modules_chain">
+<code class="sig-prename descclassname">base.job.</code><code class="sig-name descname">parse_modules_chain</code><span class="sig-paren">(</span><em class="sig-param">job_name</em>, <em class="sig-param">myparams</em>, <em class="sig-param">config</em><span class="sig-paren">)</span><a class="headerlink" href="#base.job.parse_modules_chain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse a list of modules or jobs from a conf_name, taking into account local configuration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>job_name</strong> (<em>str</em>) – The name of the job. The modules of jobs will be loaded first from “jobs” and, if not found, from “modules”.
+The default parameters will be loaded from “default_params”.
+The chain string will be managed as a string template, where the “default_params” is applied.
+If the job does not have “jobs” or “modules” configuration, just return the name of the job. The system will
+assume this name id a class name.</p></li>
+<li><p><strong>myparams</strong> (<em>dict</em>) – The local parameters, as returned by parse_modules_name()</p></li>
+<li><p><strong>config</strong> (<a class="reference internal" href="#base.config.Config" title="base.config.Config"><em>base.config.Config</em></a>) – The configuration object for the application.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of modules to load.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="base.job.parse_modules_name">
+<code class="sig-prename descclassname">base.job.</code><code class="sig-name descname">parse_modules_name</code><span class="sig-paren">(</span><em class="sig-param">input_name</em>, <em class="sig-param">default='True'</em><span class="sig-paren">)</span><a class="headerlink" href="#base.job.parse_modules_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse a module or job name searching for local configurations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_name</strong> (<em>str</em>) – The name of a module or job with an optional configuration.
+The optional configuration is appended next to the job name, as pair name=value, or only name.
+See examples below.</p></li>
+<li><p><strong>default</strong> (<em>str</em>) – The default value of a param, when only the name is given.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A set. The first member if the name of the module or job. The second is the local configuration, if any.</p>
+</dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parse_modules_name</span><span class="p">(</span><span class="s1">&#39;funcname&#39;</span><span class="p">)</span>
+<span class="go">(&#39;funcname&#39;, OrderedDict())</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parse_modules_name</span><span class="p">(</span><span class="s1">&#39;funcname &#39;</span><span class="p">)</span>
+<span class="go">(&#39;funcname&#39;, OrderedDict())</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parse_modules_name</span><span class="p">(</span><span class="s1">&#39;funcname greetings=&quot;good morning&quot; name=&quot;Jim&quot; morning&#39;</span><span class="p">)</span>
+<span class="go">(&#39;funcname&#39;, OrderedDict([(&#39;greetings&#39;, &#39;good morning&#39;), (&#39;name&#39;, &#39;Jim&#39;), (&#39;morning&#39;, &#39;True&#39;)]))</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="base.job.run_job">
+<code class="sig-prename descclassname">base.job.</code><code class="sig-name descname">run_job</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">job_name_with_params</em>, <em class="sig-param">path=None</em>, <em class="sig-param">extra_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.job.run_job" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs a job from the configuration. This jobs has ‘jobs’, ‘modules’ or ‘cascade’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> (<a class="reference internal" href="#base.config.Config" title="base.config.Config"><em>base.config.Config</em></a>) – The configuration object</p></li>
+<li><p><strong>job_name_with_params</strong> (<em>str</em>) – The name of the job to run. It must be a section in the configuration.
+This string will be parsed using parse_modules_params() and it may include additional parameters.</p></li>
+<li><p><strong>path</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – Run the job on this paths.</p></li>
+<li><p><strong>extra_config</strong> (<em>dict</em>) – extra local configuration for all the modules in the job. Default: None</p></li>
+<li><p><strong>from_module</strong> (<a class="reference internal" href="#base.job.BaseModule" title="base.job.BaseModule"><em>base.job.BaseModule</em></a>) – use this as the from_module of the last module (only in single jobs)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>If the job is sinble (it has ‘modules’ or ‘cascade’), a generator with the result of the execution.
+If the job is composite (it has ‘jobs’), return an empty list since the result of each job is probably not related to each other.
+You MUST read each item from the returned generator.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="base.job.run_single_job">
+<code class="sig-prename descclassname">base.job.</code><code class="sig-name descname">run_single_job</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">job_name_with_params</em>, <em class="sig-param">default_path=None</em>, <em class="sig-param">extra_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.job.run_single_job" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs a job from the configuration. This job has only ‘modules’, it does not include ‘jobs’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> (<a class="reference internal" href="#base.config.Config" title="base.config.Config"><em>base.config.Config</em></a>) – The configuration object</p></li>
+<li><p><strong>job_name_with_params</strong> (<em>str</em>) – The name of the job to run. It must be a section in the configuration.
+This string will be parsed using parse_modules_params() and it may include additional parameters.</p></li>
+<li><p><strong>default_path</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – Run the job on this paths. The order to read paths for a job is:
+1. job_with_params (single path); 2. extra_config; 3. this paramter 4. config</p></li>
+<li><p><strong>extra_config</strong> (<em>dict</em>) – extra local configuration for all the modules in the job. Default: None</p></li>
+<li><p><strong>from_module</strong> (<a class="reference internal" href="#base.job.BaseModule" title="base.job.BaseModule"><em>base.job.BaseModule</em></a>) – use this as the from_module of the last module in the chain.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A generator that yields each of the results of the execution.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-base.mutations">
+<span id="base-mutations-module"></span><h2>base.mutations module<a class="headerlink" href="#module-base.mutations" title="Permalink to this headline">¶</a></h2>
+<p>Modules to mutate data yielded by other modules: converte using specific convertes, remove fields, set fields to default values…</p>
+<dl class="class">
+<dt id="base.mutations.AddFields">
+<em class="property">class </em><code class="sig-prename descclassname">base.mutations.</code><code class="sig-name descname">AddFields</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.mutations.AddFields" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Get data from from_module, add some new fields loaded from configuration and yield again.</p>
+<dl class="simple">
+<dt>Module description:</dt><dd><ul class="simple">
+<li><p><strong>path</strong>: not used, passed to <em>from_module</em>.</p></li>
+<li><p><strong>from_module</strong>: Data is updated.</p></li>
+<li><p><strong>yields</strong>: The updated data.</p></li>
+</ul>
+</dd>
+<dt>Configuration:</dt><dd><ul class="simple">
+<li><p><strong>section</strong>: Section from configuration where new values are to be retrieved</p></li>
+<li><p><strong>fields</strong>: A dictionary of fields to be set. <cite>fields</cite> will be managed as a string template, passing the options from the configuration section as parameter.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="base.mutations.AddFields.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#base.mutations.AddFields.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="base.mutations.AddFields.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.mutations.AddFields.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="base.mutations.Collapse">
+<em class="property">class </em><code class="sig-prename descclassname">base.mutations.</code><code class="sig-name descname">Collapse</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.mutations.Collapse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Collapse different documents sent by from_module with a common field into just one document.</p>
+<p>Warning: the collapse may take many time and memory</p>
+<dl class="simple">
+<dt>Configuration section:</dt><dd><ul class="simple">
+<li><p><strong>field</strong>: collapse documents using this field name as the common field.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="base.mutations.Collapse.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#base.mutations.Collapse.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="base.mutations.Collapse.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.mutations.Collapse.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="base.mutations.CommonFields">
+<em class="property">class </em><code class="sig-prename descclassname">base.mutations.</code><code class="sig-name descname">CommonFields</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.mutations.CommonFields" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Adds common fields for a document: <em>path</em>, <em>filename</em>, <em>dirname</em>, <em>extension</em>, <em>content_type</em> and <em>_id</em> if they don’t exist yet.</p>
+<dl class="simple">
+<dt>Module description:</dt><dd><ul class="simple">
+<li><p><strong>path</strong>: not used, passed to <em>from_module</em>.</p></li>
+<li><p><strong>from_module</strong>: mandatory. Copy the information sent by from_module and add fields if they don’t exist yet.</p></li>
+<li><p><strong>yields</strong>: the modified data.</p></li>
+</ul>
+</dd>
+<dt>Configuration:</dt><dd><ul class="simple">
+<li><p><strong>calculate_id</strong>: if True, calls base.utils.generate_id to generate an identifier in the <em>_id</em> field.</p></li>
+<li><p><strong>disabled</strong>: if True, do not add anything and just yield the result. Useful in configurable module chains</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="base.mutations.CommonFields.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#base.mutations.CommonFields.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="base.mutations.CommonFields.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.mutations.CommonFields.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="base.mutations.DateFields">
+<em class="property">class </em><code class="sig-prename descclassname">base.mutations.</code><code class="sig-name descname">DateFields</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.mutations.DateFields" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Converts some fields into ISO date strings.</p>
+<p>Fields might be:</p>
+<ul class="simple">
+<li><p>An integer, or a string representing an integer: it is a UNIX timestamp.</p></li>
+<li><p>A string: the module will use the <em>datetutil</em> package to parse it</p></li>
+</ul>
+<p>If the field cannot be converted and stop_on_error is not set, the field is popped out from the data.</p>
+<dl class="simple">
+<dt>Module description:</dt><dd><ul class="simple">
+<li><p><strong>path</strong>: not used, passed to <em>from_module</em>.</p></li>
+<li><p><strong>from_module</strong>: mandatory. Get data and udpate fields.</p></li>
+<li><p><strong>yields</strong>: The modified data.</p></li>
+</ul>
+</dd>
+<dt>Configuration:</dt><dd><ul class="simple">
+<li><p><strong>fields</strong>: A space separated list of fields to check to convert</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="base.mutations.DateFields.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#base.mutations.DateFields.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="base.mutations.DateFields.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.mutations.DateFields.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>The path will be passed to the mandatory from_module</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="base.mutations.ForEach">
+<em class="property">class </em><code class="sig-prename descclassname">base.mutations.</code><code class="sig-name descname">ForEach</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.mutations.ForEach" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Runs a job for each data yielded by from_module. The data is passed as params of the job.</p>
+<dl class="simple">
+<dt>Module description:</dt><dd><ul class="simple">
+<li><p><strong>path</strong>: not used, passed to <em>from_module</em>.</p></li>
+<li><p><strong>from_module</strong>: mandatory. The data is passed to <code class="docutils literal notranslate"><span class="pre">run_job</span></code> as its extra_config parameter.</p></li>
+<li><p><strong>yields</strong>: None</p></li>
+</ul>
+</dd>
+<dt>Configuration:</dt><dd><ul class="simple">
+<li><p><strong>run_job</strong>: The name of he job to run</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="base.mutations.ForEach.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#base.mutations.ForEach.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="base.mutations.ForEach.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.mutations.ForEach.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="base.mutations.GetFields">
+<em class="property">class </em><code class="sig-prename descclassname">base.mutations.</code><code class="sig-name descname">GetFields</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.mutations.GetFields" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Get data from from_module, yield fields specified.</p>
+<dl class="simple">
+<dt>Module description:</dt><dd><ul class="simple">
+<li><p><strong>path</strong>: not used, passed to <em>from_module</em>.</p></li>
+<li><p><strong>from_module</strong>: Data dict.</p></li>
+<li><p><strong>yields</strong>: The updated dict data.</p></li>
+</ul>
+</dd>
+<dt>Configuration:</dt><dd><ul class="simple">
+<li><p><strong>section</strong>: Section from configuration where new values are to be retrieved</p></li>
+<li><p><strong>fields</strong>: A list of fields to be yielded.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="base.mutations.GetFields.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#base.mutations.GetFields.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="base.mutations.GetFields.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.mutations.GetFields.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="base.mutations.RemoveFields">
+<em class="property">class </em><code class="sig-prename descclassname">base.mutations.</code><code class="sig-name descname">RemoveFields</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.mutations.RemoveFields" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Drops some fields from data.</p>
+<dl class="simple">
+<dt>Module description:</dt><dd><ul class="simple">
+<li><p><strong>path</strong>: not used, passed to <em>from_module</em>.</p></li>
+<li><p><strong>from_module</strong>: mandatory. Get data and remove fields.</p></li>
+<li><p><strong>yields</strong>: The modified data.</p></li>
+</ul>
+</dd>
+<dt>Configuration:</dt><dd><ul class="simple">
+<li><p><strong>fields</strong>: A space separated list of fields to drop</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="base.mutations.RemoveFields.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#base.mutations.RemoveFields.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="base.mutations.RemoveFields.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.mutations.RemoveFields.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="base.mutations.SetFields">
+<em class="property">class </em><code class="sig-prename descclassname">base.mutations.</code><code class="sig-name descname">SetFields</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.mutations.SetFields" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Get data from from_module, set or update some if its fields and yield again.</p>
+<dl class="simple">
+<dt>Module description:</dt><dd><ul class="simple">
+<li><p><strong>path</strong>: not used, passed to <em>from_module</em>.</p></li>
+<li><p><strong>from_module</strong>: mandatory. Data is updated.</p></li>
+<li><p><strong>yields</strong>: The updated data.</p></li>
+</ul>
+</dd>
+<dt>Configuration:</dt><dd><ul class="simple">
+<li><p><strong>presets</strong>: A dictionary of fields to be set, unless already set by data yielded by from_module.</p></li>
+<li><p><strong>fields</strong>: A dictionary of fields to be set. <cite>fields</cite> will be managed as a string template, passing the data yielded by from_module as parameter.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="base.mutations.SetFields.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#base.mutations.SetFields.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="base.mutations.SetFields.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.mutations.SetFields.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-base.output">
+<span id="base-output-module"></span><h2>base.output module<a class="headerlink" href="#module-base.output" title="Permalink to this headline">¶</a></h2>
+<p>Print the results from other modules to the console or a file.</p>
+<dl class="class">
+<dt id="base.output.BaseSink">
+<em class="property">class </em><code class="sig-prename descclassname">base.output.</code><code class="sig-name descname">BaseSink</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.output.BaseSink" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>An abstract module that prints the results from other modules to a file or standard output.</p>
+<p>Do not use this module directly, but one of its extensions.</p>
+<p>The <cite>from_module</cite> of a <cite>BaseSink</cite> object can be a <cite>base.job.BaseModule</cite> or an array.
+This way, you can use sinks like this, to use common configuration.</p>
+<p class="rubric">Example</p>
+<p>Save a list into a CSV file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">load_module</span><span class="p">(</span>
+    <span class="n">base</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">Config</span><span class="p">(),</span> <span class="s1">&#39;base.output.CSVSink&#39;</span><span class="p">,</span>
+    <span class="n">extra_config</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">outfile</span><span class="o">=</span><span class="s1">&#39;outfile.csv&#39;</span><span class="p">)</span>
+    <span class="n">from_module</span><span class="o">=</span><span class="p">[</span>
+        <span class="nb">dict</span><span class="p">(</span><span class="n">greeting</span><span class="o">=</span><span class="s1">&#39;Hello&#39;</span><span class="p">,</span> <span class="n">language</span><span class="o">=</span><span class="s1">&#39;English&#39;</span><span class="p">),</span>
+        <span class="nb">dict</span><span class="p">(</span><span class="n">greeting</span><span class="o">=</span><span class="s1">&#39;Hola&#39;</span><span class="p">,</span> <span class="n">language</span><span class="o">=</span><span class="s1">&#39;Spanish&#39;</span><span class="p">)</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">run</span><span class="p">())</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt>Configuration:</dt><dd><ul class="simple">
+<li><p><strong>outfile</strong> (str): If provided, saved to this file (absolute path) instead of standard output. CONSOLE is a special name: prints to standard output.</p></li>
+<li><p><strong>file_exists</strong> (str): If outfile exists, APPEND (this is the default behaviour), OVERWRITE or throw an ERROR.</p></li>
+</ul>
+</dd>
+<dt>Current job section:</dt><dd><ul class="simple">
+<li><p><strong>outfile</strong> (str): <code class="docutils literal notranslate"><span class="pre">outfile</span></code> can be defined in the job section if the outfile in the section is empty</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="base.output.BaseSink.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#base.output.BaseSink.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="base.output.BaseSink.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.output.BaseSink.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="base.output.CSVSink">
+<em class="property">class </em><code class="sig-prename descclassname">base.output.</code><code class="sig-name descname">CSVSink</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.output.CSVSink" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#base.output.BaseSink" title="base.output.BaseSink"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.output.BaseSink</span></code></a></p>
+<p>A module that prints the results from other modules to a file or the standard output as a CSV.</p>
+<dl class="simple">
+<dt>Configuration::</dt><dd><ul class="simple">
+<li><p><strong>outfile</strong> (str): If provided, saved to this file (absolute path) instead of standard output. CONSOLE is a special name to force printing to the standard output</p></li>
+<li><p><strong>file_exists</strong> (str): If outfile exists, APPEND (this is the default behaviour), OVERWRITE or throw an ERROR.</p></li>
+<li><p><strong>delimiter</strong> (String): The delimiter parameter of the csv.DictWriter. “TAB” means tabulator.</p></li>
+<li><p><strong>quotechar</strong> (String): The quotechar of the csv.DictWriter. Defaults to “</p></li>
+<li><p><strong>extrasaction</strong> (String): The extrasaction parameter of the csv.DictWriter. Defaults to “raise”.</p></li>
+<li><p><strong>restval</strong> (String): The restval parameter of the csv.DictWriter. Defaults to the empty string.</p></li>
+<li><p><strong>write_header</strong> (boolean): If True (default), writes the header of the CSV file.</p></li>
+<li><p><strong>quoting</strong> (int): The quoting parameter of the csv.DictWriter.</p></li>
+<li><p><strong>fieldnames</strong>: If present, use these fieldsnames instead of the fields in the dictionary. You can use this option to order the fields</p></li>
+<li><p><strong>field_size_limit</strong>: maximum field size allowed by the parser. Default “sys.maxsize”. Lower the value to skip writing large inputs.</p></li>
+</ul>
+</dd>
+<dt>Current job section:</dt><dd><ul class="simple">
+<li><p><strong>outfile</strong> (str): <em>outfile</em> can be defined in the job section if the outfile in the section is empty</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="base.output.CSVSink.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#base.output.CSVSink.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="base.output.CSVSink.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.output.CSVSink.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="base.output.JSONSink">
+<em class="property">class </em><code class="sig-prename descclassname">base.output.</code><code class="sig-name descname">JSONSink</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.output.JSONSink" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#base.output.BaseSink" title="base.output.BaseSink"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.output.BaseSink</span></code></a></p>
+<p>A module that prints the results from other modules to a file or standard output as a JSON object.</p>
+<dl class="simple">
+<dt>Configuration:</dt><dd><ul class="simple">
+<li><p><strong>outfile</strong> (str): If provided, saved to this file (absolute path) instead of standard output. CONSOLE is a special name: prints to standard output.</p></li>
+<li><p><strong>file_exists</strong> (str): If outfile exists, APPEND (this is the default behaviour), OVERWRITE or throw an ERROR.</p></li>
+<li><p><strong>indent</strong> (str): Indentation value for the output. Default=None</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="base.output.JSONSink.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#base.output.JSONSink.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="base.output.JSONSink.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.output.JSONSink.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="base.output.MirrorPath">
+<em class="property">class </em><code class="sig-prename descclassname">base.output.</code><code class="sig-name descname">MirrorPath</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.output.MirrorPath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>A basic module that yields the path.</p>
+<dl class="method">
+<dt id="base.output.MirrorPath.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#base.output.MirrorPath.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-base.templates">
+<span id="base-templates-module"></span><h2>base.templates module<a class="headerlink" href="#module-base.templates" title="Permalink to this headline">¶</a></h2>
+<p>Modules to manage mako templates.</p>
+<dl class="class">
+<dt id="base.templates.TemplateSink">
+<em class="property">class </em><code class="sig-prename descclassname">base.templates.</code><code class="sig-name descname">TemplateSink</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.templates.TemplateSink" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#base.output.BaseSink" title="base.output.BaseSink"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.output.BaseSink</span></code></a></p>
+<p>A _base.output.BaseSink_ that saves into a file or standard output, using a mako template.</p>
+<dl class="simple">
+<dt>Configuration:</dt><dd><ul class="simple">
+<li><p><strong>template_dirs</strong>: A space separated list of directories to load templates from. Default: current path, rvt2 path</p></li>
+<li><p><strong>input_encoding</strong>: The encoding of the templates. Default: <em>utf-8</em></p></li>
+<li><p><strong>template_file</strong>: A file with the template. Relative to ‘template_dirs’</p></li>
+<li><p><strong>template</strong>: The template as a string. This option is ignored if a template_file is provided.</p></li>
+<li><p><strong>skip_on_empty_data</strong>: If from_module doesn’t return anything and this is True, do not output anything</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="base.templates.TemplateSink.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#base.templates.TemplateSink.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="base.templates.TemplateSink.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.templates.TemplateSink.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-base.threads">
+<span id="base-threads-module"></span><h2>base.threads module<a class="headerlink" href="#module-base.threads" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="base.threads.Fork">
+<em class="property">class </em><code class="sig-prename descclassname">base.threads.</code><code class="sig-name descname">Fork</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.threads.Fork" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>A module to send the data received from from_module up in the chain and to a job in a different thread.</p>
+<dl class="simple">
+<dt>Configuration:</dt><dd><ul class="simple">
+<li><p><strong>secondary_job</strong>: The name of the job to run in the secondary thread. This job cannot be composite (only ‘modules’ allowed)
+and it will receive the data in the last module of the chain.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="base.threads.Fork.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#base.threads.Fork.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="base.threads.Fork.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#base.threads.Fork.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="base.threads.Fork.shutdown">
+<code class="sig-name descname">shutdown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#base.threads.Fork.shutdown" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function will be called at the end of the execution of a job.</p>
+<p>The shutdown() function of the from_module is called recursively.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="base.threads.run_job">
+<code class="sig-prename descclassname">base.threads.</code><code class="sig-name descname">run_job</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">daemon=False</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#base.threads.run_job" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs a job from the configuration in a different thread.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The new thread</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="base.threads.worker">
+<code class="sig-prename descclassname">base.threads.</code><code class="sig-name descname">worker</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#base.threads.worker" title="Permalink to this definition">¶</a></dt>
+<dd><p>The worker that actually runs a job in a thread.</p>
+<p>This worker only consumes the generator returned by the job. It does nothing else</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-base.utils">
+<span id="base-utils-module"></span><h2>base.utils module<a class="headerlink" href="#module-base.utils" title="Permalink to this headline">¶</a></h2>
+<p>Utility functions to the rest of the system.</p>
+<dl class="function">
+<dt id="base.utils.check_directory">
+<code class="sig-prename descclassname">base.utils.</code><code class="sig-name descname">check_directory</code><span class="sig-paren">(</span><em class="sig-param">path</em>, <em class="sig-param">create=False</em>, <em class="sig-param">delete_exists=False</em>, <em class="sig-param">error_exists=False</em>, <em class="sig-param">error_missing=False</em><span class="sig-paren">)</span><a class="headerlink" href="#base.utils.check_directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if a directory exists.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>error_exists</strong> (<em>Boolean</em>) – If True and the directory exits, raise a RVTError</p></li>
+<li><p><strong>error_missing</strong> (<em>Boolean</em>) – If True and the file does not exist, raise a RVTError</p></li>
+<li><p><strong>create</strong> (<em>Boolean</em>) – If True and the directory does not exist, create it</p></li>
+<li><p><strong>delete_exists</strong> (<em>Boolean</em>) – If True, delete the directory and create a new one.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if the directory exists at the end of this function.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="base.utils.check_file">
+<code class="sig-prename descclassname">base.utils.</code><code class="sig-name descname">check_file</code><span class="sig-paren">(</span><em class="sig-param">path</em>, <em class="sig-param">error_missing=False</em>, <em class="sig-param">error_exists=False</em>, <em class="sig-param">delete_exists=False</em>, <em class="sig-param">create_parent=False</em><span class="sig-paren">)</span><a class="headerlink" href="#base.utils.check_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if a file exists, and optionally removes it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>error_exists</strong> (<em>Boolean</em>) – If True and the file exists, raise a RVTError</p></li>
+<li><p><strong>error_missing</strong> (<em>Boolean</em>) – If True and the file does not exist, raise a RVTError</p></li>
+<li><p><strong>delete_exists</strong> (<em>Boolean</em>) – If True, delete the file if exists</p></li>
+<li><p><strong>create_parent</strong> (<em>Boolean</em>) – If True, create the parent directory</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>RVTError if the path is not a file</strong><strong>, or </strong><strong>the file does not exist and error_exists is set to True</strong> – </p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True if the file exists at the end of this function.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="base.utils.check_folder">
+<code class="sig-prename descclassname">base.utils.</code><code class="sig-name descname">check_folder</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#base.utils.check_folder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check is a path is a folder and create if not exists.</p>
+<p>Equivalent to <code class="docutils literal notranslate"><span class="pre">check_directory(path,</span> <span class="pre">create=True)</span></code></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="base.utils.generate_id">
+<code class="sig-prename descclassname">base.utils.</code><code class="sig-name descname">generate_id</code><span class="sig-paren">(</span><em class="sig-param">data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#base.utils.generate_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a unique ID for a piece of data. If data is None, returns a random indentifier.</p>
+<p>The identifier is created using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid5</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">NAMESPACE_URL</span><span class="p">,</span> <span class="s1">&#39;file:///</span><span class="si">{}</span><span class="s1">/</span><span class="si">{}</span><span class="s1">?</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dirname</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">embedded_path</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>If the data already provides and identifier in an field <code class="docutils literal notranslate"><span class="pre">_id</span></code>, pop this field from data and return it.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="base.utils.relative_path">
+<code class="sig-prename descclassname">base.utils.</code><code class="sig-name descname">relative_path</code><span class="sig-paren">(</span><em class="sig-param">path</em>, <em class="sig-param">start</em><span class="sig-paren">)</span><a class="headerlink" href="#base.utils.relative_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform a path to be relative to a start path.</p>
+<div class="admonition-todo admonition" id="id3">
+<p class="admonition-title">Todo</p>
+<p>We don’t want to go outside the starting path. Check that.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>path relative to start path.</p>
+</dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">relative_path</span><span class="p">(</span><span class="s1">&#39;/morgue/112234-casename/01/23&#39;</span><span class="p">,</span> <span class="s1">&#39;/morgue/112234-casename&#39;</span><span class="p">)</span>
+<span class="go">&#39;01/23&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">relative_path</span><span class="p">(</span><span class="s1">&#39;/another/112234-casename/01/23&#39;</span><span class="p">,</span> <span class="s1">&#39;/morgue/112234-casename&#39;</span><span class="p">)</span>
+<span class="go">&#39;../../another/112234-casename/01/23&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">relative_path</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;/morgue/11223344-casename&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="base.utils.save_csv">
+<code class="sig-prename descclassname">base.utils.</code><code class="sig-name descname">save_csv</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">config=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#base.utils.save_csv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save data in a CSV file. This is a convenient function to run a <code class="docutils literal notranslate"><span class="pre">base.output.CSVSink</span></code> module from inside another module.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – The data to be saved. It can be a generator (such as list or tuple) or a <cite>base.job.BaseModule</cite>. In the last case, the module is run and saved.</p></li>
+<li><p><strong>config</strong> (<a class="reference internal" href="#base.config.Config" title="base.config.Config"><em>base.config.Config</em></a>) – The global configuration object, or None to use default configuration.</p></li>
+<li><p><strong>kwargs</strong> (<em>dict</em>) – The extra configuration for the <cite>base.output.CSVSink</cite> module. You’d want to set, at least, <cite>outfile</cite>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="base.utils.save_json">
+<code class="sig-prename descclassname">base.utils.</code><code class="sig-name descname">save_json</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">config=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#base.utils.save_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save data in a JSON file. This is a convenient function to run a <code class="docutils literal notranslate"><span class="pre">base.output.JSONSink</span></code> module from inside another module.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – The data to be saved. It can be a generator (such as list or tuple) or a <cite>base.job.BaseModule</cite>. In the last case, the module is run and saved.</p></li>
+<li><p><strong>config</strong> (<a class="reference internal" href="#base.config.Config" title="base.config.Config"><em>base.config.Config</em></a>) – The global configuration object, or None to use default configuration.</p></li>
+<li><p><strong>kwargs</strong> (<em>dict</em>) – The extra configuration for the <cite>base.output.JSONSink</cite> module. You’d want to set, at least, <cite>outfile</cite>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="plugins.html" class="btn btn-neutral float-right" title="plugins package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to rvt2’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, INCIDE Digital Data S.L.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

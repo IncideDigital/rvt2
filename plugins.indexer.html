@@ -1,0 +1,1526 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>plugins.indexer package &mdash; RVT2 2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="static/documentation_options.js"></script>
+        <script src="static/jquery.js"></script>
+        <script src="static/underscore.js"></script>
+        <script src="static/doctools.js"></script>
+        <script src="static/language_data.js"></script>
+    
+    <script type="text/javascript" src="static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="plugins.ios package" href="plugins.ios.html" />
+    <link rel="prev" title="plugins.external.ccl_asldb package" href="plugins.external.ccl_asldb.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> RVT2
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="base.html">base package</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="plugins.html">plugins package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="plugins.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="plugins.ai.html">plugins.ai package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.android.html">plugins.android package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.common.html">plugins.common package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.external.html">plugins.external package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">plugins.indexer package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-plugins.indexer.blindsearches">plugins.indexer.blindsearches module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-plugins.indexer.elastic">plugins.indexer.elastic module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-plugins.indexer.events">plugins.indexer.events module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-plugins.indexer.export_pst">plugins.indexer.export_pst module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-plugins.indexer.pstparser">plugins.indexer.pstparser module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-plugins.indexer.tikaparser">plugins.indexer.tikaparser module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.ios.html">plugins.ios package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.macos.html">plugins.macos package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.windows.html">plugins.windows package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rvt2.html">rvt2 module</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RVT2</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="plugins.html">plugins package</a> &raquo;</li>
+        
+      <li>plugins.indexer package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/plugins.indexer.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-plugins.indexer">
+<span id="plugins-indexer-package"></span><h1>plugins.indexer package<a class="headerlink" href="#module-plugins.indexer" title="Permalink to this headline">¶</a></h1>
+<p>An RVT2 plugin to:</p>
+<ul class="simple">
+<li><p>parse documents and directories using Apache Tika and saving the data as json.</p></li>
+<li><p>parse the output from other modules and save the data as json.</p></li>
+<li><p>index these JSON into an ElasticSearch server.</p></li>
+<li><p>query, tag and export the data in an ElasticSearach server.</p></li>
+</ul>
+<p>In order to use these modules, you’ll need a Tika server and/or an ElasticSearch server running  in the network.</p>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-plugins.indexer.blindsearches">
+<span id="plugins-indexer-blindsearches-module"></span><h2>plugins.indexer.blindsearches module<a class="headerlink" href="#module-plugins.indexer.blindsearches" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="plugins.indexer.blindsearches.BlindSearches">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.indexer.blindsearches.</code><code class="sig-name descname">BlindSearches</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.blindsearches.BlindSearches" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>A module to annotate documents that match a blind search.</p>
+<dl class="simple">
+<dt>Configuration:</dt><dd><ul class="simple">
+<li><p><strong>keyword_tag_field</strong>: Identification of the field to use for annotations.
+Remember <code class="docutils literal notranslate"><span class="pre">ElasticSearchBulkSender</span></code> allows appending to annotation lists by using a field ending in “-new”</p></li>
+<li><p><strong>strip_match</strong>: If true, return only the identifier of the document and the annotation, if any.
+If false, returns the whole document.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="plugins.indexer.blindsearches.BlindSearches.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.blindsearches.BlindSearches.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.indexer.blindsearches.BlindSearches.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.blindsearches.BlindSearches.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>The path to a JSON file, output of a previous ElasticSearchAdapter.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-plugins.indexer.elastic">
+<span id="plugins-indexer-elastic-module"></span><h2>plugins.indexer.elastic module<a class="headerlink" href="#module-plugins.indexer.elastic" title="Permalink to this headline">¶</a></h2>
+<p>Modules to index documents parsed by other modules into ElasticSearch.</p>
+<dl class="class">
+<dt id="plugins.indexer.elastic.ElasticSearchAdapter">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.indexer.elastic.</code><code class="sig-name descname">ElasticSearchAdapter</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.elastic.ElasticSearchAdapter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>A module to adapt the results from other modules to a format suitable to be indexed in bulk into ElasticSearch.</p>
+<p>This module also registers its own execution and results in the index defined in configuration <cite>rvtindex</cite>.</p>
+<dl class="simple">
+<dt>Configuration:</dt><dd><ul class="simple">
+<li><p><strong>name</strong>: the name of the index in ElasticSearch. The name will be converted to lowcase, since ES only accept lowcase names.</p></li>
+<li><p><strong>doc_type</strong>: the doc_type in ElasticSearch.
+Do not change the default value <code class="docutils literal notranslate"><span class="pre">&quot;_doc&quot;</span></code>, it will be deprecated in ES&gt;6.</p></li>
+<li><p><strong>rvtindex</strong>: The name of the index where the run of this module will be registered. The name MUST be in lowcase.
+If empty or None, the job is not registered.</p></li>
+<li><p><strong>operation</strong>: The operation for elastic search. Possible values are “index” (default) overwrites data, or
+“update” updates existing data with new information. An update does always an upsert.</p></li>
+<li><p><strong>casename</strong>: The name of the case</p></li>
+<li><p><strong>server</strong>: The URL of the file server to access directly to the files.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="plugins.indexer.elastic.ElasticSearchAdapter.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.elastic.ElasticSearchAdapter.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.indexer.elastic.ElasticSearchAdapter.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.elastic.ElasticSearchAdapter.run" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>An iterator with the adapted JSON.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.indexer.elastic.ElasticSearchBulkSender">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.indexer.elastic.</code><code class="sig-name descname">ElasticSearchBulkSender</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.elastic.ElasticSearchBulkSender" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>A module to index the results from the <code class="docutils literal notranslate"><span class="pre">ElasticSearchAdapter</span></code> into an ElasticSearch server.</p>
+<dl class="simple">
+<dt>Configuration:</dt><dd><ul class="simple">
+<li><p><strong>es_hosts</strong>: a space separated list of hosts of ElasticSearch. Example: <code class="docutils literal notranslate"><span class="pre">http://localhost:9200</span></code>. The port is mandatory.</p></li>
+<li><dl class="simple">
+<dt><strong>name</strong>: the name of the index in ElasticSearch. If the index does not exist, create it using <cite>mapping</cite>.</dt><dd><p>The name will be converted to lower case, since ES only accept lower case names.</p>
+</dd>
+</dl>
+</li>
+<li><p><strong>mapping</strong>: If the index <cite>name</cite> must be created, use this file for initial settings and mappings.</p></li>
+<li><p><strong>chunk_size</strong>: The number of documents to send to elastic in each batch.</p></li>
+<li><p><strong>tag_fields</strong>: A space separated list of names of the fields that include tags.
+A new tag is appended using the special field “tag_field-new”. For example, you
+can append to the field “tags” a tag in “tags-new”.</p></li>
+<li><p><strong>only_test</strong>: If True, do not submit the final queries to ElasticSearch but yield them.</p></li>
+<li><p><strong>offset</strong>: ignore this number of lines at the beginning of the file.</p></li>
+<li><p><strong>restartable</strong>: if True, save the current status in the store to allow restarting the job.</p></li>
+<li><p><strong>max_retries</strong>: max number of retries after a HTTP 429 from the server (too many requests)</p></li>
+<li><p><strong>retry_on_timeout</strong>: If True, retry on TimeOut (the server is busy)</p></li>
+<li><p><strong>progress.disable</strong> (Boolean): If True, disable the progress bar.</p></li>
+<li><p><strong>progress.cmd</strong>: Run this command to know the number of actions to send.</p></li>
+<li><p><strong>cooloff.every</strong>: after sending cooloff.every number of items, wait cooloff.seconds.</p></li>
+<li><p><strong>cooloff.seconds</strong>: after sending cooloff.every number of items, wait cooloff.seconds.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="plugins.indexer.elastic.ElasticSearchBulkSender.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.elastic.ElasticSearchBulkSender.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.indexer.elastic.ElasticSearchBulkSender.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.elastic.ElasticSearchBulkSender.run" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – <p>The path tp the file to upload to the ElasticSearch server.
+Each line is an action as described in &lt;<a class="reference external" href="https://elasticsearch-py.readthedocs.io/en/master/helpers.html">https://elasticsearch-py.readthedocs.io/en/master/helpers.html</a>&gt;.</p>
+<p>”index” actions are also compatible with <cite>elasticdump</cite>, and you can
+upload the file using <cite>elasticdump</cite> if you prefer.</p>
+<p>You MUST use this module if the operation from ElasticSearchAdapter
+is “update”, since <cite>elasticdump</cite> always overwrites data.</p>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.indexer.elastic.ElasticSearchQuery">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.indexer.elastic.</code><code class="sig-name descname">ElasticSearchQuery</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.elastic.ElasticSearchQuery" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Query ES and yield the results.</p>
+<p>The path is ignored.</p>
+<dl class="simple">
+<dt>Configuration section:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">es_hosts</dt>
+<dd class="field-odd"><p>An array of strings with the ES servers.</p>
+</dd>
+<dt class="field-even">name</dt>
+<dd class="field-even"><p>The name of the index to query.  The name will be converted to lower case, since ES only accept lower case names.</p>
+</dd>
+<dt class="field-odd">query</dt>
+<dd class="field-odd"><p>The query in lucene language.</p>
+</dd>
+<dt class="field-even">source_includes</dt>
+<dd class="field-even"><p>a space separated list of fields to include in the answer. Use empty string for all fields.</p>
+</dd>
+<dt class="field-odd">source_excludes</dt>
+<dd class="field-odd"><p>a space separated list of fields NOT to include in the answer.</p>
+</dd>
+<dt class="field-even">progress.disable</dt>
+<dd class="field-even"><p>if True, disable the progress bar.</p>
+</dd>
+<dt class="field-odd">max_results</dt>
+<dd class="field-odd"><p>If the query affects to more than this number of documents, raise an RVTCritical error to stop the execution.
+Set to 0 to disable.</p>
+</dd>
+<dt class="field-even">retry_on_timeout</dt>
+<dd class="field-even"><p>If True, retry after ES returned a timeour error.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="plugins.indexer.elastic.ElasticSearchQuery.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.elastic.ElasticSearchQuery.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.indexer.elastic.ElasticSearchQuery.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.elastic.ElasticSearchQuery.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.indexer.elastic.ElasticSearchQueryRelated">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.indexer.elastic.</code><code class="sig-name descname">ElasticSearchQueryRelated</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.elastic.ElasticSearchQueryRelated" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Query ES and yield all documents related to the query: containers, attachments…</p>
+<p>The path is ignored.</p>
+<dl class="simple">
+<dt>Configuration section:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">es_hosts</dt>
+<dd class="field-odd"><p>An array of strings with the ES servers.</p>
+</dd>
+<dt class="field-even">name</dt>
+<dd class="field-even"><p>The name of the index to query. The name will converted into lower case.</p>
+</dd>
+<dt class="field-odd">query</dt>
+<dd class="field-odd"><p>The query in lucene language.</p>
+</dd>
+<dt class="field-even">source_includes</dt>
+<dd class="field-even"><p>a space separated list of fields to include in the answer. Use empty string for all fields.</p>
+</dd>
+<dt class="field-odd">source_excludes</dt>
+<dd class="field-odd"><p>a space separated list of fields NOT to include in the answer.</p>
+</dd>
+<dt class="field-even">retry_on_timeout</dt>
+<dd class="field-even"><p>If True, retry after ES returned a timeour error.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="method">
+<dt id="plugins.indexer.elastic.ElasticSearchQueryRelated.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.elastic.ElasticSearchQueryRelated.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.indexer.elastic.ElasticSearchQueryRelated.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.elastic.ElasticSearchQueryRelated.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.indexer.elastic.ExportFiles">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.indexer.elastic.</code><code class="sig-name descname">ExportFiles</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.elastic.ExportFiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<dl class="method">
+<dt id="plugins.indexer.elastic.ExportFiles.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.elastic.ExportFiles.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.indexer.elastic.ExportFiles.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.elastic.ExportFiles.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="plugins.indexer.elastic.coolOff">
+<code class="sig-prename descclassname">plugins.indexer.elastic.</code><code class="sig-name descname">coolOff</code><span class="sig-paren">(</span><em class="sig-param">every=100</em>, <em class="sig-param">seconds=10</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.elastic.coolOff" title="Permalink to this definition">¶</a></dt>
+<dd><p>A generator to wait a number of seconds after calling ‘every’ times. If every == 0, do not wait ever.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="plugins.indexer.elastic.get_esclient">
+<code class="sig-prename descclassname">plugins.indexer.elastic.</code><code class="sig-name descname">get_esclient</code><span class="sig-paren">(</span><em class="sig-param">es_hosts</em>, <em class="sig-param">retry_on_timeout=False</em>, <em class="sig-param">logger=&lt;module 'logging' from '/usr/lib/python3.7/logging/__init__.py'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.elastic.get_esclient" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get an elasticsearch.Elasticsearch object.</p>
+<dl class="simple">
+<dt>Attrs:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">es_hosts</dt>
+<dd class="field-odd"><p>A list of elastis servers</p>
+</dd>
+<dt class="field-even">retry_on_timeout</dt>
+<dd class="field-even"><p>If true, retry queries after a timeout</p>
+</dd>
+<dt class="field-odd">logger</dt>
+<dd class="field-odd"><p>The logger to use</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>An elasticsearch.Elasticsearch object</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>base.job.RVTError if any of the server is available</strong> – </p>
+</dd>
+</dl>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>Add security.</p>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="module-plugins.indexer.events">
+<span id="plugins-indexer-events-module"></span><h2>plugins.indexer.events module<a class="headerlink" href="#module-plugins.indexer.events" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="plugins.indexer.events.BrowsersCookies">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.indexer.events.</code><code class="sig-name descname">BrowsersCookies</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.events.BrowsersCookies" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#plugins.indexer.events.SuperTimeline" title="plugins.indexer.events.SuperTimeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">plugins.indexer.events.SuperTimeline</span></code></a></p>
+<p>Converts browsers cookies to events. After this, you can save this file using events.save.</p>
+<dl class="method">
+<dt id="plugins.indexer.events.BrowsersCookies.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.events.BrowsersCookies.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.indexer.events.BrowsersDownloads">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.indexer.events.</code><code class="sig-name descname">BrowsersDownloads</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.events.BrowsersDownloads" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#plugins.indexer.events.SuperTimeline" title="plugins.indexer.events.SuperTimeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">plugins.indexer.events.SuperTimeline</span></code></a></p>
+<p>Converts browsers downloads to events. After this, you can save this file using events.save.</p>
+<dl class="method">
+<dt id="plugins.indexer.events.BrowsersDownloads.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.events.BrowsersDownloads.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.indexer.events.BrowsersHistory">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.indexer.events.</code><code class="sig-name descname">BrowsersHistory</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.events.BrowsersHistory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#plugins.indexer.events.SuperTimeline" title="plugins.indexer.events.SuperTimeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">plugins.indexer.events.SuperTimeline</span></code></a></p>
+<p>Converts browsers history to events. After this, you can save this file using events.save.</p>
+<dl class="method">
+<dt id="plugins.indexer.events.BrowsersHistory.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.events.BrowsersHistory.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.indexer.events.EventLogs">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.indexer.events.</code><code class="sig-name descname">EventLogs</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.events.EventLogs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#plugins.indexer.events.SuperTimeline" title="plugins.indexer.events.SuperTimeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">plugins.indexer.events.SuperTimeline</span></code></a></p>
+<p>Adapts windows event logs to Elastic. After this, you can save this file using events.save.</p>
+<dl class="method">
+<dt id="plugins.indexer.events.EventLogs.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.events.EventLogs.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.indexer.events.NetworkConnections">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.indexer.events.</code><code class="sig-name descname">NetworkConnections</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.events.NetworkConnections" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#plugins.indexer.events.SuperTimeline" title="plugins.indexer.events.SuperTimeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">plugins.indexer.events.SuperTimeline</span></code></a></p>
+<p>Adapts SRUM Network Connections information to Elastic. After this, you can save this file using events.save.</p>
+<dl class="method">
+<dt id="plugins.indexer.events.NetworkConnections.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.events.NetworkConnections.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.indexer.events.NetworkUsage">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.indexer.events.</code><code class="sig-name descname">NetworkUsage</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.events.NetworkUsage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#plugins.indexer.events.SuperTimeline" title="plugins.indexer.events.SuperTimeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">plugins.indexer.events.SuperTimeline</span></code></a></p>
+<p>Adapts SRUM Network Usage information to Elastic. After this, you can save this file using events.save.</p>
+<dl class="method">
+<dt id="plugins.indexer.events.NetworkUsage.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.events.NetworkUsage.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.indexer.events.Prefetch">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.indexer.events.</code><code class="sig-name descname">Prefetch</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.events.Prefetch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#plugins.indexer.events.SuperTimeline" title="plugins.indexer.events.SuperTimeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">plugins.indexer.events.SuperTimeline</span></code></a></p>
+<p>Converts prefetch execution times to events. After this, you can save this file using events.save.</p>
+<dl class="method">
+<dt id="plugins.indexer.events.Prefetch.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.events.Prefetch.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.indexer.events.RecentFiles">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.indexer.events.</code><code class="sig-name descname">RecentFiles</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.events.RecentFiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#plugins.indexer.events.SuperTimeline" title="plugins.indexer.events.SuperTimeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">plugins.indexer.events.SuperTimeline</span></code></a></p>
+<p>Converts Lnk and Jumplists to events. After this, you can save this file using events.save.</p>
+<dl class="simple">
+<dt>Configuration section:</dt><dd><ul class="simple">
+<li><p><strong>classify</strong>: If True, categorize the files in the output.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="plugins.indexer.events.RecentFiles.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.events.RecentFiles.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.indexer.events.RecentFiles.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.events.RecentFiles.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.indexer.events.Registry">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.indexer.events.</code><code class="sig-name descname">Registry</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.events.Registry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#plugins.indexer.events.SuperTimeline" title="plugins.indexer.events.SuperTimeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">plugins.indexer.events.SuperTimeline</span></code></a></p>
+<p>Adapts Windows Registry information to Elastic. After this, you can save this file using events.save.</p>
+<dl class="method">
+<dt id="plugins.indexer.events.Registry.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=''</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.events.Registry.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.indexer.events.SuperTimeline">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.indexer.events.</code><code class="sig-name descname">SuperTimeline</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.events.SuperTimeline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Main class to adapt any forensic source containing timestamped events to
+JSON format suitable for Elastic Common Schema (ECS)</p>
+<dl class="simple">
+<dt>Configuration section:</dt><dd><ul class="simple">
+<li><p><strong>classify</strong>: If True, categorize the files in the output.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="plugins.indexer.events.SuperTimeline.common_fields">
+<code class="sig-name descname">common_fields</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.events.SuperTimeline.common_fields" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a new dictionary of mandatory fields for all sources</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.indexer.events.SuperTimeline.filegroup">
+<code class="sig-name descname">filegroup</code><span class="sig-paren">(</span><em class="sig-param">entry</em>, <em class="sig-param">classify=True</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.events.SuperTimeline.filegroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the category group given an extension, path or content_type</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.indexer.events.SuperTimeline.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.events.SuperTimeline.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.indexer.events.SuperTimeline.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.events.SuperTimeline.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.indexer.events.Timeline">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.indexer.events.</code><code class="sig-name descname">Timeline</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.events.Timeline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#plugins.indexer.events.SuperTimeline" title="plugins.indexer.events.SuperTimeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">plugins.indexer.events.SuperTimeline</span></code></a></p>
+<p>Convert a BODY file to events. After this, you can save this file using events.save</p>
+<dl class="simple">
+<dt>Configuration section:</dt><dd><ul class="simple">
+<li><p><strong>include_filename</strong>: if True, include FILENAME entries in the output.</p></li>
+<li><p><strong>classify</strong>: If True, categorize the files in the output.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="plugins.indexer.events.Timeline.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.events.Timeline.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.indexer.events.Timeline.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.events.Timeline.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a BODY file read from from_module into an Elastic Common Schema document.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.indexer.events.USB">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.indexer.events.</code><code class="sig-name descname">USB</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.events.USB" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#plugins.indexer.events.SuperTimeline" title="plugins.indexer.events.SuperTimeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">plugins.indexer.events.SuperTimeline</span></code></a></p>
+<p>Adapts usb setup.api to Elastic. After this, you can save this file using events.save.</p>
+<dl class="method">
+<dt id="plugins.indexer.events.USB.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.events.USB.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.indexer.events.UsnJrnl">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.indexer.events.</code><code class="sig-name descname">UsnJrnl</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.events.UsnJrnl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#plugins.indexer.events.SuperTimeline" title="plugins.indexer.events.SuperTimeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">plugins.indexer.events.SuperTimeline</span></code></a></p>
+<p>Adapts windows usnjrnl to Elastic. After this, you can save this file using events.save.</p>
+<dl class="method">
+<dt id="plugins.indexer.events.UsnJrnl.attributes">
+<code class="sig-name descname">attributes</code><span class="sig-paren">(</span><em class="sig-param">attributes</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.events.UsnJrnl.attributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a string of attributes into a list:</p>
+<p>Example:
+‘ARCHIVE NOT_CONTENT_INDEXED ‘ -&gt; [“archive”, “not_content_indexed”]</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.indexer.events.UsnJrnl.reasons">
+<code class="sig-name descname">reasons</code><span class="sig-paren">(</span><em class="sig-param">reasons</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.events.UsnJrnl.reasons" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse a string of reasons into a suitable event.action:</p>
+<p>Example:
+‘DATA_EXTEND FILE_CREATE CLOSE ‘ -&gt; ‘file-created’</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.indexer.events.UsnJrnl.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.events.UsnJrnl.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="plugins.indexer.events.decompose_url">
+<code class="sig-prename descclassname">plugins.indexer.events.</code><code class="sig-name descname">decompose_url</code><span class="sig-paren">(</span><em class="sig-param">full_url</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.events.decompose_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a dictionary with multiple fields for a full url using Elastic Common Schema</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="plugins.indexer.events.filetype">
+<code class="sig-prename descclassname">plugins.indexer.events.</code><code class="sig-name descname">filetype</code><span class="sig-paren">(</span><em class="sig-param">tsk_permisssion</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.events.filetype" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get file type from a tsk permission string</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="plugins.indexer.events.permissions_to_octal">
+<code class="sig-prename descclassname">plugins.indexer.events.</code><code class="sig-name descname">permissions_to_octal</code><span class="sig-paren">(</span><em class="sig-param">tsk_permisssion</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.events.permissions_to_octal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a tsk permission string to octal format</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="plugins.indexer.events.sanitize_dashes">
+<code class="sig-prename descclassname">plugins.indexer.events.</code><code class="sig-name descname">sanitize_dashes</code><span class="sig-paren">(</span><em class="sig-param">value</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.events.sanitize_dashes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Some Elastic fields format do not accept ‘-‘ as value</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="plugins.indexer.events.to_date">
+<code class="sig-prename descclassname">plugins.indexer.events.</code><code class="sig-name descname">to_date</code><span class="sig-paren">(</span><em class="sig-param">strtimestamp</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.events.to_date" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a timestamp string in UNIX into a date</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="plugins.indexer.events.to_iso_format">
+<code class="sig-prename descclassname">plugins.indexer.events.</code><code class="sig-name descname">to_iso_format</code><span class="sig-paren">(</span><em class="sig-param">timestring</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.events.to_iso_format" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a date string into iso format date</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-plugins.indexer.export_pst">
+<span id="plugins-indexer-export-pst-module"></span><h2>plugins.indexer.export_pst module<a class="headerlink" href="#module-plugins.indexer.export_pst" title="Permalink to this headline">¶</a></h2>
+<p>Modules to parse the output from the RVT related to emails.</p>
+<dl class="class">
+<dt id="plugins.indexer.export_pst.CreatePstHtml">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.indexer.export_pst.</code><code class="sig-name descname">CreatePstHtml</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.export_pst.CreatePstHtml" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Creates html items from pst/ost.</p>
+<dl class="method">
+<dt id="plugins.indexer.export_pst.CreatePstHtml.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.export_pst.CreatePstHtml.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.indexer.export_pst.CreatePstHtml.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.export_pst.CreatePstHtml.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exports to html items from pst/ost</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – path to pff-n.export folder</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.indexer.export_pst.ExportPstEml">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.indexer.export_pst.</code><code class="sig-name descname">ExportPstEml</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.export_pst.ExportPstEml" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Exports to html items from pst/ost.</p>
+<dl class="method">
+<dt id="plugins.indexer.export_pst.ExportPstEml.export_eml">
+<code class="sig-name descname">export_eml</code><span class="sig-paren">(</span><em class="sig-param">item</em>, <em class="sig-param">write=True</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.export_pst.ExportPstEml.export_eml" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exports to eml an item parsed with pff-export</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<em>str</em>) – path to item</p></li>
+<li><p><strong>write</strong> (<em>bool</em>) – writes eml file or returns eml content</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.indexer.export_pst.ExportPstEml.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.export_pst.ExportPstEml.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exports to eml items from pst/ost</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – path to item to export (Message, Task, Appointment, Activity, Meeting, Note, Contact)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="plugins.indexer.export_pst.get_text">
+<code class="sig-prename descclassname">plugins.indexer.export_pst.</code><code class="sig-name descname">get_text</code><span class="sig-paren">(</span><em class="sig-param">filename</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.export_pst.get_text" title="Permalink to this definition">¶</a></dt>
+<dd><p>get content of a file</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="plugins.indexer.export_pst.repl_lt_gt">
+<code class="sig-prename descclassname">plugins.indexer.export_pst.</code><code class="sig-name descname">repl_lt_gt</code><span class="sig-paren">(</span><em class="sig-param">text</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.export_pst.repl_lt_gt" title="Permalink to this definition">¶</a></dt>
+<dd><p>replace text to show in html</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-plugins.indexer.pstparser">
+<span id="plugins-indexer-pstparser-module"></span><h2>plugins.indexer.pstparser module<a class="headerlink" href="#module-plugins.indexer.pstparser" title="Permalink to this headline">¶</a></h2>
+<p>Modules to export, parse and index PST and OST files using the external utility pffexport.</p>
+<dl class="class">
+<dt id="plugins.indexer.pstparser.EmlxParseMessage">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.indexer.pstparser.</code><code class="sig-name descname">EmlxParseMessage</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.pstparser.EmlxParseMessage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#plugins.indexer.pstparser.PffExportParseObject" title="plugins.indexer.pstparser.PffExportParseObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">plugins.indexer.pstparser.PffExportParseObject</span></code></a></p>
+<dl class="method">
+<dt id="plugins.indexer.pstparser.EmlxParseMessage.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path</em>, <em class="sig-param">containerid=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.pstparser.EmlxParseMessage.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.indexer.pstparser.ExportPst">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.indexer.pstparser.</code><code class="sig-name descname">ExportPst</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.pstparser.ExportPst" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Export all pst and ost files from a mounted image using pffexport. This modules depends on the common plugin.</p>
+<dl class="simple">
+<dt>Configuration:</dt><dd><ul class="simple">
+<li><p><strong>pffexport</strong>: route to the pffexport binary</p></li>
+<li><p><strong>outdir</strong>: outputs to this directory</p></li>
+<li><p><strong>delete_exists</strong>: if True, delete the outout directory if it already exists</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns: a list of {filename, outdir, index}</p>
+<dl class="method">
+<dt id="plugins.indexer.pstparser.ExportPst.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.pstparser.ExportPst.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.indexer.pstparser.ExportPst.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.pstparser.ExportPst.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Export all pst and ost files in a mounted image. Path is ignored.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.indexer.pstparser.MacMailParser">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.indexer.pstparser.</code><code class="sig-name descname">MacMailParser</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.pstparser.MacMailParser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Parses the macosx mailbox client files in the directory specified by path.</p>
+<p># Parameters:
+#     path (str): the path to pass to from_module, which must yield, for each PST or OST file, a dictionary:
+#         <cite>{outdir:”path to the output directory of the export”, filename:”filaname of the PST or OST file”}</cite>.</p>
+<dl class="simple">
+<dt>Configuration:</dt><dd><ul class="simple">
+<li><p><strong>exportdir</strong>: the export main directory.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="plugins.indexer.pstparser.MacMailParser.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.pstparser.MacMailParser.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.indexer.pstparser.MacMailParser.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=''</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.pstparser.MacMailParser.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.indexer.pstparser.MailParser">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.indexer.pstparser.</code><code class="sig-name descname">MailParser</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.pstparser.MailParser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Parses the exported pst files returned by from_module. Use the output from ExportPST as from_module.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to pass to from_module, which must yield, for each PST or OST file, a dictionary:
+<cite>{outdir:”path to the output directory of the export”, filename:”filaname of the PST or OST file”}</cite>.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Configuration:</dt><dd><ul class="simple">
+<li><p><strong>exportdir</strong>: the export main directory.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="plugins.indexer.pstparser.MailParser.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.pstparser.MailParser.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.indexer.pstparser.MailParser.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=''</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.pstparser.MailParser.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.indexer.pstparser.MailboxCSV">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.indexer.pstparser.</code><code class="sig-name descname">MailboxCSV</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.pstparser.MailboxCSV" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Generates a dictionary with information about messages in a chain. Use a (probably forked) MailParser as from_module.</p>
+<dl class="method">
+<dt id="plugins.indexer.pstparser.MailboxCSV.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.pstparser.MailboxCSV.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.indexer.pstparser.ParseMacMailbox">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.indexer.pstparser.</code><code class="sig-name descname">ParseMacMailbox</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.pstparser.ParseMacMailbox" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#plugins.indexer.pstparser.PffExportParseObject" title="plugins.indexer.pstparser.PffExportParseObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">plugins.indexer.pstparser.PffExportParseObject</span></code></a></p>
+<p>Parses an object (Message, Meeting, Contact, Task or Appointment) in a directory exported by pffexport.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to directory of the object. It must be a directory.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>Information about the object and its attachments.</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="plugins.indexer.pstparser.ParseMacMailbox.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path</em>, <em class="sig-param">containerid=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.pstparser.ParseMacMailbox.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.indexer.pstparser.PffExportParseAppointment">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.indexer.pstparser.</code><code class="sig-name descname">PffExportParseAppointment</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.pstparser.PffExportParseAppointment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#plugins.indexer.pstparser.PffExportParseObject" title="plugins.indexer.pstparser.PffExportParseObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">plugins.indexer.pstparser.PffExportParseObject</span></code></a></p>
+<p>Parses an Appointment in a directory exported by pffexport.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to directory of the Appointment. It must be a directory.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>Information about the Appointment but not its attachments.</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="plugins.indexer.pstparser.PffExportParseAppointment.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path</em>, <em class="sig-param">containerid=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.pstparser.PffExportParseAppointment.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.indexer.pstparser.PffExportParseContact">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.indexer.pstparser.</code><code class="sig-name descname">PffExportParseContact</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.pstparser.PffExportParseContact" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#plugins.indexer.pstparser.PffExportParseObject" title="plugins.indexer.pstparser.PffExportParseObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">plugins.indexer.pstparser.PffExportParseObject</span></code></a></p>
+<p>Parses a Contact in a directory exported by pffexport.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to directory of the Message. It must be a directory.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>Information about the Contact but not its attachments.</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="plugins.indexer.pstparser.PffExportParseContact.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path</em>, <em class="sig-param">containerid=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.pstparser.PffExportParseContact.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.indexer.pstparser.PffExportParseMeeting">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.indexer.pstparser.</code><code class="sig-name descname">PffExportParseMeeting</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.pstparser.PffExportParseMeeting" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#plugins.indexer.pstparser.PffExportParseObject" title="plugins.indexer.pstparser.PffExportParseObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">plugins.indexer.pstparser.PffExportParseObject</span></code></a></p>
+<p>Parses a Meeting in a directory exported by pffexport.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to directory of the Meeting. It must be a directory.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>Information about the Meeting but not its attachments.</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="plugins.indexer.pstparser.PffExportParseMeeting.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path</em>, <em class="sig-param">containerid=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.pstparser.PffExportParseMeeting.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.indexer.pstparser.PffExportParseMessage">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.indexer.pstparser.</code><code class="sig-name descname">PffExportParseMessage</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.pstparser.PffExportParseMessage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#plugins.indexer.pstparser.PffExportParseObject" title="plugins.indexer.pstparser.PffExportParseObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">plugins.indexer.pstparser.PffExportParseObject</span></code></a></p>
+<p>Parses a Message in a directory exported by pffexport.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to directory of the Message. It must be a directory.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>Information about the Message but not its attachments.</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="plugins.indexer.pstparser.PffExportParseMessage.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path</em>, <em class="sig-param">containerid=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.pstparser.PffExportParseMessage.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.indexer.pstparser.PffExportParseObject">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.indexer.pstparser.</code><code class="sig-name descname">PffExportParseObject</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.pstparser.PffExportParseObject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Parses an object (Message, Meeting, Contact, Task or Appointment) in a directory exported by pffexport.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to directory of the object. It must be a directory.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>Information about the object and its attachments.</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="plugins.indexer.pstparser.PffExportParseObject.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path</em>, <em class="sig-param">containerid=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.pstparser.PffExportParseObject.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.indexer.pstparser.PffExportParseTask">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.indexer.pstparser.</code><code class="sig-name descname">PffExportParseTask</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.pstparser.PffExportParseTask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#plugins.indexer.pstparser.PffExportParseObject" title="plugins.indexer.pstparser.PffExportParseObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">plugins.indexer.pstparser.PffExportParseObject</span></code></a></p>
+<p>Parses a Task in a directory exported by pffexport.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to directory of the Task. It must be a directory.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>Information about the Task but not its attachments.</p>
+</dd>
+</dl>
+<div class="admonition-todo admonition" id="id2">
+<p class="admonition-title">Todo</p>
+<p>We couldn’t test this module</p>
+</div>
+<dl class="method">
+<dt id="plugins.indexer.pstparser.PffExportParseTask.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path</em>, <em class="sig-param">containerid=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.pstparser.PffExportParseTask.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="plugins.indexer.pstparser.decodeEmailDateHeader">
+<code class="sig-prename descclassname">plugins.indexer.pstparser.</code><code class="sig-name descname">decodeEmailDateHeader</code><span class="sig-paren">(</span><em class="sig-param">header</em>, <em class="sig-param">ignore_errors=True</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.pstparser.decodeEmailDateHeader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decodes a header (as returned by the standard email library) assuming it is a date.</p>
+<p>:param : ignore_errors: If True, returns None if the date cannot be parsed. Else, raise ValueError.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">decodeEmailDateHeader</span><span class="p">(</span><span class="s1">&#39;Mon, 23 Aug 2004 11:40:10 -0400&#39;</span><span class="p">)</span>
+<span class="go">&#39;2004-08-23T11:40:10-04:00&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">decodeEmailDateHeader</span><span class="p">(</span><span class="s1">&#39;nanana&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">decodeEmailDateHeader</span><span class="p">(</span><span class="s1">&#39;nanana&#39;</span><span class="p">,</span> <span class="n">ignore_errors</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+    <span class="o">...</span>
+<span class="gr">ValueError</span>: <span class="n">(&#39;Unknown string format:&#39;, &#39;nanana&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">decodeEmailDateHeader</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">decodeEmailDateHeader</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="plugins.indexer.pstparser.decodeEmailHeader">
+<code class="sig-prename descclassname">plugins.indexer.pstparser.</code><code class="sig-name descname">decodeEmailHeader</code><span class="sig-paren">(</span><em class="sig-param">header</em>, <em class="sig-param">errors='replace'</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.pstparser.decodeEmailHeader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decodes an international header (as returned by the standard email library) into unicode.</p>
+<p>:param : header (str): The value of the header, as returned by the standard email library. It may content different parts with different encodings
+:param : errors (str): After an encoding error, you can be ‘strict’, or ‘replace’ or ‘ignore’</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">decodeEmailHeader</span><span class="p">(</span><span class="s1">&#39;=?utf-8?b?WW91J3JlIFNpbXBseSB0aGUgQmVzdCEgc3V6w6BubmUg77uH77uH77uH77uH77uH?=&#39;</span><span class="p">)</span>
+<span class="go">&quot;You&#39;re Simply the Best! suzànne ﻇﻇﻇﻇﻇ&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">decodeEmailHeader</span><span class="p">(</span><span class="s1">&#39;=?utf-8?b?SMOpY3RvciBGZXJuw6FuZGV6?= &lt;hector@fernandez&gt;&#39;</span><span class="p">)</span>
+<span class="go">&#39;Héctor Fernández &lt;hector@fernandez&gt;&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">decodeEmailHeader</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">decodeEmailHeader</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="plugins.indexer.pstparser.readMessageFile">
+<code class="sig-prename descclassname">plugins.indexer.pstparser.</code><code class="sig-name descname">readMessageFile</code><span class="sig-paren">(</span><em class="sig-param">filename</em>, <em class="sig-param">stop_on_empty_line=True</em>, <em class="sig-param">encoding='utf-8'</em>, <em class="sig-param">errors='replace'</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.pstparser.readMessageFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads an email header file.</p>
+<p>This funcion is a simplified version of <cite>email.message_from_file()</cite>, but headers can also include spaces.
+Body, if present is ignored. If <cite>filename</cite> does not exists, returns an empty dictionary.
+Header names will be saved in lower case.</p>
+<p>:param : filename (str): The name of the file to open
+:param : stop_on_empty_line (boolean): If True, stop processing headers after an empty line.
+:param : encoding (str): The encoding of filename.
+:param : errors (str): After an encoding error, you can be ‘strict’, or ‘replace’ or ‘ignore’</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-plugins.indexer.tikaparser">
+<span id="plugins-indexer-tikaparser-module"></span><h2>plugins.indexer.tikaparser module<a class="headerlink" href="#module-plugins.indexer.tikaparser" title="Permalink to this headline">¶</a></h2>
+<p>Tika management.</p>
+<p>In this file:</p>
+<ul class="simple">
+<li><p><cite>metadata</cite> refers to a file metadata as returned by Tika. <cite>Metadata</cite> may not
+have a name suitable for coding, such as the slash in <cite>content-type</cite> and the
+name depends on the file type and the specific parser Tika, and there are
+hundred of  different names. Metadata with the same semantics in different
+file types may have different names. For example, <cite>dc:author</cite>, <cite>author</cite>,
+<cite>metadata:author</cite>…</p></li>
+<li><p><cite>field</cite> refers to a metadata in the dictionary the modules in this file
+return. <cite>metadata</cite> is mapped to a <cite>field</cite>, possibly normalized or converted or
+maybe ignored. There is a file to configure the mapping between <cite>fields</cite> and
+<cite>metadata</cite>.</p></li>
+</ul>
+<div class="admonition-todo admonition" id="id3">
+<p class="admonition-title">Todo</p>
+<ul class="simple">
+<li><p>Allow using a standalone Tika, not the server mode.</p></li>
+<li><p>Tell Tika somehow which parser must use for a file. Specially useful to
+improve the time to parse plain text files, since Tika test all possible parsers on them by default.</p></li>
+</ul>
+</div>
+<dl class="class">
+<dt id="plugins.indexer.tikaparser.TikaParser">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.indexer.tikaparser.</code><code class="sig-name descname">TikaParser</code><span class="sig-paren">(</span><em class="sig-param">*attrs</em>, <em class="sig-param">**kwattrs</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.tikaparser.TikaParser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>A module to parse files using Tika.</p>
+<p>A Tika server must be running before creating this module.
+If the configured Tika server is not available, an exception will be raised.</p>
+<p>Documents are parsed and their metadata and content are returned as a dictionary.
+By default, only some metadata (<em>fields</em>) are returned.</p>
+<p>Beware of the character limit on files parsed by Tika: 100k characters.</p>
+<dl>
+<dt>Configuration:</dt><dd><ul>
+<li><p><strong>tika_server</strong>: a URL to a preexisting TIKA server. Example: <code class="docutils literal notranslate"><span class="pre">http://localhost:9998</span></code>. The port is mandatory.</p></li>
+<li><p><strong>mapping</strong>: path to the mapping configuration file.
+By default, not all metadata is yielded.
+Metadata must be mapped to a field name, and only fields mapped are returned.
+This prevents the “field explosion problem” and metadata with the same semantics but different names for different file types.</p>
+<p>The mapping file is a standard cfg file. See the default example:</p>
+<ul class="simple">
+<li><p>Sections are content types.</p></li>
+<li><p>Values map <code class="docutils literal notranslate"><span class="pre">metadata=field</span></code>. If field name is empty or IGNORED and <code class="docutils literal notranslate"><span class="pre">include_unknown</span></code> is set to <code class="docutils literal notranslate"><span class="pre">False</span></code>,
+this metadata will be ignored. In field names, try to use Python standard named: change - to _, no spaces…</p></li>
+</ul>
+</li>
+<li><p><strong>save_mapping</strong>: if True, save in the mapping configuration file any new metadata you found.</p></li>
+<li><p><strong>include_unknown</strong>: if True, add metadata without a mapping to the results.</p></li>
+<li><p><strong>error_status</strong> (int): Error status code to report in case Tika is not available while parsing a specific file.</p></li>
+<li><p><strong>file_max_size</strong> (int): The max size in bytes of a file to be parsed. If the file is larger than this, it is not parsed and tika_status set to 413 (payload too large)</p></li>
+<li><p><strong>content_max_size</strong> (int): The max size in bytes of a content to be parsed. If the content is larger than this, it is removed and tika_status set to (payload too large)</p></li>
+<li><p><strong>tika_encoding</strong> (str): The encoding of the answers from tika</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="plugins.indexer.tikaparser.TikaParser.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.tikaparser.TikaParser.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.indexer.tikaparser.TikaParser.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.tikaparser.TikaParser.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses a file using Tika.</p>
+<p>A file could be:</p>
+<ul class="simple">
+<li><p>single, if it has not any embedded files.</p></li>
+<li><p>composite, it is includes several single files (compressed files, PDF, emails…)</p></li>
+</ul>
+<p>Trying to parse directories is an error. If you want to parse a directory, configure a <cite>DirectoryFilter</cite>
+module before a <cite>TikaParser</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – The absolute path to the file to parse</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>A dictionary with the fiels of the parsed file. Keep in mind files can be composite. In this case,
+a dictionary will be yielded for every individual single files.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.indexer.tikaparser.TikaParser.shutdown">
+<code class="sig-name descname">shutdown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.tikaparser.TikaParser.shutdown" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to call at the end of a parsing session.</p>
+<p>If option <code class="docutils literal notranslate"><span class="pre">save_mapping</span></code> is True, write the cuurent mapping configuration into the mapping configuration file.
+This is useful to discover new metadata fields not yet mapped.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.indexer.tikaparser.TikaParser.tika_parse_file">
+<code class="sig-name descname">tika_parse_file</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">tika_server</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.indexer.tikaparser.TikaParser.tika_parse_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call a tika server to parse a file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filepath</strong> (<em>str</em>) – the path to the composite file</p></li>
+<li><p><strong>tike_server</strong> (<em>str</em>) – the URL to the tika server</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A dictionary <code class="docutils literal notranslate"><span class="pre">{status,</span> <span class="pre">metadata}.</span></code> If the file cannot be parsed, metadata is not provided.
+If the file is larger than <code class="docutils literal notranslate"><span class="pre">file_max_size</span></code>, set <code class="docutils literal notranslate"><span class="pre">status</span> <span class="pre">=</span> <span class="pre">413</span></code> and no metadata is returned.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="plugins.ios.html" class="btn btn-neutral float-right" title="plugins.ios package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="plugins.external.ccl_asldb.html" class="btn btn-neutral float-left" title="plugins.external.ccl_asldb package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, INCIDE Digital Data S.L.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

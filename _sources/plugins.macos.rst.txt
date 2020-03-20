@@ -1,0 +1,19 @@
+plugins.macos package
+=====================
+
+.. automodule:: plugins.macos
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Submodules
+----------
+
+plugins.macos.RVT\_macos module
+-------------------------------
+
+.. automodule:: plugins.macos.RVT_macos
+   :members:
+   :undoc-members:
+   :show-inheritance:
+

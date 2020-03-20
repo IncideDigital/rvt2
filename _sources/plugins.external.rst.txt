@@ -1,0 +1,35 @@
+plugins.external package
+========================
+
+.. automodule:: plugins.external
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+
+   plugins.external.OSX_QuickLook_Parser
+   plugins.external.ccl_asldb
+
+Submodules
+----------
+
+plugins.external.amcache module
+-------------------------------
+
+.. automodule:: plugins.external.amcache
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+plugins.external.jobparser module
+---------------------------------
+
+.. automodule:: plugins.external.jobparser
+   :members:
+   :undoc-members:
+   :show-inheritance:
+

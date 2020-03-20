@@ -1,0 +1,19 @@
+plugins.external.OSX\_QuickLook\_Parser package
+===============================================
+
+.. automodule:: plugins.external.OSX_QuickLook_Parser
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Submodules
+----------
+
+plugins.external.OSX\_QuickLook\_Parser.quicklook\_parser\_v\_3\_5mod module
+----------------------------------------------------------------------------
+
+.. automodule:: plugins.external.OSX_QuickLook_Parser.quicklook_parser_v_3_5mod
+   :members:
+   :undoc-members:
+   :show-inheritance:
+

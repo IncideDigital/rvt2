@@ -1,0 +1,19 @@
+plugins.android package
+=======================
+
+.. automodule:: plugins.android
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Submodules
+----------
+
+plugins.android.whatsapp module
+-------------------------------
+
+.. automodule:: plugins.android.whatsapp
+   :members:
+   :undoc-members:
+   :show-inheritance:
+

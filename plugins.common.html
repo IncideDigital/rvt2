@@ -1,0 +1,1778 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>plugins.common package &mdash; RVT2 2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="static/documentation_options.js"></script>
+        <script src="static/jquery.js"></script>
+        <script src="static/underscore.js"></script>
+        <script src="static/doctools.js"></script>
+        <script src="static/language_data.js"></script>
+    
+    <script type="text/javascript" src="static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="plugins.external package" href="plugins.external.html" />
+    <link rel="prev" title="plugins.android package" href="plugins.android.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> RVT2
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="base.html">base package</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="plugins.html">plugins package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="plugins.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="plugins.ai.html">plugins.ai package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.android.html">plugins.android package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">plugins.common package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-plugins.common.RVT_browsers">plugins.common.RVT_browsers module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-plugins.common.RVT_characterization">plugins.common.RVT_characterization module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-plugins.common.RVT_disk">plugins.common.RVT_disk module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-plugins.common.RVT_files">plugins.common.RVT_files module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-plugins.common.RVT_filesystem">plugins.common.RVT_filesystem module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-plugins.common.RVT_gmail_mailbox">plugins.common.RVT_gmail_mailbox module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-plugins.common.RVT_mails">plugins.common.RVT_mails module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-plugins.common.RVT_mount">plugins.common.RVT_mount module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-plugins.common.RVT_partition">plugins.common.RVT_partition module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-plugins.common.RVT_search">plugins.common.RVT_search module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-plugins.common.RVT_skype">plugins.common.RVT_skype module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-plugins.common.RVT_string">plugins.common.RVT_string module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-plugins.common.RVT_timelines">plugins.common.RVT_timelines module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-plugins.common.case_solve">plugins.common.case_solve module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.external.html">plugins.external package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.indexer.html">plugins.indexer package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.ios.html">plugins.ios package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.macos.html">plugins.macos package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.windows.html">plugins.windows package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rvt2.html">rvt2 module</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RVT2</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="plugins.html">plugins package</a> &raquo;</li>
+        
+      <li>plugins.common package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/plugins.common.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-plugins.common">
+<span id="plugins-common-package"></span><h1>plugins.common package<a class="headerlink" href="#module-plugins.common" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-plugins.common.RVT_browsers">
+<span id="plugins-common-rvt-browsers-module"></span><h2>plugins.common.RVT_browsers module<a class="headerlink" href="#module-plugins.common.RVT_browsers" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="plugins.common.RVT_browsers.Edge">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.common.RVT_browsers.</code><code class="sig-name descname">Edge</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_browsers.Edge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Generate Internet Explorer 10+ / Microsoft Edge web browsing or cookies history</p>
+<dl class="method">
+<dt id="plugins.common.RVT_browsers.Edge.convert_date_format">
+<code class="sig-name descname">convert_date_format</code><span class="sig-paren">(</span><em class="sig-param">string_date</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_browsers.Edge.convert_date_format" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_browsers.Edge.get_ids">
+<code class="sig-name descname">get_ids</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_browsers.Edge.get_ids" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_browsers.Edge.parse_export">
+<code class="sig-name descname">parse_export</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_browsers.Edge.parse_export" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_browsers.Edge.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_browsers.Edge.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_browsers.Edge.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_browsers.Edge.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.common.RVT_browsers.InternetExplorer">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.common.RVT_browsers.</code><code class="sig-name descname">InternetExplorer</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_browsers.InternetExplorer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Generate Internet Explorer web browsing history</p>
+<dl class="method">
+<dt id="plugins.common.RVT_browsers.InternetExplorer.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_browsers.InternetExplorer.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.common.RVT_browsers.Safari">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.common.RVT_browsers.</code><code class="sig-name descname">Safari</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_browsers.Safari" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Generate Safari web browsing history, cookies and downloads</p>
+<dl class="method">
+<dt id="plugins.common.RVT_browsers.Safari.cookies">
+<code class="sig-name descname">cookies</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_browsers.Safari.cookies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_browsers.Safari.downloads">
+<code class="sig-name descname">downloads</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_browsers.Safari.downloads" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_browsers.Safari.history_plist">
+<code class="sig-name descname">history_plist</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_browsers.Safari.history_plist" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_browsers.Safari.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_browsers.Safari.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_browsers.Safari.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_browsers.Safari.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="plugins.common.RVT_browsers.convert_absolute">
+<code class="sig-prename descclassname">plugins.common.RVT_browsers.</code><code class="sig-name descname">convert_absolute</code><span class="sig-paren">(</span><em class="sig-param">mac_absolute_time</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_browsers.convert_absolute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert mac absolute time (seconds from 1/1/2001) to human readable</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-plugins.common.RVT_characterization">
+<span id="plugins-common-rvt-characterization-module"></span><h2>plugins.common.RVT_characterization module<a class="headerlink" href="#module-plugins.common.RVT_characterization" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="plugins.common.RVT_characterization.CharacterizeDisk">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.common.RVT_characterization.</code><code class="sig-name descname">CharacterizeDisk</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_characterization.CharacterizeDisk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Extract summary info about disk and Windows partitions.</p>
+<p>Regripper output files and the timeline, must had been previously generated.
+If the image has been obtained by a cloning machine, logs should be provided as well</p>
+<p>:param : ripplugins (str): path to json containing the list of plugins executed by ‘autorip’ job</p>
+<dl class="method">
+<dt id="plugins.common.RVT_characterization.CharacterizeDisk.characterize_Windows">
+<code class="sig-name descname">characterize_Windows</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_characterization.CharacterizeDisk.characterize_Windows" title="Permalink to this definition">¶</a></dt>
+<dd><p>Characterize Windows partitions from registry files and timeline.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_characterization.CharacterizeDisk.get_image_information">
+<code class="sig-name descname">get_image_information</code><span class="sig-paren">(</span><em class="sig-param">disk</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_characterization.CharacterizeDisk.get_image_information" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get partition tables and number of vss. If cloning logs are provided, model ans serial number are obtained</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_characterization.CharacterizeDisk.make_ntuser_timeline">
+<code class="sig-name descname">make_ntuser_timeline</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_characterization.CharacterizeDisk.make_ntuser_timeline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get user creation date from the birth time of NTUSER.dat</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_characterization.CharacterizeDisk.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_characterization.CharacterizeDisk.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_characterization.CharacterizeDisk.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_characterization.CharacterizeDisk.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>The output dictionaries with disk information are expected to be sent to a mako template</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="plugins.common.RVT_characterization.human_readable_size">
+<code class="sig-prename descclassname">plugins.common.RVT_characterization.</code><code class="sig-name descname">human_readable_size</code><span class="sig-paren">(</span><em class="sig-param">num</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_characterization.human_readable_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-plugins.common.RVT_disk">
+<span id="plugins-common-rvt-disk-module"></span><h2>plugins.common.RVT_disk module<a class="headerlink" href="#module-plugins.common.RVT_disk" title="Permalink to this headline">¶</a></h2>
+<p>Manages images</p>
+<dl class="class">
+<dt id="plugins.common.RVT_disk.AFFImage">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.common.RVT_disk.</code><code class="sig-name descname">AFFImage</code><span class="sig-paren">(</span><em class="sig-param">imagefile</em>, <em class="sig-param">imagetype</em>, <em class="sig-param">params</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_disk.AFFImage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#plugins.common.RVT_disk.BaseImage" title="plugins.common.RVT_disk.BaseImage"><code class="xref py py-class docutils literal notranslate"><span class="pre">plugins.common.RVT_disk.BaseImage</span></code></a></p>
+<p>Manages an AFF4 image</p>
+<dl class="method">
+<dt id="plugins.common.RVT_disk.AFFImage.umount">
+<code class="sig-name descname">umount</code><span class="sig-paren">(</span><em class="sig-param">unzip_path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_disk.AFFImage.umount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unmounts all partitions</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.common.RVT_disk.BaseImage">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.common.RVT_disk.</code><code class="sig-name descname">BaseImage</code><span class="sig-paren">(</span><em class="sig-param">imagefile</em>, <em class="sig-param">imagetype</em>, <em class="sig-param">params</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_disk.BaseImage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A base class for images. Also, manages raw (dd) images</p>
+<dl class="method">
+<dt id="plugins.common.RVT_disk.BaseImage.exists">
+<code class="sig-name descname">exists</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_disk.BaseImage.exists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if the disk was found in the morgue.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_disk.BaseImage.getPartitionNumber">
+<code class="sig-name descname">getPartitionNumber</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_disk.BaseImage.getPartitionNumber" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of partitions in disk</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_disk.BaseImage.mmls">
+<code class="sig-name descname">mmls</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_disk.BaseImage.mmls" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read partitions from the image</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_disk.BaseImage.mount">
+<code class="sig-name descname">mount</code><span class="sig-paren">(</span><em class="sig-param">partitions=None</em>, <em class="sig-param">vss=False</em>, <em class="sig-param">unzip_path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_disk.BaseImage.mount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mounts partitions of disk
+:param partition: partition to be mounted (mounts all available partitions by default)
+:type partition: str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>False in case of error</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_disk.BaseImage.myflag">
+<code class="sig-name descname">myflag</code><span class="sig-paren">(</span><em class="sig-param">option</em>, <em class="sig-param">default=False</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_disk.BaseImage.myflag" title="Permalink to this definition">¶</a></dt>
+<dd><p>A convenience method for self.config.getboolean(self.section, option, False)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_disk.BaseImage.umount">
+<code class="sig-name descname">umount</code><span class="sig-paren">(</span><em class="sig-param">unzip_path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_disk.BaseImage.umount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unmounts all partitions</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.common.RVT_disk.DummyImage">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.common.RVT_disk.</code><code class="sig-name descname">DummyImage</code><span class="sig-paren">(</span><em class="sig-param">imagefile</em>, <em class="sig-param">imagetype</em>, <em class="sig-param">params</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_disk.DummyImage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#plugins.common.RVT_disk.BaseImage" title="plugins.common.RVT_disk.BaseImage"><code class="xref py py-class docutils literal notranslate"><span class="pre">plugins.common.RVT_disk.BaseImage</span></code></a></p>
+<dl class="method">
+<dt id="plugins.common.RVT_disk.DummyImage.mmls">
+<code class="sig-name descname">mmls</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_disk.DummyImage.mmls" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read partitions from the image</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_disk.DummyImage.mount">
+<code class="sig-name descname">mount</code><span class="sig-paren">(</span><em class="sig-param">partitions=''</em>, <em class="sig-param">vss=False</em>, <em class="sig-param">unzip_path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_disk.DummyImage.mount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mounts partitions of disk
+:param partition: partition to be mounted (mounts all available partitions by default)
+:type partition: str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>False in case of error</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_disk.DummyImage.umount">
+<code class="sig-name descname">umount</code><span class="sig-paren">(</span><em class="sig-param">unzip_path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_disk.DummyImage.umount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unmounts all partitions</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.common.RVT_disk.EncaseImage">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.common.RVT_disk.</code><code class="sig-name descname">EncaseImage</code><span class="sig-paren">(</span><em class="sig-param">imagefile</em>, <em class="sig-param">imagetype</em>, <em class="sig-param">params</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_disk.EncaseImage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#plugins.common.RVT_disk.BaseImage" title="plugins.common.RVT_disk.BaseImage"><code class="xref py py-class docutils literal notranslate"><span class="pre">plugins.common.RVT_disk.BaseImage</span></code></a></p>
+<p>Manages an EncaseImage image</p>
+<dl class="method">
+<dt id="plugins.common.RVT_disk.EncaseImage.umount">
+<code class="sig-name descname">umount</code><span class="sig-paren">(</span><em class="sig-param">unzip_path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_disk.EncaseImage.umount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unmounts all partitions</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.common.RVT_disk.ZipImage">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.common.RVT_disk.</code><code class="sig-name descname">ZipImage</code><span class="sig-paren">(</span><em class="sig-param">imagefile</em>, <em class="sig-param">imagetype</em>, <em class="sig-param">params</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_disk.ZipImage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#plugins.common.RVT_disk.BaseImage" title="plugins.common.RVT_disk.BaseImage"><code class="xref py py-class docutils literal notranslate"><span class="pre">plugins.common.RVT_disk.BaseImage</span></code></a></p>
+<p>Manages a ZIP file: its contents are unzipped into a single partition</p>
+<dl class="method">
+<dt id="plugins.common.RVT_disk.ZipImage.mmls">
+<code class="sig-name descname">mmls</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_disk.ZipImage.mmls" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read partitions from the image</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_disk.ZipImage.mount">
+<code class="sig-name descname">mount</code><span class="sig-paren">(</span><em class="sig-param">unzip_path=None</em>, <em class="sig-param">partitions=''</em>, <em class="sig-param">vss=False</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_disk.ZipImage.mount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extracts contents of zip imagefile to unzip_path</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_disk.ZipImage.umount">
+<code class="sig-name descname">umount</code><span class="sig-paren">(</span><em class="sig-param">unzip_path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_disk.ZipImage.umount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unmounts all partitions</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="plugins.common.RVT_disk.getSourceImage">
+<code class="sig-prename descclassname">plugins.common.RVT_disk.</code><code class="sig-name descname">getSourceImage</code><span class="sig-paren">(</span><em class="sig-param">myconfig</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_disk.getSourceImage" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-plugins.common.RVT_files">
+<span id="plugins-common-rvt-files-module"></span><h2>plugins.common.RVT_files module<a class="headerlink" href="#module-plugins.common.RVT_files" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="plugins.common.RVT_files.ExtractPathTerms">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.common.RVT_files.</code><code class="sig-name descname">ExtractPathTerms</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_files.ExtractPathTerms" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Set new configuration options with user and partition obtained from a file path</p>
+<dl class="method">
+<dt id="plugins.common.RVT_files.ExtractPathTerms.get_partition_from_path">
+<code class="sig-name descname">get_partition_from_path</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_files.ExtractPathTerms.get_partition_from_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_files.ExtractPathTerms.get_user_from_path">
+<code class="sig-name descname">get_user_from_path</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_files.ExtractPathTerms.get_user_from_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_files.ExtractPathTerms.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_files.ExtractPathTerms.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_files.ExtractPathTerms.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_files.ExtractPathTerms.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.common.RVT_files.Files">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.common.RVT_files.</code><code class="sig-name descname">Files</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_files.Files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Generates a list with all the allocated files in a disk, by visiting them.</p>
+<dl class="method">
+<dt id="plugins.common.RVT_files.Files.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_files.Files.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>The path is ignored.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.common.RVT_files.FilterAllocFiles">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.common.RVT_files.</code><code class="sig-name descname">FilterAllocFiles</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_files.FilterAllocFiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Reads alloc_files and sends to from_module the filenames that match an expression.</p>
+<dl class="simple">
+<dt>Configuration:</dt><dd><ul class="simple">
+<li><p><strong>regex</strong>: the regex expression to match</p></li>
+<li><p><strong>file_category</strong>: if present, ignore regex and read extensions from this file_category.</p></li>
+<li><p><strong>vss</strong>: use virtual shadow instead of the current system (only Window images)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="plugins.common.RVT_files.FilterAllocFiles.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_files.FilterAllocFiles.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_files.FilterAllocFiles.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_files.FilterAllocFiles.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>The path is ignored</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.common.RVT_files.GetFiles">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.common.RVT_files.</code><code class="sig-name descname">GetFiles</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">vss=False</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_files.GetFiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class provides method to interact with the list of all allocated files in the filesystem (alloc_files.txt)</p>
+<dl class="method">
+<dt id="plugins.common.RVT_files.GetFiles.files">
+<code class="sig-name descname">files</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_files.GetFiles.files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Yield all of allocated file paths</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_files.GetFiles.get_alloc_txt_files">
+<code class="sig-name descname">get_alloc_txt_files</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_files.GetFiles.get_alloc_txt_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of all alloc_files-txt files present in the output directory for the source</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_files.GetFiles.search">
+<code class="sig-name descname">search</code><span class="sig-paren">(</span><em class="sig-param">regex</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_files.GetFiles.search" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of allocated files matching ‘regex’.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.common.RVT_files.SendAllocFiles">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.common.RVT_files.</code><code class="sig-name descname">SendAllocFiles</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_files.SendAllocFiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>The module sends to <em>from_module</em> the path to all files inside alloc_files.</p>
+<dl class="method">
+<dt id="plugins.common.RVT_files.SendAllocFiles.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_files.SendAllocFiles.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>The path is ignored</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-plugins.common.RVT_filesystem">
+<span id="plugins-common-rvt-filesystem-module"></span><h2>plugins.common.RVT_filesystem module<a class="headerlink" href="#module-plugins.common.RVT_filesystem" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="plugins.common.RVT_filesystem.FileSystem">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.common.RVT_filesystem.</code><code class="sig-name descname">FileSystem</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">disk=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_filesystem.FileSystem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>This class provides a set of methods to extract general information about filesystems in every partition.</p>
+<p>The available methods create auxiliar files in json format.
+Once generated, they allow a fast access to information describing filesystem relations regarding:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Inodes and path association</p></li>
+<li><p>Inodes and blocks</p></li>
+<li><p>Inodes status</p></li>
+</ul>
+</div></blockquote>
+<p>Use the ‘load…’ methods to retrieve (or generate) the specific dictionaries.
+It also provides some methods to extract inodes or clusters.</p>
+<p>:param : outdir (str): path to auxiliar output where all files generated by this modules are stored</p>
+<dl class="method">
+<dt id="plugins.common.RVT_filesystem.FileSystem.cluster_allocation_status">
+<code class="sig-name descname">cluster_allocation_status</code><span class="sig-paren">(</span><em class="sig-param">partition</em>, <em class="sig-param">cluster</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_filesystem.FileSystem.cluster_allocation_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets cluster allocation status</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>partition</strong> (<em>str</em>) – partition name</p></li>
+<li><p><strong>cluster</strong> (<em>str</em>) – cluster number</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Allocated or Not Allocated</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_filesystem.FileSystem.cluster_extract">
+<code class="sig-name descname">cluster_extract</code><span class="sig-paren">(</span><em class="sig-param">partition</em>, <em class="sig-param">cluster</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_filesystem.FileSystem.cluster_extract" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extraxt cluster content</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>partition</strong> (<em>str</em>) – partition name</p></li>
+<li><p><strong>cluster</strong> (<em>str</em>) – cluster number</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>binary text from a cluster</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_filesystem.FileSystem.create_inode_list_with_ffind">
+<code class="sig-name descname">create_inode_list_with_ffind</code><span class="sig-paren">(</span><em class="sig-param">partition=None</em>, <em class="sig-param">device=None</em>, <em class="sig-param">deleted=False</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_filesystem.FileSystem.create_inode_list_with_ffind" title="Permalink to this definition">¶</a></dt>
+<dd><p>Associate inode with paths using ffind.
+CAUTION: This method is VERY slow. Use self.inode_path instead</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_filesystem.FileSystem.get_inode_from_path">
+<code class="sig-name descname">get_inode_from_path</code><span class="sig-paren">(</span><em class="sig-param">filename</em>, <em class="sig-param">partition</em>, <em class="sig-param">vss=False</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_filesystem.FileSystem.get_inode_from_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find inode associated to a filename inside a partition filesystem</p>
+<p>:param : filename (str): filename to search inode
+:param : partition (str): Partition name where getting inode (examples: p05 or v1p04)
+:param : vss (bool): True if it’s an vss</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_filesystem.FileSystem.get_macb">
+<code class="sig-name descname">get_macb</code><span class="sig-paren">(</span><em class="sig-param">file_list</em>, <em class="sig-param">vss=False</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_filesystem.FileSystem.get_macb" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve timestamp information (MACB times) for a list of files</p>
+<p>:param : file_list (list): list of filenames paths relative to casedir (example: 112233-01-1/mnt/p02/Users/myuser/Documents/mydoc.txt)
+:param : vss (bool): If True, look at vss partitions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>dict: every key (filename) contains a list of four strings representing times</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_filesystem.FileSystem.icat">
+<code class="sig-name descname">icat</code><span class="sig-paren">(</span><em class="sig-param">inode</em>, <em class="sig-param">partition</em>, <em class="sig-param">output_filename=None</em>, <em class="sig-param">attribute=''</em>, <em class="sig-param">vss=False</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_filesystem.FileSystem.icat" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Write or return inode contents. If output_filename is set the content is written to that file and returns nothing.</dt><dd><p>Otherwise the content is returned. Be careful with large files.</p>
+</dd>
+</dl>
+<p>:param : partition (str): Partition name where getting content (examples: p05 or v1p04)
+:param : inode (int): inode number
+:param : output_filename (string): file where inode’s content may be written
+:param : attribute (string): optional inode attribute (related with ADS)
+:param : vss (bool): True if it is an volume snapshot</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_filesystem.FileSystem.inode_block">
+<code class="sig-name descname">inode_block</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_filesystem.FileSystem.inode_block" title="Permalink to this definition">¶</a></dt>
+<dd><p>Relates inodes with blocks for every partition.
+Generates two reciprocal JSON files: inode -&gt; block; block -&gt; inode.
+block_from_inode: Keys are inodes (strings, not integers). Values are a list of blocks
+inode_from_block: Keys are blocks. Values are a list of inodes</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_filesystem.FileSystem.inode_from_cluster">
+<code class="sig-name descname">inode_from_cluster</code><span class="sig-paren">(</span><em class="sig-param">partition</em>, <em class="sig-param">cluster</em>, <em class="sig-param">inode_from_block=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_filesystem.FileSystem.inode_from_cluster" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use ifind (very slow) or a previously created file to get a list of inodes associated to a cluster (block)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>partition</strong> (<em>str</em>) – partition name</p></li>
+<li><p><strong>cluster</strong> (<em>str</em>) – cluster number</p></li>
+<li><p><strong>inode_from_block</strong> (<em>dict</em>) – associates a list of inodes with a block. Use it if provided</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>list of inodes associated to a cluster</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_filesystem.FileSystem.inode_path">
+<code class="sig-name descname">inode_path</code><span class="sig-paren">(</span><em class="sig-param">deleted=False</em>, <em class="sig-param">vss=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_filesystem.FileSystem.inode_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Relates inodes with paths for every partition using sleuthkit fls command.
+Generates two reciprocal JSON files: inode -&gt; path; path -&gt; inode.
+path_from_inode: Keys are inodes (strings, not integers). Values are a list of paths
+inode_from_path: Keys are paths. Values are inodes
+Deleted files are treated apart since the associated inode may no longer contain the data
+Caution: Embedded data streams are not referenced.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>deleted</strong> (<em>bool</em>) – If True, show only deleted files</p></li>
+<li><p><strong>vss</strong> (<em>str</em>) – If True, retrieve Volume Shadows Snapshots inode path relations</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_filesystem.FileSystem.inode_status">
+<code class="sig-name descname">inode_status</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_filesystem.FileSystem.inode_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save files showing allocated status of every inode in a partition</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_filesystem.FileSystem.load_block_from_inode">
+<code class="sig-name descname">load_block_from_inode</code><span class="sig-paren">(</span><em class="sig-param">config=None</em>, <em class="sig-param">partition=None</em>, <em class="sig-param">vss=None</em>, <em class="sig-param">deleted=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_filesystem.FileSystem.load_block_from_inode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return dictionary relating each inode in the partition with its data blocks. Keys are strings, not integers</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_filesystem.FileSystem.load_inode_from_block">
+<code class="sig-name descname">load_inode_from_block</code><span class="sig-paren">(</span><em class="sig-param">config=None</em>, <em class="sig-param">partition=None</em>, <em class="sig-param">vss=None</em>, <em class="sig-param">deleted=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_filesystem.FileSystem.load_inode_from_block" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return dictionary relating each block with a list of inodes</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_filesystem.FileSystem.load_inode_from_path">
+<code class="sig-name descname">load_inode_from_path</code><span class="sig-paren">(</span><em class="sig-param">config=None</em>, <em class="sig-param">partition=None</em>, <em class="sig-param">vss=None</em>, <em class="sig-param">deleted=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_filesystem.FileSystem.load_inode_from_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return dictionary relating each path with an inode</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_filesystem.FileSystem.load_inode_status">
+<code class="sig-name descname">load_inode_status</code><span class="sig-paren">(</span><em class="sig-param">config=None</em>, <em class="sig-param">partition=None</em>, <em class="sig-param">vss=None</em>, <em class="sig-param">deleted=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_filesystem.FileSystem.load_inode_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return dictionary telling the allocation status for every inode in a partition</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_filesystem.FileSystem.load_path_from_inode">
+<code class="sig-name descname">load_path_from_inode</code><span class="sig-paren">(</span><em class="sig-param">config=None</em>, <em class="sig-param">partition=None</em>, <em class="sig-param">vss=None</em>, <em class="sig-param">deleted=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_filesystem.FileSystem.load_path_from_inode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return dictionary relating each inode in the partition with filenames. Keys are strings, not integers</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_filesystem.FileSystem.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=''</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_filesystem.FileSystem.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate the main files describing filesystem relations.
+It is advisable to generate them separately when needed, since they are slow to run</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_filesystem.FileSystem.save_inode_path_files">
+<code class="sig-name descname">save_inode_path_files</code><span class="sig-paren">(</span><em class="sig-param">path_from_inode</em>, <em class="sig-param">inode_from_path</em>, <em class="sig-param">partition</em>, <em class="sig-param">deleted=False</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_filesystem.FileSystem.save_inode_path_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save path_from_inode and inode_from_path results to JSON files.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-plugins.common.RVT_gmail_mailbox">
+<span id="plugins-common-rvt-gmail-mailbox-module"></span><h2>plugins.common.RVT_gmail_mailbox module<a class="headerlink" href="#module-plugins.common.RVT_gmail_mailbox" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="plugins.common.RVT_gmail_mailbox.Gmail">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.common.RVT_gmail_mailbox.</code><code class="sig-name descname">Gmail</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_gmail_mailbox.Gmail" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<dl class="method">
+<dt id="plugins.common.RVT_gmail_mailbox.Gmail.extract_from_cspan">
+<code class="sig-name descname">extract_from_cspan</code><span class="sig-paren">(</span><em class="sig-param">infile</em>, <em class="sig-param">of</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_gmail_mailbox.Gmail.extract_from_cspan" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_gmail_mailbox.Gmail.extract_from_gmail">
+<code class="sig-name descname">extract_from_gmail</code><span class="sig-paren">(</span><em class="sig-param">infile</em>, <em class="sig-param">of</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_gmail_mailbox.Gmail.extract_from_gmail" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_gmail_mailbox.Gmail.generate_search_file">
+<code class="sig-name descname">generate_search_file</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_gmail_mailbox.Gmail.generate_search_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates needed searches files if it doesn’t exists</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_gmail_mailbox.Gmail.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=''</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_gmail_mailbox.Gmail.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main function to generate inbox files based on string searches</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="plugins.common.RVT_gmail_mailbox.check_make_search_file">
+<code class="sig-prename descclassname">plugins.common.RVT_gmail_mailbox.</code><code class="sig-name descname">check_make_search_file</code><span class="sig-paren">(</span><em class="sig-param">fname</em>, <em class="sig-param">webmail</em>, <em class="sig-param">kw</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_gmail_mailbox.check_make_search_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plugins.common.RVT_gmail_mailbox.sanitize_text">
+<code class="sig-prename descclassname">plugins.common.RVT_gmail_mailbox.</code><code class="sig-name descname">sanitize_text</code><span class="sig-paren">(</span><em class="sig-param">texto</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_gmail_mailbox.sanitize_text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sanitize text
+:param texto: text to sanitize
+:type texto: str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>text replacing some chars</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-plugins.common.RVT_mails">
+<span id="plugins-common-rvt-mails-module"></span><h2>plugins.common.RVT_mails module<a class="headerlink" href="#module-plugins.common.RVT_mails" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="plugins.common.RVT_mails.CharacterizeMails">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.common.RVT_mails.</code><code class="sig-name descname">CharacterizeMails</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_mails.CharacterizeMails" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<dl class="method">
+<dt id="plugins.common.RVT_mails.CharacterizeMails.init_dict">
+<em class="property">static </em><code class="sig-name descname">init_dict</code><span class="sig-paren">(</span><em class="sig-param">m</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_mails.CharacterizeMails.init_dict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_mails.CharacterizeMails.process_mails">
+<code class="sig-name descname">process_mails</code><span class="sig-paren">(</span><em class="sig-param">infile</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_mails.CharacterizeMails.process_mails" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main function to extract general statistics from all mails in a mailbox</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_mails.CharacterizeMails.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=''</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_mails.CharacterizeMails.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Characterize mailbox. Writes a summary file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – path to mailbox.csv</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Configuration:</dt><dd><ul class="simple">
+<li><p><strong>outdir</strong> (str): Output directory</p></li>
+<li><p><strong>summary_file</strong> (str): path to output summary_file</p></li>
+<li><p><strong>n</strong> (int or str): number of most common instances to show for each category</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Yields</dt>
+<dd class="field-odd"><p>Dictionaries of individual mail accounts information, such as number of appearences or time ranges</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_mails.CharacterizeMails.summary">
+<code class="sig-name descname">summary</code><span class="sig-paren">(</span><em class="sig-param">out_summary</em>, <em class="sig-param">n=30</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_mails.CharacterizeMails.summary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates summary file, including most common email accounts and correspondence.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>out_summary</strong> (<em>str</em>) – path to output file</p></li>
+<li><p><strong>n</strong> (<em>int</em><em> or </em><em>str</em>) – number of most common instances to show for each category</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.common.RVT_mails.FilterMails">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.common.RVT_mails.</code><code class="sig-name descname">FilterMails</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_mails.FilterMails" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<dl class="method">
+<dt id="plugins.common.RVT_mails.FilterMails.filter_fields">
+<code class="sig-name descname">filter_fields</code><span class="sig-paren">(</span><em class="sig-param">row</em>, <em class="sig-param">variables</em>, <em class="sig-param">conditions</em>, <em class="sig-param">values</em>, <em class="sig-param">pre_function=None</em>, <em class="sig-param">operator='and'</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_mails.FilterMails.filter_fields" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if conditions applied to variables pass.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>variables</strong> (<em>-</em>) – variables to compare</p></li>
+<li><p><strong>conditions</strong> (<em>-</em>) – comparsion function. Ex: [‘__gt’__, ‘__eq__’]</p></li>
+<li><p><strong>values</strong> (<em>-</em>) – values to compare against</p></li>
+<li><p><strong>operator</strong> (<em>-</em>) – ‘and’ or ‘or’</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_mails.FilterMails.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=''</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_mails.FilterMails.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse some properties and filter a list of emails, yielding only the ones satisfying the specified conditions.
+Filters must be specified in configuration files under the section ‘filter_mails’.
+If the section is empty or does not exists, all mails will be returned.</p>
+<p>Each filter must specify a list of field names (variables) to compare against (values) with the comparsion operators (conditions).
+Optionally a function (pre_function) may be specified to apply before the comparsion.
+The key (operator) determines if every item in the list must be linked with an ‘and’ or ‘or’ operator.</p>
+<p>Configuration example:
+select recieved mails with delivery_time between ‘2006-2-6’ and ‘2007-1-2’ where the number of recipients is bigger or equal than 5</p>
+<blockquote>
+<div><p>[filter_mails]
+filter1: {‘operator’: ‘and’,</p>
+<blockquote>
+<div><p>‘variables’: [‘send_or_received’, ‘delivery_time’, ‘delivery_time’],
+‘conditions’: [‘__eq__’, ‘__ge__’, ‘__le__’],
+‘values’: [‘R’, ‘2006-2-6’, ‘2007-1-2’]}</p>
+</div></blockquote>
+<dl class="simple">
+<dt>filter2: {‘operator’: ‘or’,</dt><dd><p>‘pre_function’: [‘len’, ‘len’],
+‘variables’: [‘to_mails’, ‘cc_mails’],
+‘conditions’: [‘__ge__’, ‘__ge__’],
+‘values’: [‘5’, ‘5’]}</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-plugins.common.RVT_mount">
+<span id="plugins-common-rvt-mount-module"></span><h2>plugins.common.RVT_mount module<a class="headerlink" href="#module-plugins.common.RVT_mount" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="plugins.common.RVT_mount.Mount">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.common.RVT_mount.</code><code class="sig-name descname">Mount</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_mount.Mount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Mount all partitions in a disk and then run from_module.</p>
+<dl class="simple">
+<dt>Configuration:</dt><dd><ul class="simple">
+<li><p><strong>partitions</strong> (str): comma separated list of partitions to mount (ex: p03,p05,v1p05). All non vss partitions by default</p></li>
+<li><p><strong>recovery_keys</strong> (str): comma separated list of recovery keys for encrypted partition</p></li>
+<li><p><strong>ntfs_args</strong> (str): specific options for mounting an NTFS partition.</p></li>
+<li><p><strong>fat32_args</strong> (str): specific options for mounting a FAT32 partition.</p></li>
+<li><p><strong>ext4_args</strong> (str): specific options for mounting an EXT4 partition.</p></li>
+<li><p><strong>hfs_args</strong> (str): specific options for mounting an HFS partition.</p></li>
+<li><p><strong>vss</strong> (bool): mount regular (False) or Volume Shadow Snapshots (True) partitions</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="plugins.common.RVT_mount.Mount.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_mount.Mount.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.common.RVT_mount.UMount">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.common.RVT_mount.</code><code class="sig-name descname">UMount</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_mount.UMount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Run from_module and then umount all partitions in a disk.</p>
+<dl class="method">
+<dt id="plugins.common.RVT_mount.UMount.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_mount.UMount.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-plugins.common.RVT_partition">
+<span id="plugins-common-rvt-partition-module"></span><h2>plugins.common.RVT_partition module<a class="headerlink" href="#module-plugins.common.RVT_partition" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="plugins.common.RVT_partition.Partition">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.common.RVT_partition.</code><code class="sig-name descname">Partition</code><span class="sig-paren">(</span><em class="sig-param">imagefile</em>, <em class="sig-param">size</em>, <em class="sig-param">filesystem</em>, <em class="sig-param">osects</em>, <em class="sig-param">partition</em>, <em class="sig-param">sectorsize</em>, <em class="sig-param">myconfig</em>, <em class="sig-param">bn=''</em>, <em class="sig-param">voln=''</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_partition.Partition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Stores relevant information about a partition. Allows to mount the partiton</p>
+<dl class="method">
+<dt id="plugins.common.RVT_partition.Partition.bindfs_mount">
+<code class="sig-name descname">bindfs_mount</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_partition.Partition.bindfs_mount" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_partition.Partition.check_bitlocker">
+<code class="sig-name descname">check_bitlocker</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_partition.Partition.check_bitlocker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if partitions is encrypted with bitlocker</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_partition.Partition.fvde_mount">
+<code class="sig-name descname">fvde_mount</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_partition.Partition.fvde_mount" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_partition.Partition.get_vss_number_stores">
+<code class="sig-name descname">get_vss_number_stores</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_partition.Partition.get_vss_number_stores" title="Permalink to this definition">¶</a></dt>
+<dd><p>Describes VSS found in the partition</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_partition.Partition.load_partition">
+<code class="sig-name descname">load_partition</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_partition.Partition.load_partition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load partition variables from JSON file. Avoids running mmls every time</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_partition.Partition.mount">
+<code class="sig-name descname">mount</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_partition.Partition.mount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main mounting method for partitions. Calls specific function depending on Filesystem type</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_partition.Partition.mount_APFS">
+<code class="sig-name descname">mount_APFS</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_partition.Partition.mount_APFS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_partition.Partition.mount_HFS">
+<code class="sig-name descname">mount_HFS</code><span class="sig-paren">(</span><em class="sig-param">imagefile=''</em>, <em class="sig-param">mountpath=''</em>, <em class="sig-param">offset=True</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_partition.Partition.mount_HFS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_partition.Partition.mount_NTFS">
+<code class="sig-name descname">mount_NTFS</code><span class="sig-paren">(</span><em class="sig-param">imagefile=None</em>, <em class="sig-param">mountpath=None</em>, <em class="sig-param">offset=True</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_partition.Partition.mount_NTFS" title="Permalink to this definition">¶</a></dt>
+<dd><p>mount NTFS partition</p>
+<dl class="simple">
+<dt>Confiugration section:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">ntfs_args</dt>
+<dd class="field-odd"><p>arguments for mount. offset and sizelimit will be automatically appended to these arguments.
+This parameter will be managed as a format string. The current group id will be passed as an option <cite>gid</cite>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>imagefile</strong> (<em>str</em>) – imagefile path (used for auxiliary mount point). If None, use self.imagefile.</p></li>
+<li><p><strong>mountpath</strong> (<em>str</em>) – mount the image on this path. If None, use <cite>source/mnt/pXX</cite>.</p></li>
+<li><p><strong>offset</strong> (<em>bool</em>) – Used to ignore disk offset (used for auxiliary mount point)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_partition.Partition.mount_bitlocker">
+<code class="sig-name descname">mount_bitlocker</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_partition.Partition.mount_bitlocker" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_partition.Partition.mount_ext">
+<code class="sig-name descname">mount_ext</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_partition.Partition.mount_ext" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_partition.Partition.mount_fat">
+<code class="sig-name descname">mount_fat</code><span class="sig-paren">(</span><em class="sig-param">imagefile=None</em>, <em class="sig-param">mountpath=None</em>, <em class="sig-param">offset=True</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_partition.Partition.mount_fat" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_partition.Partition.myflag">
+<code class="sig-name descname">myflag</code><span class="sig-paren">(</span><em class="sig-param">option</em>, <em class="sig-param">default=False</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_partition.Partition.myflag" title="Permalink to this definition">¶</a></dt>
+<dd><p>A convenience method for self.config.getboolean(self.section, option, False)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_partition.Partition.refreshMountedImages">
+<code class="sig-name descname">refreshMountedImages</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_partition.Partition.refreshMountedImages" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates information about loop devices mounted.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_partition.Partition.save_partition">
+<code class="sig-name descname">save_partition</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_partition.Partition.save_partition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write partition variables in a JSON file</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_partition.Partition.umount">
+<code class="sig-name descname">umount</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_partition.Partition.umount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unmounts all partitions</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_partition.Partition.umountPartition">
+<code class="sig-name descname">umountPartition</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_partition.Partition.umountPartition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Umount path</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_partition.Partition.vss_mount">
+<code class="sig-name descname">vss_mount</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_partition.Partition.vss_mount" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-plugins.common.RVT_search">
+<span id="plugins-common-rvt-search-module"></span><h2>plugins.common.RVT_search module<a class="headerlink" href="#module-plugins.common.RVT_search" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="plugins.common.RVT_search.OutSearch">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.common.RVT_search.</code><code class="sig-name descname">OutSearch</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_search.OutSearch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<dl class="method">
+<dt id="plugins.common.RVT_search.OutSearch.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">keyfile=''</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_search.OutSearch.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Searche contents of regex in output dir except in strings, searches and parser folders</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.common.RVT_search.ReportSearch">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.common.RVT_search.</code><code class="sig-name descname">ReportSearch</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_search.ReportSearch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Generates reports from keywords files
+Parameter:</p>
+<blockquote>
+<div><p>path (str): filename with keywords to seek</p>
+</div></blockquote>
+<dl class="simple">
+<dt>Configuration:</dt><dd><ul class="simple">
+<li><p><strong>keyfile</strong>: filename with keywords in case path is not specified</p></li>
+<li><p><strong>search_dir</strong>: output directory for StringSearch generated files</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="plugins.common.RVT_search.ReportSearch.report_search_kw">
+<code class="sig-name descname">report_search_kw</code><span class="sig-paren">(</span><em class="sig-param">keyword</em>, <em class="sig-param">regex</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_search.ReportSearch.report_search_kw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a pdf file from ‘all_kw’ file, using LaTex.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>keyword</strong> (<em>str</em>) – keyword name</p></li>
+<li><p><strong>regex</strong> (<em>str</em>) – regular expression associated to keyword</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_search.ReportSearch.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=''</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_search.ReportSearch.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.common.RVT_search.SearchAccounts">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.common.RVT_search.</code><code class="sig-name descname">SearchAccounts</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_search.SearchAccounts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<dl class="method">
+<dt id="plugins.common.RVT_search.SearchAccounts.control_digits">
+<code class="sig-name descname">control_digits</code><span class="sig-paren">(</span><em class="sig-param">account</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_search.SearchAccounts.control_digits" title="Permalink to this definition">¶</a></dt>
+<dd><p>Auxiliary function</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_search.SearchAccounts.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_search.SearchAccounts.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_search.SearchAccounts.remove_separators">
+<code class="sig-name descname">remove_separators</code><span class="sig-paren">(</span><em class="sig-param">texto</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_search.SearchAccounts.remove_separators" title="Permalink to this definition">¶</a></dt>
+<dd><p>Auxiliary function to remove chars</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_search.SearchAccounts.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=''</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_search.SearchAccounts.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search credit card accounts in strings</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_search.SearchAccounts.validate">
+<code class="sig-name descname">validate</code><span class="sig-paren">(</span><em class="sig-param">account</em>, <em class="sig-param">banks</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_search.SearchAccounts.validate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an account in a normalized format
+:param account: string number to normalize
+:type account: str
+:param banks: dict that relates account with bank
+:type banks: dict</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>account in a normalized format or empty string if is not a valid account number</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.common.RVT_search.SearchEmailAddresses">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.common.RVT_search.</code><code class="sig-name descname">SearchEmailAddresses</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_search.SearchEmailAddresses" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<dl class="method">
+<dt id="plugins.common.RVT_search.SearchEmailAddresses.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=''</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_search.SearchEmailAddresses.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a list with number of times an email address apears in strings</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.common.RVT_search.StringSearch">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.common.RVT_search.</code><code class="sig-name descname">StringSearch</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_search.StringSearch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Find strings that matches regular expression.
+There are three different output files types:</p>
+<blockquote>
+<div><ul class="simple">
+<li><dl class="simple">
+<dt><em>hits_somekeyword</em>: For every hit in the search of ‘somekeyword’ in strings, show:</dt><dd><p>Partition;Offset;Block;Status;String</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><em>blocks_somekeyword</em>: All blocks (clusters) associated with a hit for a partition.</dt><dd><p>It is an intermediate file, only for perfoming purposes</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><em>all_somekeyword</em>: Displays every block where somekeyword has been found, along with the next information:</dt><dd><p>Partition;Block;Inode;InodeStatus;PossibleFilename</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+<dl class="simple">
+<dt>Parameter:</dt><dd><p>path (str): filename with keywords to seek (same as keyfile in configuration)</p>
+</dd>
+<dt>Configuration:</dt><dd><ul class="simple">
+<li><p><strong>keyfile</strong>: default filename with keywords in case path is not specified</p></li>
+<li><p><strong>outdir</strong>: path to directory where generated match files will be stored</p></li>
+<li><p><strong>strings_dir</strong>: path to directory where string files are generated.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Warning: if a keyword is found between two consecutive blocks, result won’t be shown.</p>
+<dl class="method">
+<dt id="plugins.common.RVT_search.StringSearch.all_info">
+<code class="sig-name descname">all_info</code><span class="sig-paren">(</span><em class="sig-param">kw_blocks</em>, <em class="sig-param">kw=''</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_search.StringSearch.all_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Yields partition, block, inode, status, file and block content for each block where there is a match for ‘kw’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>kw_blocks</strong> (<em>dict</em>) – mapping between partition and blocks with a hit for a keyword</p></li>
+<li><p><strong>kw</strong> (<em>str</em>) – keyword name</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_search.StringSearch.get_blocks">
+<code class="sig-name descname">get_blocks</code><span class="sig-paren">(</span><em class="sig-param">kw</em>, <em class="sig-param">regex</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_search.StringSearch.get_blocks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates variable self.blocks, that stores set of blocks for kw and partition, creating new ‘block’ and ‘hits’ files</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_search.StringSearch.get_cluster">
+<code class="sig-name descname">get_cluster</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_search.StringSearch.get_cluster" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates report files containing information about the block where a hit is found, along with the contents of the block itself.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_search.StringSearch.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=''</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_search.StringSearch.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_search.StringSearch.save_blocks_file">
+<code class="sig-name descname">save_blocks_file</code><span class="sig-paren">(</span><em class="sig-param">blocks</em>, <em class="sig-param">kw</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_search.StringSearch.save_blocks_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_search.StringSearch.search_strings">
+<code class="sig-name descname">search_strings</code><span class="sig-paren">(</span><em class="sig-param">kw</em>, <em class="sig-param">regex</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_search.StringSearch.search_strings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a string search and yields hits. Also stores blocks where there’s a match for the keyword ‘kw’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>kw</strong> (<em>str</em>) – keyword name</p></li>
+<li><p><strong>regex</strong> (<em>str</em>) – regular expression associated to keyword</p></li>
+</ul>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>Dictionaries containing partition, block, offset and string match</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="plugins.common.RVT_search.getSearchItems">
+<code class="sig-prename descclassname">plugins.common.RVT_search.</code><code class="sig-name descname">getSearchItems</code><span class="sig-paren">(</span><em class="sig-param">key_file</em>, <em class="sig-param">is_file=True</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_search.getSearchItems" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get keywords and names for searching
+:param key_file: File name with keywords
+:type key_file: str
+:param is_file: get data from a file or from an string
+:type is_file: boolean</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>dictionary with keynames and keywords to search</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>key_dict (dict)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="plugins.common.RVT_search.searchCountRegex">
+<code class="sig-prename descclassname">plugins.common.RVT_search.</code><code class="sig-name descname">searchCountRegex</code><span class="sig-paren">(</span><em class="sig-param">regex</em>, <em class="sig-param">string_path</em>, <em class="sig-param">grep='grep'</em>, <em class="sig-param">logger=&lt;module 'logging' from '/usr/lib/python3.7/logging/__init__.py'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_search.searchCountRegex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return number of times a hit appears</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>regex</strong> (<em>str</em>) – regular expression to seek</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>dict with number of times a hit appears</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-plugins.common.RVT_skype">
+<span id="plugins-common-rvt-skype-module"></span><h2>plugins.common.RVT_skype module<a class="headerlink" href="#module-plugins.common.RVT_skype" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="plugins.common.RVT_skype.GenericLevelDB">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.common.RVT_skype.</code><code class="sig-name descname">GenericLevelDB</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_skype.GenericLevelDB" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Parse any leveldb. Since it is general, all specific fields are not parsed</p>
+<dl class="method">
+<dt id="plugins.common.RVT_skype.GenericLevelDB.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=''</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_skype.GenericLevelDB.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.common.RVT_skype.ParseLevelDB">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.common.RVT_skype.</code><code class="sig-name descname">ParseLevelDB</code><span class="sig-paren">(</span><em class="sig-param">path=None</em>, <em class="sig-param">outdir=None</em>, <em class="sig-param">user=''</em>, <em class="sig-param">partition=''</em>, <em class="sig-param">prefix=''</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_skype.ParseLevelDB" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class for parsing leveldb. Methods ‘get_types_table’, ‘get_target_type’ and ‘filter_special_keys’ must be implemented</p>
+<dl class="method">
+<dt id="plugins.common.RVT_skype.ParseLevelDB.decode_value">
+<em class="property">static </em><code class="sig-name descname">decode_value</code><span class="sig-paren">(</span><em class="sig-param">b</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_skype.ParseLevelDB.decode_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Try to decode a bytearray</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_skype.ParseLevelDB.filter_special_keys">
+<code class="sig-name descname">filter_special_keys</code><span class="sig-paren">(</span><em class="sig-param">k</em>, <em class="sig-param">v</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_skype.ParseLevelDB.filter_special_keys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Some keys may be parsed or decoded in a special way.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_skype.ParseLevelDB.get_leveldb_pairs">
+<code class="sig-name descname">get_leveldb_pairs</code><span class="sig-paren">(</span><em class="sig-param">lvl_db_path</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_skype.ParseLevelDB.get_leveldb_pairs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generator of key-value pairs for all leveldb files inside a folder.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_skype.ParseLevelDB.get_target_type">
+<code class="sig-name descname">get_target_type</code><span class="sig-paren">(</span><em class="sig-param">out</em>, <em class="sig-param">tipe</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_skype.ParseLevelDB.get_target_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Append data to table when out contains the required identifier.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_skype.ParseLevelDB.get_types_table">
+<code class="sig-name descname">get_types_table</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_skype.ParseLevelDB.get_types_table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates the table relating types of entries with fields</p>
+<p>Example:
+self.table = {</p>
+<blockquote>
+<div><dl class="simple">
+<dt>‘messages’: {‘identifier’: ‘originalarrivaltime’,</dt><dd><p>‘fields’: [‘originalarrivaltime’, ‘creator’, ‘conversationId’, ‘content’],
+‘sort’: ‘originalarrivaltime’},</p>
+</dd>
+<dt>‘calls’: {‘identifier’: ‘callDirection’,</dt><dd><p>‘fields’: [‘startTime’, ‘connectTime’, ‘endTime’, ‘callDuration’, ‘originator’, ‘target’],
+‘sort’: None},</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_skype.ParseLevelDB.parse_db">
+<code class="sig-name descname">parse_db</code><span class="sig-paren">(</span><em class="sig-param">entry</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_skype.ParseLevelDB.parse_db" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main function for parsing leveldb</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_skype.ParseLevelDB.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_skype.ParseLevelDB.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main function to execute</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_skype.ParseLevelDB.write_tables">
+<code class="sig-name descname">write_tables</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_skype.ParseLevelDB.write_tables" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write csv files containing information for each of defined tables.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.common.RVT_skype.ParseSkypeLevelDB">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.common.RVT_skype.</code><code class="sig-name descname">ParseSkypeLevelDB</code><span class="sig-paren">(</span><em class="sig-param">path=None</em>, <em class="sig-param">outdir=None</em>, <em class="sig-param">user=''</em>, <em class="sig-param">partition=''</em>, <em class="sig-param">prefix=''</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_skype.ParseSkypeLevelDB" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#plugins.common.RVT_skype.ParseLevelDB" title="plugins.common.RVT_skype.ParseLevelDB"><code class="xref py py-class docutils literal notranslate"><span class="pre">plugins.common.RVT_skype.ParseLevelDB</span></code></a></p>
+<dl class="method">
+<dt id="plugins.common.RVT_skype.ParseSkypeLevelDB.filter_special_keys">
+<code class="sig-name descname">filter_special_keys</code><span class="sig-paren">(</span><em class="sig-param">k</em>, <em class="sig-param">v</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_skype.ParseSkypeLevelDB.filter_special_keys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Some keys may be parsed or decoded in a special way.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_skype.ParseSkypeLevelDB.get_target_type">
+<code class="sig-name descname">get_target_type</code><span class="sig-paren">(</span><em class="sig-param">out</em>, <em class="sig-param">typ</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_skype.ParseSkypeLevelDB.get_target_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Append data to table when out contains the required identifier.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_skype.ParseSkypeLevelDB.get_types_table">
+<code class="sig-name descname">get_types_table</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_skype.ParseSkypeLevelDB.get_types_table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates the table relating types of entries with fields</p>
+<p>Example:
+self.table = {</p>
+<blockquote>
+<div><dl class="simple">
+<dt>‘messages’: {‘identifier’: ‘originalarrivaltime’,</dt><dd><p>‘fields’: [‘originalarrivaltime’, ‘creator’, ‘conversationId’, ‘content’],
+‘sort’: ‘originalarrivaltime’},</p>
+</dd>
+<dt>‘calls’: {‘identifier’: ‘callDirection’,</dt><dd><p>‘fields’: [‘startTime’, ‘connectTime’, ‘endTime’, ‘callDuration’, ‘originator’, ‘target’],
+‘sort’: None},</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.common.RVT_skype.ParseTeamsLevelDB">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.common.RVT_skype.</code><code class="sig-name descname">ParseTeamsLevelDB</code><span class="sig-paren">(</span><em class="sig-param">path=None</em>, <em class="sig-param">outdir=None</em>, <em class="sig-param">user=''</em>, <em class="sig-param">partition=''</em>, <em class="sig-param">prefix=''</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_skype.ParseTeamsLevelDB" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#plugins.common.RVT_skype.ParseLevelDB" title="plugins.common.RVT_skype.ParseLevelDB"><code class="xref py py-class docutils literal notranslate"><span class="pre">plugins.common.RVT_skype.ParseLevelDB</span></code></a></p>
+<dl class="method">
+<dt id="plugins.common.RVT_skype.ParseTeamsLevelDB.filter_special_keys">
+<code class="sig-name descname">filter_special_keys</code><span class="sig-paren">(</span><em class="sig-param">k</em>, <em class="sig-param">v</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_skype.ParseTeamsLevelDB.filter_special_keys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Some keys may be parsed or decoded in a special way.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_skype.ParseTeamsLevelDB.get_target_type">
+<code class="sig-name descname">get_target_type</code><span class="sig-paren">(</span><em class="sig-param">out</em>, <em class="sig-param">typ</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_skype.ParseTeamsLevelDB.get_target_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Append data to table when out contains the required identifier.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_skype.ParseTeamsLevelDB.get_types_table">
+<code class="sig-name descname">get_types_table</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_skype.ParseTeamsLevelDB.get_types_table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates the table relating types of entries with fields</p>
+<p>Example:
+self.table = {</p>
+<blockquote>
+<div><dl class="simple">
+<dt>‘messages’: {‘identifier’: ‘originalarrivaltime’,</dt><dd><p>‘fields’: [‘originalarrivaltime’, ‘creator’, ‘conversationId’, ‘content’],
+‘sort’: ‘originalarrivaltime’},</p>
+</dd>
+<dt>‘calls’: {‘identifier’: ‘callDirection’,</dt><dd><p>‘fields’: [‘startTime’, ‘connectTime’, ‘endTime’, ‘callDuration’, ‘originator’, ‘target’],
+‘sort’: None},</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.common.RVT_skype.Skype">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.common.RVT_skype.</code><code class="sig-name descname">Skype</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_skype.Skype" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Parse Skype databases leveldb</p>
+<dl class="method">
+<dt id="plugins.common.RVT_skype.Skype.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=''</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_skype.Skype.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.common.RVT_skype.Teams">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.common.RVT_skype.</code><code class="sig-name descname">Teams</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_skype.Teams" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Parse Teams databases leveldb</p>
+<dl class="method">
+<dt id="plugins.common.RVT_skype.Teams.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=''</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_skype.Teams.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="plugins.common.RVT_skype.comparator">
+<code class="sig-prename descclassname">plugins.common.RVT_skype.</code><code class="sig-name descname">comparator</code><span class="sig-paren">(</span><em class="sig-param">a</em>, <em class="sig-param">b</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_skype.comparator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dummy string comparator for sorting leveldb keys in case the standard leveldb.BytewiseComparator is not allowed.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-plugins.common.RVT_string">
+<span id="plugins-common-rvt-string-module"></span><h2>plugins.common.RVT_string module<a class="headerlink" href="#module-plugins.common.RVT_string" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="plugins.common.RVT_string.StringGenerate">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.common.RVT_string.</code><code class="sig-name descname">StringGenerate</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">disk=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_string.StringGenerate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<dl class="method">
+<dt id="plugins.common.RVT_string.StringGenerate.generate_strings">
+<code class="sig-name descname">generate_strings</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_string.StringGenerate.generate_strings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates strings of disk partitions</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.RVT_string.StringGenerate.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=''</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_string.StringGenerate.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-plugins.common.RVT_timelines">
+<span id="plugins-common-rvt-timelines-module"></span><h2>plugins.common.RVT_timelines module<a class="headerlink" href="#module-plugins.common.RVT_timelines" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="plugins.common.RVT_timelines.Timelines">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.common.RVT_timelines.</code><code class="sig-name descname">Timelines</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_timelines.Timelines" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Generates timeline and body files for a disk and its VSS (if set)</p>
+<dl class="simple">
+<dt>Configuration:</dt><dd><ul class="simple">
+<li><p><strong>vss</strong>: If True, generate timelines and body files for the VSS, not the main disk (only useful on Windows systems)</p></li>
+<li><p><strong>fls</strong>: Path to the fls app (TSK)</p></li>
+<li><p><strong>apfs_fls</strong>: Path to a fls app with APFS support (TSK&gt;?)</p></li>
+<li><p><strong>mactime</strong>: Path to the mactime app (TSK)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="plugins.common.RVT_timelines.Timelines.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.RVT_timelines.Timelines.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>The path is ignored, and the source image is used.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-plugins.common.case_solve">
+<span id="plugins-common-case-solve-module"></span><h2>plugins.common.case_solve module<a class="headerlink" href="#module-plugins.common.case_solve" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="plugins.common.case_solve.Case_Solve">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.common.case_solve.</code><code class="sig-name descname">Case_Solve</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.case_solve.Case_Solve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Mount all partitions in a disk and then run from_module.</p>
+<dl class="method">
+<dt id="plugins.common.case_solve.Case_Solve.print">
+<code class="sig-name descname">print</code><span class="sig-paren">(</span><em class="sig-param">txt</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.case_solve.Case_Solve.print" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.common.case_solve.Case_Solve.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.common.case_solve.Case_Solve.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="plugins.external.html" class="btn btn-neutral float-right" title="plugins.external package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="plugins.android.html" class="btn btn-neutral float-left" title="plugins.android package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, INCIDE Digital Data S.L.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

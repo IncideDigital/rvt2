@@ -1,0 +1,99 @@
+base package
+============
+
+.. automodule:: base
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Submodules
+----------
+
+base.commands module
+--------------------
+
+.. automodule:: base.commands
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+base.config module
+------------------
+
+.. automodule:: base.config
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+base.directory module
+---------------------
+
+.. automodule:: base.directory
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+base.help module
+----------------
+
+.. automodule:: base.help
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+base.input module
+-----------------
+
+.. automodule:: base.input
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+base.job module
+---------------
+
+.. automodule:: base.job
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+base.mutations module
+---------------------
+
+.. automodule:: base.mutations
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+base.output module
+------------------
+
+.. automodule:: base.output
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+base.templates module
+---------------------
+
+.. automodule:: base.templates
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+base.threads module
+-------------------
+
+.. automodule:: base.threads
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+base.utils module
+-----------------
+
+.. automodule:: base.utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+

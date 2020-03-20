@@ -1,0 +1,597 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>plugins.ios package &mdash; RVT2 2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="static/documentation_options.js"></script>
+        <script src="static/jquery.js"></script>
+        <script src="static/underscore.js"></script>
+        <script src="static/doctools.js"></script>
+        <script src="static/language_data.js"></script>
+    
+    <script type="text/javascript" src="static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="plugins.macos package" href="plugins.macos.html" />
+    <link rel="prev" title="plugins.indexer package" href="plugins.indexer.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> RVT2
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="base.html">base package</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="plugins.html">plugins package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="plugins.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="plugins.ai.html">plugins.ai package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.android.html">plugins.android package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.common.html">plugins.common package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.external.html">plugins.external package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.indexer.html">plugins.indexer package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">plugins.ios package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#jobs">Jobs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-plugins.ios.adv_whatsapp">plugins.ios.adv_whatsapp module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-plugins.ios.characterization">plugins.ios.characterization module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-plugins.ios.cookies">plugins.ios.cookies module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-plugins.ios.timeline">plugins.ios.timeline module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-plugins.ios.unback">plugins.ios.unback module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-plugins.ios.whatsapp">plugins.ios.whatsapp module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.macos.html">plugins.macos package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.windows.html">plugins.windows package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rvt2.html">rvt2 module</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RVT2</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="plugins.html">plugins package</a> &raquo;</li>
+        
+      <li>plugins.ios package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/plugins.ios.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-plugins.ios">
+<span id="plugins-ios-package"></span><h1>plugins.ios package<a class="headerlink" href="#module-plugins.ios" title="Permalink to this headline">¶</a></h1>
+<p>An RVT2 plugin to parse iOS backups.</p>
+<p>In order to use these plugins, you’ll need a Tika server and/or an ElasticSearch server running  in the network.</p>
+<div class="section" id="jobs">
+<h2>Jobs<a class="headerlink" href="#jobs" title="Permalink to this headline">¶</a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">ios</dt>
+<dd class="field-odd"><p>Run all jobs.</p>
+</dd>
+<dt class="field-even">plugins.ios.Unback</dt>
+<dd class="field-even"><p>mount an iOS backup. The backup can be a zip file or a directory.</p>
+</dd>
+</dl>
+<dl class="class">
+<dt id="plugins.ios.IOSModule">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.ios.</code><code class="sig-name descname">IOSModule</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.ios.IOSModule" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>A base class for the modules for iOS.</p>
+<dl class="method">
+<dt id="plugins.ios.IOSModule.database">
+<code class="sig-name descname">database</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.ios.IOSModule.database" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-plugins.ios.adv_whatsapp">
+<span id="plugins-ios-adv-whatsapp-module"></span><h2>plugins.ios.adv_whatsapp module<a class="headerlink" href="#module-plugins.ios.adv_whatsapp" title="Permalink to this headline">¶</a></h2>
+<p>File for conducting a coherence analysis on WhatsApps</p>
+<dl class="class">
+<dt id="plugins.ios.adv_whatsapp.AdvWhatsapps">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.ios.adv_whatsapp.</code><code class="sig-name descname">AdvWhatsapps</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.ios.adv_whatsapp.AdvWhatsapps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#plugins.ios.IOSModule" title="plugins.ios.IOSModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">plugins.ios.IOSModule</span></code></a></p>
+<p>Class responsible for conducting the coherence analysis on WhatsApps</p>
+<dl class="method">
+<dt id="plugins.ios.adv_whatsapp.AdvWhatsapps.adv_whatsapp">
+<code class="sig-name descname">adv_whatsapp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.ios.adv_whatsapp.AdvWhatsapps.adv_whatsapp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.ios.adv_whatsapp.AdvWhatsapps.blacklist">
+<code class="sig-name descname">blacklist</code><span class="sig-paren">(</span><em class="sig-param">con_storage</em>, <em class="sig-param">out</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.ios.adv_whatsapp.AdvWhatsapps.blacklist" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.ios.adv_whatsapp.AdvWhatsapps.compare_count">
+<code class="sig-name descname">compare_count</code><span class="sig-paren">(</span><em class="sig-param">items_storage</em>, <em class="sig-param">out</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.ios.adv_whatsapp.AdvWhatsapps.compare_count" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.ios.adv_whatsapp.AdvWhatsapps.compare_date">
+<code class="sig-name descname">compare_date</code><span class="sig-paren">(</span><em class="sig-param">items_search</em>, <em class="sig-param">items_storage</em>, <em class="sig-param">out</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.ios.adv_whatsapp.AdvWhatsapps.compare_date" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compare dates by id between ChatStorage.sqlite and ChatSearch.sqlite. Write messages with dates differing in more than 10sec</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.ios.adv_whatsapp.AdvWhatsapps.compare_text">
+<code class="sig-name descname">compare_text</code><span class="sig-paren">(</span><em class="sig-param">items_search</em>, <em class="sig-param">items_storage</em>, <em class="sig-param">out</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.ios.adv_whatsapp.AdvWhatsapps.compare_text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compare text by id between ChatStorage.sqlite and ChatSearch.sqlite. Write differences</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.ios.adv_whatsapp.AdvWhatsapps.connect">
+<code class="sig-name descname">connect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.ios.adv_whatsapp.AdvWhatsapps.connect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.ios.adv_whatsapp.AdvWhatsapps.deleted_items">
+<code class="sig-name descname">deleted_items</code><span class="sig-paren">(</span><em class="sig-param">con_storage</em>, <em class="sig-param">out</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.ios.adv_whatsapp.AdvWhatsapps.deleted_items" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.ios.adv_whatsapp.AdvWhatsapps.get_items_count">
+<code class="sig-name descname">get_items_count</code><span class="sig-paren">(</span><em class="sig-param">con_storage</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.ios.adv_whatsapp.AdvWhatsapps.get_items_count" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.ios.adv_whatsapp.AdvWhatsapps.get_items_date">
+<code class="sig-name descname">get_items_date</code><span class="sig-paren">(</span><em class="sig-param">con_storage</em>, <em class="sig-param">con_search</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.ios.adv_whatsapp.AdvWhatsapps.get_items_date" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.ios.adv_whatsapp.AdvWhatsapps.get_items_text">
+<code class="sig-name descname">get_items_text</code><span class="sig-paren">(</span><em class="sig-param">con_storage</em>, <em class="sig-param">con_search</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.ios.adv_whatsapp.AdvWhatsapps.get_items_text" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.ios.adv_whatsapp.AdvWhatsapps.get_tables">
+<code class="sig-name descname">get_tables</code><span class="sig-paren">(</span><em class="sig-param">con_storage</em>, <em class="sig-param">con_search</em>, <em class="sig-param">out</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.ios.adv_whatsapp.AdvWhatsapps.get_tables" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.ios.adv_whatsapp.AdvWhatsapps.last_backup">
+<code class="sig-name descname">last_backup</code><span class="sig-paren">(</span><em class="sig-param">out</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.ios.adv_whatsapp.AdvWhatsapps.last_backup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show last backup date. All message from this date on should be considered unmodified</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.ios.adv_whatsapp.AdvWhatsapps.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.ios.adv_whatsapp.AdvWhatsapps.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.ios.adv_whatsapp.AdvWhatsapps.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.ios.adv_whatsapp.AdvWhatsapps.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-plugins.ios.characterization">
+<span id="plugins-ios-characterization-module"></span><h2>plugins.ios.characterization module<a class="headerlink" href="#module-plugins.ios.characterization" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="plugins.ios.characterization.Characterization">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.ios.characterization.</code><code class="sig-name descname">Characterization</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.ios.characterization.Characterization" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>A module that parses the Manifest.plist to characterize the iPhone.</p>
+<p>The path is an unbacked iPhone backup. See job plugins.ios.unback.Unback</p>
+<dl class="simple">
+<dt>Configuration:</dt><dd><ul class="simple">
+<li><p><strong>outfile</strong>: Characterization is writen to this file.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="plugins.ios.characterization.Characterization.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.ios.characterization.Characterization.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.ios.characterization.Characterization.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.ios.characterization.Characterization.run" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – The path to the directory where the backup was unbacked.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>An array of a dictionary with the extracted documentation</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-plugins.ios.cookies">
+<span id="plugins-ios-cookies-module"></span><h2>plugins.ios.cookies module<a class="headerlink" href="#module-plugins.ios.cookies" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="plugins.ios.cookies.Cookies">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.ios.cookies.</code><code class="sig-name descname">Cookies</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.ios.cookies.Cookies" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Module to parse and yield cookies at /HomeDomain/Library/Cookies/.</p>
+<p>This module looks for these cookie files:</p>
+<ul class="simple">
+<li><p>‘/HomeDomain/Library/Cookies/Cookies.binarycookies’</p></li>
+<li><p>‘/HomeDomain/Library/Cookies/com.apple.appstored.binarycookies’</p></li>
+</ul>
+<dl class="method">
+<dt id="plugins.ios.cookies.Cookies.parse_cookie_file">
+<code class="sig-name descname">parse_cookie_file</code><span class="sig-paren">(</span><em class="sig-param">cookie_file</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.ios.cookies.Cookies.parse_cookie_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="plugins.ios.cookies.Cookies.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.ios.cookies.Cookies.run" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – Path to the unbacked backup.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">{&quot;date_creation&quot;,</span> <span class="pre">&quot;date_expiration&quot;,</span> <span class="pre">&quot;name&quot;,</span> <span class="pre">&quot;domain&quot;,</span> <span class="pre">&quot;value&quot;,</span> <span class="pre">&quot;cookie_path&quot;,</span> <span class="pre">&quot;flags&quot;}</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-plugins.ios.timeline">
+<span id="plugins-ios-timeline-module"></span><h2>plugins.ios.timeline module<a class="headerlink" href="#module-plugins.ios.timeline" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="plugins.ios.timeline.Timeline">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.ios.timeline.</code><code class="sig-name descname">Timeline</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.ios.timeline.Timeline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#plugins.ios.IOSModule" title="plugins.ios.IOSModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">plugins.ios.IOSModule</span></code></a></p>
+<p>Module that parses the file Manifest.db and generates a timeline.</p>
+<p>The run method yields an OrderedDict with the fields in TSK3 body file.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>We couldn’t identify a last modification time field in the backup. Last modification time is used instead.</p>
+</div>
+<dl class="method">
+<dt id="plugins.ios.timeline.Timeline.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.ios.timeline.Timeline.run" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – The path to the directory where the backup was unbacked.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>An <em>OrderedDict</em> with the fields in TSK3 BODY file.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-plugins.ios.unback">
+<span id="plugins-ios-unback-module"></span><h2>plugins.ios.unback module<a class="headerlink" href="#module-plugins.ios.unback" title="Permalink to this headline">¶</a></h2>
+<p>This file gets the backup from the variable path and ‘unbacks’ it in the desired extract_path</p>
+<dl class="class">
+<dt id="plugins.ios.unback.Unback">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.ios.unback.</code><code class="sig-name descname">Unback</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.ios.unback.Unback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#plugins.ios.IOSModule" title="plugins.ios.IOSModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">plugins.ios.IOSModule</span></code></a></p>
+<p>Unback an ios backup directory into a directory.</p>
+<p>Currently, only unencrypted backups are supported.</p>
+<dl class="simple">
+<dt>Configuration:</dt><dd><ul class="simple">
+<li><p><strong>unzip_path</strong>: If needed, unzip the source to this path before unbacking.</p></li>
+<li><p><strong>extract_path</strong>: Extract the backup into this path.</p></li>
+<li><p><strong>unback_cmd</strong>: If exists, use this external command to unback.
+It is a Python string template that receives variables “bk_path” and “extract_path”.
+An external command might be useful to unback encrypted backups.
+For example, check <a class="reference external" href="https://github.com/dinosec/iphone-dataprotection/blob/master/python_scripts/backup_tool.py">https://github.com/dinosec/iphone-dataprotection/blob/master/python_scripts/backup_tool.py</a></p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="plugins.ios.unback.Unback.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.ios.unback.Unback.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.ios.unback.Unback.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.ios.unback.Unback.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unpacks a directory</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – The path to a backup directory or zip file</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>An empty array, always.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-plugins.ios.whatsapp">
+<span id="plugins-ios-whatsapp-module"></span><h2>plugins.ios.whatsapp module<a class="headerlink" href="#module-plugins.ios.whatsapp" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="plugins.ios.whatsapp.WhatsApp">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.ios.whatsapp.</code><code class="sig-name descname">WhatsApp</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.ios.whatsapp.WhatsApp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#plugins.ios.IOSModule" title="plugins.ios.IOSModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">plugins.ios.IOSModule</span></code></a></p>
+<p>Parse the WhatsApp iOS database.</p>
+<dl class="simple">
+<dt>Configuration section:</dt><dd><p>media_outdir: Save media to this directory. It is a python format string, with a parameter message_group
+message_group: If set, output only messages in this message group
+start_date: If set, output only messages from this date
+end_date: If set, output only messages until this date</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="plugins.ios.whatsapp.WhatsApp.execute_query">
+<code class="sig-name descname">execute_query</code><span class="sig-paren">(</span><em class="sig-param">chatstorage_file</em>, <em class="sig-param">cursor</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.ios.whatsapp.WhatsApp.execute_query" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Creates a custom view and executes a query based on the parameters:</dt><dd><ul class="simple">
+<li><p>message_group</p></li>
+<li><p>start_date</p></li>
+<li><p>end_date</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns a cursor object</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.ios.whatsapp.WhatsApp.filter_query">
+<code class="sig-name descname">filter_query</code><span class="sig-paren">(</span><em class="sig-param">query</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.ios.whatsapp.WhatsApp.filter_query" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter by dates and group</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.ios.whatsapp.WhatsApp.get_media_filename">
+<code class="sig-name descname">get_media_filename</code><span class="sig-paren">(</span><em class="sig-param">media_location</em>, <em class="sig-param">message_type</em>, <em class="sig-param">message_group</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.ios.whatsapp.WhatsApp.get_media_filename" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get basename of media file related to message</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.ios.whatsapp.WhatsApp.parse_query">
+<code class="sig-name descname">parse_query</code><span class="sig-paren">(</span><em class="sig-param">line</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.ios.whatsapp.WhatsApp.parse_query" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse the query and yields a dictionary</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.ios.whatsapp.WhatsApp.read_config">
+<code class="sig-name descname">read_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.ios.whatsapp.WhatsApp.read_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read options from the configuration section.</p>
+<p>This method should set default values for all available configuration options.
+The other module function will safely assume these options have correct values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.ios.whatsapp.WhatsApp.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.ios.whatsapp.WhatsApp.run" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – Path to an unbacked backup</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="plugins.ios.whatsapp.WhatsApp.status_switcher">
+<code class="sig-name descname">status_switcher</code><em class="property"> = {0: 'system', 1: 'sent', 6: 'delivered', 7: 'deleted', 8: 'seen'}</em><a class="headerlink" href="#plugins.ios.whatsapp.WhatsApp.status_switcher" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="plugins.ios.whatsapp.WhatsApp.type_switcher">
+<code class="sig-name descname">type_switcher</code><em class="property"> = {0: 'Text message', 1: 'Image', 2: 'Video', 3: 'Voice/Audio note', 4: 'Contact', 5: 'Location', 7: 'Url', 8: 'Document', 10: 'Key change', 11: 'Video', 14: 'Deleted', 15: 'Image'}</em><a class="headerlink" href="#plugins.ios.whatsapp.WhatsApp.type_switcher" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.ios.whatsapp.WhatsAppChatSessions">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.ios.whatsapp.</code><code class="sig-name descname">WhatsAppChatSessions</code><span class="sig-paren">(</span><em class="sig-param">config</em>, <em class="sig-param">section=None</em>, <em class="sig-param">local_config=None</em>, <em class="sig-param">from_module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.ios.whatsapp.WhatsAppChatSessions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base.html#base.job.BaseModule" title="base.job.BaseModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">base.job.BaseModule</span></code></a></p>
+<p>Returns all the available chat identifiers in a whatsapp database.</p>
+<p>The returned dictionary have a field mesage_group.</p>
+<dl class="method">
+<dt id="plugins.ios.whatsapp.WhatsAppChatSessions.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.ios.whatsapp.WhatsAppChatSessions.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the job on a path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – the path to check.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>If any, an iterable of elements with the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="plugins.macos.html" class="btn btn-neutral float-right" title="plugins.macos package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="plugins.indexer.html" class="btn btn-neutral float-left" title="plugins.indexer package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, INCIDE Digital Data S.L.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

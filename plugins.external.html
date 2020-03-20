@@ -1,0 +1,505 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>plugins.external package &mdash; RVT2 2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="static/documentation_options.js"></script>
+        <script src="static/jquery.js"></script>
+        <script src="static/underscore.js"></script>
+        <script src="static/doctools.js"></script>
+        <script src="static/language_data.js"></script>
+    
+    <script type="text/javascript" src="static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="plugins.external.OSX_QuickLook_Parser package" href="plugins.external.OSX_QuickLook_Parser.html" />
+    <link rel="prev" title="plugins.common package" href="plugins.common.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> RVT2
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="base.html">base package</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="plugins.html">plugins package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="plugins.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="plugins.ai.html">plugins.ai package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.android.html">plugins.android package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.common.html">plugins.common package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">plugins.external package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-plugins.external.amcache">plugins.external.amcache module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-plugins.external.jobparser">plugins.external.jobparser module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.indexer.html">plugins.indexer package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.ios.html">plugins.ios package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.macos.html">plugins.macos package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugins.windows.html">plugins.windows package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rvt2.html">rvt2 module</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RVT2</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="plugins.html">plugins package</a> &raquo;</li>
+        
+      <li>plugins.external package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/plugins.external.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-plugins.external">
+<span id="plugins-external-package"></span><h1>plugins.external package<a class="headerlink" href="#module-plugins.external" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="plugins.external.OSX_QuickLook_Parser.html">plugins.external.OSX_QuickLook_Parser package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="plugins.external.OSX_QuickLook_Parser.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins.external.OSX_QuickLook_Parser.html#module-plugins.external.OSX_QuickLook_Parser.quicklook_parser_v_3_5mod">plugins.external.OSX_QuickLook_Parser.quicklook_parser_v_3_5mod module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="plugins.external.ccl_asldb.html">plugins.external.ccl_asldb package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="plugins.external.ccl_asldb.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins.external.ccl_asldb.html#module-plugins.external.ccl_asldb.OSX_asl_login_timeline">plugins.external.ccl_asldb.OSX_asl_login_timeline module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins.external.ccl_asldb.html#module-plugins.external.ccl_asldb.ccl_asldb">plugins.external.ccl_asldb.ccl_asldb module</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-plugins.external.amcache">
+<span id="plugins-external-amcache-module"></span><h2>plugins.external.amcache module<a class="headerlink" href="#module-plugins.external.amcache" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="plugins.external.amcache.ExecutionEntry">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.external.amcache.</code><code class="sig-name descname">ExecutionEntry</code><span class="sig-paren">(</span><em class="sig-param">path</em>, <em class="sig-param">sha1</em>, <em class="sig-param">size</em>, <em class="sig-param">file_description</em>, <em class="sig-param">source_key_timestamp</em>, <em class="sig-param">created_timestamp</em>, <em class="sig-param">modified_timestamp</em>, <em class="sig-param">modified_timestamp2</em>, <em class="sig-param">linker_timestamp</em>, <em class="sig-param">product</em>, <em class="sig-param">company</em>, <em class="sig-param">pe_sizeofimage</em>, <em class="sig-param">version_number</em>, <em class="sig-param">version</em>, <em class="sig-param">language</em>, <em class="sig-param">header_hash</em>, <em class="sig-param">pe_checksum</em>, <em class="sig-param">id</em>, <em class="sig-param">switchbackcontext</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.external.amcache.ExecutionEntry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></p>
+<dl class="method">
+<dt id="plugins.external.amcache.ExecutionEntry.company">
+<em class="property">property </em><code class="sig-name descname">company</code><a class="headerlink" href="#plugins.external.amcache.ExecutionEntry.company" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 10</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.external.amcache.ExecutionEntry.created_timestamp">
+<em class="property">property </em><code class="sig-name descname">created_timestamp</code><a class="headerlink" href="#plugins.external.amcache.ExecutionEntry.created_timestamp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 5</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.external.amcache.ExecutionEntry.file_description">
+<em class="property">property </em><code class="sig-name descname">file_description</code><a class="headerlink" href="#plugins.external.amcache.ExecutionEntry.file_description" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 3</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.external.amcache.ExecutionEntry.header_hash">
+<em class="property">property </em><code class="sig-name descname">header_hash</code><a class="headerlink" href="#plugins.external.amcache.ExecutionEntry.header_hash" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 15</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.external.amcache.ExecutionEntry.id">
+<em class="property">property </em><code class="sig-name descname">id</code><a class="headerlink" href="#plugins.external.amcache.ExecutionEntry.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 17</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.external.amcache.ExecutionEntry.language">
+<em class="property">property </em><code class="sig-name descname">language</code><a class="headerlink" href="#plugins.external.amcache.ExecutionEntry.language" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 14</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.external.amcache.ExecutionEntry.linker_timestamp">
+<em class="property">property </em><code class="sig-name descname">linker_timestamp</code><a class="headerlink" href="#plugins.external.amcache.ExecutionEntry.linker_timestamp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 8</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.external.amcache.ExecutionEntry.modified_timestamp">
+<em class="property">property </em><code class="sig-name descname">modified_timestamp</code><a class="headerlink" href="#plugins.external.amcache.ExecutionEntry.modified_timestamp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 6</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.external.amcache.ExecutionEntry.modified_timestamp2">
+<em class="property">property </em><code class="sig-name descname">modified_timestamp2</code><a class="headerlink" href="#plugins.external.amcache.ExecutionEntry.modified_timestamp2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 7</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.external.amcache.ExecutionEntry.path">
+<em class="property">property </em><code class="sig-name descname">path</code><a class="headerlink" href="#plugins.external.amcache.ExecutionEntry.path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.external.amcache.ExecutionEntry.pe_checksum">
+<em class="property">property </em><code class="sig-name descname">pe_checksum</code><a class="headerlink" href="#plugins.external.amcache.ExecutionEntry.pe_checksum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 16</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.external.amcache.ExecutionEntry.pe_sizeofimage">
+<em class="property">property </em><code class="sig-name descname">pe_sizeofimage</code><a class="headerlink" href="#plugins.external.amcache.ExecutionEntry.pe_sizeofimage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 11</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.external.amcache.ExecutionEntry.product">
+<em class="property">property </em><code class="sig-name descname">product</code><a class="headerlink" href="#plugins.external.amcache.ExecutionEntry.product" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 9</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.external.amcache.ExecutionEntry.sha1">
+<em class="property">property </em><code class="sig-name descname">sha1</code><a class="headerlink" href="#plugins.external.amcache.ExecutionEntry.sha1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.external.amcache.ExecutionEntry.size">
+<em class="property">property </em><code class="sig-name descname">size</code><a class="headerlink" href="#plugins.external.amcache.ExecutionEntry.size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 2</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.external.amcache.ExecutionEntry.source_key_timestamp">
+<em class="property">property </em><code class="sig-name descname">source_key_timestamp</code><a class="headerlink" href="#plugins.external.amcache.ExecutionEntry.source_key_timestamp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 4</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.external.amcache.ExecutionEntry.switchbackcontext">
+<em class="property">property </em><code class="sig-name descname">switchbackcontext</code><a class="headerlink" href="#plugins.external.amcache.ExecutionEntry.switchbackcontext" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 18</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.external.amcache.ExecutionEntry.version">
+<em class="property">property </em><code class="sig-name descname">version</code><a class="headerlink" href="#plugins.external.amcache.ExecutionEntry.version" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 13</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.external.amcache.ExecutionEntry.version_number">
+<em class="property">property </em><code class="sig-name descname">version_number</code><a class="headerlink" href="#plugins.external.amcache.ExecutionEntry.version_number" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 12</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.external.amcache.Field">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.external.amcache.</code><code class="sig-name descname">Field</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">getter</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.external.amcache.Field" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></p>
+<dl class="method">
+<dt id="plugins.external.amcache.Field.getter">
+<em class="property">property </em><code class="sig-name descname">getter</code><a class="headerlink" href="#plugins.external.amcache.Field.getter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.external.amcache.Field.name">
+<em class="property">property </em><code class="sig-name descname">name</code><a class="headerlink" href="#plugins.external.amcache.Field.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="plugins.external.amcache.NotAnAmcacheHive">
+<em class="property">exception </em><code class="sig-prename descclassname">plugins.external.amcache.</code><code class="sig-name descname">NotAnAmcacheHive</code><a class="headerlink" href="#plugins.external.amcache.NotAnAmcacheHive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.external.amcache.TimelineEntry">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.external.amcache.</code><code class="sig-name descname">TimelineEntry</code><span class="sig-paren">(</span><em class="sig-param">timestamp</em>, <em class="sig-param">type</em>, <em class="sig-param">entry</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.external.amcache.TimelineEntry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></p>
+<dl class="method">
+<dt id="plugins.external.amcache.TimelineEntry.entry">
+<em class="property">property </em><code class="sig-name descname">entry</code><a class="headerlink" href="#plugins.external.amcache.TimelineEntry.entry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 2</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.external.amcache.TimelineEntry.timestamp">
+<em class="property">property </em><code class="sig-name descname">timestamp</code><a class="headerlink" href="#plugins.external.amcache.TimelineEntry.timestamp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="plugins.external.amcache.TimelineEntry.type">
+<em class="property">property </em><code class="sig-name descname">type</code><a class="headerlink" href="#plugins.external.amcache.TimelineEntry.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="plugins.external.amcache.main">
+<code class="sig-prename descclassname">plugins.external.amcache.</code><code class="sig-name descname">main</code><span class="sig-paren">(</span><em class="sig-param">argv=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.external.amcache.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plugins.external.amcache.make_unix_timestamp_value_getter">
+<code class="sig-prename descclassname">plugins.external.amcache.</code><code class="sig-name descname">make_unix_timestamp_value_getter</code><span class="sig-paren">(</span><em class="sig-param">value_name</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.external.amcache.make_unix_timestamp_value_getter" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>return a function that fetches the value from the registry key</dt><dd><p>as a UNIX timestamp.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="plugins.external.amcache.make_value_getter">
+<code class="sig-prename descclassname">plugins.external.amcache.</code><code class="sig-name descname">make_value_getter</code><span class="sig-paren">(</span><em class="sig-param">value_name</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.external.amcache.make_value_getter" title="Permalink to this definition">¶</a></dt>
+<dd><p>return a function that fetches the value from the registry key</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="plugins.external.amcache.make_windows_timestamp_value_getter">
+<code class="sig-prename descclassname">plugins.external.amcache.</code><code class="sig-name descname">make_windows_timestamp_value_getter</code><span class="sig-paren">(</span><em class="sig-param">value_name</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.external.amcache.make_windows_timestamp_value_getter" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>return a function that fetches the value from the registry key</dt><dd><p>as a Windows timestamp.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="plugins.external.amcache.parse_execution_entries">
+<code class="sig-prename descclassname">plugins.external.amcache.</code><code class="sig-name descname">parse_execution_entries</code><span class="sig-paren">(</span><em class="sig-param">registry</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.external.amcache.parse_execution_entries" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plugins.external.amcache.parse_execution_entry">
+<code class="sig-prename descclassname">plugins.external.amcache.</code><code class="sig-name descname">parse_execution_entry</code><span class="sig-paren">(</span><em class="sig-param">key</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.external.amcache.parse_execution_entry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plugins.external.amcache.parse_unix_timestamp">
+<code class="sig-prename descclassname">plugins.external.amcache.</code><code class="sig-name descname">parse_unix_timestamp</code><span class="sig-paren">(</span><em class="sig-param">qword</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.external.amcache.parse_unix_timestamp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plugins.external.amcache.parse_windows_timestamp">
+<code class="sig-prename descclassname">plugins.external.amcache.</code><code class="sig-name descname">parse_windows_timestamp</code><span class="sig-paren">(</span><em class="sig-param">qword</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.external.amcache.parse_windows_timestamp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-plugins.external.jobparser">
+<span id="plugins-external-jobparser-module"></span><h2>plugins.external.jobparser module<a class="headerlink" href="#module-plugins.external.jobparser" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="plugins.external.jobparser.Job">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.external.jobparser.</code><code class="sig-name descname">Job</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.external.jobparser.Job" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="plugins.external.jobparser.Job.RunDate">
+<code class="sig-name descname">RunDate</code><em class="property"> = None</em><a class="headerlink" href="#plugins.external.jobparser.Job.RunDate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Variable length section
+<a class="reference external" href="http://msdn.microsoft.com/en-us/library/cc248287%28v=prot.10%29.aspx">http://msdn.microsoft.com/en-us/library/cc248287%28v=prot.10%29.aspx</a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.external.jobparser.JobDate">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.external.jobparser.</code><code class="sig-name descname">JobDate</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">scheduled=False</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.external.jobparser.JobDate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="plugins.external.jobparser.UUID">
+<em class="property">class </em><code class="sig-prename descclassname">plugins.external.jobparser.</code><code class="sig-name descname">UUID</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#plugins.external.jobparser.UUID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="plugins.external.jobparser.main">
+<code class="sig-prename descclassname">plugins.external.jobparser.</code><code class="sig-name descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.external.jobparser.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plugins.external.jobparser.usage">
+<code class="sig-prename descclassname">plugins.external.jobparser.</code><code class="sig-name descname">usage</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plugins.external.jobparser.usage" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="plugins.external.OSX_QuickLook_Parser.html" class="btn btn-neutral float-right" title="plugins.external.OSX_QuickLook_Parser package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="plugins.common.html" class="btn btn-neutral float-left" title="plugins.common package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, INCIDE Digital Data S.L.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

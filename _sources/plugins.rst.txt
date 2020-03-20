@@ -1,0 +1,21 @@
+plugins package
+===============
+
+.. automodule:: plugins
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+
+   plugins.ai
+   plugins.android
+   plugins.common
+   plugins.external
+   plugins.indexer
+   plugins.ios
+   plugins.macos
+   plugins.windows

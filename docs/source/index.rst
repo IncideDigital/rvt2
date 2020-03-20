@@ -20,7 +20,7 @@ for more details), and is designed to work on Debian stable version, althought
 it is possible to adapt it to other other linux flavours.
 
 This is the documentation for developers of the rvt2. You can find the
-docs for the users of the RVT at https://portal.incide.es/rvt2-docs.
+docs for the users of the RVT at https://incidedigital.github.io/rvt2-docs/.
 
 Coding style
 ============

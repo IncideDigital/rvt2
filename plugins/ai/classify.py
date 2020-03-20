@@ -22,12 +22,7 @@ import ast
 import base.job
 import base.commands
 import base.config
-try:
-    import keras
-except ImportError:
-    import subprocess
-    subprocess.call(['pip3', 'install', 'numpy', 'keras', 'tensorflow'])
-    import keras
+import keras
 import numpy
 from keras.applications.inception_v3 import InceptionV3
 from keras.preprocessing.image import load_img

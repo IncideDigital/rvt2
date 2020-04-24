@@ -270,6 +270,7 @@ class ElasticSearchRegisterSource(base.job.BaseModule):
         - **server**: The URL of the file server to access directly to the files.
         - **rvtindex**: The name of the index where the run of this module will be registered. The name MUST be in lowcase.
           If empty or None, the job is not registered.
+        - **description**: The description of the source
     """
     def read_config(self):
         super().read_config()
@@ -278,6 +279,7 @@ class ElasticSearchRegisterSource(base.job.BaseModule):
         self.set_default_config('casename', 'casename')
         self.set_default_config('server', 'http://localhost:80')
         self.set_default_config('rvtindex', 'rvtindexer')
+        self.set_default_config('description', '')
 
     def run(self, path=None):
         name = self.myconfig('name')
@@ -285,12 +287,43 @@ class ElasticSearchRegisterSource(base.job.BaseModule):
         metadata = dict(
             casename=self.myconfig('casename'),
             source=self.myconfig('source'),
-            path=path,
             server=self.myconfig('server'),
+            description=self.myconfig('description'),
             name=name,
         )
         esclient = get_esclient(self.myconfig('es_hosts'), logger=self.logger())
         esclient.index(index=rvtindex, id=name, body=metadata)
+        return []
+
+
+class ElasticSearchRegisterCase(base.job.BaseModule):
+    """ Registers a source in elasticsearch
+
+    Configuration:
+        - **es_hosts**: a space separated list of hosts of ElasticSearch. Example: ``http://localhost:9200``. The port is mandatory.
+        - **casename**: The name of the case
+        - **server**: The URL of the file server to access directly to the files.
+        - **rvtindex**: The name of the index where the run of this module will be registered. The name MUST be in lowcase.
+        - **description**: The description of the case
+    """
+    def read_config(self):
+        super().read_config()
+        self.set_default_config('es_hosts', 'localhost:9200')
+        self.set_default_config('casename', 'casename')
+        self.set_default_config('server', 'http://localhost:80')
+        self.set_default_config('rvtindex', 'rvtcases')
+        self.set_default_config('description', '')
+
+    def run(self, path=None):
+        casename = self.myconfig('casename')
+        rvtindex = self.myconfig('rvtindex')
+        metadata = dict(
+            server=self.myconfig('server'),
+            name=casename,
+            description=self.myconfig('description')
+        )
+        esclient = get_esclient(self.myconfig('es_hosts'), logger=self.logger())
+        esclient.index(index=rvtindex, id=casename, body=metadata)
         return []
 
 

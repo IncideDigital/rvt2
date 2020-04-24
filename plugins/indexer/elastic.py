@@ -259,6 +259,41 @@ class ElasticSearchAdapter(base.job.BaseModule):
             )
 
 
+
+class ElasticSearchRegisterSource(base.job.BaseModule):
+    """ Registers a source in elasticsearch
+
+    Configuration:
+        - **es_hosts**: a space separated list of hosts of ElasticSearch. Example: ``http://localhost:9200``. The port is mandatory.
+        - **name**: the name of the index in ElasticSearch. Defaults to the source name.
+        - **casename**: The name of the case
+        - **server**: The URL of the file server to access directly to the files.
+        - **rvtindex**: The name of the index where the run of this module will be registered. The name MUST be in lowcase.
+          If empty or None, the job is not registered.
+    """
+    def read_config(self):
+        super().read_config()
+        self.set_default_config('es_hosts', 'localhost:9200')
+        self.set_default_config('name', self.myconfig('source'))
+        self.set_default_config('casename', 'casename')
+        self.set_default_config('server', 'http://localhost:80')
+        self.set_default_config('rvtindex', 'rvtindexer')
+
+    def run(self, path=None):
+        name = self.myconfig('name')
+        rvtindex = self.myconfig('rvtindex')
+        metadata = dict(
+            casename=self.myconfig('casename'),
+            source=self.myconfig('source'),
+            path=path,
+            server=self.myconfig('server'),
+            name=name,
+        )
+        esclient = get_esclient(self.myconfig('es_hosts'), logger=self.logger())
+        esclient.index(index=rvtindex, id=name, body=metadata)
+        return []
+
+
 class ElasticSearchBulkSender(base.job.BaseModule):
     """ A module to index the results from the ``ElasticSearchAdapter`` into an ElasticSearch server.
 

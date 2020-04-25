@@ -302,7 +302,6 @@ class ElasticSearchRegisterCase(base.job.BaseModule):
     Configuration:
         - **es_hosts**: a space separated list of hosts of ElasticSearch. Example: ``http://localhost:9200``. The port is mandatory.
         - **casename**: The name of the case
-        - **server**: The URL of the file server to access directly to the files.
         - **rvtindex**: The name of the index where the run of this module will be registered. The name MUST be in lowcase.
         - **description**: The description of the case
     """
@@ -310,7 +309,6 @@ class ElasticSearchRegisterCase(base.job.BaseModule):
         super().read_config()
         self.set_default_config('es_hosts', 'localhost:9200')
         self.set_default_config('casename', 'casename')
-        self.set_default_config('server', 'http://localhost:80')
         self.set_default_config('rvtindex', 'rvtcases')
         self.set_default_config('description', '')
 
@@ -318,7 +316,6 @@ class ElasticSearchRegisterCase(base.job.BaseModule):
         casename = self.myconfig('casename')
         rvtindex = self.myconfig('rvtindex')
         metadata = dict(
-            server=self.myconfig('server'),
             name=casename,
             description=self.myconfig('description')
         )

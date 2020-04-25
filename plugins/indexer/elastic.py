@@ -173,22 +173,17 @@ class ElasticSearchAdapter(base.job.BaseModule):
         - **name**: the name of the index in ElasticSearch. The name will be converted to lowcase, since ES only accept lowcase names.
         - **doc_type**: the doc_type in ElasticSearch.
           Do not change the default value ``"_doc"``, it will be deprecated in ES>6.
-        - **rvtindex**: The name of the index where the run of this module will be registered. The name MUST be in lowcase.
-          If empty or None, the job is not registered.
         - **operation**: The operation for elastic search. Possible values are "index" (default) overwrites data, or
           "update" updates existing data with new information. An update does always an upsert.
         - **casename**: The name of the case
-        - **server**: The URL of the file server to access directly to the files.
     """
 
     def read_config(self):
         super().read_config()
         self.set_default_config('name', self.myconfig('source'))
         self.set_default_config('doc_type', '_doc')
-        self.set_default_config('rvtindex', 'rvtindexer')
         self.set_default_config('operation', 'update')
         self.set_default_config('casename', 'casename')
-        self.set_default_config('server', 'http://localhost:80')
 
     def run(self, path):
         """
@@ -200,27 +195,6 @@ class ElasticSearchAdapter(base.job.BaseModule):
 
         name = self.myconfig('name').lower()
         doc_type = self.myconfig('doc_type')
-
-        # save metadata for this execution
-        if self.myconfig('rvtindex'):
-            metadata = dict(
-                casename=self.myconfig('casename'),
-                source=self.myconfig('source'),
-                started=datetime.datetime.utcnow().isoformat(),
-                path=path,
-                server=self.myconfig('server'),
-                name=name,
-                status='started'
-            )
-            yield dict(
-                _index=self.myconfig('rvtindex'),
-                _type=doc_type,
-                _id=name,
-                _source=metadata,
-                _op_type='update'
-            )
-        else:
-            metadata = None
 
         exit_status = ''
         # read tags from the section
@@ -246,18 +220,6 @@ class ElasticSearchAdapter(base.job.BaseModule):
         except KeyboardInterrupt:
             # if the module was interrupted
             exit_status = 'interrupted'
-
-        if metadata:
-            # register the result of the execution
-            metadata = {'status': exit_status, 'ended': datetime.datetime.utcnow().isoformat()}
-            yield dict(
-                _index=self.myconfig('rvtindex'),
-                _type=doc_type,
-                _id=name,
-                _source=metadata,
-                _op_type='update'
-            )
-
 
 
 class ElasticSearchRegisterSource(base.job.BaseModule):

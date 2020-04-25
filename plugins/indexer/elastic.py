@@ -271,6 +271,8 @@ class ElasticSearchRegisterSource(base.job.BaseModule):
         - **rvtindex**: The name of the index where the run of this module will be registered. The name MUST be in lowcase.
           If empty or None, the job is not registered.
         - **description**: The description of the source
+        - **tabsdb**: A database of tabs to create
+        - **tabs**: The name of the tabs in the database to create in analyzer. Empty to not create tabs (the default tabs will be shown)
     """
     def read_config(self):
         super().read_config()
@@ -280,6 +282,21 @@ class ElasticSearchRegisterSource(base.job.BaseModule):
         self.set_default_config('server', 'http://localhost:80')
         self.set_default_config('rvtindex', 'rvtindexer')
         self.set_default_config('description', '')
+        self.set_default_config('tabsdb', os.path.join(self.config.get('indexer', 'plugindir'), 'analyzer-tabs.json'))
+        self.set_default_config('tabs', '')
+
+    def load_tabs(self):
+        """ Returns the tabs as configured in config, or None """
+        tabs = self.myconfig('tabs')
+        if not tabs:
+            return None
+        tabsdb = self.myconfig('tabsdb')
+        if not tabsdb or not os.path.exists(tabsdb):
+            self.logger().warning('The tabs database does not exists: tabsdb="%s"', tabsdb)
+            return None
+        with open(tabsdb) as json_file:
+            registered_tabs = json.load(json_file)
+            return registered_tabs.get(tabs, None)
 
     def run(self, path=None):
         name = self.myconfig('name')
@@ -291,6 +308,9 @@ class ElasticSearchRegisterSource(base.job.BaseModule):
             description=self.myconfig('description'),
             name=name,
         )
+        tabs = self.load_tabs()
+        if tabs is not None:
+            metadata['tabs'] = tabs
         esclient = get_esclient(self.myconfig('es_hosts'), logger=self.logger())
         esclient.index(index=rvtindex, id=name, body=metadata)
         return []

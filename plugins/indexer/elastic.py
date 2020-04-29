@@ -223,7 +223,7 @@ class ElasticSearchAdapter(base.job.BaseModule):
 
 
 class ElasticSearchRegisterSource(base.job.BaseModule):
-    """ Registers a source in elasticsearch
+    """ Registers or updates a source in ElasticSearch.
 
     Configuration:
         - **es_hosts**: a space separated list of hosts of ElasticSearch. Example: ``http://localhost:9200``. The port is mandatory.
@@ -232,9 +232,9 @@ class ElasticSearchRegisterSource(base.job.BaseModule):
         - **server**: The URL of the file server to access directly to the files.
         - **rvtindex**: The name of the index where the run of this module will be registered. The name MUST be in lowcase.
           If empty or None, the job is not registered.
-        - **description**: The description of the source
+        - **description**: The description of the source. If empty, do not update description.
         - **tabsdb**: A database of tabs to create
-        - **tabs**: The name of the tabs in the database to create in analyzer. Empty to not create tabs (the default tabs will be shown)
+        - **tabs**: The name of the tabs in the database to create in analyzer. If empty, do not update tabs.
     """
     def read_config(self):
         super().read_config()
@@ -267,25 +267,33 @@ class ElasticSearchRegisterSource(base.job.BaseModule):
             casename=self.myconfig('casename'),
             source=self.myconfig('source'),
             server=self.myconfig('server'),
-            description=self.myconfig('description'),
             name=name,
         )
+
+        # Update these fields only if provided
         tabs = self.load_tabs()
         if tabs is not None:
             metadata['tabs'] = tabs
+        description = self.myconfig('description')
+        if description:
+            metadata['description'] = description
+
         esclient = get_esclient(self.myconfig('es_hosts'), logger=self.logger())
-        esclient.index(index=rvtindex, id=name, body=metadata)
+        if esclient.exists(index=rvtindex, id=name, _source=False):
+            esclient.update(index=rvtindex, id=name, body=dict(doc=metadata))
+        else:
+            esclient.index(index=rvtindex, id=name, body=metadata)
         return []
 
 
 class ElasticSearchRegisterCase(base.job.BaseModule):
-    """ Registers a source in elasticsearch
+    """ Registers or updates a case in ElasticSearch.
 
     Configuration:
         - **es_hosts**: a space separated list of hosts of ElasticSearch. Example: ``http://localhost:9200``. The port is mandatory.
         - **casename**: The name of the case
         - **rvtindex**: The name of the index where the run of this module will be registered. The name MUST be in lowcase.
-        - **description**: The description of the case
+        - **description**: The description of the case. If empty, do not update the description.
     """
     def read_config(self):
         super().read_config()
@@ -299,10 +307,18 @@ class ElasticSearchRegisterCase(base.job.BaseModule):
         rvtindex = self.myconfig('rvtindex')
         metadata = dict(
             name=casename,
-            description=self.myconfig('description')
         )
+
+        # Update these fields only if provided
+        description = self.myconfig('description')
+        if description:
+            metadata['description'] = description
+
         esclient = get_esclient(self.myconfig('es_hosts'), logger=self.logger())
-        esclient.index(index=rvtindex, id=casename, body=metadata)
+        if esclient.exists(index=rvtindex, id=casename, _source=False):
+            esclient.update(index=rvtindex, id=casename, body=dict(doc=metadata))
+        else:
+            esclient.index(index=rvtindex, id=casename, body=metadata)
         return []
 
 

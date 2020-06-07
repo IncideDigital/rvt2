@@ -31,5 +31,16 @@
             "icon": "mdi-math-log",
             "columns": "@timestamp/@timestamp,clientip,geoip.city_name,request,status,referrer"
         }
+    ],
+    "iis": [
+        {
+            "name": "IIS",
+            "title": "Show IIS logs",
+            "score": false,
+            "filename": false,
+            "analysis": true,
+            "icon": "mdi-math-log",
+            "columns": "@timestamp/@timestamp,clientip,geoip.city_name,request,username,response"
+        }
     ]
 }

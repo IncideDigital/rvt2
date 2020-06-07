@@ -427,16 +427,6 @@ class BaseModule(object):
         self.config.store_set(option=None, save=True)
 
 
-class CascadeWrapper(BaseModule):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.to_module = None
-
-    def run(self, *args, **kwargs):
-        for data in self.to_module.run(*args, **kwargs):
-            yield data
-
-
 class RVTError(Exception):
     """ A special class for Exceptions inside the RVT. The module or job cannot continue. """
     pass

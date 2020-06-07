@@ -24,6 +24,7 @@ import os
 import logging
 import shutil
 import time
+import ssl
 
 from elasticsearch import Elasticsearch
 import elasticsearch.helpers
@@ -59,23 +60,31 @@ def coolOff(every=100, seconds=10):
         yield
 
 
-def get_esclient(es_hosts, retry_on_timeout=False, logger=logging):
+def get_esclient(es_hosts, retry_on_timeout=False, logger=logging, username=None, password=None, cafile=None, verify_ssl=True):
     """ Get an elasticsearch.Elasticsearch object.
 
     Attrs:
         :es_hosts: A list of elastis servers
         :retry_on_timeout: If true, retry queries after a timeout
         :logger: The logger to use
+        :cafile: Absolute path to the CA that certifies the ElasticSearch server
+        :username: Username in the ElasticSearch server. If None, do nt authenticate.
+        :password: Password in the ElasticSearch server. If None, do nt authenticate.
+        :verify_ssl: If True, verify the SSL connection.
 
     Returns:
         An elasticsearch.Elasticsearch object
 
     Raises:
         base.job.RVTError if any of the server is available
-
-    Todo:
-        Add security.
     """
+
+    if verify_ssl:
+        context = ssl.create_default_context(cafile=cafile)
+    else:
+        context = ssl._create_unverified_context()
+    context.check_hostname = False
+    http_auth = (username, password) if username else None
 
     # Check if any of the hosts can be contacted
     hosts = base.config.parse_conf_array(es_hosts)
@@ -88,7 +97,11 @@ def get_esclient(es_hosts, retry_on_timeout=False, logger=logging):
         raise base.job.RVTError('ElasticSearch hosts are not reacheable: {}'.format(hosts))
 
     logger.info('Connecting to %s', hosts)
-    return Elasticsearch(hosts, serializer=_CustomSerializer(), retry_on_timeout=retry_on_timeout, timeout=30)
+    return Elasticsearch(
+        hosts,
+        serializer=_CustomSerializer(), retry_on_timeout=retry_on_timeout, timeout=30,
+        http_auth=http_auth,
+        ssl_context=context)
 
 
 def _actions(origin, tag_fields=[], logger=logging):
@@ -225,8 +238,12 @@ class ElasticSearchAdapter(base.job.BaseModule):
 class ElasticSearchRegisterSource(base.job.BaseModule):
     """ Registers or updates a source in ElasticSearch.
 
-    Configuration:
+    Configuration section:
         - **es_hosts**: a space separated list of hosts of ElasticSearch. Example: ``http://localhost:9200``. The port is mandatory.
+        - **es_username**: username for the ElaticSearch server. Empty to not use authentication.
+        - **es_password**: password for the ElaticSearch server. Empty to not use authentication.
+        - **es_cafile**: CA file for the ElaticSearch server.
+        - **verify_ssl**: True to verify the SSL certificate.
         - **name**: the name of the index in ElasticSearch. Defaults to the source name.
         - **casename**: The name of the case
         - **server**: The URL of the file server to access directly to the files.
@@ -239,6 +256,10 @@ class ElasticSearchRegisterSource(base.job.BaseModule):
     def read_config(self):
         super().read_config()
         self.set_default_config('es_hosts', 'localhost:9200')
+        self.set_default_config('es_username', '')
+        self.set_default_config('es_password', '')
+        self.set_default_config('es_cafile', '')
+        self.set_default_config('verify_ssl', 'True')
         self.set_default_config('name', self.myconfig('source'))
         self.set_default_config('casename', 'casename')
         self.set_default_config('server', 'http://localhost:80')
@@ -278,7 +299,11 @@ class ElasticSearchRegisterSource(base.job.BaseModule):
         if description:
             metadata['description'] = description
 
-        esclient = get_esclient(self.myconfig('es_hosts'), logger=self.logger())
+        esclient = get_esclient(
+            self.myconfig('es_hosts'), retry_on_timeout=self.myflag('retry_on_timeout'), logger=self.logger(),
+            username=self.myconfig('es_user'), password=self.myconfig('es_password'), cafile=self.myconfig('es_cafile'),
+            verify_ssl=self.myflag('verify_ssl'))
+
         if esclient.exists(index=rvtindex, id=name, _source=False):
             esclient.update(index=rvtindex, id=name, body=dict(doc=metadata))
         else:
@@ -291,6 +316,10 @@ class ElasticSearchRegisterCase(base.job.BaseModule):
 
     Configuration:
         - **es_hosts**: a space separated list of hosts of ElasticSearch. Example: ``http://localhost:9200``. The port is mandatory.
+        - **es_username**: username for the ElaticSearch server. Empty to not use authentication.
+        - **es_password**: password for the ElaticSearch server. Empty to not use authentication.
+        - **es_cafile**: CA file for the ElaticSearch server.
+        - **verify_ssl**: True to verify the SSL certificate.
         - **casename**: The name of the case
         - **rvtindex**: The name of the index where the run of this module will be registered. The name MUST be in lowcase.
         - **description**: The description of the case. If empty, do not update the description.
@@ -298,6 +327,10 @@ class ElasticSearchRegisterCase(base.job.BaseModule):
     def read_config(self):
         super().read_config()
         self.set_default_config('es_hosts', 'localhost:9200')
+        self.set_default_config('es_username', '')
+        self.set_default_config('es_password', '')
+        self.set_default_config('es_cafile', '')
+        self.set_default_config('verify_ssl', 'True')
         self.set_default_config('casename', 'casename')
         self.set_default_config('rvtindex', 'rvtcases')
         self.set_default_config('description', '')
@@ -314,7 +347,10 @@ class ElasticSearchRegisterCase(base.job.BaseModule):
         if description:
             metadata['description'] = description
 
-        esclient = get_esclient(self.myconfig('es_hosts'), logger=self.logger())
+        esclient = get_esclient(
+            self.myconfig('es_hosts'), logger=self.logger(),
+            username=self.myconfig('es_user'), password=self.myconfig('es_password'), cafile=self.myconfig('es_cafile'),
+            verify_ssl=self.myflag('verify_ssl'))
         if esclient.exists(index=rvtindex, id=casename, _source=False):
             esclient.update(index=rvtindex, id=casename, body=dict(doc=metadata))
         else:
@@ -327,6 +363,10 @@ class ElasticSearchBulkSender(base.job.BaseModule):
 
     Configuration:
         - **es_hosts**: a space separated list of hosts of ElasticSearch. Example: ``http://localhost:9200``. The port is mandatory.
+        - **es_username**: username for the ElaticSearch server. Empty to not use authentication.
+        - **es_password**: password for the ElaticSearch server. Empty to not use authentication.
+        - **es_cafile**: CA file for the ElaticSearch server.
+        - **verify_ssl**: True to verify the SSL certificate.
         - **name**: the name of the index in ElasticSearch. If the index does not exist, create it using `mapping`.
              The name will be converted to lower case, since ES only accept lower case names.
         - **mapping**: If the index `name` must be created, use this file for initial settings and mappings.
@@ -347,6 +387,10 @@ class ElasticSearchBulkSender(base.job.BaseModule):
     def read_config(self):
         super().read_config()
         self.set_default_config('es_hosts', 'localhost:9200')
+        self.set_default_config('es_username', '')
+        self.set_default_config('es_password', '')
+        self.set_default_config('es_cafile', '')
+        self.set_default_config('verify_ssl', 'True')
         self.set_default_config('name', self.myconfig('source'))
         # self.set_default_config('mapping', os.path.join(self.myconfig('rvthome'), 'conf', 'indexer', 'es-settings.json'))
         self.set_default_config('mapping', os.path.join(os.path.dirname(os.path.abspath(__file__)), 'es-settings.json'))
@@ -377,7 +421,10 @@ class ElasticSearchBulkSender(base.job.BaseModule):
         self.logger().info('Running on: %s', path)
         self.check_params(path, check_path=True, check_path_exists=True)
 
-        esclient = get_esclient(self.myconfig('es_hosts'), retry_on_timeout=self.myflag('retry_on_timeout'), logger=self.logger())
+        esclient = get_esclient(
+            self.myconfig('es_hosts'), retry_on_timeout=self.myflag('retry_on_timeout'), logger=self.logger(),
+            username=self.myconfig('es_user'), password=self.myconfig('es_password'), cafile=self.myconfig('es_cafile'),
+            verify_ssl=self.myflag('verify_ssl'))
 
         # create the index, if it doesn't exist
         name = self.myconfig('name').lower()
@@ -442,19 +489,27 @@ class ElasticSearchQuery(base.job.BaseModule):
     The path is ignored.
 
     Configuration section:
-        :es_hosts: An array of strings with the ES servers.
-        :name: The name of the index to query.  The name will be converted to lower case, since ES only accept lower case names.
-        :query: The query in lucene language.
-        :source_includes: a space separated list of fields to include in the answer. Use empty string for all fields.
-        :source_excludes: a space separated list of fields NOT to include in the answer.
-        :progress.disable: if True, disable the progress bar.
-        :max_results: If the query affects to more than this number of documents, raise an RVTCritical error to stop the execution.
+        - **es_hosts**: An array of strings with the ES servers.
+        - **es_username**: username for the ElaticSearch server. Empty to not use authentication.
+        - **es_password**: password for the ElaticSearch server. Empty to not use authentication.
+        - **es_cafile**: CA file for the ElaticSearch server.
+        - **verify_ssl**: True to verify the SSL certificate.
+        - **name**: The name of the index to query.  The name will be converted to lower case, since ES only accept lower case names.
+        - **query**: The query in lucene language.
+        - **source_includes**: a space separated list of fields to include in the answer. Use empty string for all fields.
+        - **source_excludes**: a space separated list of fields NOT to include in the answer.
+        - **progress.disable**: if True, disable the progress bar.
+        - **max_results**: If the query affects to more than this number of documents, raise an RVTCritical error to stop the execution.
             Set to 0 to disable.
-        :retry_on_timeout: If True, retry after ES returned a timeour error.
+        - **retry_on_timeout**: If True, retry after ES returned a timeour error.
     """
     def read_config(self):
         super().read_config()
         self.set_default_config('es_hosts', 'localhost:9200')
+        self.set_default_config('es_username', '')
+        self.set_default_config('es_password', '')
+        self.set_default_config('es_cafile', '')
+        self.set_default_config('verify_ssl', 'True')
         self.set_default_config('name', self.myconfig('source'))
         self.set_default_config('query', '*')
         self.set_default_config('source_includes', '')
@@ -464,7 +519,11 @@ class ElasticSearchQuery(base.job.BaseModule):
         self.set_default_config('retry_on_timeout', 'True')
 
     def run(self, path=None):
-        esclient = get_esclient(self.myconfig('es_hosts'), retry_on_timeout=self.myflag('retry_on_timeout'), logger=self.logger())
+        esclient = get_esclient(
+            self.myconfig('es_hosts'), retry_on_timeout=self.myflag('retry_on_timeout'), logger=self.logger(),
+            username=self.myconfig('es_user'), password=self.myconfig('es_password'), cafile=self.myconfig('es_cafile'),
+            verify_ssl=self.myflag('verify_ssl'))
+
         max_results = int(self.myconfig('max_results'))
         query = {
             'query': {
@@ -500,16 +559,24 @@ class ElasticSearchQueryRelated(base.job.BaseModule):
     The path is ignored.
 
     Configuration section:
-        :es_hosts: An array of strings with the ES servers.
-        :name: The name of the index to query. The name will converted into lower case.
-        :query: The query in lucene language.
-        :source_includes: a space separated list of fields to include in the answer. Use empty string for all fields.
-        :source_excludes: a space separated list of fields NOT to include in the answer.
-        :retry_on_timeout: If True, retry after ES returned a timeour error.
+        - **es_hosts**: An array of strings with the ES servers.
+        - **es_username**: username for the ElaticSearch server. Empty to not use authentication.
+        - **es_password**: password for the ElaticSearch server. Empty to not use authentication.
+        - **es_cafile**: CA file for the ElaticSearch server.
+        - **verify_ssl**: True to verify the SSL certificate.
+        - **name**: The name of the index to query. The name will converted into lower case.
+        - **query**: The query in lucene language.
+        - **source_includes**: a space separated list of fields to include in the answer. Use empty string for all fields.
+        - **source_excludes**: a space separated list of fields NOT to include in the answer.
+        - **retry_on_timeout**: If True, retry after ES returned a timeour error.
     """
     def read_config(self):
         super().read_config()
         self.set_default_config('es_hosts', 'localhost:9200')
+        self.set_default_config('es_username', '')
+        self.set_default_config('es_password', '')
+        self.set_default_config('es_cafile', '')
+        self.set_default_config('verify_ssl', 'True')
         self.set_default_config('name', self.myconfig('source'))
         self.set_default_config('query', '*')
         self.set_default_config('source_includes', '')
@@ -518,7 +585,11 @@ class ElasticSearchQueryRelated(base.job.BaseModule):
 
     def run(self, path=None):
         self.check_params(path, check_from_module=True)
-        esclient = get_esclient(self.myconfig('es_hosts'), retry_on_timeout=self.myflag('retry_on_timeout'), logger=self.logger())
+        esclient = get_esclient(
+            self.myconfig('es_hosts'), retry_on_timeout=self.myflag('retry_on_timeout'), logger=self.logger(),
+            username=self.myconfig('es_user'), password=self.myconfig('es_password'), cafile=self.myconfig('es_cafile'),
+            verify_ssl=self.myflag('verify_ssl'))
+
         name = self.myconfig('name').lower()
         for result in self.from_module.run(path):
             if not result.get('_id', ''):

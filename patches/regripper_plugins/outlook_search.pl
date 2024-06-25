@@ -64,7 +64,7 @@ sub pluginmain {
                 foreach my $k (@word) {
                     if (my $word_key = $of_key->get_subkey($k)) {
                         ::rptMsg("\n".$key_path."\\".$k);
-                        ::rptMsg("LastWrite Time ".gmtime($word_key->get_timestamp())." (UTC)");
+                        ::rptMsg("LastWrite Time ".::getDateFromEpoch($word_key->get_timestamp())."Z");
                         my @vals = $word_key->get_list_of_values();
                         if (scalar(@vals) > 0) {
                             my $defSearchScope = "";
@@ -88,14 +88,14 @@ sub pluginmain {
                 my $of_key = $root_key->get_subkey($key_path);
                 if (my $word_key = $of_key->get_subkey($profile)) {
                     ::rptMsg("\n".$key_path."\\".$profile);
-                    ::rptMsg("LastWrite Time ".gmtime($word_key->get_timestamp())." (UTC)\n");
+                    ::rptMsg("LastWrite Time ".::getDateFromEpoch($word_key->get_timestamp())."Z");
                     my @vals = $word_key->get_list_of_subkeys();
 
                     if (scalar(@vals) > 0) {
                         foreach my $v (@vals) {
                             my $val = $v->get_name();
                             ::rptMsg("  ".$key_path."\\".$profile."\\".$val);
-                            ::rptMsg("    LastWrite Time ".gmtime($v->get_timestamp())." (UTC)\n");
+                            ::rptMsg("    LastWrite Time ".::getDateFromEpoch($v->get_timestamp())."Z");
                         }
                     }
                 }

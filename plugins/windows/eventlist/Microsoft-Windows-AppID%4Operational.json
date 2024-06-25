@@ -1,0 +1,12 @@
+{
+  "4004": {
+    "description": "AppID Service is called to verify <file.path> signature. Status <status> NTSTATUS Error code: <>.",
+    "provider": "Microsoft-Windows-AppID",
+    "path": {
+      "UserData/FilePathPublisherNameAndStatusData":{
+        "Name": ["FilePath", "PublisherName", "Status"],
+        "transform": {"FilePath": "file.path"}
+      }
+    }
+  }
+}

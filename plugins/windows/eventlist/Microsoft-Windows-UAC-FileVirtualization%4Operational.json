@@ -1,0 +1,12 @@
+{
+  "5003":{
+    "description": "Access was denied on WRP file <file.path>",
+    "provider": "Microsoft-Windows-UAC-FileVirtualization",
+    "path": {
+      "EventData":{
+        "Name": ["Flags", "Sid", "FileNameBuffer", "ProcessImageNameBuffer"],
+        "transform": {"Sid": "data.SID", "FileNameBuffer": "file.path", "ProcessImageNameBuffer": "process.name"}
+      }
+    }
+  }
+}

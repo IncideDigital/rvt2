@@ -1,0 +1,20 @@
+{
+  "1": {
+    "description": "The VHD <data.VhdFile> has come online (surfaced) a disk number <data.VmId>.",
+    "provider": "Microsoft-Windows-VHDMP",
+    "path": {
+      "EventData":{
+         "Name": ["AccessMask", "FileObject", "Flags", "GetInfoOnly", "HandleContext", "ReadOnly", "Status", "Version", "VhdFile", "VhdType", "VmId", "WriteDepth"]
+      }
+    }
+  },
+  "2": {
+    "description": "The VHD <data.VhdFile> has been removed (unsurfaced) a disk number <data.VmId>.",
+    "provider": "Microsoft-Windows-VHDMP",
+    "path": {
+      "EventData":{
+         "Name": ["AccessMask", "FileObject", "Flags", "GetInfoOnly", "HandleContext", "ReadOnly", "Status", "Version", "VhdFile", "VhdType", "VmId", "WriteDepth"]
+      }
+    }
+  }
+}

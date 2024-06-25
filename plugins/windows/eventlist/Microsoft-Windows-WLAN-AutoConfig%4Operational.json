@@ -17,7 +17,7 @@
     "type": ["access"],
     "path": {
       "EventData": {
-        "Name": ["InterfaceDescription", "ConnectionMode", "SSID", "BSSType", "BSSID", "PHYType", "ConnectionId"]
+        "Name": ["InterfaceDescription", "ConnectionMode", "SSID", "BSSType", "BSSID", "PHYType", "ConnectionId", "AuthenticationAlgorithm"]
       }
     }
   },

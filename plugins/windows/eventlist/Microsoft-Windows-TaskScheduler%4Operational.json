@@ -1,26 +1,65 @@
 {
   "106": {
-    "description": "Scheduled task registered",
+    "description": "The user {EventData[UserContext]} registered the Task Scheduler task {EventData[TaskName]}",
     "provider": "Microsoft-Windows-TaskScheduler",
+    "category": ["file"],
+    "type": ["creation"],
+    "action": "task-registered",
     "path": {
       "EventData": {
          "Name": ["TaskName", "UserContext"],
-         "transform": {"UserContext": "User"}
+         "transform": {"UserContext": "user.name"}
+      }
+    }
+  },
+  "129": {
+    "description": "Task Scheduler launched the {EventData[#attributes][Name]} instance of the {EventData[TaskName]} task with process ID {EventData[ProcessID]}",
+    "provider": "Microsoft-Windows-TaskScheduler",
+    "category": ["file"],
+    "type": ["start"],
+    "action": "task-launched",
+    "path": {
+      "EventData": {
+         "Name": ["ProcessID", "TaskName"]
+      },
+      "EventData/#attributes": {
+         "Name": ["Name"],
+         "transform": {"Name": "data.TaskInstance"}
+      }
+    }
+  },
+  "140": {
+    "description": "The user {EventData[UserName]} updated the Scheduled Task {EventData[TaskName]}",
+    "provider": "Microsoft-Windows-TaskScheduler",
+    "category": ["file"],
+    "type": ["change"],
+    "action": "task-updated",
+    "path": {
+      "EventData": {
+         "Name": ["TaskName", "UserName"],
+         "transform": {"UserName": "user.name"}
       }
     }
   },
   "141": {
-    "description": "Scheduled Task Deleted",
+    "description": "The user {EventData[UserName]} deleted the Scheduled Task {EventData[TaskName]}",
     "provider": "Microsoft-Windows-TaskScheduler",
+    "category": ["file"],
+    "type": ["deletion"],
+    "action": "task-deleted",
     "path": {
       "EventData": {
-         "Name": ["TaskName", "UserName"]
+         "Name": ["TaskName", "UserName"],
+         "transform": {"UserName": "user.name"}
       }
     }
   },
   "200": {
-    "description": "Scheduled Task launched",
+    "description": "Scheduled Task {EventData[TaskName]} launched",
     "provider": "Microsoft-Windows-TaskScheduler",
+    "category": ["file"],
+    "type": ["start"],
+    "action": "task-launched",
     "path": {
       "EventData": {
          "Name": ["TaskName", "ActionName"]
@@ -28,8 +67,11 @@
     }
   },
   "201": {
-    "description": "Scheduled Task finished",
+    "description": "Scheduled Task {EventData[TaskName]} finished",
     "provider": "Microsoft-Windows-TaskScheduler",
+    "category": ["file"],
+    "type": ["end"],
+    "action": "task-finished",
     "path": {
       "EventData": {
          "Name": ["TaskName", "ActionName", "ResultCode"]

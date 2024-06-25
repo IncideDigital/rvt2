@@ -1,0 +1,13 @@
+:
+0: No additional information is available.
+1: The disconnection was initiated by an administrative tool on the server in another session.
+2: The disconnection was due to a forced logoff initiated by an administrative tool on the server in another session.
+3: The idle session limit timer on the server has elapsed.
+4: The active session limit timer on the server has elapsed.
+5: Another user connected to the server, forcing the disconnection of the current connection.
+6: The server ran out of available memory resources.
+7: The server denied the connection.
+9: The user cannot connect to the server due to insufficient access privileges.
+10: The server does not accept saved user credentials and requires that the user enter their credentials for each connection.
+11: The disconnection was initiated by the user disconnecting his or her session on the server or by an administrative tool on the server.
+12: The disconnection was initiated by the user logging off his or her session on the server.

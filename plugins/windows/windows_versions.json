@@ -1,0 +1,418 @@
+[
+    {
+        "Name": "Windows NT",
+        "SubVersion": "3.1",
+        "Version": "3.10",
+        "BuildNumber": "511",
+        "PublicRelease": "1993-07-27",
+        "RTMRelease": ""
+    },
+    {
+        "Name": "Windows NT",
+        "SubVersion": "3.5",
+        "Version": "3.50",
+        "BuildNumber": "807",
+        "PublicRelease": "1994-09-21",
+        "RTMRelease": ""
+    },
+    {
+        "Name": "Windows NT",
+        "SubVersion": "3.1, Service Pack 3",
+        "Version": "3.10",
+        "BuildNumber": "528",
+        "PublicRelease": "1994-11",
+        "RTMRelease": ""
+    },
+    {
+        "Name": "Windows NT",
+        "SubVersion": "3.51",
+        "Version": "3.51",
+        "BuildNumber": "1057",
+        "PublicRelease": "1995-05-30",
+        "RTMRelease": ""
+    },
+    {
+        "Name": "Windows 95",
+        "SubVersion": "",
+        "Version": "4.00",
+        "BuildNumber": "950",
+        "PublicRelease": "1995-08-24",
+        "RTMRelease": ""
+    },
+    {
+        "Name": "Windows 95",
+        "SubVersion": "OEM Service Release 1",
+        "Version": "4.00",
+        "BuildNumber": "950 A",
+        "PublicRelease": "1996-02-14",
+        "RTMRelease": ""
+    },
+    {
+        "Name": "Windows 95",
+        "SubVersion": "OEM Service Release 2",
+        "Version": "4.00",
+        "BuildNumber": "950 B",
+        "PublicRelease": "1996-08-24",
+        "RTMRelease": ""
+    },
+    {
+        "Name": "Windows NT",
+        "SubVersion": "4.0",
+        "Version": "4.0",
+        "BuildNumber": "1381",
+        "PublicRelease": "1996-08-24",
+        "RTMRelease": "1996-07-31"
+    },
+    {
+        "Name": "Windows 95",
+        "SubVersion": "OEM Service Release 2.1",
+        "Version": "4.00",
+        "BuildNumber": "950 B",
+        "PublicRelease": "1997-08-27",
+        "RTMRelease": ""
+    },
+    {
+        "Name": "Windows 95",
+        "SubVersion": "OEM Service Release 2.5",
+        "Version": "4.00",
+        "BuildNumber": "950 C",
+        "PublicRelease": "1997-11-26",
+        "RTMRelease": ""
+    },
+    {
+        "Name": "Windows 98",
+        "SubVersion": "",
+        "Version": "4.10",
+        "BuildNumber": "1998",
+        "PublicRelease": "1998-05-15",
+        "RTMRelease": ""
+    },
+    {
+        "Name": "Windows 98",
+        "SubVersion": "Second Edition (SE)",
+        "Version": "4.10",
+        "BuildNumber": "2222",
+        "PublicRelease": "1999-05-05",
+        "RTMRelease": ""
+    },
+    {
+        "Name": "Windows 2000",
+        "SubVersion": "",
+        "Version": "5.0",
+        "BuildNumber": "2195",
+        "PublicRelease": "2000-02-17",
+        "RTMRelease": "1999-12-15"
+    },
+    {
+        "Name": "Windows Me",
+        "SubVersion": "",
+        "Version": "4.90",
+        "BuildNumber": "3000",
+        "PublicRelease": "2000-09-14",
+        "RTMRelease": "2000-06-19"
+    },
+    {
+        "Name": "Windows XP",
+        "SubVersion": "",
+        "Version": "5.1",
+        "BuildNumber": "2600",
+        "PublicRelease": "2001-10-25",
+        "RTMRelease": "2001-08-24"
+    },
+    {
+        "Name": "Windows XP",
+        "SubVersion": "Service Pack 1",
+        "Version": "5.1",
+        "BuildNumber": "2600.1105-1106",
+        "PublicRelease": "2002-09-09",
+        "RTMRelease": ""
+    },
+    {
+        "Name": "Windows Server 2003",
+        "SubVersion": "",
+        "Version": "5.2",
+        "BuildNumber": "3790",
+        "PublicRelease": "2003-04-24",
+        "RTMRelease": ""
+    },
+    {
+        "Name": "Windows XP",
+        "SubVersion": "Service Pack 2",
+        "Version": "5.1",
+        "BuildNumber": "2600.2180",
+        "PublicRelease": "2004-08-25",
+        "RTMRelease": ""
+    },
+    {
+        "Name": "Windows Server 2003",
+        "SubVersion": "Service Pack 1",
+        "Version": "5.2",
+        "BuildNumber": "3790.1180",
+        "PublicRelease": "2005-03-30",
+        "RTMRelease": ""
+    },
+    {
+        "Name": "Windows Server 2003",
+        "SubVersion": "R2",
+        "Version": "5.2",
+        "BuildNumber": "3790",
+        "PublicRelease": "2005-12-06",
+        "RTMRelease": "2005-12-06"
+    },
+    {
+        "Name": "Windows Vista",
+        "SubVersion": "",
+        "Version": "6.0",
+        "BuildNumber": "6000",
+        "PublicRelease": "2007-01-30",
+        "RTMRelease": "2006-11-08"
+    },
+    {
+        "Name": "Windows Server 2003",
+        "SubVersion": "Service Pack 2",
+        "Version": "5.2",
+        "BuildNumber": "3790",
+        "PublicRelease": "2007-03-13",
+        "RTMRelease": ""
+    },
+    {
+        "Name": "Windows Home Server",
+        "SubVersion": "",
+        "Version": "5.2",
+        "BuildNumber": "4500",
+        "PublicRelease": "2007-11-04",
+        "RTMRelease": "2007-07-16"
+    },
+    {
+        "Name": "Windows Vista",
+        "SubVersion": "Service Pack 1",
+        "Version": "6.0",
+        "BuildNumber": "6001",
+        "PublicRelease": "2008-02-04",
+        "RTMRelease": ""
+    },
+    {
+        "Name": "Windows Server 2008",
+        "SubVersion": "",
+        "Version": "6.0",
+        "BuildNumber": "6001",
+        "PublicRelease": "2008-02-27",
+        "RTMRelease": "2008-02-04"
+    },
+    {
+        "Name": "Windows XP",
+        "SubVersion": "Service Pack 3",
+        "Version": "5.1",
+        "BuildNumber": "2600",
+        "PublicRelease": "2008-04-21",
+        "RTMRelease": ""
+    },
+    {
+        "Name": "Windows Vista",
+        "SubVersion": "Service Pack 2",
+        "Version": "6.0",
+        "BuildNumber": "6002",
+        "PublicRelease": "2009-05-26",
+        "RTMRelease": "2009-04-28"
+    },
+    {
+        "Name": "Windows Server 2008",
+        "SubVersion": "Service Pack 2",
+        "Version": "6.0",
+        "BuildNumber": "6002",
+        "PublicRelease": "2009-05-26",
+        "RTMRelease": ""
+    },
+    {
+        "Name": "Windows 7",
+        "SubVersion": "",
+        "Version": "6.1",
+        "BuildNumber": "7600",
+        "PublicRelease": "2009-10-22",
+        "RTMRelease": "2009-07-22"
+    },
+    {
+        "Name": "Windows Server 2008",
+        "SubVersion": "R2",
+        "Version": "6.1",
+        "BuildNumber": "7600",
+        "PublicRelease": "2009-10-22",
+        "RTMRelease": "2009-07-22"
+    },
+    {
+        "Name": "Windows 7",
+        "SubVersion": "Service Pack 1",
+        "Version": "6.1",
+        "BuildNumber": "7601",
+        "PublicRelease": "2011-02-22",
+        "RTMRelease": ""
+    },
+    {
+        "Name": "Windows Server 2008",
+        "SubVersion": " R2, Service Pack 1",
+        "Version": "6.1",
+        "BuildNumber": "7601",
+        "PublicRelease": "2011-02-22",
+        "RTMRelease": "2011-02-09"
+    },
+    {
+        "Name": "Windows Home Server 2011",
+        "SubVersion": "",
+        "Version": "6.1",
+        "BuildNumber": "8400",
+        "PublicRelease": "2011-04-06",
+        "RTMRelease": "2011-04-06"
+    },
+    {
+        "Name": "Windows Server 2012",
+        "SubVersion": "",
+        "Version": "6.2",
+        "BuildNumber": "9200",
+        "PublicRelease": "2012-09-04",
+        "RTMRelease": "2012-08-01"
+    },
+    {
+        "Name": "Windows 8",
+        "SubVersion": "",
+        "Version": "6.2",
+        "BuildNumber": "9200",
+        "PublicRelease": "2012-10-26",
+        "RTMRelease": "2012-08-01"
+    },
+    {
+        "Name": "Windows 8.1",
+        "SubVersion": "",
+        "Version": "6.3",
+        "BuildNumber": "9600",
+        "PublicRelease": "2013-08-27",
+        "RTMRelease": "2013-10-17"
+    },
+    {
+        "Name": "Windows Server 2012",
+        "SubVersion": "R2",
+        "Version": "6.3",
+        "BuildNumber": "9600",
+        "PublicRelease": "2013-10-18",
+        "RTMRelease": "2013-08-27"
+    },
+    {
+        "Name": "Windows 10",
+        "SubVersion": "1507",
+        "Version": "10.0",
+        "BuildNumber": "10240",
+        "PublicRelease": "2015-07-29",
+        "RTMRelease": "2015-07-15"
+    },
+    {
+        "Name": "Windows 10",
+        "SubVersion": "1511",
+        "Version": "10.0",
+        "BuildNumber": "10586",
+        "PublicRelease": "2015-11-10",
+        "RTMRelease": ""
+    },
+    {
+        "Name": "Windows 10",
+        "SubVersion": "1607",
+        "Version": "10.0",
+        "BuildNumber": "14393",
+        "PublicRelease": "2016-08-02",
+        "RTMRelease": ""
+    },
+    {
+        "Name": "Windows Server 2016",
+        "SubVersion": "1607",
+        "Version": "10.0",
+        "BuildNumber": "14393",
+        "PublicRelease": "2016-08-02",
+        "RTMRelease": ""
+    },
+    {
+        "Name": "Windows 10",
+        "SubVersion": "1703",
+        "Version": "10.0",
+        "BuildNumber": "15063",
+        "PublicRelease": "2017-04-05",
+        "RTMRelease": ""
+    },
+    {
+        "Name": "Windows 10",
+        "SubVersion": "1709",
+        "Version": "10.0",
+        "BuildNumber": "16299",
+        "PublicRelease": "2017-10-17",
+        "RTMRelease": ""
+    },
+    {
+        "Name": "Windows Server 2016",
+        "SubVersion": "1709",
+        "Version": "10.0",
+        "BuildNumber": "16299",
+        "PublicRelease": "2017-10-17",
+        "RTMRelease": ""
+    },
+    {
+        "Name": "Windows 10",
+        "SubVersion": "1803",
+        "Version": "10.0",
+        "BuildNumber": "17134",
+        "PublicRelease": "2018-04-30",
+        "RTMRelease": ""
+    },
+    {
+        "Name": "Windows Server 2019",
+        "SubVersion": "1809",
+        "Version": "10.0",
+        "BuildNumber": "17763",
+        "PublicRelease": "2018-10-02",
+        "RTMRelease": ""
+    },
+    {
+        "Name": "Windows 10",
+        "SubVersion": "1809",
+        "Version": "10.0",
+        "BuildNumber": "17763",
+        "PublicRelease": "2018-11-13",
+        "RTMRelease": ""
+    },
+    {
+        "Name": "Windows Server 2008",
+        "SubVersion": "Service Pack 2, Rollup KB4489887",
+        "Version": "6.0",
+        "BuildNumber": "6003",
+        "PublicRelease": "2019-03-19",
+        "RTMRelease": ""
+    },
+    {
+        "Name": "Windows 10",
+        "SubVersion": "1903",
+        "Version": "10.0",
+        "BuildNumber": "18362",
+        "PublicRelease": "2019-05-21",
+        "RTMRelease": ""
+    },
+    {
+        "Name": "Windows 10",
+        "SubVersion": "909",
+        "Version": "10.0",
+        "BuildNumber": "18363",
+        "PublicRelease": "2019-11-12",
+        "RTMRelease": ""
+    },
+    {
+        "Name": "Windows 10",
+        "SubVersion": "2004",
+        "Version": "10.0",
+        "BuildNumber": "19041",
+        "PublicRelease": "2020-05-27",
+        "RTMRelease": ""
+    },
+    {
+        "Name": "Windows 10",
+        "SubVersion": "20H2",
+        "Version": "10.0",
+        "BuildNumber": "19042",
+        "PublicRelease": "2020-10-20",
+        "RTMRelease": ""
+    }
+]

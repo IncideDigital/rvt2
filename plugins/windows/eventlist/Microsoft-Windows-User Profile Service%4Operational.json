@@ -1,0 +1,72 @@
+{
+  "1":{
+    "description": "Received user logon notification on session {EventData[Session]}",
+    "provider": "Microsoft-Windows-User Profiles Service",
+    "category": ["authentication"],
+    "type": ["start"],
+    "path": {
+      "EventData":{
+        "Name": ["Session"]
+      }
+    }
+  },
+  "2":{
+    "description": "Finished processing user logon notification on session {EventData[Session]}",
+    "provider": "Microsoft-Windows-User Profiles Service",
+    "category": ["authentication"],
+    "type": ["start"],
+    "path": {
+      "EventData":{
+        "Name": ["Session"]
+      }
+    }
+  },
+  "3":{
+    "description": "Received user logoff notification on session {EventData[Session]}",
+    "provider": "Microsoft-Windows-User Profiles Service",
+    "category": ["authentication"],
+    "type": ["end"],
+    "path": {
+      "EventData":{
+        "Name": ["Session"]
+      }
+    }
+  },
+  "4":{
+    "description": "Finished processing user logoff notification on session {EventData[Session]}",
+    "provider": "Microsoft-Windows-User Profiles Service",
+    "category": ["authentication"],
+    "type": ["end"],
+    "path": {
+      "EventData":{
+        "Name": ["Session"]
+      }
+    }
+  },
+  "5":{
+    "description": "Registry file {EventData[File]} is loaded",
+    "provider": "Microsoft-Windows-User Profiles Service",
+    "category": ["authentication"],
+    "type": ["end"],
+    "path": {
+      "EventData":{
+        "Name": ["File", "Key"],
+        "transform": {"File": "registry.hive", "Key": "registry.key"}
+      }
+    }
+  },
+  "67":{
+    "description": "-",
+    "provider": "Microsoft-Windows-User Profiles Service",
+    "category": ["authentication"],
+    "type": ["info"],
+    "path": {
+      "System/Correlation/#attributes":{
+        "Name": ["ActivityID"]
+      },
+      "EventData":{
+        "Name": ["LocalPath", "LogonType", "ProfileType"]
+      }
+    }
+  }
+}

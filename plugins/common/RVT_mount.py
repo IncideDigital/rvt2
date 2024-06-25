@@ -30,9 +30,13 @@ class Mount(base.job.BaseModule):
         - **ext4_args** (str): specific options for mounting an EXT4 partition.
         - **hfs_args** (str): specific options for mounting an HFS partition.
         - **vss** (bool): mount regular (False) or Volume Shadow Snapshots (True) partitions
+        - **nbd_device** (str): for VMDX images (nbd), the device to use.
+        - **remove_info** (bool): if True, remove previous information gathered about disk. Use this if any error occurs
     """
     def run(self, path=None):
-        disk = getSourceImage(self.myconfig)
+        """ If path is provided, it is an abolsolute path to the image to mount.
+        If not, search imagedir for available images """
+        disk = getSourceImage(self.myconfig, imagefile=path)
         disk.mount(partitions=self.myconfig('partitions'), vss=self.myconfig('vss'), unzip_path=self.myconfig('unzip_path'))
         if self.from_module:
             for data in self.from_module.run(path):
@@ -44,9 +48,11 @@ class UMount(base.job.BaseModule):
 
     """
     def run(self, path=None):
+        """ If path is provided, it is an abolsolute path to the image to unmount.
+        If not, search imagedir for available images """
         if self.from_module:
             for data in self.from_module.run(path):
                 yield data
-        disk = getSourceImage(self.myconfig)
+        disk = getSourceImage(self.myconfig, imagefile=path)
         disk.umount()
         return []

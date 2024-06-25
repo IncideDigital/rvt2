@@ -1,0 +1,30 @@
+{
+  "500": {
+    "description": "Compatibility fix applied to <ExePath>. Fix information: <FixName>, <FixID>, <data.flags>.",
+    "provider": "Microsoft-Windows-Application-Experience",
+    "path": {
+      "System/Security/#attributes": {
+         "Name": ["UserID"],
+         "transform": {"UserID": "user.id"}
+      },
+      "UserData/CompatibilityFixEvent":{
+         "Name": ["ProcessId", "StartTime", "FixID", "data.flags", "ExePath", "FixName"],
+         "transform": {"ProcessId": "data.ProcessID", "Flags": "data.flags"}
+      }
+    }
+  },
+  "505": {
+    "description": "Compatibility fix applied to <ExePath>. Fix information: <FixName>, <FixID>, <data.flags>.",
+    "provider": "Microsoft-Windows-Application-Experience",
+    "path": {
+      "System/Security/#attributes": {
+         "Name": ["UserID"],
+         "transform": {"UserID": "user.id"}
+      },
+      "UserData/CompatibilityFixEvent":{
+         "Name": ["ProcessId", "StartTime", "FixID", "data.flags", "ExePath", "FixName"],
+         "transform": {"ProcessId": "data.ProcessID", "Flags": "data.flags"}
+      }
+    }
+  }
+}

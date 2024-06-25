@@ -24,6 +24,7 @@ import subprocess
 import tempfile
 import datetime
 import biplist
+import binascii
 from struct import unpack
 from io import BytesIO
 from time import strftime, gmtime
@@ -51,7 +52,7 @@ class Edge(base.job.BaseModule):
 
     def run(self, path):
         self.info = self.myconfig('information', 'history')
-        if self.info not in ['history', 'cookies']:
+        if self.info not in ['history', 'cookies', 'downloads']:
             raise ValueError('Invalid information kind {} to extract for edge artifacts'.format(self.info))
 
         esedbexport = self.config.config['plugins.common'].get('esedbexport', 'esedbexport')
@@ -87,10 +88,13 @@ class Edge(base.job.BaseModule):
                         self.ids.append(line[cont_id_pos])
                     elif self.info == 'cookies' and line[name_pos].startswith("Cookies"):
                         self.ids.append(line[cont_id_pos])
+                    elif self.info == 'downloads' and line[name_pos].startswith("iedownload"):
+                        self.ids.append(line[cont_id_pos])
 
     def parse_export(self):
         fields = {'history': {'AccessedTime': 'last_visit', 'ModifiedTime': 'modified'},
-                  'cookies': {'AccessedTime': 'accessed', 'CreationTime': 'creation', 'ExpiryTime': 'expires'}}
+                  'cookies': {'AccessedTime': 'accessed', 'CreationTime': 'creation', 'ExpiryTime': 'expires'},
+                  'downloads': {'AccessedTime': 'start', 'SyncTime': 'end', 'ModifiedTime': 'modified'}}
         fields_pos = {}
 
         for filename in os.listdir(self.webcache_dir_export):
@@ -100,15 +104,33 @@ class Edge(base.job.BaseModule):
             with open(os.path.join(self.webcache_dir_export, filename), "r") as db_export:
                 line = db_export.readline().split("\t")
                 for element in line:
-                    if element in fields[self.info].keys() or element == 'Url':
-                        fields_pos[element] = line.index(element)
+                    if element in fields[self.info].keys() or element == 'Url' or element.startswith('ResponseHeaders') or element == 'AccessCount':
+                        fields_pos[element.rstrip()] = line.index(element)
 
                 for line in db_export:
                     line = line.split("\t")
                     result = {name: self.convert_date_format(line[fields_pos[elem]]) for elem, name in fields[self.info].items()}
                     real_url = '@'.join(line[fields_pos["Url"]].split('@')[1:])
                     result.update({'url': real_url})
+                    result.update({'visit_count': line[fields_pos['AccessCount']]})
+                    if 'Filename' in fields_pos.keys():
+                        result.update({'path': line[fields_pos['Filename']], 'size': line[fields_pos['FileSize']], 'url': line[fields_pos['Url']]})
+                    if 'ResponseHeaders' in fields_pos.keys() and self.info == 'downloads':
+                        data = line[fields_pos['ResponseHeaders']]
+                        var_aux = {}
+                        var_aux['FileSize'] = self.reverse_hex_size(data, 144, 160)
+                        # Decode hex part. Replace errors
+                        data = binascii.unhexlify(data[688:]).decode('utf-16', errors='replace')
+                        data = data.split('\x00')
+                        var_aux['path'] = data[-2].replace('\\', '/')
+                        var_aux['url'] = data[-3]
+                        result.update({'path': var_aux['path'], 'url': var_aux['url'], 'size': var_aux['FileSize']})
                     yield result
+
+    def reverse_hex_size(self, HEXVAL, init, end):
+        hexVals = [HEXVAL[i:i + 2] for i in range(init, end, 2)]
+        reversedHexVals = hexVals[::-1]
+        return int(''.join(reversedHexVals), 16)
 
 
 class InternetExplorer(base.job.BaseModule):

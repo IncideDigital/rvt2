@@ -4,8 +4,8 @@
     "provider": "Microsoft-Windows-Bits-Client",
     "path": {
       "EventData":{
-        "Name": ["string", "string2", "string3"],
-        "transform": {"string": "Name", "string2": "Owner"}
+        "Name": ["string", "string2", "jobTitle", "jobId", "jobOwner", "processPath", "processId"],
+        "transform": {"string": "service.name", "string2": "user.name", "jobTitle": "job.title", "jobOwner": "job.owner"}
       }
     }
   },
@@ -14,7 +14,8 @@
     "provider": "Microsoft-Windows-Bits-Client",
     "path": {
       "EventData":{
-        "Name": ["name", "url", "peer", "fileTime", "fileLength", "bytesTotal", "bytesTransferred"]
+        "Name": ["name", "url", "peer", "fileTime", "fileLength", "bytesTotal", "bytesTransferred"],
+        "transform": {"name": "job.title", "url": "data.Url", "peer": "data.Peer", "fileTime": "data.FileTime", "fileLength": "data.FileLength", "bytesTotal": "data.TotalBytes", "bytesTransferred": "data.TransferredBytes"}
       }
     }
   },
@@ -23,7 +24,8 @@
     "provider": "Microsoft-Windows-Bits-Client",
     "path": {
       "EventData":{
-        "Name": ["name", "url", "peer", "fileTime", "fileLength", "bytesTotal", "bytesTransferred", "proxy"]
+        "Name": ["name", "url", "peer", "fileTime", "fileLength", "bytesTotal", "bytesTransferred", "proxy"],
+        "transform": {"name": "job.title", "url": "data.Url", "peer": "data.Peer", "fileTime": "data.FileTime", "fileLength": "data.FileLength", "bytesTotal": "data.TotalBytes", "bytesTransferred": "data.TransferredBytes", "proxy": "data.Proxy"}
       }
     }
   }

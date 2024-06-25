@@ -1,0 +1,102 @@
+0: No error
+1: User-initiated client disconnect.
+2: User-initiated client logoff.
+3: Your Remote Desktop Services session has ended, possibly for one of the following reasons:  The administrator has ended the session. An error occurred while the connection was being established. A network problem occurred.
+4: The remote session ended because the total login time limit was reached. This limit is set by the server administrator or by network policies.
+260: Remote Desktop cant find the computer X. This might mean that X does not belong to the specified network.
+262: This computer cant connect to the remote computer.  Your computer does not have enough virtual memory available.
+263: The remote session was disconnected because the client prematurely ended the licensing protocol.
+264: This computer cant connect to the remote computer.  The two computers couldnt connect in the amount of time allotted.
+516: Remote Desktop cant connect to the remote computer for one of these reasons:  1) Remote access to the server is not enabled 2) The remote computer is turned off 3) The remote computer is not available on the network  Make sure the remote computer is turned on and connected to the network, and that remote access is enabled.
+772: This computer cant connect to the remote computer.  The connection was lost due to a network error.
+1030: Because of a security error, the client could not connect to the remote computer. Verify that you are logged on to the network, and then try connecting again.
+1032: The specified computer name contains invalid characters.
+1796: This computer cant connect to the remote computer.  Try connecting again.
+1800: Your computer could not connect to another console session on the remote computer because you already have a console session in progress.
+2056: The remote computer disconnected the session because of an error in the licensing protocol.
+2308: Your Remote Desktop Services session has ended.  The connection to the remote computer was lost, possibly due to network connectivity problems.
+2311: The connection has been terminated because an unexpected server authentication certificate was received from the remote computer.
+2312: A licensing error occurred while the client was attempting to connect (Licensing timed out).
+2567: The specified username does not exist.
+2820: This computer cant connect to the remote computer.  An error occurred that prevented the connection.
+2822: Because of an error in data encryption, this session will end.
+2823: The user account is currently disabled and cannot be used.
+2825: The remote computer requires Network Level Authentication, which your computer does not support.
+3079: A user account restriction (for example, a time-of-day restriction) is preventing you from logging on.
+3080: The remote session was disconnected because of a decompression failure at the client side.
+3335: As a security precaution, the user account has been locked because there were too many logon attempts or password change attempts.
+3337: The security policy of your computer requires you to type a password on the Windows Security dialog box. However, the remote computer you want to connect to cannot recognize credentials supplied using the Windows Security dialog box.
+3590: The client cant connect because it doesnt support FIPS encryption level.
+3591: This user account has expired.
+3592: Failed to reconnect to your remote session. Please try to connect again.
+3593: The remote PC doesnt support Restricted Administration mode.
+3847: This user accounts password has expired. The password must change in order to logon.
+3848: A connection will not be made because credentials may not be sent to the remote computer.
+4103: The system administrator has restricted the times during which you may log in. Try logging in later.
+4104: The remote session was disconnected because your computer is running low on video resources.
+4359: The system administrator has limited the computers you can log on with. Try logging on at a different computer.
+4615: You must change your password before logging on the first time.
+4871: The system administrator has restricted the types of logon (network or interactive) that you may use.
+5127: The Kerberos sub-protocol User2User is required.
+6919: Remote Desktop cannot connect to the remote computer because the authentication certificate received from the remote computer is expired or invalid. In some cases, this error might also be caused by a large time discrepancy between the client and server computers.
+7431: Remote Desktop cannot verify the identity of the remote computer because there is a time or date difference between your computer and the remote computer.
+9479: Could not auto-reconnect to your applications,please re-launch your applications
+9732: Client and server versions do not match. Please upgrade your client software and then try connecting again.
+33554433: Failed to reconnect to the remote program. Please restart the remote program.
+33554434: The remote computer does not support RemoteApp.
+50331649: Your computer cant connect to the remote computer because the username or password is not valid.
+50331650: Your computer cant connect to the remote computer because it cant verify the certificate revocation list.
+50331651: Your computer cant connect to the remote computer due to one of the following reasons:  1) The requested Remote Desktop Gateway server address and the server SSL certificate subject name do not match. 2) The certificate is expired or revoked. 3) The certificate root authority does not trust the certificate.
+50331652: Your computer cant connect to the remote computer because the SSL certificate was revoked by the certification authority.
+50331653: This computer cant verify the identity of the RD Gateway X. Its not safe to connect to servers that cant be identified.
+50331654: Your computer cant connect to the remote computer because the Remote Desktop Gateway server address requested and the certificate subject name do not match.
+50331655: Your computer cant connect to the remote computer because the Remote Desktop Gateway servers certificate has expired or has been revoked.
+50331656: Your computer cant connect to the remote computer because an error occurred on the remote computer that you want to connect to.
+50331657: An error occurred while sending data to the Remote Desktop Gateway server. The server is temporarily unavailable or a network connection is down.
+50331658: An error occurred while receiving data from the Remote Desktop Gateway server. Either the server is temporarily unavailable or a network connection is down.
+50331659: Your computer cant connect to the remote computer because an alternate logon method is required. Contact your network administrator for assistance.
+50331660: Your computer cant connect to the remote computer because the Remote Desktop Gateway server address is unreachable or incorrect.
+50331661: Your computer cant connect to the remote computer because the Remote Desktop Gateway server is temporarily unavailable.
+50331662: Your computer cant connect to the remote computer because the Remote Desktop Services client component is missing or is an incorrect version.
+50331663: Your computer cant connect to the remote computer because the Remote Desktop Gateway server is running low on server resources and is temporarily unavailable.
+50331664: Your computer cant connect to the remote computer because an incorrect version of rpcrt4.dll has been detected.
+50331665: Your computer cant connect to the remote computer because no smart card service is installed.
+50331666: Your computer cant stay connected to the remote computer because the smart card has been removed.
+50331669: Your computer cant connect to the remote computer because the user name or password is not valid.
+50331671: Your computer cant connect to the remote computer because a security package error occurred in the transport layer.
+50331672: The Remote Desktop Gateway server has ended the connection.
+50331673: The Remote Desktop Gateway server administrator has ended the connection.
+50331674: Your computer cant connect to the remote computer due to one of the following reasons:   1) Your credentials (the combination of user name, domain, and password) were incorrect. 2) Your smart card was not recognized.
+50331675: Remote Desktop cant connect to the remote computer X for one of these reasons:  1) Your user account is not listed in the RD Gateways permission list 2) You might have specified the remote computer in NetBIOS format (for example, computer1), but the RD Gateway is expecting an FQDN or IP address format (for example, computer1.fabrikam.com or 157.60.0.1).
+50331676: Remote Desktop cant connect to the remote computer X for one of these reasons:  1) Your user account is not authorized to access the RD Gateway  2) Your computer is not authorized to access the RD Gateway  3) You are using an incompatible authentication method (for example, the RD Gateway might be expecting a smart card but you provided a password)
+50331679: Your computer cant connect to the remote computer because your network administrator has restricted access to this RD Gateway server.
+50331680: Your computer cant connect to the remote computer because the web proxy server requires authentication.
+50331681: Your computer cant connect to the remote computer because your password has expired or you must change the password.
+50331682: Your computer cant connect to the remote computer because the Remote Desktop Gateway server reached its maximum allowed connections.
+50331683: Your computer cant connect to the remote computer because the Remote Desktop Gateway server does not support the request.
+50331684: Your computer cant connect to the remote computer because the client does not support one of the Remote Desktop Gateways capabilities.
+50331685: Your computer cant connect to the remote computer because the Remote Desktop Gateway server and this computer are incompatible
+50331687: Your computer cant connect to the remote computer because your computer or device did not pass the Network Access Protection requirements set by your network administrator.
+50331688: Your computer cant connect to the remote computer because no certificate was configured to use at the Remote Desktop Gateway server.
+50331689: Your computer cant connect to the remote computer because the RD Gateway server that you are trying to connect to is not allowed by your computer administrator.
+50331690: Your computer cant connect to the remote computer because your computer or device did not meet the Network Access Protection requirements set by your network administrator, for one of the following reasons:  1) The Remote Desktop Gateway server name and the servers public key certificate subject name do not match. 2) The certificate has expired or has been revoked. 3) The certificate root authority does not trust the certificate. 4) The certificate key extension does not support encryption. 5) Your computer cannot verify the certificate revocation list.
+50331695: Your computer cant connect to the remote computer because authentication to the firewall failed due to missing firewall credentials.
+50331696: Your computer cant connect to the remote computer because authentication to the firewall failed due to invalid firewall credentials.
+50331699: The connection has been disconnected because the session timeout limit was reached.
+50331700: Your computer cant connect to the remote computer because an invalid cookie was sent to the Remote Desktop Gateway server.
+50331701: Your computer cant connect to the remote computer because the cookie was rejected by the Remote Desktop Gateway server.
+50331703: Your computer cant connect to the remote computer because the Remote Desktop Gateway server is expecting an authentication method different from the one attempted.
+50331704: The RD Gateway connection ended because periodic user authentication failed.
+50331705: The RD Gateway connection ended because periodic user authorization failed.
+50331709: To use this program or computer, first log on to the following website: <a href=></a>.
+50331710: To use this program or computer, you must first log on to an authentication website. Contact your network administrator for assistance.
+50331711: Your session has ended. To continue using the program or computer, first log on to the following website: <a href=></a>.
+50331712: Your session has ended. To continue using the program or computer, you must first log on to an authentication website.
+50331713: The RD Gateway connection ended because periodic user authorization failed. Your computer or device didnt pass the Network Access Protection (NAP) requirements set by your network administrator.
+50331714: Your computer cant connect to the remote computer because the size of the cookie exceeded the supported size.
+50331717: This computer cannot connect to the remote resource because you do not have permission to this resource.
+50331724: The user name you entered does not match the user name used to subscribe to your applications.
+50331725: Looks like there are too many users trying out the Azure RemoteApp service at the moment.
+50331726: Maximum user limit has been reached.
+50331727: Your trial period for Azure RemoteApp has expired.
+50331728: You no longer have access to Azure RemoteApp.

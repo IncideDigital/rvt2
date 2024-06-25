@@ -31,7 +31,8 @@
     "provider": "Microsoft-Windows-WindowsUpdateClient",
     "path": {
       "EventData": {
-        "Name": ["updateTitle", "updateRevisionNumber"]
+        "Name": ["updateTitle", "updateRevisionNumber"],
+        "transform": {"updateTitle": "data.UpdateTitle", "updateRevisionNumber": "data.UpdateRevisionNumber"}
       }
     }
   },
@@ -69,35 +70,51 @@
   },
   "43":{
     "description": "Windows started the following update",
-    "provider": "Microsoft-Windows-WindowsUpdateClient"
+    "provider": "Microsoft-Windows-WindowsUpdateClient",
+    "path": {
+      "EventData": {
+        "Name": ["updateTitle", "updateRevisionNumber"],
+        "transform": {"updateTitle": "data.UpdateTitle", "updateRevisionNumber": "data.UpdateRevisionNumber"}
+      }
+    }
   },
   "44":{
     "description": "Windows started downloading the following update",
-    "provider": "Microsoft-Windows-WindowsUpdateClient"
+    "provider": "Microsoft-Windows-WindowsUpdateClient",
+    "path": {
+      "EventData": {
+        "Name": ["updateTitle", "updateRevisionNumber"],
+        "transform": {"updateTitle": "data.UpdateTitle", "updateRevisionNumber": "data.UpdateRevisionNumber"}
+      }
+    }
   },
   "104":{
-    "description": "The X log file was cleared.",
+    "description": "The {UserData[LogFileCleared][Channel]} log file was cleared.",
     "provider": "Microsoft-Windows-Eventlog",
+    "type": ["deletion"],
+    "action": "file-deleted",
     "path": {
       "UserData/LogFileCleared": {
          "Name": ["SubjectUserName", "SubjectDomainName", "Channel"],
-         "transform": {"SubjectUserName": "source.user.name", "SubjectDomainName": "source.domain", "Channel": "LogCleared"}
+         "transform": {"SubjectUserName": "source.user.name", "SubjectDomainName": "source.domain", "Channel": "log.file.path"}
       }
     }
   },
   "1074":{
-    "description": "an application causes the system to restart, or user initiates a restart or shutdown",
+    "description": "An application causes the system to restart, or user initiates a restart or shutdown",
     "provider": "USER32",
     "path": {"EventData": {"Name": ["Data"]}}
   },
   "6005":{
     "description": "Event log service was started",
     "provider": "EventLog",
+    "type": ["start"],
     "path": {"EventData": {"Name": ["Binary"]}}
   },
   "6006":{
     "description": "Event log service was stopped",
     "provider": "EventLog",
+    "type": ["end"],
     "path": {"EventData": {"Name": ["Binary"]}}
   },
   "6008":{
@@ -105,19 +122,32 @@
     "provider": "EventLog",
     "path": {"EventData": {"Name": ["Data"]}}
   },
-  "7034":{
-    "description": "Service crashed unexpectedly",
+  "7031":{
+    "description": "The {EventData[param1]} service terminated unexpectedly. It has done this {EventData[param2]} time(s). The following corrective action will be taken in {EventData[param3]} milliseconds. {EventData[param5]}",
     "provider": "Service Control Manager",
+    "type": ["error"],
+    "path": {
+      "EventData": {
+        "Name": ["param1", "param2", "param5"],
+        "transform": {"param1": "service.name", "param5": "data.FollowingAction"}
+      }
+    }
+  },
+  "7034":{
+    "description": "{EventData[param1]} service terminated unexpectedly. It has done this {EventData[param2]} time(s).",
+    "provider": "Service Control Manager",
+    "type": ["error"],
     "path": {
       "EventData": {
         "Name": ["param1","param2"],
-        "transform": {"param1":"service.name", " param2":"n"}
+        "transform": {"param1":"service.name"}
       }
     }
   },
   "7036":{
-    "description": "The service entered the state.",
+    "description": "The {EventData[param1]} service entered the state {EventData[param2]}",
     "provider": "Service Control Manager",
+    "category": ["configuration"],
     "path": {
       "EventData": {
         "Name": ["param1", "param2"],
@@ -126,18 +156,22 @@
     }
   },
   "7040":{
-    "description": "The start type of the service was changed from disabled to auto start.",
+    "description": "The start type of the {EventData[param1]} service was changed from {EventData[param2]} to {EventData[param3]}",
     "provider": "Service Control Manager",
+    "category": ["configuration"],
     "path": {
       "EventData": {
         "Name": ["param1", "param2", "param3", "param4"],
-        "transform": {"param1": "service.name", "param2": "Old_Status", "param3": "New_Status"}
+        "transform": {"param1": "service.name", "param2": "service.previous_state", "param3": "service.state", "param4": "service.short_name"}
       }
     }
   },
   "7045":{
-    "description": "A service was installed in the system",
+    "description": "A new service was installed in the system",
     "provider": "Service Control Manager",
+    "category": ["configuration"],
+    "type": ["installation"],
+    "action": "service-installed",
     "path": {
       "EventData": {
         "Name": ["ServiceName", "ImagePath", "ServiceType", "StartType"],
@@ -148,29 +182,133 @@
   "10000":{
     "description": "driver package is being installed",
     "provider": "Microsoft-Windows-DriverFrameworks-UserMode",
+    "category": ["driver"],
+    "type": ["installation"],
     "path": {
-      "UserData": {
-         "Name": ["UMDFDeviceInstallBegin"],
-         "transform": {"UMDFDeviceInstallBegin": "DeviceId"}
+      "UserData/UMDFDeviceInstallBegin": {
+         "Name": ["DeviceId"],
+         "transform": {"DeviceId": "data.DeviceID"}
+      }
+    }
+  },
+  "10028":{
+    "description": "DCOM was unable to communicate with the computer {EventData[param1]} using any of the configured protocols; requested by PID {EventData[param2]} ({EventData[param3]}), while activating CLSID {EventData[param4]}.",
+    "provider": "Microsoft-Windows-DistributedCOM",
+    "path": {
+      "EventData": {
+        "Name": ["Binary", "param1", "param2", "param3", "param4"],
+         "transform": {"param1": "data.computer", "param2": "process.id", "param3": "file.path", "param4": "data.CLSID"}
       }
     }
   },
   "20001":{
-    "description": "Installation or Update",
+    "description": "Driver Management concluded the process to install driver",
     "provider": "Microsoft-Windows-UserPnp",
+    "category": ["driver"],
+    "type": ["installation"],
     "path": {
-      "UserData": {
-        "Name": ["DeviceInstanceID"]
+      "UserData/InstallDeviceID":{
+        "Name": ["DeviceInstanceID", "DriverDescription"],
+        "transform": {"DeviceInstanceID": "data.DeviceID"}
       }
     }
   },
   "20003":{
-    "description": "Service Installation or Update",
+    "description": "Driver Management concluded the process to add service",
     "provider": "Microsoft-Windows-UserPnp",
+    "category": ["driver"],
+    "type": ["info"],
     "path": {
-      "UserData": {
-        "Name": ["AddServiceID"],
-        "transform": {"AddServiceID": "DeviceInstanceID"}
+      "UserData/AddServiceID":{
+        "Name": ["DeviceInstanceID", "ServiceName", "DriverFileName"],
+        "transform": {"DeviceInstanceID": "data.DeviceID", "ServiceName": "service.name"}
+      }
+    }
+  },
+  "45058":{
+    "description": "A logon cache entry for user X was the oldest entry and was removed. The timestamp of this entry was Y.",
+    "provider": "LsaSrv",
+    "path": {
+      "EventData/Data": {
+        "Name": ["#text"],
+        "transform": {"#text": "user_date"}
+      }
+    }
+  },
+  "20250": {
+    "description": "The user <destination.user> has connected and has been successfully authenticated on port <Port>.",
+    "provider": "RemoteAccess",
+    "category": ["audit"],
+    "type": ["info" ,"auth"],
+    "path": {
+      "EventData/Data": {
+        "Name": ["#text"]
+      }
+    }
+  },
+  "20253": {
+    "description": "The user <destination.user> connected to port <Port> has been disconnected because no network protocols were successfully negotiated.",
+    "provider": "RemoteAccess",
+    "category": ["connection"],
+    "type": ["error"],
+    "path": {
+      "EventData/Data": {
+        "Name": ["#text"]
+      }
+    }
+  },
+  "20255": {
+    "description": "The following error occurred in the Point to Point Protocol module on port: <Port>, UserName: <destination.user>. Connection time expired.",
+    "provider": "RemoteAccess",
+    "category": ["connection"],
+    "type": ["error"],
+    "path": {
+      "EventData/Data": {
+        "Name": ["#text"]
+      }
+    }
+  },
+  "20271": {
+    "description": "The user <destination.user> connected from <source.ip> but failed an authentication attempt due to the following reason: <reason>",
+    "provider": "RemoteAccess",
+    "category": ["authentication"],
+    "type": ["error"],
+    "path": {
+      "EventData/Data": {
+        "Name": ["#text"]
+      }
+    }
+  },
+  "20272": {
+    "description": "The user <destination.user> connected on port <Port> on <startDate> at <startHour> and disconnected on <endDate> at <endHour>.  The user was active for <minutes> minutes <seconds> seconds.  <bytes.sent> bytes were sent and <bytes.received> bytes were received. The reason for disconnecting was demande utilisateur. The tunnel used was WAN Miniport (IKEv2). The quarantine state was .",
+    "provider": "RemoteAccess",
+    "category": ["audit"],
+    "type": ["info"],
+    "path": {
+      "EventData/Data": {
+        "Name": ["#text"]
+      }
+    }
+  },
+  "20274": {
+    "description": "The user <source.user> connected on port <Port> has been assigned address <destination.ip>",
+    "provider": "RemoteAccess",
+    "category": ["audit"],
+    "type": ["info"],
+    "path": {
+      "EventData/Data": {
+        "Name": ["#text"]
+      }
+    }
+  },
+  "20275": {
+    "description": "The user with ip address <connection.name> has disconnected",
+    "provider": "RemoteAccess",
+    "category": ["audit"],
+    "type": ["info"],
+    "path": {
+      "EventData/Data": {
+        "Name": ["#text"]
       }
     }
   }

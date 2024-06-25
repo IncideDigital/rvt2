@@ -1,0 +1,57 @@
+0x0: No error
+0x1: Clients entry in KDC database has expired
+0x2: Servers entry in KDC database has expired
+0x3: Requested Kerberos version number not supported
+0x4: Clients key encrypted in old master key
+0x5: Servers key encrypted in old master key
+0x6: Client not found in Kerberos database
+0x7: Server not found in Kerberos database
+0x8: Multiple principal entries in KDC database
+0x9: The client or server has a null key (master key)
+0xA: Ticket (TGT) not eligible for postdating
+0xB: Requested start time is later than end time
+0xC: Requested start time is later than end time
+0xD: KDC cannot accommodate requested option
+0xE: KDC has no support for encryption type
+0xF: KDC has no support for checksum type
+0x10: KDC has no support for PADATA type (pre-authentication data)
+0x11: KDC has no support for transited type
+0x12: Client’s credentials have been revoked
+0x13: Credentials for server have been revoked
+0x14: TGT has been revoked
+0x15: Client not yet valid—try again later
+0x16: Server not yet valid—try again later
+0x17: Password has expired—change password to reset
+0x18: Pre-authentication information was invalid
+0x19: Additional pre-authentication required
+0x1D: KDC is unavailable
+0x1F: Integrity check on decrypted field failed
+0x20: The ticket has expired
+0x21: The ticket is not yet valid
+0x22: The request is a replay
+0x23: The ticket is not for us
+0x24: The ticket and authenticator do not match
+0x25: The clock skew is too great
+0x26: Network address in network layer header doesnt match address inside ticket
+0x27: Protocol version numbers dont match (PVNO)
+0x28: Message type is unsupported
+0x29: Message stream modified and checksum didnt match
+0x2A: Message out of order (possible tampering)
+0x2C: Specified version of key is not available
+0x2D: Service key not available
+0x2E: Mutual authentication failed
+0x2F: Incorrect message direction
+0x30: Alternative authentication method required
+0x31: Incorrect sequence number in message
+0x32: Inappropriate type of checksum in message (checksum may be unsupported)
+0x33: Desired path is unreachable
+0x34: Too much data
+0x3C: Generic error
+0x3D: Field is too long for this implementation
+0x3E: The client trust failed or is not implemented
+0x3F: The KDC server trust failed or could not be verified
+0x40: The signature is invalid
+0x41: A higher encryption level is needed
+0x42: User-to-user authorization is required
+0x43: No TGT was presented or available
+0x44: Incorrect domain or principal

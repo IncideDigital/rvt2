@@ -1,0 +1,12 @@
+{
+  "4104": {
+    "description": "Execute a Remote Command",
+    "provider": "PowerShell",
+    "path": {
+      "EventData":{
+        "Name": ["MessageNumber", "MessageTotal", "Path", "ScriptBlockId", "ScriptBlockText"],
+        "transform": {"Path": "file.path"}
+      }
+    }
+  }
+}

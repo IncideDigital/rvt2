@@ -5,12 +5,12 @@
     "path": {
       "UserData/LogFileCleared":{
         "Name": ["SubjectUserName", "SubjectDomainName", "SubjectLogonId", "Channel"],
-        "transform": {"SubjectUserName": "source.user.name", "SubjectDomainName": "source.domain", "Channel": "LogCleared"}
+        "transform": {"SubjectUserName": "source.user.name", "SubjectDomainName": "source.domain", "Channel": "log.file.path"}
        }
     }
   },
   "4624":{
-    "description": "An account was successfully logged on.",
+    "description": "An account was successfully logged on",
     "provider": "Microsoft-Windows-Security-Auditing",
     "category": ["authentication"],
     "type": ["start"],
@@ -23,7 +23,7 @@
     }
   },
   "4625":{
-    "description": "An account failed to log on.",
+    "description": "An account failed to log on",
     "provider": "Microsoft-Windows-Security-Auditing",
     "category": ["authentication"],
     "type": ["info", "error"],
@@ -35,7 +35,7 @@
     }
   },
   "4634":{
-    "description": "An account was logged off.",
+    "description": "An account was logged off",
     "provider": "Microsoft-Windows-Security-Auditing",
     "category": ["authentication"],
     "type": ["end"],
@@ -47,7 +47,7 @@
     }
   },
   "4647":{
-    "description": "User initiated logoff.",
+    "description": "User initiated logoff",
     "provider": "Microsoft-Windows-Security-Auditing",
     "path": {
       "EventData":{
@@ -57,7 +57,7 @@
     }
   },
   "4648":{
-    "description": "A logon was attempted using explicit credentials.",
+    "description": "A logon was attempted using explicit credentials",
     "provider": "Microsoft-Windows-Security-Auditing",
     "category": ["authentication"],
     "type": ["info"],
@@ -69,7 +69,7 @@
     }
   },
   "4656":{
-    "description": "A handle to a Registry key or Registry Value was requested.",
+    "description": "A handle to a Registry key or Registry Value was requested",
     "provider": "Microsoft-Windows-Security-Auditing",
     "path": {
       "EventData":{
@@ -79,7 +79,7 @@
     }
   },
   "4657":{
-    "description": "A registry value was modified.",
+    "description": "A registry value was modified",
     "provider": "Microsoft-Windows-Security-Auditing",
     "category": ["database"],
     "type": ["change"],
@@ -120,7 +120,7 @@
     }
   },
   "4688":{
-    "description": "A new process has been created.",
+    "description": "A new process has been created",
     "provider": "Microsoft-Windows-Security-Auditing",
     "category": ["process"],
     "type": ["start"],
@@ -139,7 +139,7 @@
     "path": {
       "EventData":{
         "Name": ["SubjectUserName", "SubjectDomainName", "SubjectLogonId", "Status", "ProcessId", "ProcessName"],
-        "transform": {"SubjectUserName": "source.user.name", "SubjectDomainName": "source.domain", "ProcessId":"process.id", "ProcessName": "process.name"}
+        "transform": {"SubjectUserName": "source.user.name", "SubjectDomainName": "source.domain", "ProcessId": "process.id", "ProcessName": "process.name"}
       }
     }
   },
@@ -168,7 +168,7 @@
     }
   },
   "4720":{
-    "description": "A user account was created.",
+    "description": "A user account was created",
     "provider": "Microsoft-Windows-Security-Auditing",
     "path": {
       "EventData":{
@@ -178,7 +178,7 @@
     }
   },
   "4722":{
-    "description": "A user account was enabled.",
+    "description": "A user account was enabled",
     "provider": "Microsoft-Windows-Security-Auditing",
     "path": {
       "EventData":{
@@ -188,7 +188,7 @@
     }
   },
   "4724":{
-    "description": "An attempt was made to reset an account's password.",
+    "description": "An attempt was made to reset an account's password",
     "provider": "Microsoft-Windows-Security-Auditing",
     "path": {
       "EventData":{
@@ -208,7 +208,7 @@
     }
   },
   "4728":{
-    "description": "A member was added to a security-enabled global group.",
+    "description": "A member was added to a security-enabled global group",
     "provider": "Microsoft-Windows-Security-Auditing",
     "path": {
       "EventData":{
@@ -218,7 +218,7 @@
     }
   },
   "4732":{
-    "description": "A member was added to a security-enabled local group.",
+    "description": "A member was added to a security-enabled local group",
     "provider": "Microsoft-Windows-Security-Auditing",
     "path": {
       "EventData":{
@@ -227,8 +227,18 @@
       }
     }
   },
+  "4735":{
+    "description": "A security-enabled local group was changed",
+    "provider": "Microsoft-Windows-Security-Auditing",
+    "path": {
+      "EventData":{
+        "Name": ["TargetUserName", "TargetDomainName", "SubjectUserName", "SubjectDomainName", "SubjectLogonId"],
+        "transform": {"TargetUserName": "destination.user.name", "TargetDomainName": "destination.domain", "SubjectUserName": "source.user.name", "SubjectDomainName": "source.domain"}
+      }
+    }
+  },
   "4738":{
-    "description":"A user account was changed.",
+    "description":"A user account was changed",
     "provider": "Microsoft-Windows-Security-Auditing",
     "path": {
       "EventData":{
@@ -252,7 +262,7 @@
     "provider": "Microsoft-Windows-Security-Auditing",
     "path": {
       "EventData":{
-        "Name": ["TargetUserName", "TargetDomainName", "ServiceName", "TicketOptions", "Status", "IpAddress", "IpPort", "CertIssuerName", "CertSerialNumber"],
+        "Name": ["TargetUserName", "TargetDomainName", "ServiceName", "TicketOptions", "TicketEncryptionType", "PreAuthType", "Status", "IpAddress", "IpPort", "CertIssuerName", "CertSerialNumber"],
         "transform": {"TargetUserName": "destination.user.name", "TargetDomainName": "destination.domain", "ServiceName": "service.name", "IpAddress": "source.ip", "IpPort": "source.port"}
       }
     }
@@ -262,8 +272,28 @@
     "provider": "Microsoft-Windows-Security-Auditing",
     "path": {
       "EventData":{
-        "Name": ["TargetUserName", "TargetDomainName", "ServiceName", "TicketOptions", "Status", "IpAddress", "IpPort", "TransmittedServices"],
+        "Name": ["TargetUserName", "TargetDomainName", "ServiceName", "TicketEncryptionType", "TicketOptions", "Status", "IpAddress", "IpPort", "TransmittedServices", "LogonGuid"],
         "transform": {"TargetUserName": "destination.user.name", "TargetDomainName": "destination.domain", "ServiceName": "service.name", "IpAddress": "source.ip", "IpPort": "source.port"}
+      }
+    }
+  },
+  "4770":{
+    "description":"A Kerberos service ticket was renewed",
+    "provider": "Microsoft-Windows-Security-Auditing",
+    "path": {
+      "EventData":{
+        "Name": ["TargetUserName", "TargetDomainName", "ServiceName", "TicketOptions", "Status", "IpAddress", "IpPort", "PreAuthType", "ServiceSid", "TicketEncryptionType"],
+        "transform": {"TargetUserName": "destination.user.name", "TargetDomainName": "destination.domain", "ServiceName": "service.name", "IpAddress": "source.ip", "IpPort": "source.port", "ServiceSid": "service.SID"}
+      }
+    }
+  },
+  "4771":{
+    "description":"Kerberos pre-authentication failed",
+    "provider": "Microsoft-Windows-Security-Auditing",
+    "path": {
+      "EventData":{
+        "Name": ["TargetUserName", "TargetDomainName", "ServiceName", "TicketOptions", "Status", "IpAddress", "IpPort", "PreAuthType", "TargetSid"],
+        "transform": {"TargetUserName": "destination.user.name", "TargetDomainName": "destination.domain", "ServiceName": "service.name", "IpAddress": "source.ip", "IpPort": "source.port", "TargetSid": "target.SID"}
       }
     }
   },
@@ -278,27 +308,27 @@
     }
   },
   "4778":{
-    "description": "A session was reconnected to a Window Station.",
+    "description": "A session was reconnected to a Window Station",
     "provider": "Microsoft-Windows-Security-Auditing",
     "path": {
       "EventData":{
         "Name": ["AccountName", "AccountDomain", "LogonID", "SessionName", "ClientName", "ClientAddress"],
-        "transform": {"AccountName": "destination.user.name", "AccountDomain": "destination.domain", "ClientName": "client.user.name", "ClientAddress": "client.address"}
+        "transform": {"AccountName": "destination.user.name", "AccountDomain": "destination.domain", "ClientName": "client.hostname", "ClientAddress": "client.address"}
       }
     }
   },
   "4779":{
-    "description": "A session was disconnected from a Window Station.",
+    "description": "A session was disconnected from a Window Station",
     "provider": "Microsoft-Windows-Security-Auditing",
     "path": {
       "EventData":{
         "Name": ["AccountName", "AccountDomain", "LogonID", "SessionName", "ClientName", "ClientAddress"],
-        "transform": {"AccountName": "destination.user.name", "AccountDomain": "destination.domain", "ClientName": "client.user.name", "ClientAddress": "client.address"}
+        "transform": {"AccountName": "destination.user.name", "AccountDomain": "destination.domain", "ClientName": "client.hostname", "ClientAddress": "client.address"}
       }
     }
   },
   "5140":{
-    "description": "A network share object was accessed.",
+    "description": "A network share object was accessed",
     "provider": "Microsoft-Windows-Security-Auditing",
     "path": {
       "EventData":{
@@ -314,6 +344,46 @@
       "EventData":{
         "Name": ["SubjectUserName", "SubjectDomainName", "SubjectLogonId", "ObjectType", "IpAddress", "IpPort", "ShareName", "ShareLocalPath", "RelativeTargetName"],
         "transform": {"SubjectUserName": "source.user.name", "SubjectDomainName": "source.domain", "IpAddress": "source.address", "IpPort": "source.port"}
+      }
+    }
+  },
+  "5152":{
+    "description": "The Windows Filtering Platform blocked a packet.",
+    "provider": "Microsoft-Windows-Security-Auditing",
+    "path": {
+      "EventData":{
+        "Name": ["Application", "DestAddress", "DestPort", "Direction", "FilterRTID", "LayerName", "LayerRTID", "ProcessId", "Protocol", "SourceAddress", "SourcePort"],
+        "transform": {"DestAddress": "destination.ip", "DestPort": "destination.port", "ProcessId": "process.id", "SourceAddress": "source.ip", "SourcePort": "source.port"}
+      }
+    }
+  },
+  "5154":{
+    "description": "The Windows Filtering Platform has permitted an application or service to listen on a port for incoming connections",
+    "provider": "Microsoft-Windows-Security-Auditing",
+    "path": {
+      "EventData":{
+        "Name": ["Application", "FilterRTID", "LayerName", "LayerRTID", "ProcessId", "Protocol", "SourceAddress", "SourcePort"],
+        "transform": {"ProcessId": "process.id", "SourceAddress": "source.ip", "SourcePort": "source.port"}
+      }
+    }
+  },
+  "5156":{
+    "description": "The Windows Filtering Platform has allowed a connection.",
+    "provider": "Microsoft-Windows-Security-Auditing",
+    "path": {
+      "EventData":{
+        "Name": ["Application", "DestAddress", "DestPort", "Direction", "FilterRTID", "LayerName", "LayerRTID", "ProcessID", "Protocol", "RemoteMachineID", "RemoteUserID", "SourceAddress", "SourcePort"],
+        "transform": {"DestAddress": "destination.ip", "DestPort": "destination.port", "ProcessId": "process.id", "SourceAddress": "source.ip", "SourcePort": "source.port"}
+      }
+    }
+  },
+  "5157":{
+    "description": "Windows Filtering Platform blocked a connection.",
+    "provider": "Microsoft-Windows-Security-Auditing",
+    "path": {
+      "EventData":{
+        "Name": ["Application", "DestAddress", "DestPort", "Direction", "FilterRTID", "LayerName", "LayerRTID", "ProcessID", "Protocol", "RemoteMachineID", "RemoteUserID", "SourceAddress", "SourcePort"],
+        "transform": {"DestAddress": "destination.ip", "DestPort": "destination.port", "ProcessId": "process.id", "SourceAddress": "source.ip", "SourcePort": "source.port"}
       }
     }
   }

@@ -18,28 +18,23 @@ import bits
 from collections import OrderedDict
 
 import base.job
-from base.utils import check_directory, save_csv
-from plugins.common.RVT_files import GetFiles
+from base.utils import check_directory, save_csv, relative_path
 
 
 class Bits(base.job.BaseModule):
     """ Parse Background Intelligent Transfer Service. """
 
     def run(self, path=""):
-        self.search = GetFiles(self.config, vss=self.myflag("vss"))
-        self.vss = self.myflag('vss')
-        self.logger().info("Parsing Bits database")
-        self.parse_BITS()
+        base_path = self.myconfig('outdir')
+        check_directory(base_path, create=True)
+        self.check_params(path, check_path=False, check_path_exists=False)
+        self.logger().debug("Parsing Bits database: {}".format(path))
+        volume_id = relative_path(path, self.myconfig('casedir')).split("/")[2]
+        outfile = os.path.join(base_path, "bitsdb_{}.csv".format(volume_id))
+        self.parse_BITS(path, outfile)
         return []
 
-    def parse_BITS(self):
-        if self.vss:
-            base_path = self.myconfig('voutdir')
-            bitsdb = self.search.search(r"v\d+p\d+/ProgramData/Microsoft/Network/Downloader/qmgr0.dat$")
-        else:
-            base_path = self.myconfig('outdir')
-            bitsdb = self.search.search(r"p\d+/ProgramData/Microsoft/Network/Downloader/qmgr0.dat$")
-        check_directory(base_path, create=True)
+    def parse_BITS(self, path, outfile):
 
         fields = OrderedDict([
             ('job_id', None),
@@ -68,9 +63,7 @@ class Bits(base.job.BaseModule):
             ('carved', False)
         ])
 
-        for f in bitsdb:
-            analyzer = bits.Bits.load_file(os.path.join(self.myconfig('casedir'), f))
-            jobs = analyzer.parse()
-            res_generator = (OrderedDict([(field, j.get(field, fields[field])) for field in fields]) for j in jobs)
-            output_file = os.path.join(base_path, "bitsdb_%s.csv" % f.split("/")[2])
-            save_csv(res_generator, outfile=output_file, file_exists='OVERWRITE')
+        analyzer = bits.Bits.load_file(path)
+        jobs = analyzer.parse()
+        res_generator = (OrderedDict([(field, j.get(field, fields[field])) for field in fields]) for j in jobs)
+        save_csv(res_generator, outfile=outfile, file_exists='OVERWRITE')

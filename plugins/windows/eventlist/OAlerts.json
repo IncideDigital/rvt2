@@ -4,7 +4,8 @@
     "provider": "Microsoft Office.*",
     "path": {
       "EventData/Data": {
-        "Name": ["#text"]
+        "Name": ["#text"],
+        "transform": {"#text": "data.Data"}
       }
     }
   }

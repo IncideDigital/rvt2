@@ -1,15 +1,9 @@
-[submodule "plugins/external/FSEventsParser"]
-	path = plugins/external/FSEventsParser
-	url = https://github.com/dlcowen/FSEventsParser.git
-[submodule "plugins/external/PythonDsstore"]
-	path = plugins/external/PythonDsstore
-	url = https://github.com/gehaxelt/Python-dsstore.git
-[submodule "plugins/external/spotlight_parser"]
-	path = plugins/external/spotlight_parser
-	url = https://github.com/ydkhatri/spotlight_parser.git
-[submodule "plugins/external/UnifiedLogReader"]
-	path = plugins/external/UnifiedLogReader
-	url = https://github.com/ydkhatri/UnifiedLogReader.git
+[submodule "plugins/external/KStrike"]
+	path = plugins/external/KStrike
+	url = https://github.com/brimorlabs/KStrike
+[submodule "plugins/external/analyzeMFT"]
+	path = plugins/external/analyzeMFT
+	url = https://github.com/IncideDigital/analyzeMFT.git
 [submodule "plugins/external/srum-dump"]
 	path = plugins/external/srum-dump
 	url = https://github.com/MarkBaggett/srum-dump.git

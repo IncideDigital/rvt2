@@ -1,0 +1,47 @@
+{
+  "142":{
+    "description": "Summary of disk space usage, since last event",
+    "provider": "Microsoft-Windows-Ntfs",
+    "category": ["driver"],
+    "type": ["start"],
+    "path": {
+      "EventData":{
+        "Name": ["VolumeGuid", "VolumeName", "IsBootVolume", "LowestFreeSpaceInBytes", "HighestFreeSpaceInBytes"],
+        "transform": {"VolumeName": "data.DeviceVolumeName"}
+      }
+    }
+  },
+  "145":{
+    "description": "IO latency summary common data for volume",
+    "provider": "Microsoft-Windows-Ntfs",
+    "category": ["driver"],
+    "path": {
+      "EventData":{
+        "Name": ["AdapterSerialNumber", "DeviceGuid", "DeviceSerialNumber", "IsBootVolume", "ProductId", "ProductRevision", "VendorId", "VolumeCorrelationId", "VolumeName"],
+        "transform": {"VolumeName": "data.DeviceVolumeName", "DeviceGuid": "data.DeviceGUID", "DeviceSerialNumber": "data.DeviceSerialNumber", "VendorId": "data.DeviceVendor", "ProductId": "data.DeviceModel", "VolumeCorrelationId": "VolumeGuid"}
+       }
+     }
+   },
+   "151":{
+    "description": "In the past <SecondsElapsed> seconds <TotalCountDeleteFile> files were deleted",
+    "provider": "Microsoft-Windows-Ntfs",
+    "category": ["driver"],
+    "path": {
+      "EventData":{
+        "Name": ["CountDeleteFile", "IsBootVolume", "ProcessName", "SecondsElapsed", "TotalCountDeleteFile", "TotalCountDeleteFileLogged", "VolumeCorrelationId", "VolumeName"],
+        "transform": {"VolumeName": "data.DeviceVolumeName", "VolumeCorrelationId": "VolumeGuid"}
+      }
+    }
+  },
+   "158":{
+    "description": "IO latency summary common data for volume",
+    "provider": "Microsoft-Windows-Ntfs",
+    "category": ["driver"],
+    "path": {
+      "EventData":{
+        "Name": ["UserDiskReads", "UserDiskWrites", "UserFileReadBytes", "UserFileReads", "UserFileWriteBytes", "UserFileWrites", "VolumeCorrelationId", "VolumeName"],
+        "transform": {"VolumeName": "data.DeviceVolumeName", "VolumeCorrelationId": "VolumeGuid"}
+      }
+    }
+  }
+}

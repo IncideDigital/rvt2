@@ -1,0 +1,34 @@
+{
+  "551":{
+    "description": "SMB Session Authentication Failure",
+    "provider": "Microsoft-Windows-SMBServer",
+    "category": ["authentication"],
+    "type": ["info", "error"],
+    "path": {
+      "UserData/EventData/#attributes": {
+        "Name": ["xmlns"],
+        "transform": {"xmlns": "data.namespace"}
+      },
+      "UserData/EventData": {
+        "Name": ["ClientAddress", "ClientName", "ClientNameLength", "ConnectionGUID", "SessionGUID", "SessionId", "Status", "TranslatedStatus", "UserName", "UserNameLength"],
+        "transform": {"ClientAddress": "data.ClientAddress", "ClientName": "source.address", "ClientNameLength": "data.ClientNameLength", "ConnectionGUID": "data.ConnectionGUID", "SessionGUID": "data.SessionGUID", "SessionId": "data.SessionID", "Status": "data.Status", "TranslatedStatus": "data.TranslatedStatus", "UserName": "source.user.name", "UserNameLength": "data.UserNameLength"}
+      }
+    }
+  },
+  "1006":{
+    "description": "The share denied access to the client.",
+    "provider": "Microsoft-Windows-SMBServer",
+    "category": ["authentication"],
+    "type": ["info", "error"],
+    "path": {
+      "UserData/EventData/#attributes": {
+        "Name": ["xmlns"],
+        "transform": {"xmlns": "data.namespace"}
+      },
+      "UserData/EventData": {
+        "Name": ["ClientAddress", "ClientName", "ClientNameLength", "GrantedAccess", "MappedAccess", "SessionID", "ShareName", "ShareNameLength", "SharePath", "SharePathLength", "ShareSecurityDescriptor", "ShareSecurityDescriptorLength", "Status", "TranslatedStatus", "UserName", "UserNameLength"],
+        "transform": {"ClientAddress": "data.ClientAddress", "ClientName": "source.address", "ClientNameLength": "data.ClientNameLength", "GrantedAccess": "data.GrantedAccess", "MappedAccess": "data.MappedAccess", "SessionId": "data.SessionID", "ShareName": "data.ShareName", "ShareNameLength": "data.ShareNameLength", "SharePath": "data.SharePath", "SharePathLength": "data.SharePathLength", "ShareSecurityDescriptor": "data.ShareSecurityDescriptor", "ShareSecurityDescriptorLength": "data.ShareSecurityDescriptorLength","Status": "data.Status", "TranslatedStatus": "data.TranslatedStatus", "UserName": "source.user.name", "UserNameLength": "data.UserNameLength"}
+      }
+    }
+  }
+}

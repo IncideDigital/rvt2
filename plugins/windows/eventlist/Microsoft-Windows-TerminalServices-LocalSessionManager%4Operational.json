@@ -65,12 +65,12 @@
     }
   },
   "39": {
-    "description": "Session <X> has been disconnected by session <Y>",
+    "description": "Session {UserData[EventXML][TargetSession]} has been disconnected by session {UserData[EventXML][Source]}",
     "provider": "Microsoft-Windows-TerminalServices-LocalSessionManager",
     "path": {
       "UserData/EventXML": {
          "Name": ["TargetSession", "Source"],
-         "transform": {"TargetSession": "SessionID"}
+         "transform": {"TargetSession": "data.SessionID", "Source": "data.SourceSessionID"}
       },
       "System/Correlation/#attributes":{
         "Name": ["ActivityID"]
@@ -78,12 +78,12 @@
     }
   },
   "40": {
-    "description": "Session <X> has been disconnected, reason code <Z>",
+    "description": "Session {UserData[EventXML][Session]} has been disconnected, reason code {UserData[EventXML][Reason]}",
     "provider": "Microsoft-Windows-TerminalServices-LocalSessionManager",
     "path": {
       "UserData/EventXML":{
          "Name": ["Session", "Reason"],
-         "transform": {"Session": "SessionID"}
+         "transform": {"Session": "data.SessionID"}
       },
       "System/Correlation/#attributes":{
         "Name": ["ActivityID"]

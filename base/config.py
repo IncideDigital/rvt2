@@ -53,7 +53,7 @@ BOLD_SEQ = "\033[1m"
 
 
 def parse_conf_array(value):
-    """ Parses a value in an option and returns it as an array.
+    r""" Parses a value in an option and returns it as an array.
 
     Values are sepparated using spaces or new lines.
     Double quotes can be used as quoting chars.
@@ -164,15 +164,22 @@ def configure_logging(config, basic=False):
             },
             'loggers': {
                 '': {
-                    'handlers': ['console', 'file', 'telegram'],
+                    'handlers': ['console', 'file'],
                     'level': 'DEBUG',
                     'propagate': True
+                },
+                'analyst': {
+                    'handlers': ['telegram'],
+                    'level': 'DEBUG',
                 },
                 # loggers of libraries and external tools used by the RVT
                 'dkimpy': {
                     'level': 'CRITICAL'
                 },
                 'urllib3.connectionpool': {
+                    'level': 'ERROR'
+                },
+                'elasticsearch': {
                     'level': 'ERROR'
                 }
             }
@@ -188,7 +195,7 @@ def configure_logging(config, basic=False):
 
 
 def check_server(server):
-    """ Check whether a server cab be reached.
+    """ Check whether a server can be reached.
 
     >>> check_server(None)
     False
@@ -297,6 +304,11 @@ class Config:
             return default
         return value
 
+    def get_boolean(self, section, option, default=False):
+        """ A convenience method for boolean options """
+        value = self.get(section, option, str(default))
+        return value in ('True', 'true', 'TRUE', 1)
+
     def read(self, path, pattern='**/*.cfg'):
         """ Read configuration from a file or directory. The configuration file is appended to the current configuration.
 
@@ -329,7 +341,9 @@ class Config:
 
     def options(self, section):
         """ Return the options in a section """
-        return self.config.options(section)
+        if self.has_section(section):
+            return self.config.options(section)
+        return []
 
     def set(self, section, option, value):
         """ Add a configuration to a section. If the section does not exists, add it. """
@@ -447,7 +461,7 @@ class ColoredFormatter(logging.Formatter):
 
 class TelegramHandler(logging.Handler):
     """ A logging handler to send messages to a list of telegram chatids """
-    def __init__(self, level=logging.INFO, token='', chatids=[]):
+    def __init__(self, level=logging.INFO, token='', chatids=''):
         super().__init__(level)
         self.chatids = parse_conf_array(chatids)
         self.token = token
@@ -460,3 +474,6 @@ class TelegramHandler(logging.Handler):
                     requests.get('https://api.telegram.org/bot{}/sendMessage'.format(self.token), data=dict(chat_id=chatid, text=msg))
                 except Exception:
                     pass
+
+
+default_config = Config()

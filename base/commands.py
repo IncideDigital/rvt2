@@ -25,8 +25,6 @@ import logging
 import shlex
 from base.utils import relative_path
 
-__maintainer__ = 'Juanvi Vera'
-
 
 def run_command(cmd, stdout=None, stderr=None, logger=logging, from_dir=None):
     """ Runs an external command using *subprocess*.
@@ -93,10 +91,9 @@ def estimate_iterations(path, cmd, from_dir=None, logger=logging):
     """ Estimate the number of iterations using an external command.
 
     Parameters:
-        cmd (str): The path to use on the command.
-        from_dir (str): If specified, run the external command from this directory.
         cmd (str): The external command to run, as a string or an array. If *cmd* is a string, run the command as a shell command.
-            It is a tempalte that will be formated as ``cmd.format(path=path)``.
+            It is a template that will be formated as ``cmd.format(path=path)``.
+        from_dir (str): If specified, run the external command from this directory.
 
     Returns:
         The estimated number of iterations as an integer number. ``float('inf')`` if the number of iterations cannot be estimated.
@@ -111,16 +108,15 @@ def estimate_iterations(path, cmd, from_dir=None, logger=logging):
 
 
 class Command(base.job.BaseModule):
-    """ Run a command before or after the execution of other modules.
+    """ Run a command before or after the execution of other modules. Or run a command and yield the results to the following modules.
 
     Configuration section:
+        :cmd: The external command to run. It is a python string template with the optional parameter ``path``.
         :run_before: If True, run the command before the execution of ``from_module``.
         :run_after: If True, run the command after the execution of ``from_module``.
-        :from_dir: Run the external command from this directory
-        :cmd: The external command to run. It is a python string template with two optional parameters: ``infile`` and ``outfile``
-        :infile: The ``infile`` parameter, if needed. Default: empty.
-        :outfile: The ``outfile`` parameter, if needed. Default: empty.
-        :delete_exists: If *True*, delete the ``outfile``, if exists
+        :run_and_yield: If True, run the command and yield the results to the following modules. Default: False.
+        :from_dir: Run the external command from this directory.
+        :delete_exists: If *True*, delete the ``outfile``, if exists.
         :stdout: If empty, do not overwrite ``stdout``. If provided, save ``stdout`` to this filename
         :append: If *True*, append to the ``output`` file. If *False* and the file exists, remove it
     """
@@ -128,17 +124,16 @@ class Command(base.job.BaseModule):
         super().read_config()
         self.set_default_config('cmd', '')
         self.set_default_config('stdout', '')
-        self.set_default_config('infile', '')
-        self.set_default_config('outfile', '')
         self.set_default_config('append', 'False')
         self.set_default_config('run_before', 'False')
         self.set_default_config('run_after', 'True')
+        self.set_default_config('run_and_yield', 'False')
         self.set_default_config('from_dir', self.myconfig('casedir'))
         self.set_default_config('delete_exists', 'True')
 
-    def _run_command(self):
+    def _run_command(self, path=None):
         """ Run a command """
-        cmd = self.myconfig('cmd').format(infile=self.myconfig('infile', None), outfile=self.myconfig('outfile', None))
+        cmd = self.myconfig('cmd').format(path=path)
 
         stdout = None
         try:
@@ -155,16 +150,25 @@ class Command(base.job.BaseModule):
             if stdout is not None:
                 stdout.close()
 
+    def _yield_command(self, path=None):
+        """ Yield the results of a command """
+        cmd = self.myconfig('cmd').format(path=path)
+        yield from yield_command(cmd, logger=self.logger(), from_dir=self.myconfig('from_dir'))
+
     def run(self, path=None):
         if self.myflag('run_before'):
-            self._run_command()
+            self._run_command(path)
+
+        if self.myflag('run_and_yield'):
+            for r in self._yield_command(path):
+                yield r
 
         if self.from_module:
             for data in self.from_module.run(path):
                 yield data
 
         if self.myflag('run_after'):
-            self._run_command()
+            self._run_command(path)
 
 
 class RegexFilter(base.job.BaseModule):
@@ -180,17 +184,18 @@ class RegexFilter(base.job.BaseModule):
         - **keyword_dir**: Load keyword files form this directory.
         - **cmd**: Run this external command to perform a search.
         - **from_dir**: Run the external command from this directory. If ``None``, run from current directory.
-        - **encoding**: The encoding to decode subprocess binary output
+        - **encoding**: The encoding to decode subprocess binary output.
+        - **logging_disable**: If True, do not log every search.
     """
 
     def read_config(self):
         super().read_config()
-        self.set_default_config('keyword_file', '')
+        self.set_default_config('keyword_file', os.path.join(self.myconfig('casedir'), 'searches_files', 'kw'))
         self.set_default_config('keyword_list', '')
-        self.set_default_config('keyword_dir', os.path.join(self.myconfig('casedir'), 'searches_files'))
         self.set_default_config('cmd', 'grep -iP "{regex}" "{path}"')
         self.set_default_config('encoding', 'utf-8')
         self.set_default_config('from_dir', '')
+        self.set_default_config('logging_disable', False)
 
     def run(self, path=None):
         """
@@ -203,10 +208,14 @@ class RegexFilter(base.job.BaseModule):
         """
         self.check_params(path, check_path=True, check_path_exists=True)
 
-        keyword_file = os.path.join(self.myconfig('keyword_dir'), self.myconfig('keyword_file'))
+        keyword_file = self.myconfig('keyword_file')
         encoding = self.myconfig('encoding')
+        not_logged = self.myflag('logging_disable')
 
         kwlist = self.myconfig('keyword_list')
+        # Normally keyword_list will be a python list object, but can also be provided as string in configuration files
+        if kwlist and isinstance(kwlist,str):
+            kwlist = self.myarray('keyword_list')
         if not kwlist:
             if not os.path.exists(keyword_file):
                 raise base.job.RVTError('The keyword file does not exists: {}'.format(keyword_file))
@@ -227,11 +236,10 @@ class RegexFilter(base.job.BaseModule):
                     keyword_tag = keyword_regex = keyword_line.strip()
                 if not keyword_regex:
                     continue
-                self.logger().info('Searching for keyword %s on file: %s', keyword_regex, path)
-
                 command = self.myconfig('cmd').format(regex=keyword_regex, path=relative_path(path, from_dir))
-                self.logger().debug("Running: cmd='%s', from_dir='%s'", command, from_dir if from_dir else os.getcwd())
-
+                if not not_logged:
+                    self.logger().debug('Searching for keyword {} on file: {}'.format(keyword_regex, path))
+                    #self.logger().debug("Running: cmd='{}', from_dir='{}'".format(command, from_dir if from_dir else os.getcwd()))
                 with subprocess.Popen(shlex.split(command), stdout=subprocess.PIPE) as proc:
                     for line in proc.stdout:
                         line = line.strip().decode(encoding)

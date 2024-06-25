@@ -1,0 +1,12 @@
+0: Unknown (0)
+1: Unknown (empty)
+2: Local
+3: Network
+5: Service
+7: Unlock
+8: NetworkCleartext
+9: NewCredentials
+10: RemoteInteractive
+11: CachedInteractive
+12: Cached remote interactive
+13: Cached unlock

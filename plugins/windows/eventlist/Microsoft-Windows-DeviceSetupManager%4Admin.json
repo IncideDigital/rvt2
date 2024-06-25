@@ -1,0 +1,14 @@
+{
+  "112":{
+    "description": "Device has been serviced",
+    "provider": "Microsoft-Windows-DeviceSetupManager",
+    "category": ["driver"],
+    "type": ["info"],
+    "path": {
+      "EventData":{
+        "Name": ["Prop_DeviceName", "Prop_ContainerId"],
+        "transform": {"Prop_DeviceName": "data.DeviceModel", "Prop_ContainerId": "data.DeviceContainer"}
+      }
+    }
+  }
+}

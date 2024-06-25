@@ -1,0 +1,14 @@
+{
+  "301":{
+    "description": "The device container has entered the ready state",
+    "provider": "Microsoft-Windows-DeviceSetupManager",
+    "category": ["driver"],
+    "type": ["info"],
+    "path": {
+      "EventData":{
+        "Name": ["Prop_ContainerId"],
+        "transform": {"Prop_ContainerId": "data.DeviceContainer"}
+      }
+    }
+  }
+}

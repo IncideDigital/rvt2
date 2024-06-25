@@ -54,7 +54,7 @@ class TemplateSink(base.output.BaseSink):
         """ Get the mako.Template from template or template_file """
         template_file = self.myconfig('template_file')
         if template_file:
-            template_dirs = base.config.parse_conf_array(self.myconfig('template_dirs'))
+            template_dirs = self.myarray('template_dirs')
             lookup = mako.lookup.TemplateLookup(directories=template_dirs, input_encoding=self.myconfig('input_encoding'))
             return lookup.get_template(template_file)
         else:
@@ -68,8 +68,8 @@ class TemplateSink(base.output.BaseSink):
             if data or not self.myflag('skip_on_empty_data'):
                 with self._outputfile() as f:
                     f.write(self._template().render(data=data))
-        except Exception as exc:
-            self.logger().error('Error in the template: error="%s"', exc, mako.exceptions.text_error_template().render())
+        except Exception:
+            self.logger().error('Error in the template: error="%s"', mako.exceptions.text_error_template().render())
             if self.myflag('stop_on_error'):
                 raise
         return iter(data)

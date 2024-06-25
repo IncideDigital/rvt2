@@ -19,16 +19,19 @@
 
 """ The entry point to the system. """
 
+__version__ = '20231129'
+
 import os
 import sys
 import argparse
 import logging
+import json
+import pprint
+import re
 
 import base.config
 import base.job
 import base.utils
-import json
-import datetime
 
 
 def load_configpaths(config, configpaths):
@@ -110,59 +113,113 @@ class StoreDict(argparse.Action):
         setattr(namespace, self.dest, kv)
 
 
-def registerExecution(jobid, config, conffiles, job, params, paths, status, ellapsed=0.0):
-    """ Register the execution of the rvt2 in a file with a timestamp.
+def job_needs_morgue(job):
+    """ Check if the specified job requires a 'morgue' """
+    return False if job is None else (job not in ['help', 'show_jobs'])
 
-    Attrs:
-        :config: The configuration object. morgue, casename and source will be get from the DEFAULT section.
-            The filename is in "rvt2:register". If filename is empty, do not register.
-            If "jobname:register" is False, do not register
-        :conffiles: List of extra configuration files
-        :job: The name of the job
-        :params: Any extra params
-        :paths: The list of paths
-        :status: either 'start', 'end', 'interrupted' or 'error'
-        :ellapsed (float): elapsed time (in hours)
+
+def job_needs_source(job):
+    """ Check if the specified job requires a 'source' """
+    return False if job is None else (job not in ['help', 'show_jobs', 'status', 'show_cases', 'show_images'])
+
+
+def set_global_vars(config, args):
+    """ Update initial variables in globals. Induce client and casename if only source is provided
+
+    Params:
+        config: The configuration object
+        args: The argparse object to be updated
     """
-    filename = config.get('rvt2', 'register', default=None)
-    data = dict(
-        _id=jobid,
-        date=datetime.datetime.utcnow().isoformat(),
-        cwd=os.getcwd(),
-        rvthome=config.get('DEFAULT', 'rvthome'),
-        conffiles=conffiles,
-        morgue=config.get('DEFAULT', 'morgue'),
-        casename=config.get('DEFAULT', 'casename'),
-        source=config.get('DEFAULT', 'source'),
-        job=job,
-        params=params,
-        paths=paths,
-        status=status,
-        logfile=base.utils.relative_path(config.get('logging', 'file.logfile', None), config.get('DEFAULT', 'casedir')),
-        outfile=base.utils.relative_path(config.get(job, 'outfile', None), config.get('DEFAULT', 'casedir')),
-        ellapsed=0.0
-    )
-    if status == 'start':
-        data['date_start'] = data['date']
-    if config.get(job, 'register', 'True') != 'False' and filename:
-        # errors are ignored
+    # Load main variables from globals, parameters or configuration
+    updated_vars = {}
+    for ar, name in zip([args.morgue, args.client, args.casename, args.source], ['morgue', 'client', 'casename', 'source']):
+        if name in args.globals:
+            updated_vars[name] = args.globals[name]
+        elif name not in args.globals and not ar:
+            updated_vars[name] = config.get('DEFAULT', name)
+        else:
+            updated_vars[name] = ar
+    # Check morgue folder exists
+    if not os.path.exists(updated_vars['morgue']) and job_needs_morgue(args.job):
+        logging.error(f"Morgue folder ({updated_vars['morgue']}) not found in the system. Please, provide a valid 'morgue' folder")
+        sys.exit(1)
+    # Check 'source' is set to a non default value
+    if updated_vars['source'] == 'mysource' and job_needs_source(args.job):
+        logging.error(f"Please, provide non default value for 'source'")
+        sys.exit(1)
+
+    # Try to induce 'client' and 'casename' if only 'source' is provided
+    # Only 'morgue' value will be taken from configuration if not provided as argument. 'client' and 'casename' should be provided
+    # If 'client' and 'casename' are set on a configuration file and are different from 'myclient' and 'mycase', the execution will not stop
+    # Assumptions:
+    #   - source is expressed in a format like the following example: "123456-DR-AB-01-123"
+    #   - full path to source is such as: "MORGUEDIR/123456-name/DR-AB-01/123456-DR-AB-01-123" where 123456-name is the 'client' and DR-AB-01 the 'casename'
+    pattern = r'^(?P<caseid>\d{6})-(?P<casename>DR-[^-]+-[^_-]+)'
+    arguments = re.search(pattern, updated_vars['source'])
+    if not arguments and job_needs_source(args.job):
+        logging.warning(f"Source ({updated_vars['source']}) does not follow the expected format. Getting 'client' and 'casename' from parameters or configuration")
+    elif arguments:
+        caseid = arguments.group('caseid')
+        casename = arguments.group('casename')
+        if not updated_vars["client"].startswith(caseid) and job_needs_source(args.job):
+            logging.warning(f"'client' defined ({updated_vars['client']}) does not match with the suposed client extracted from 'source' ({updated_vars['source']})")
+        if not casename.startswith(updated_vars["casename"]) and job_needs_source(args.job):
+            logging.warning(f"'casename' defined ({updated_vars['casename']}) does not match with the suposed casename extracted from 'source' ({updated_vars['source']})")
+    if ((updated_vars['client'] == 'myclient') or (updated_vars['casename'] == 'mycase')) and updated_vars['source']:
+        if not arguments and job_needs_source(args.job):
+            logging.error(f"Please, provide non default values for both 'client' and 'casename'")
+            sys.exit(1)
+        if arguments and os.path.exists(updated_vars['morgue']):
+            for dirname in os.listdir(updated_vars['morgue']):
+                if dirname.startswith(caseid) and os.path.isdir(os.path.join(updated_vars['morgue'], dirname)):
+                    # Update 'client' to new deduced value only if it has not been changed from default value
+                    if updated_vars['client'] == 'myclient':
+                        updated_vars['client'] = dirname
+                    for casedirname in os.listdir(os.path.join(updated_vars['morgue'], dirname)):
+                        if casedirname == casename:
+                            # Update 'casename' to new deduced value only if it has not been changed from default value
+                            if updated_vars['casename'] == 'mycase':
+                                updated_vars['casename'] = casedirname
+                            break
+                        elif casedirname != casename and job_needs_source(args.job):
+                            logging.warning(f"Casename folder ({casename}) extracted from source ({updated_vars['source']}) not found in {os.path.join(args.morgue, dirname)}.")
+                            logging.error(f"Please, provide non default values for both 'client' and 'casename'")
+                            if updated_vars['casename'] == 'mycase':
+                                sys.exit(1)
+                    break
+            else:
+                if job_needs_source(args.job):
+                    logging.warning(f"Client name not found in ({updated_vars['morgue']}) given the source ({updated_vars['source']}). Please, provide 'client' and 'casename'")
+                    if updated_vars['client'] == 'myclient':
+                        sys.exit(1)
+
+    # Update global variables again
+    for name in ['morgue', 'client', 'casename', 'source']:
+        # WARNING: there is no validation that the new 'client' and 'casename' match the previous. Keep the previous just in case source has an extrange format
+        if ar is not None and name not in args.globals:
+            args.globals[name] = updated_vars[name]
+
+
+def set_global_config(config, _globals, ignore_errors=False):
+    """ Set global variables in the configuration object.
+
+    Params:
+        config: The configuration object
+        _globals: a dictionary with global variables, in the format {"SECTION:PARAM": "VALUE"}. If no SECTION
+            is provided, use "DEFAULT"
+        ignore_errors: If True, ignore missing sections (do nothing)
+    """
+    for varname in _globals:
+        sectionname = base.config.DEFAULTSECT
+        newvarname = varname
+        newvalue = _globals[varname]
+        if ':' in varname:
+            sectionname, newvarname = varname.split(':', 1)
         try:
-            with open(filename, 'a') as f:
-                f.write(json.dumps(data))
-                f.write('\n')
-        except Exception:
-            pass
-
-
-def load_default_vars(config, morgue, casename, source, jobid):
-    """ Add to the configuration object the default variables: morgue, casename, source and jobid """
-    config.config[base.config.DEFAULTSECT]['cwd'] = os.getcwd()
-    config.config[base.config.DEFAULTSECT]['userhome'] = os.environ.get('HOME')
-    config.config[base.config.DEFAULTSECT]['rvthome'] = os.path.dirname(os.path.abspath(__file__))
-    config.config['rvt2']['jobid'] = jobid
-    for ar, name in zip([morgue, casename, source], ['morgue', 'casename', 'source']):
-        if ar is not None:
-            config.config[base.config.DEFAULTSECT][name] = ar
+            config.config[sectionname][newvarname] = newvalue
+        except KeyError:
+            if not ignore_errors:
+                raise
 
 
 def configure_logging(config, verbose=False, jobname=None):
@@ -193,29 +250,63 @@ def main(params=sys.argv[1:]):
     Attrs:
         :params: The parameters to configure the system
     """
-    aparser = argparse.ArgumentParser(description='Script para...')
-    aparser.add_argument('-c', '--config', help='Configuration file. Can be provided multiple times and configuration is appended', action='append')
-    aparser.add_argument('-v', '--verbose', help='Outputs debug messages to the standard output', action='store_true', default=False)
-    aparser.add_argument('-p', '--print', help='Print the results of the job as JSON', action='store_true', default=False)
-    aparser.add_argument('--params', help="Additional parameters to the job, as PARAM=VALUE", action=StoreDict, nargs='*', default={})
-    aparser.add_argument('-j', '--job', help='Section name in the configuration file for the main job.', default=None)
-    aparser.add_argument('--morgue', help='If provided, ovewrite the value of the morgue variable in the DEFAULT section of the configuration', default=None)
-    aparser.add_argument('--casename', help='If provided, ovewrite the value of the casename variable in the DEFAULT section of the configuration', default=None)
-    aparser.add_argument('--source', help='If provided, ovewrite the value of the source variable in the DEFAULT section of the configuration', default=None)
+
+    jobid = str(base.utils.generate_id())
+    INITIAL_CONF = {
+        'rvt2:version': __version__,
+        'rvthome': os.path.dirname(os.path.abspath(__file__)),
+        'userhome': os.environ.get('HOME'),
+        'cwd': os.getcwd(),
+        'rvt2:jobid': jobid
+    }
+
+    aparser = argparse.ArgumentParser(description='The Revealer Toolkit for forensic analysis')
+    aparser.add_argument('-v', '--verbose', help='outputs debug messages to the standard output', action='store_true', default=False)
+    aparser.add_argument('-V', '--version', help='outputs version and current configuration and exit', action='store_true', default=False)
+    aparser.add_argument('-c', '--config', help='additional configuration files. Can be provided multiple times and configuration is appended', action='append')
+    aparser.add_argument('--globals', help="additional configuration, as SECTION:PARAM=VALUE. You can provide several parameters, end the list with a --. If a section name is not provided, use DEFAULT", action=StoreDict, nargs='*', default=INITIAL_CONF)
+    aparser.add_argument('-m', '--morgue', help='value of the morgue variable in the DEFAULT section of the configuration. Shortcut to --globals morgue=MORGUE', default=None)
+    aparser.add_argument('--client', help='value of the client variable in the DEFAULT section of the configuration. Shortcut to --globals client=CLIENT', default=None)
+    aparser.add_argument('--casename', help='value of the casename variable in the DEFAULT section of the configuration. Shortcut to --globals casename=CASENAME', default=None)
+    aparser.add_argument('-s', '--source', help='value of the source variable in the DEFAULT section of the configuration. Shortcut to --globals source=SOURCE', default=None)
+    aparser.add_argument('-j', '--job', help='section name in the configuration file for the main job.', default=None)
+    aparser.add_argument('--params', help="additional parameters to the job, as PARAM=VALUE. You can provide seveal parameters, end the list with a --", action=StoreDict, nargs='*', default={})
+    aparser.add_argument('-p', '--print', help='print the results of the job as JSON', action='store_true', default=False)
     aparser.add_argument('paths', type=str, nargs='*', help='Filename or directories to parse')
     args = aparser.parse_args(params)
 
-    jobid = str(base.utils.generate_id())
+    # Sanitize morgue variables
+    if args.morgue:
+        args.morgue = args.morgue.rstrip('/')
+    if args.globals.get('morgue',''):
+        args.globals['morgue'] = args.globals['morgue'].rstrip('/')
 
-    # read configuration from one or more -c options
-    config = base.config.Config()
+    # Update initial variables in globals
+    # Notice "--globals morgue=SOMETHING" has preference over "--morgue SOMETHING"
+    for ar, name in zip([args.morgue, args.client, args.casename, args.source], ['morgue', 'client', 'casename', 'source']):
+        if ar is not None and name not in args.globals:
+            args.globals[name] = ar
+
+    if args.version:
+        pprint.pp(args.globals)
+        sys.exit(0)
+
+    # First configuration step, in case the initilization of the system needs these parameters. It will be read again later
+    # Read configuration from one or more -c options
+    config = base.config.default_config
     load_configpaths(config, args.config)
-    load_default_vars(config, args.morgue, args.casename, args.source, jobid)
+    # Configure global variables.
+    # Since plugins are not loaded yet, ignore errors of missing sections
+    set_global_config(config, args.globals, ignore_errors=True)
 
-    # configure the logging subsystem using a generic configuration
+    # Configure the logging subsystem using a generic configuration
     configure_logging(config, args.verbose, None)
     # NOW we can log the configuration files, since the logging system is already up
     logging.debug('Configuration files: %s', args.config)
+
+    # Induce 'client' and 'casename' if only 'source' is set
+    set_global_vars(config, args)
+    set_global_config(config, args.globals, ignore_errors=True)
 
     # Load additional pythonpath
     for pythonpath in base.config.parse_conf_array(config.get('rvt2', 'pythonpath', '')):
@@ -226,10 +317,10 @@ def main(params=sys.argv[1:]):
     for pluginspath in base.config.parse_conf_array(config.get('rvt2', 'plugins', '')):
         load_plugin(pluginspath, config)
 
-    # read again configuration from one or more -c options. They MUST overwrite the configuration of the plugins
+    # Read again configuration from one or more -c options. They MUST overwrite the configuration of the plugins
     load_configpaths(config, args.config)
-    # configure default variables again. They MUST overwrite the configuration of the conf files
-    load_default_vars(config, args.morgue, args.casename, args.source, jobid)
+    # Configure global variables. They MUST overwrite the configuration
+    set_global_config(config, args.globals)
 
     # configure the job: if there is a Main section, use it. Else, get the default job from configuration rvt2.default_job
     if args.job is None:
@@ -242,17 +333,13 @@ def main(params=sys.argv[1:]):
     configure_logging(config, args.verbose, args.job)
 
     # run job
-    jobstarted = datetime.datetime.now()
-    registerExecution(jobid, config, args.config, args.job, args.params, args.paths, 'start')
     try:
-        for results in base.job.run_job(config, args.job, args.paths, extra_config=args.params):
+        for results in base.job.run_job(config, args.job, args.paths, extra_config=args.params, nested_logs=2, nested_registers=2, main_job=True, recursive_error=False):
             if args.print:
                 print(json.dumps(results))
-        registerExecution(jobid, config, args.config, args.job, args.params, args.paths, 'end', (datetime.datetime.now() - jobstarted) / 3600)
     except KeyboardInterrupt:
-        registerExecution(jobid, config, args.config, args.job, args.params, args.paths, 'interrupted', (datetime.datetime.now() - jobstarted) / 3600)
+        pass
     except Exception:
-        registerExecution(jobid, config, args.config, args.job, args.params, args.paths, 'error', (datetime.datetime.now() - jobstarted) / 3600)
         raise
 
 

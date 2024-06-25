@@ -4,12 +4,6 @@
 # you can use this section in import modules and define new functions
 import sys
 
-def multiline_value(value):
-    if '\n' in value:
-        return '\n    ```{}\n    ```'.format('\n'.join(map(lambda l: '    ' + l, value.split('\n'))))
-    else:
-        return '`{}`'.format(value)
-
 def supports_color():
     # this template does not use colorization. Setting this to false is easy and keeps compatibility with help.mako
     return False
@@ -40,12 +34,21 @@ ${colorize_section('## Jobs')}
 % endfor
 
 % for job in section['jobs']:
-${colorize_section("### Job `{}`".format(job['job']))}
+${colorize_section("## Job `{}`".format(job['job']))}
 
 ${job['description']}
-% if job.get('params', {}):
+% if len(job['jobs']) > 0:
 
-${colorize_section('#### Configurable parameters')}
+${colorize_section('### Jobs')}
+% for subjob in job['jobs']:
+% if subjob['short']:
+- `${colorize_param(subjob['job'])}`: ${subjob['short']}
+% endif
+% endfor
+% endif
+
+% if job.get('params', {}):
+${colorize_section('### Configurable parameters')}
 
 |Parameter|Description|Default|
 |--|--|--|

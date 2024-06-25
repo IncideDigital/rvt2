@@ -1,0 +1,182 @@
+[
+    {
+        "file": "01_operating_system_information",
+        "description": "General Information about the Operating System and Its Configuration",
+        "plugins": [
+            "winver2",
+            "timezone",
+            "shutdown",
+            "winlogon_tln",
+            "lastloggedon",
+            "uac",
+            "pagefile",
+            "processor_architecture"
+        ]
+    },
+    {
+        "file": "02_user_account_information",
+        "description": "User Account Information",
+        "plugins": [
+            "samparse",
+            "profilelist",
+            "netlogon"
+        ]
+    },
+    {
+        "file": "03_installed_software_information",
+        "description": "Installed Software Information",
+        "plugins": [
+            "uninstall",
+            "apppaths",
+            "msis",
+            "installer",
+            "clsid",
+            "listsoft",
+            "arpcache",
+            "licenses",
+            "defender",
+            "powershellcore",
+            "execpolicy",
+            "pslogging",
+            "watp"
+        ]
+    },
+    {
+        "file": "04_network_configuration_information",
+        "description": "Networking Configuration Information",
+        "plugins": [
+            "compname",
+            "networkcards",
+            "networksetup2",
+            "nic2",
+            "macaddr",
+            "shares",
+            "fw_config",
+            "routes",
+            "networklist",
+            "ssid",
+            "termserv",
+            "termcert",
+            "rdpport",
+            "remoteaccess",
+            "teamviewer",
+            "ips",
+            "dcom"
+        ]
+    },
+    {
+        "file": "05_storage_information",
+        "description": "Storage Information",
+        "plugins": [
+            "usb",
+            "mountdev2",
+            "usbdevices",
+            "usbstor",
+            "devclass",
+            "emdmgmt",
+            "wpdbusenum"
+        ]
+    },
+    {
+        "file": "07_program_execution_information",
+        "description": "Program Execution Information",
+        "plugins": [
+            "prefetch",
+            "appcompatcache",
+            "shimcache",
+            "syscache_tln",
+            "tasks",
+            "tracing",
+            "at",
+            "direct",
+            "amcache",
+            "bam",
+            "userassist",
+            "userassist_tln",
+            "appcompatflags",
+            "winscp",
+            "mixer",
+            "featureusage",
+            "heap",
+            "ica_sessions",
+            "runvirtual"
+        ]
+    },
+    {
+        "file": "08_autoruns_information",
+        "description": "Autostart Locations Information",
+        "plugins": [
+            "run",
+            "runonceex",
+            "services",
+            "svc",
+            "winlogon_tln",
+            "cmd_shell"
+        ]
+    },
+    {
+        "file": "10_malware_indicators",
+        "description": "Malware Indicators",
+        "plugins": [
+            "calibrator",
+            "cred",
+            "injectdll64",
+            "killsuit",
+            "ntds",
+            "pending",
+            "pendinggpos",
+            "printdemon",
+            "printmon",
+            "ryuk_gpo",
+            "scriptleturl",
+            "speech",
+            "wab",
+            "inprocserver",
+            "fileless",
+            "appcertdlls",
+            "attachmgr",
+            "cached",
+            "cached_tln",
+            "cmdproc",
+            "imagefile",
+            "wow64",
+            "lsa",
+            "mmo",
+            "null",
+            "rlo"
+        ]
+    },
+    {
+        "file": "12_user-configuration_information",
+        "description": "User Account Configuration Information",
+        "plugins": [
+            "shellfolders",
+            "environment",
+            "disablemru",
+            "ccleaner",
+            "sysinternals"
+         ]
+    },
+    {
+        "file": "13_user-account-general-activity",
+        "description": "User Account General Activity",
+        "plugins": [
+            "mmc",
+            "runmru",
+            "recentapps"
+        ]
+    },
+    {
+        "file": "15_user-account-file-access-activity",
+        "description": "User Account File/Folder Access Activity",
+        "plugins": [
+            "msoffice",
+            "shellbags",
+            "recentdocs",
+            "winzip",
+            "winrar",
+            "sevenzip"
+        ]
+    }
+]
+

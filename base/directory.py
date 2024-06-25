@@ -22,10 +22,14 @@ import os
 import glob
 import re
 import shutil
+from tqdm import tqdm
+from natsort import natsorted
+
 import base.job
 import base.config
 import base.commands
-from tqdm import tqdm
+import base.utils
+from plugins.common.RVT_files import GetFiles
 
 
 class DirectoryFilter(base.job.BaseModule):
@@ -47,6 +51,7 @@ class DirectoryFilter(base.job.BaseModule):
         - **progress.disable** (Boolean): If True, disable the progress bar.
         - **progress.cmd** (String): The shell command to run to estimate the number of subdirectories in the path.
         - **exclude_pattern**: If the path of the files matches this pattern, exclude the file.
+        - **sorted**: If True, sort directories alphabetically
         - **restartable**: If True, use the local store to save the name of the last directory fully parsed.
           The parsing won't continue until this directory is found.
 
@@ -59,8 +64,9 @@ class DirectoryFilter(base.job.BaseModule):
         self.set_default_config('void_extension', 'True')
         self.set_default_config('followlinks', 'False')
         self.set_default_config('filter', '')
+        self.set_default_config('sorted', 'False')
         # if there are filters, fill the self.filter_extensions dictionary
-        filters = base.config.parse_conf_array(self.myconfig('filter'))
+        filters = self.myarray('filter')
         # if this set is not None, only files with these extensions are parsed. If None, parse all files
         if filters:
             filter_extensions = list()
@@ -68,7 +74,7 @@ class DirectoryFilter(base.job.BaseModule):
                 for extension in base.config.parse_conf_array(self.config.get(myfilter, 'extension', '')):
                     filter_extensions.append(extension)
             self.filter_extensions = set(filter_extensions)
-            self.logger().info('Parsing only: %s', self.filter_extensions)
+            self.logger().debug('Parsing only: %s', self.filter_extensions)
         else:
             self.filter_extensions = None
         # progress configuration
@@ -127,7 +133,7 @@ class DirectoryFilter(base.job.BaseModule):
             # estimating the number of subdirectories may be very long. Do not estimate if progress is disabled
             total_subdirectories = base.commands.estimate_iterations(path, self.myconfig('progress.cmd'))
         # Notice total_interations is the number of subdirectories, not files
-        self.logger().info('total_subdirectories=%s', total_subdirectories)
+        self.logger().debug('total_subdirectories=%s', total_subdirectories)
         return total_subdirectories
 
     def _parse_directory(self, path):
@@ -139,6 +145,8 @@ class DirectoryFilter(base.job.BaseModule):
             lastParsed = self.config.store_get('last_dir_parsed', None)
         # walk
         for root, dirs, files in tqdm(os.walk(path, followlinks=self.myflag('followlinks')), total=total_iterations, disable=self.myflag('progress.disable'), desc=self.section):
+            if self.myflag('sorted'):
+                dirs.sort()
             for myfile in files:
                 filepath = os.path.join(root, myfile)
                 # if lastParsed is set, skip until root == lastParsed
@@ -172,11 +180,12 @@ class FileParser(base.job.BaseModule):
 
     Configuration:
         - **parsers**: A list of regex and modules. First, the regular expression matching a filename; second, the jobname to run on this filename.
+            Example: ['(.*[Ww]indows/audit/.*.csv) myplugin.myjob', '(.*[Ww]indows/auditlogs/.*.txt) myplugin.myjob2']
     """
     def read_config(self):
         base.job.BaseModule.read_config(self)
         self.set_default_config('parsers', '')
-        parsers = base.config.parse_conf_array(self.myconfig('parsers'))
+        parsers = self.myarray('parsers')
         self.regex_list = []
         for regex, parser in zip(parsers[0:len(parsers):2], parsers[1:len(parsers):2]):
             self.regex_list.append((re.compile(regex, flags=re.I), parser))
@@ -187,9 +196,11 @@ class FileParser(base.job.BaseModule):
                 yield fileinfo
         for regex, parser in self.regex_list:
             if regex.match(path):
-                self.logger().info('Matched path: {}'.format(path))
+                self.logger().debug('Matched path: {}'.format(path))
                 for fileinfo in base.job.run_job(self.config.copy(), parser, path=[path]):
                     yield fileinfo
+
+        return []
 
 
 class GlobFilter(base.job.BaseModule):
@@ -204,14 +215,24 @@ class GlobFilter(base.job.BaseModule):
         - **yields**: whatever *from_module* yields each time it is called.
 
     Configuration:
-        - **recursive**: Passes this parameters to ``glob.iglob``: whether the path must run recursively or not.
-        - **ftype**: either "file", "directory" or "all".
+        - **recursive**: whether the path must run recursively or not
+        - **ftype**: type of file to select. Either "file", "directory" or "all"
+        - **path**: path can be also provided as a configuration. If provided, run() will ignore the path
+        - **sorted**: if True, yield the paths in alphabetic order
+        - **reverse**: if True, yield the paths in reverse alphabetic order
+        - **only_extensions**: list of extensions that files must have to be yielded. Default: None
+        - **exclude_extensions**: list of extensions that files must not have to be yielded. Default: None
     """
 
     def read_config(self):
         super().read_config()
         self.set_default_config('recursive', 'True')
         self.set_default_config('ftype', 'all')
+        self.set_default_config('path', None)
+        self.set_default_config('sorted', False)
+        self.set_default_config('reverse', False)
+        self.set_default_config('only_extensions', None)
+        self.set_default_config('exclude_extensions', None)
 
     def run(self, path=None):
         """ Parses objects matching a glob pattern.
@@ -220,23 +241,49 @@ class GlobFilter(base.job.BaseModule):
 
         Parameters:
             path(str): the glob pattern. It will be recursive. See https://docs.python.org/3.6/library/glob.html
+                If the module has a path configured in its configration, this parameter is ignored.
 
         """
+        custom_path = self.myconfig('path')
+        if custom_path is not None:
+            path = custom_path
+
         self.check_params(path, check_from_module=True, check_path=True)
         ftype = self.myconfig('ftype').lower()
 
+        self.logger().debug('Searching glob pattern: {}'.format(path))
+
+        if self.myflag('sorted') or self.myflag('reverse'):
+            list_files = glob.glob(path, recursive=self.myflag('recursive'))
+            list_files = natsorted(list_files, reverse=self.myflag('reverse'))
+        else:
+            list_files = glob.iglob(path, recursive=self.myflag('recursive'))
+
+        exclude_extensions = self.myarray('exclude_extensions')
+        if exclude_extensions:
+            list_files = [path for path in list_files if not any(path.endswith(ext) for ext in exclude_extensions)]
+        
+        only_extensions = self.myarray('only_extensions')
+        if only_extensions:
+            list_files = [path for path in list_files if any(path.endswith(ext) for ext in only_extensions)]
+
         # parse all files matching the glob
-        for filepath in glob.iglob(path, recursive=self.myflag('recursive')):
+        for filepath in list_files:
             try:
                 if ftype == 'all' or \
-                    (ftype == 'file' and os.path.isfile(filepath)) or \
-                    (ftype == 'directory' and os.path.isdir(filepath)):
-                    for info in self.from_module.run(filepath):
-                        yield info
+                        (ftype == 'file' and os.path.isfile(filepath)) or \
+                        (ftype == 'directory' and os.path.isdir(filepath)):
+                    self.logger().debug('Matching glob file: {}'.format(filepath))
+                    results = self.from_module.run(filepath)
+                    if results is not None:
+                        for info in results:
+                            yield info
             except Exception as exc:
                 if self.myflag('stop_on_error'):
                     raise
                 self.logger().warning(exc)
+
+        return []
 
 
 class FileClassifier(base.job.BaseModule):
@@ -276,7 +323,7 @@ class FileClassifier(base.job.BaseModule):
         self.set_default_config('categories', '')
         self.set_default_config('check_extension', 'True')
 
-        categories = base.config.parse_conf_array(self.myconfig('categories'))
+        categories = self.myarray('categories')
         # this dictionary maps content_type -> category name
         self._inverted_extensions = dict()
         # this dictionary maps content_type -> category name
@@ -357,7 +404,6 @@ class DirectoryClear(base.job.BaseModule):
         Useful when certain jobs that append results to file are called again, avoiding duplication of output. """
 
     def run(self, path=None):
-        # self.check_params(path, check_from_module=True, check_path=True)
         target_path = self.myconfig('target', None)
         if not target_path:
             raise base.job.RVTError('Target path to remove not selected'.format(target_path))
@@ -367,18 +413,103 @@ class DirectoryClear(base.job.BaseModule):
         elif os.path.isfile(target_path):
             os.remove(target_path)
             return []
-        self.logger().info('{} not recognized as file or directory'.format(target_path))
+        self.logger().debug('{} not recognized as file or directory'.format(target_path))
         return []
-        # raise base.job.RVTError('{} not recognized as file or directory'.format(target_path))
 
 
-class MirrorOptions(base.job.BaseModule):
-    """ Return the value of the local options """
+class GlobClear(base.job.BaseModule):
+    """ Remove the the file or directory specified by glob pattern 'target'.
+        Useful when certain jobs that append results to file are called again, avoiding duplication of output. """
+
+    def read_config(self):
+        super().read_config()
+        self.set_default_config('recursive', 'True')
+        self.set_default_config('ftype', 'all')
+
     def run(self, path=None):
-        params = dict(path=base.utils.relative_path(path, self.myconfig('casedir')))
-        if self.local_config:
-            params.update(self.local_config)
-        if hasattr(self, 'section') and hasattr(self, 'config'):
-            if self.config.has_section(self.section):
-                params.update(self.config.options(self.section))
-        return [params]
+        target_path = self.myconfig('target', None)
+        if not target_path:
+            raise base.job.RVTError('Target path to remove not selected'.format(target_path))
+
+        ftype = self.myconfig('ftype').lower()
+
+        items_removed = False
+        self.logger().debug('Removing all {} matching glob pattern: {}'.format(ftype, target_path))
+        for filepath in glob.iglob(target_path, recursive=self.myflag('recursive')):
+            if ftype == 'all' or \
+                    (ftype == 'file' and os.path.isfile(filepath)) or \
+                    (ftype == 'directory' and os.path.isdir(filepath)):
+                if os.path.isdir(filepath):
+                    shutil.rmtree(filepath)
+                    items_removed = True
+                    self.logger().debug(f'Directory {filepath} has been deleted')
+                elif os.path.isfile(filepath):
+                    os.remove(filepath)
+                    items_removed = True
+                    self.logger().debug(f'File {filepath} has been deleted')
+
+        if not items_removed:
+            self.logger().debug('No file or directory matching "{}" has been deleted'.format(target_path))
+
+        # If this job is used as a module, continue the module chain
+        if self.from_module is not None:
+            yield from self.from_module.run(path)
+        else:
+            return []
+
+
+class CopyFile(base.job.BaseModule):
+    
+    """  A module that copy a file set in 'path' to a specific folder
+
+    Configuration:
+        - **outdir** (str): Directory where the files are copied
+        - **outfile** (str) : Destination filename. It is a template that will be formated as ``outfile.format(path=os.path.basename(path))``. By default ``{path}.txt``
+    """
+
+    def read_config(self):
+        super().read_config()
+        self.set_default_config('outdir', None)
+        self.set_default_config('outfile', '{path}.txt')
+
+    def run(self, path=None):
+        outdir = self.myconfig('outdir')
+        mountdir = self.myconfig('mountdir')
+        if not outdir:
+            self.logger().error('An outdir must be provided')
+        else:
+            if os.path.isfile(path):
+                base.utils.check_folder(outdir)
+                if os.path.islink(path):
+                    # If the path is a symbolic link, get the target
+                    target_path = os.readlink(path)
+                    if not target_path.startswith(mountdir):
+                        search = GetFiles(self.config)
+                        target_path_list = search.search(target_path)
+                        
+                        mountdirlist = mountdir.split(os.path.sep)
+                        target_path_list = target_path_list[0].split(os.path.sep)
+
+                        index = mountdirlist.index(target_path_list[0])
+                        final_list = mountdirlist
+                        
+                        for directory in target_path_list:
+                            if index < len(mountdirlist):
+                                final_list[index] = directory    
+                            else:
+                                final_list.append(directory)
+                            index += 1
+                            
+                        target_path = os.path.sep.join(final_list)
+                    basename = os.path.basename(target_path)
+                else:
+                    # If not a symbolic link, use the provided path
+                    basename = os.path.basename(path)
+                
+                outfile = self.myconfig('outfile')
+                file_out = os.path.join(outdir, outfile.format(path=basename))
+                new_permissions = 0o644
+                shutil.copy2(target_path if os.path.islink(path) else path, file_out)
+                os.chmod(file_out, new_permissions)
+            else:
+                self.logger().warning('The path provided is not a valid file or does not exist: ' + path)

@@ -108,3 +108,32 @@ class _InjectedInput(base.job.BaseModule):
                 yield data
             finally:
                 queue.task_done()
+
+
+class WaitForJob(base.job.BaseModule):
+    """ Manages concurrency of repeated jobs.
+        If there is still an instance running of a job that is to be executed, then the new job waits the first one to finish.
+
+        configuration:
+        - **job_name** : name of the job to check it's running. By default it will be the present job name itself.
+        - **exclude_present_job**: Exclude the present job id in the search, since it will always be registered before the present functions is executed.
+        - **step** : time (in seconds) between consecutive state asking.
+        - **timeout** : maximum time (in seconds) to wait. After that, the new job is cancelled.
+    """
+
+    def read_config(self):
+        super().read_config()
+        self.set_default_config('job_name', None)
+        self.set_default_config('exclude_present_job', True)
+        self.set_default_config('step', '30')
+        self.set_default_config('timeout', '600')
+
+    def run(self, path=""):
+        base.job.wait_for_job(self.config,
+                              self,
+                              step=int(self.myconfig('step')),
+                              timeout=int(self.myconfig('timeout')),
+                              job_name=self.myconfig('job_name'),
+                              exclude_present_job=self.myflag('exclude_present_job'))
+
+        return []

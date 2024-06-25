@@ -19,14 +19,16 @@
 
 """ Some simple file readers to be used as input for other modules. """
 
+import os
 import csv
 import sqlite3
 import json
 import sys
+import zipfile
+import gzip
 from tqdm import tqdm
 
 import base.job
-from base.config import parse_conf_array
 from base.commands import estimate_iterations
 
 
@@ -96,9 +98,67 @@ class AllLinesInFile(base.job.BaseModule):
         self.check_params(path, check_path=True, check_path_exists=True)
         total_iterations = base.commands.estimate_iterations(path, self.myconfig('progress.cmd'))
         with open(path, 'r', encoding=self.myconfig('encoding')) as infile:
-            for line in tqdm(infile, total=total_iterations, desc=self.section, disable=self.myflag('progress.disable')):
+            for line in tqdm(infile, total=total_iterations,
+                             desc='Reading {}'.format(os.path.basename(path)),
+                             disable=self.myflag('progress.disable')):
                 yield line.strip()
 
+class AllLinesInCompressedFile(base.job.BaseModule):
+    """ Pass to from_module each line in a compressed file as the path.
+ 
+    Configuration:
+        - **encoding** (String): The encoding to use. Defaults to utf-8
+        - **progress.disable** (Boolean): If True, disable the progress bar.
+    """
+    def read_config(self):
+        super().read_config()
+        self.set_default_config('encoding', 'utf-8')
+        self.set_default_config('progress.disable', 'False')
+ 
+    def run(self, path):
+        """ Read all lines from the path and pass them to from_module """
+        self.check_params(path, check_path=True, check_path_exists=True)
+ 
+        # Check what kind of compressed file it is
+        if zipfile.is_zipfile(path):
+            self.logger().info(f'Found ZIP file {path}')
+            yield from self.read_zip(path)
+        else:
+            is_gzip = False
+            with gzip.open(path, 'r') as fh:
+                try:
+                    fh.read(1)
+                    is_gzip = True
+                except gzip.BadGzipFile:
+                    pass
+        if is_gzip:
+            self.logger().info(f'Found GZIP file {path}')
+            yield from self.read_gzip(path)
+        else:
+            self.logger().warning(f'Input file not in a well known compressed format (zip, gzip). Path: {path}')
+            return []
+ 
+    def read_zip(self, path):
+        with zipfile.ZipFile(path, 'r') as f:
+            # If many files exist inside the ZIP, it will read them one after another
+            for file in f.namelist():
+                with f.open(file, 'r') as internal:
+                    line_count = sum(1 for line in internal)
+                    internal.seek(0)  # Reset the file pointer to the beginning
+                    for line in tqdm(internal, total=line_count,
+                                    desc='Reading {}'.format(os.path.basename(file)),
+                                    disable=self.myflag('progress.disable')):
+                        yield line.strip().decode()
+ 
+    def read_gzip(self, path):
+        with gzip.open(path, 'rb') as f:
+            # Assuming there is only one file inside GZIP
+            line_count = sum(1 for line in f)
+            f.seek(0)  # Reset the file pointer to the beginning
+            for line in tqdm(f, total=line_count,
+                             desc='Reading {}'.format(os.path.basename(path)),
+                             disable=self.myflag('progress.disable')):
+                yield line.strip().decode()
 
 class ForAllLinesInFile(base.job.BaseModule):
     """ Pass to from_module each line in a file as the path.
@@ -119,7 +179,9 @@ class ForAllLinesInFile(base.job.BaseModule):
         self.check_params(path, check_path=True, check_path_exists=True, check_from_module=True)
         total_iterations = base.commands.estimate_iterations(path, self.myconfig('progress.cmd'))
         with open(path, 'r', encoding=self.myconfig('encoding')) as infile:
-            for line in tqdm(infile, total=total_iterations, desc=self.section, disable=self.myflag('progress.disable')):
+            for line in tqdm(infile, total=total_iterations,
+                             desc='Reading {}'.format(os.path.basename(path)),
+                             disable=self.myflag('progress.disable')):
                 newpath = line.strip()
                 if not newpath:
                     continue
@@ -130,9 +192,19 @@ class ForAllLinesInFile(base.job.BaseModule):
 class JSONReader(AllLinesInFile):
     """ Load every line in a file as a JSON dictionary and yields it."""
 
+    def read_config(self):
+        super().read_config()
+        self.set_default_config('check_path_exists', True)
+
     def run(self, path):
         """ Read JSON file in the path. from_module is ignored """
-        self.check_params(path, check_path=True, check_path_exists=True)
+        try:
+            self.check_params(path, check_path=True, check_path_exists=True)
+        except base.job.RVTErrorNotExistingPath as exc:
+            if not self.myflag('check_path_exists'):
+                self.logger().warning(exc)
+                return []
+            raise exc
         for line in super().run(path):
             try:
                 data = json.loads(line.strip())
@@ -143,24 +215,26 @@ class JSONReader(AllLinesInFile):
 
 
 class CSVReader(base.job.BaseModule):
-    """ Yields every line in a CSV file.
+    """ Yields every line in a CSV file or generator object.
 
     Configuration:
+        - **is_file** (Boolean): If True, take the 'path' as the input file to read. If False, assume a generator is passed from previous module and read it as a CSV file. Defaults to True.
         - **encoding** (String): The encoding to use. Defaults to "utf-8"
-        - **delimiter** (String): The delimiter to use. Defaults to ;
+        - **delimiter** (String): The delimiter to use. Use `AUTO` to dinamically find out. Defaults to ;
         - **quotechar** (String): The quotechar. Defaults to \"
         - **restkey** (String): The restkey of the DictReader. Defaults to "extra".
         - **restval** (String): The restval of the DictReader. Defaults to the empty string.
-        - **content_type**: The content_type to set, if fill_common_fields is set
-        - **fieldnames**: A space separated list of header names. If None, use the first line.
-          Warning: if provided, the first line will be considered data unless ignore_lines is set to >0
-        - **ignore_lines** (int): Ignore this numner of initial lines. If fieldnames is provided, the first line is also ignored.
+        - **fieldnames** (List or String): A list of header names. If None, use the first line.
+          Warning: If provided, the first line will be considered data unless ignore_lines is set to >0
+        - **ignore_lines** (Int): Ignore this number of initial lines. If fieldnames is provided, the first line is also ignored.
         - **progress.disable** (Boolean): If True, disable the progress bar.
         - **progress.cmd** (String): The shell command to run to estimate the number of lines in the file.
+        - **check_path_exists** (Boolean): If True and provided path does not exist, raise an error. If False, just warn and continue
     """
 
     def read_config(self):
         super().read_config()
+        self.set_default_config('is_file', True)
         self.set_default_config('encoding', 'utf-8')
         self.set_default_config('delimiter', ';')
         self.set_default_config('quotechar', '"')
@@ -168,35 +242,66 @@ class CSVReader(base.job.BaseModule):
         self.set_default_config('restval', '')
         self.set_default_config('fieldnames', '')
         self.set_default_config('ignore_lines', '0')
-        self.set_default_config('content_type', '')
         self.set_default_config('progress.disable', 'False')
         self.set_default_config('progress.cmd', 'cat "{path}" | wc -l')
         self.set_default_config('field_size_limit', sys.maxsize)  # Default csv max is 131072
+        self.set_default_config('check_path_exists', True)
 
     def run(self, path):
         """ Read CSV file in the path. from_module is ignored """
-        self.check_params(path, check_path=True, check_path_exists=True)
         csv.field_size_limit(int(self.myconfig('field_size_limit')))
+        self.ignore_lines = int(self.myconfig('ignore_lines'))
+        self.fieldnames = self.myarray('fieldnames', None)
+
+        # Case where input is a generator object
+        if not self.myflag('is_file'):
+            yield from self._iter_csv(path)
+            return []
+
+        # Case where input is a file
+        try:
+            self.check_params(path, check_path=True, check_path_exists=True)
+        except base.job.RVTErrorNotExistingPath as exc:
+            if not self.myflag('check_path_exists'):
+                self.logger().warning(exc)
+                return []
+            raise exc
         with open(path, 'r', encoding=self.myconfig('encoding')) as infile:
-            ignore_lines = int(self.myconfig('ignore_lines'))
-            fieldnames = (parse_conf_array(self.myconfig('fieldnames')) or None)
-            for i in range(0, ignore_lines):
+            for i in range(0, self.ignore_lines):
                 infile.readline()
+            if self.myconfig('delimiter') == 'AUTO':
+                delimiter = csv.Sniffer().sniff(infile.readline()).delimiter
+                infile.seek(0)
+            else:
+                delimiter = self.myconfig('delimiter')
             reader = csv.DictReader(
                 infile,
-                fieldnames=fieldnames,
+                fieldnames=self.fieldnames,
                 restval=self.myconfig('restval'), restkey=self.myconfig('restkey'),
-                delimiter=self.myconfig('delimiter'), quotechar=self.myconfig('quotechar'))
+                delimiter=delimiter, quotechar=self.myconfig('quotechar'))
             # progress management
             total_iterations = estimate_iterations(path, self.myconfig('progress.cmd'))
             # if fieldnames is None, the first line is header. Add one to progress
-            if fieldnames:
-                initial_progress = ignore_lines
+            if self.fieldnames:
+                initial_progress = self.ignore_lines
             else:
-                initial_progress = ignore_lines + 1
+                initial_progress = self.ignore_lines + 1
             # main loop
-            for data in tqdm(reader, total=total_iterations, initial=initial_progress, desc=self.section, disable=self.myflag('progress.disable')):
+            for data in tqdm(reader, total=total_iterations,
+                             initial=initial_progress,
+                             desc='Reading {}'.format(os.path.basename(path)),
+                             disable=self.myflag('progress.disable')):
                 yield data
+
+    def _iter_csv(self, path=None):
+        input_object = self.from_module.run(path)
+        reader = csv.DictReader(
+            input_object,
+            fieldnames=self.fieldnames,
+            restval=self.myconfig('restval'), restkey=self.myconfig('restkey'),
+            delimiter=self.myconfig('delimiter'), quotechar=self.myconfig('quotechar'))
+        for data in reader:
+            yield data
 
 
 def _dict_factory(cursor, row):
@@ -245,7 +350,7 @@ class SQLiteReader(base.job.BaseModule):
             path = "file://{}?mode=ro&immutable=1".format(path)
             connect_args = {'database': path, 'uri': True}
 
-        self.logger().info('Query: %s', query)
+        self.logger().debug('Query: %s', query)
 
         with sqlite3.connect(**connect_args) as conn:
             conn.row_factory = _dict_factory

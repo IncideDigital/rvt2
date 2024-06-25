@@ -1,0 +1,20 @@
+{
+  "17": {
+    "description": "Exe: <>  ResolverName:<>",
+    "provider": "Microsoft-Windows-Program-Compatibility-Assistant",
+    "path": {
+      "UserData/ResolverFiredEvent":{
+         "Name": ["ExePath", "ResolverName"]
+      }
+    }
+  },
+  "105": {
+    "description": "The Program Compatibility Assistant was invoked to correct a compatibility problem. Information about the application is below.",
+    "provider": "Microsoft-Windows-Application-Experience",
+    "path": {
+      "UserData/HelpedUserEvent":{
+         "Name": ["ApplicationName", "ApplicationVersion", "ExecutablePath", "ScenarioId", "UserAction", "UserActionID", "CompatibilityLayer", "FileID", "ProgramID"]
+      }
+    }
+  }
+}

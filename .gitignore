@@ -7,6 +7,11 @@ rvt2.log*
 conf/local.cfg
 external_tools/tika/*jar
 external_tools/elastic/data
+external_tools/windows/*
+external_tools/dotnet/*
+external_tools/hayabusa-*
 plugins/ai/models
 log
 tests
+plugins/common/api_keys.py
+external_tools/tor_list.gz

@@ -1,0 +1,35 @@
+{
+  "400": {
+    "description": "Engine state is changed from X to Y",
+    "provider": "PowerShell",
+    "path": {
+      "EventData/Data": {
+        "Name": ["#text"],
+        "transform": {"#text": "data.PSData"},
+        "keep_format_type": true    
+      }
+    }
+  },
+  "600": {
+    "description": "Provider X is Y",
+    "provider": "PowerShell",
+    "path": {
+      "EventData/Data": {
+        "Name": ["#text"],
+        "transform": {"#text": "data.PSData"},
+        "keep_format_type": true
+      }
+    }
+  },
+  "800": {
+    "description": "Pipeline execution details for command line",
+    "provider": "PowerShell",
+    "path": {
+      "EventData/Data": {
+        "Name": ["#text"],
+        "transform": {"#text": "data.PSData"},
+        "keep_format_type": true
+      }
+    }
+  }
+}

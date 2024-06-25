@@ -1,0 +1,35 @@
+{
+  "5857": {
+    "description": "WMI provider started",
+    "category": ["process"],
+    "provider": "Microsoft-Windows-WMI-Activity",
+    "path": {
+      "UserData/Operation_StartedOperational":{
+        "Name": ["Code", "HostProcess", "ProcessID", "ProviderName", "ProviderPath"],
+        "transform": {"Code": "data.ResultCode"}
+      }
+    }
+  },
+  "5860": {
+    "description": "WMI Query",
+    "category": ["process"],
+    "provider": "Microsoft-Windows-WMI-Activity",
+    "path": {
+      "UserData/Operation_StartedOperational":{
+        "Name": ["NamespaceName", "Query", "User", "processid", "MachineName", "PossibleCause"],
+        "transform": {"User": "user.name", "processid": "data.ProcessID"}
+      }
+    }
+  },
+  "5861": {
+    "description": "WMI Consumer",
+    "category": ["process"],
+    "provider": "Microsoft-Windows-WMI-Activity",
+    "path": {
+      "UserData/Operation_StartedOperational":{
+        "Name": ["Namespace", "EES", "CONSUMER", "PossibleCause"],
+        "transform": {"CONSUMER": "data.Consumer"}
+      }
+    }
+  }   
+}

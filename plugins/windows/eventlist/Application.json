@@ -1,0 +1,266 @@
+{
+  "1000": {
+    "description": "Faulting application <product.name>, version <product.version>, faulting module <module.name>, version <module.version>, fault address <offset>",
+    "provider": "Application Error",
+    "path": {
+      "EventData":{
+        "Name": ["Binary"]
+      },
+      "EventData/Data":{
+        "Name": ["#text"]
+      }
+    }
+  },
+  "1001": {
+    "description": "Faulting application <product.name>, version <product.version>, faulting module <module.name>, version <module.version>, fault address <offset>",
+    "provider": "Windows Error Reporting",
+    "path": {
+      "EventData":{
+        "Name": ["Binary"]
+      },
+      "EventData/Data":{
+        "Name": ["#text"]
+      }
+    }
+  },
+  "1002": {
+    "description": "Hanging application <product.name>, version <product.version>, hang module <module.name>, version <module.version>, fault address <offset>",
+    "provider": "Application Hang",
+    "path": {
+      "EventData":{
+        "Name": ["Binary"]
+      },
+      "EventData/Data":{
+        "Name": ["#text"]
+      }
+    }
+  },
+  "1003": {
+    "description": "Crashing application <product.name>, version <product.version>, crashing module <module.name>, version <module.version>, fault address <offset>",
+    "provider": "Application Crash",
+    "path": {
+      "EventData":{
+        "Name": ["Binary"]
+      },
+      "EventData/Data":{
+        "Name": ["#text"]
+      }
+    }
+  },
+  "1013": {
+    "description": "Unhandled exception report",
+    "provider": "MsiInstaller",
+    "path": {
+      "EventData":{
+        "Name": ["Binary"]
+      },
+      "EventData/Data":{
+        "Name": ["#text"]
+      }
+    }
+  },
+  "1025": {
+    "description": "Product: <product.name>. The file <path> is being used by the following process: Name: <process.name>, Id <process.pid>.",
+    "provider": "MsiInstaller",
+    "path": {
+      "EventData":{
+        "Name": ["Binary"]
+      },
+      "EventData/Data":{
+        "Name": ["#text"]
+      }
+    }
+  },
+  "1029": {
+    "description": "Product: <product.name>. Restart required.",
+    "provider": "MsiInstaller",
+    "path": {
+      "EventData":{
+        "Name": ["Binary"]
+      },
+      "EventData/Data":{
+        "Name": ["#text"]
+      }
+    }
+  },
+  "1033": {
+    "description": "Product: <product.name>. Version: <product.version>. Language: <product.language>. Installation completed with status: <status>. Manufacturer: <manufacturer>.",
+    "provider": "MsiInstaller",
+    "path": {
+      "EventData":{
+        "Name": ["Binary"]
+      },
+      "EventData/Data":{
+        "Name": ["#text"]
+      }
+    }
+  },
+  "1034": {
+    "description": "Product: <product.name>. Version: <product.version>. Language: <product.language>. Removal completed with status: <status>. Manufacturer: <manufacturer>.",
+    "provider": "MsiInstaller",
+    "path": {
+      "EventData":{
+        "Name": ["Binary"]
+      },
+      "EventData/Data":{
+        "Name": ["#text"]
+      }
+    }
+  },
+  "1035": {
+    "description": "Product: <product.name>. Version: <product.version>. Language: <product.language>. Configuration change completed with status: <status>. Manufacturer: <manufacturer>.",
+    "provider": "MsiInstaller",
+    "path": {
+      "EventData":{
+        "Name": ["Binary"]
+      },
+      "EventData/Data":{
+        "Name": ["#text"]
+      }
+    }
+  },
+  "1038": {
+    "description": "Product: <product.name>. Version: <product.version>. Language: <product.language>. Reboot required. Reboot Type: <reboot.type>. Reboot Reason: <reason>. Manufacturer: <manufacturer>.",
+    "provider": "MsiInstaller",
+    "path": {
+      "EventData":{
+        "Name": ["Binary"]
+      },
+      "EventData/Data":{
+        "Name": ["#text"]
+      }
+    }
+  },
+  "10005": {
+    "description": "The installer has encountered an unexpected error installing this package. This may indicate a problem with this package. The error code is <error>. {{The arguments are: <arg1>, <arg2>, <arg3>}}",
+    "provider": "MsiInstaller",
+    "path": {
+      "EventData":{
+        "Name": ["Binary"]
+      },
+      "EventData/Data":{
+        "Name": ["#text"]
+      }
+    }
+  },
+  "11707": {
+    "description": "<status>",
+    "provider": "MsiInstaller",
+    "path": {
+      "EventData":{
+        "Name": ["Binary"]
+      },
+      "EventData/Data":{
+        "Name": ["#text"]
+      }
+    }
+  },
+  "11708": {
+    "description": "<status>",
+    "provider": "MsiInstaller",
+    "path": {
+      "EventData":{
+        "Name": ["Binary"]
+      },
+      "EventData/Data":{
+        "Name": ["#text"]
+      }
+    }
+  },
+  "17806": {
+    "description": "SSPI handshake failed with error code <error.code>, state <state> while establishing a connection with integrated security; the connection has been closed",
+    "provider": "MSSQLSERVER",
+    "path": {
+      "EventData":{
+        "Name": ["Binary"]
+      },
+      "EventData/Data":{
+        "Name": ["#text"]
+      }
+    }
+  },
+  "18456": {
+    "description": "Login failed for user <destination.user.name>.",
+    "provider": "MSSQLSERVER",
+    "path": {
+      "EventData":{
+        "Name": ["Binary"]
+      },
+      "EventData/Data":{
+        "Name": ["#text"]
+      }
+    }
+  },
+  "20220": {
+    "description": "The connection to <Server Name> made using device <Device Name> was terminated. The error code returned on failure is <err_code>",
+    "provider": "RasClient",
+    "path": {
+      "EventData/Data":{
+        "Name": ["#text"]
+      }
+    }
+  },
+  "20221": {
+    "description": "The user <source.user> has started dialing a VPN connection using a per-user connection profile named <connection.name>. The connection settings are: Dial-in User = <Dial-in User> VpnStrategy = <VpnStrategy> DataEncryption = <DataEncryption>",
+    "provider": "RasClient",
+    "path": {
+      "EventData/Data":{
+        "Name": ["#text"]
+      }
+    }
+  },
+  "20222": {
+    "description": "The user <source.user> is trying to establish a link to the Remote Access Server for the connection named <connection.name> using the following device: Server address/Phone Number = <Server address/Phone Number> (VPN server IP address) Device = <Device> Port = <Port> MediaType = <MediaType>",
+    "provider": "RasClient",
+    "path": {
+      "EventData/Data":{
+        "Name": ["#text"]
+      }
+    }
+  },
+  "20223": {
+    "description": "The user <source.user> has successfully established a link to the Remote Access Server using the following device: Server address/Phone Number = <Server address/Phone Number> Device = <Device> Port = <Port> MediaType = <MediaType>",
+    "provider": "RasClient",
+    "path": {
+      "EventData/Data":{
+        "Name": ["#text"]
+      }
+    }
+  },
+  "20224": {
+    "description": "The link to the Remote Access Server has been established by user <source.user>.",
+    "provider": "RasClient",
+    "path": {
+      "EventData/Data":{
+        "Name": ["#text"]
+      }
+    }
+  },
+  "20225": {
+    "description": "The user <source.user> has dialed a connection named <connection.name> to the Remote Access Server which has successfully connected. The connection parameters are: TunnelIpAddress = <TunnelIpAddress> TunnelIpv6Address = <TunnelIpv6Address> Dial-in User = <Dial-in User>.",
+    "provider": "RasClient",
+    "path": {
+      "EventData/Data":{
+        "Name": ["#text"]
+      }
+    }
+  },
+  "20226": {
+    "description": "The user <source.user> dialed a connection named <connection.name> which has terminated. The reason code returned on termination is <reason>",
+    "provider": "RasClient",
+    "path": {
+      "EventData/Data":{
+        "Name": ["#text"]
+      }
+    }
+  },
+  "20227": {
+    "description": "The user <source.user> dialed a connection named <connection.name> which has failed. The error code returned on failure is <reason>. ",
+    "provider": "RasClient",
+    "path": {
+      "EventData/Data":{
+        "Name": ["#text"]
+      }
+    }
+  }
+}

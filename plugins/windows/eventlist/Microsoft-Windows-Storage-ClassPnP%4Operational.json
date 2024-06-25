@@ -1,0 +1,14 @@
+{
+  "507":{
+    "description": "Completing a failed non-ReadWrite SCSISRB request",
+    "provider": "Microsoft-Windows-StorDiag",
+    "category": ["driver"],
+    "type": ["connection"],
+    "path": {
+      "EventData":{
+        "Name": ["Vendor", "Model", "DeviceGUID", "SerialNumber", "ScsiStatus"],
+        "transform": {"Vendor": "data.DeviceVendor", "Model": "data.DeviceModel", "SerialNumber": "data.DeviceSerialNumber"}
+      }
+    }
+  }
+}

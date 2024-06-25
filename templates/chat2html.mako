@@ -60,6 +60,21 @@
           width: 70%;
         }
 
+	/* Quote boxes */
+        .sent-quote {
+          border-color: #007780;
+          background-color: #3cb37150;
+          transform: translate(0%, 0%);
+          width: 100%;
+        }
+
+        .received-quote {
+          border-color: #007780;
+          background-color: #00008b20;
+          transform: translate(0%, 0%);
+          width: 100%;
+        }
+
         /* Clear floats */
         .message::after {
           content: "";
@@ -117,11 +132,13 @@
         }
         blockquote {
         	font-family: Open Sans;
-        	font-size: 21px;
+        	font-size: 14px;
         	font-style: normal;
         	font-variant: normal;
         	font-weight: 400;
-        	line-height: 30px;
+        	line-height: 10px;
+		border-left: 4px solid #09C;
+		padding-left: 8px
         }
         pre {
         	font-family: Open Sans;
@@ -153,8 +170,12 @@
     <body>
         % for r in data:
           % if r["message_type"] != "Key change":
-            % if r["message_from"] != ("Terminal" and "ME"):
-            ## received message
+	        <%
+	          r["message"] = r["message"].replace("\\n", "<br />")
+	          r["quote"] = r["quote"].replace("\\n", "<br />")
+          %>
+            % if r["is_from_me"] != "1":
+	          ## received message
               <div class="message received font">
                 <div class="left-received">
                   <div class="author-left">${r["message_from"]}</div>
@@ -164,9 +185,16 @@
                 </div>
                 <div class="right-received">
                   % if r["message_type"] == "Text message":
-                    <div class="message-body">${r["message"]}</div>
+		                % if r["quote"] == "":
+                      <div class="message-body">${r["message"]}</div>
+		                % else:
+                      <div class="received-quote">
+                        <blockquote class="message-body" style="color:#006400;">${r["quote"]}</blockquote>
+                      </div>
+                      <div class="message-body">${r["message"]}</div>
+		                % endif
                   % elif r["message_type"] == "Image":
-                    <div class="message-body"><img src="${r["message_media_location"]}"></div>
+                    <div class="message-body"><img src="${r["message_media_location"]}">${r["message_media_title"]}</div>
                   % elif r["message_type"] in ["Video", "Voice/Audio note"]:
                     <div class="message-body"><a href="${r["message_media_location"]}">${r["message_media_location"]}</a></div>
                   % elif r["message_type"] == "Contact":
@@ -195,9 +223,16 @@
                 </div>
                 <div class="left-sent">
                   % if r["message_type"] == "Text message":
-                    <div class="message-body">${r["message"]}</div>
-                  % elif r["message_type"] == "Image":
-                    <div class="message-body"><img src="${r["message_media_location"]}"></div>
+                    % if r["quote"] == "":
+                      <div class="message-body">${r["message"]}</div>
+                    % else:
+		      <div class="sent-quote">
+                      	<blockquote class="message-body" style="color:#0000cd;">${r["quote"]}</blockquote>
+		      </div>
+		      <div class="message-body">${r["message"]}</div>
+                    % endif
+		              % elif r["message_type"] == "Image":
+                    <div class="message-body"><img src="${r["message_media_location"]}">${r["message_media_title"]}</div>
                   % elif r["message_type"] in ["Video", "Voice/Audio note"]:
                     <div class="message-body"><a href="${r["message_media_location"]}">${r["message_media_location"]}</a></div>
                   % elif r["message_type"] == "Contact":

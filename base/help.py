@@ -56,13 +56,18 @@ class Help(base.job.BaseModule):
         return [self._help_for_module(help_for)]
 
     def _classify_path(self, path):
-        " Classify the path as a plugin, job or a module "
+        """ Classify the path as a plugin, job or a module.
+        
+        To classify a path, this function checks the configuration section:
+        
+        - If it has a 'plugindir' option, returns 'plugin'
+        - It it has a  'description', returns 'job'
+        - else, returns 'module' and hope for the best """
         if self.config.get(path, 'plugindir', None) is not None:
             return 'plugin'
         if self.config.get(path, 'description', None):
             return 'job'
-        if self.config.get(path, 'module', None):
-            return 'module'
+        return 'module'
 
     def _jobs_in_section(self, section):
         " Get all jobs in a section "
@@ -71,6 +76,17 @@ class Help(base.job.BaseModule):
             if self.config.get(s, 'help_section', '') == section:
                 jobs.append(s)
         return jobs
+
+    def _get_jobs_in_job(self, section):
+        "Get the job name for all subjobs in a job"
+        if 'jobs' not in self.config.options(section):
+            return []
+        jobs_chain = self.config.get(section, 'jobs', None)
+        subjobs = list()
+        for subjob in [j for j in jobs_chain.split('\n') if j]:
+            subjob_name = subjob.strip().split()[0]
+            subjobs.append(subjob_name)
+        return subjobs
 
     def _help_for_job(self, path, show_vars=False):
         description = self.config.get(path, 'description')
@@ -81,45 +97,71 @@ class Help(base.job.BaseModule):
                     description = ''
                     for line in descfile:
                         description = description + line
+        if description is None:
+            self.logger().warn('job="%s" has no description', path)
+            description = ''
+        jobs = []
+        for job in self._get_jobs_in_job(path):
+            jobs.append(self._help_for_job(job, show_vars=self.myconfig('show_vars')))
         other_vars = []
         if show_vars:
             other_vars = list(self._show_vars(path))
-        return dict(
-            job=path,
-            description=description,
-            short=description.split('\n')[0],
-            other_vars=other_vars,
-            params=ast.literal_eval(self.config.get(path, 'default_params', '{}')),
-            params_help=ast.literal_eval(self.config.get(path, 'params_help', '{}')),
-        )
+        try:
+            return dict(
+                job=path,
+                description=description,
+                short=description.split('\n')[0],
+                jobs = jobs,
+                other_vars=other_vars,
+                params=ast.literal_eval(self.config.get(path, 'default_params', '{}')),
+                params_help=ast.literal_eval(self.config.get(path, 'params_help', '{}')),
+            )
+        except SyntaxError:
+            raise SyntaxError(f'Malformatted option param for path="{path}". Maybe an error in default_params or params_help?')
 
     def _help_for_module(self, path):
+        """ path is a module name """
         try:
-            myjob = base.job.load_module(self.config, path)
+            mymodule = base.job.load_module(self.config, path)
         except base.job.RVTCritical:
             return dict(module=path)
 
-        description = (myjob.__doc__ if hasattr(myjob, '__doc__') else None)
+        description = (mymodule.__doc__ if hasattr(mymodule, '__doc__') else None)
         return dict(
             module=path,
             description=description
         )
 
-    def _help_for_section(self, path):
-        description = self.config.get(path, 'description', '')
+    def _help_for_section(self, section):
+        """ Get the help message for a section.
+
+        Description is got:
+
+        - from option 'section.description'
+        - Reading markdown from file in option 'section.description.file'
+        - loading 'section' and getting its '__doc__'
+        - empty
+        """
+        description = self.config.get(section, 'description', '')
         if not description:
-            descfilename = self.config.get(path, 'description.file', '')
+            descfilename = self.config.get(section, 'description.file', '')
             if descfilename and os.path.exists(descfilename):
                 with open(descfilename) as descfile:
                     description = ''
                     for line in descfile:
                         description = description + line
-        jobs_in_section = self._jobs_in_section(path)
+        if not description:
+            try:
+                mymodule = __import__(section, globals(), locals())
+                description = (mymodule.__doc__ if hasattr(mymodule, '__doc__') else None)
+            except Exception:
+                description = ''
+        jobs_in_section = self._jobs_in_section(section)
         jobs = []
         for job in jobs_in_section:
             jobs.append(self._help_for_job(job, show_vars=self.myconfig('show_vars')))
         return dict(
-            section=path,
+            section=section,
             description=description,
             jobs=jobs
         )
@@ -127,7 +169,7 @@ class Help(base.job.BaseModule):
     def _show_vars(self, help_for):
         """ Show the variables defined in a job/module description """
         if self.config.has_section(help_for):
-            var_names = base.job.parse_conf_array(self.myconfig('show_vars'))
+            var_names = self.myarray('show_vars')
             if len(var_names) == 1 and var_names[0] == 'ALL':
                 var_names = self.config.options(help_for)
             for option in var_names:
@@ -136,17 +178,35 @@ class Help(base.job.BaseModule):
 
 
 class AvailableJobs(base.job.BaseModule):
-    """ A module to list all avaiable jobs in the rvt """
-    def _is_job(self, section):
-        """ Decide wether the section is a job """
-        # a section is a job callable by the user if if thas a description and either cascade, modules or jobs
-        return self.config.config.has_option(section, 'description') and (self.config.config.has_option(section, 'cascade') or self.config.config.has_option(section, 'modules') or self.config.config.has_option(section, 'jobs'))
+    """ A module to list all available jobs in the rvt.
+
+    Configuration section:
+        - **only_section**: show jobs only in a specific section.
+    """
+
+    def read_config(self):
+        super().read_config()
+        self.set_default_config('only_section', '')
+
+    def _selected_job(self, section):
+        """ Decide wether a section in the configuration meet requirements to be displayed in the main list.
+            - Has a description
+            - Is assigned to a help_section
+            - Has either cascade, modules or jobs
+        """
+        return self.config.config.has_option(section, 'description') and \
+            self.config.config.has_option(section, 'help_section') and \
+            (self.config.config.has_option(section, 'cascade') or self.config.config.has_option(section, 'modules') or self.config.config.has_option(section, 'jobs'))
 
     def run(self, path=None):
+        only_section = self.myconfig('only_section', '')
         for section in self.config.config.sections():
-            if self._is_job(section):
+            if self._selected_job(section):
+                job_section = self.config.get(section, 'help_section', default='')
+                if only_section and job_section != only_section:
+                    continue
                 yield dict(
                     job=section,
-                    section=self.config.get(section, 'help_section', default=''),
+                    section=job_section,
                     short=self.config.get(section, 'description', default='').split('\n')[0]
                 )

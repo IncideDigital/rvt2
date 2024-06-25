@@ -60,11 +60,11 @@ class FileSystem(base.job.BaseModule):
             self.logger().error('No partitions found in image {}'.format(self.disk.imagefile))
             raise base.job.RVTError('No partitions found in image {}'.format(self.disk.imagefile))
 
-        self.vss_partitions = {v: dev for p in self.partitions.values() for v, dev in p.vss.items() if dev}
+        self.vss_partitions = {v: dev for p in self.partitions.values() for v, dev in p.vss_mounted.items() if dev}
         self.logger().debug('Partitions: {}'.format(self.partitions))
         self.logger().debug('Vss Partitions: {}'.format(self.vss_partitions))
 
-        self.outdir = self.myconfig('voutdir') if self.vss else self.myconfig('outdir')
+        self.outdir = self.myconfig('outdir')
         check_directory(self.outdir, create=True)
 
     def run(self, path=""):
@@ -109,7 +109,7 @@ class FileSystem(base.job.BaseModule):
 
         Arguments:
             :filename (str): filename to search inode
-            :partition (str): Partition name where getting inode (examples: p05 or v1p04)
+            :partition (str): Partition name where getting inode (examples: p05 or v1p04_201123_050521)
             :vss (bool): True if it's an vss
         """
         try:
@@ -149,10 +149,10 @@ class FileSystem(base.job.BaseModule):
                 self.logger().warning('FileSystem object not loaded. Error: {}'.format(exc))
             try:
                 f = fs.open('/'.join(file.split("/")[3:]))
-                dates[file] = [datetime.datetime.utcfromtimestamp(f.info.meta.mtime).strftime("%Y-%m-%dT%H:%M:%SZ"),
-                               datetime.datetime.utcfromtimestamp(f.info.meta.atime).strftime("%Y-%m-%dT%H:%M:%SZ"),
-                               datetime.datetime.utcfromtimestamp(f.info.meta.ctime).strftime("%Y-%m-%dT%H:%M:%SZ"),
-                               datetime.datetime.utcfromtimestamp(f.info.meta.crtime).strftime("%Y-%m-%dT%H:%M:%SZ")]
+                dates[file] = [datetime.datetime.fromtimestamp(f.info.meta.mtime, datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+                               datetime.datetime.fromtimestamp(f.info.meta.atime, datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+                               datetime.datetime.fromtimestamp(f.info.meta.ctime, datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+                               datetime.datetime.fromtimestamp(f.info.meta.crtime, datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")]
             except Exception as exc:
                 self.logger().warning('Filename not found in FileSystem. Error: {}'.format(exc))
                 dates[file] = ['1601-01-01T00:00:00Z'] * 4
@@ -163,7 +163,7 @@ class FileSystem(base.job.BaseModule):
         """ Write or return inode contents. If output_filename is set the content is written to that file and returns nothing.
             Otherwise the content is returned. Be careful with large files.
         Arguments:
-            :partition (str): Partition name where getting content (examples: p05 or v1p04)
+            :partition (str): Partition name where getting content (examples: p05 or v1p04_201123_050521)
             :inode (int): inode number
             :output_filename (string): file where inode's content may be written
             :attribute (string): optional inode attribute (related with ADS)
@@ -180,7 +180,7 @@ class FileSystem(base.job.BaseModule):
             f = fs.open_meta(inode=inode)
             size = f.info.meta.size
         except Exception as exc:
-            self.logger().info('Content not extracted. Error: {}'.format(exc))
+            self.logger().debug('Content not extracted. Error: {}'.format(exc))
             return -1
 
         attrId = ""
@@ -231,8 +231,8 @@ class FileSystem(base.job.BaseModule):
                 img = pytsk3.Img_Info(p.imagefile)
                 fs = pytsk3.FS_Info(img, offset=int(p.obytes))
         else:
-            p = self.vss_partitions[partition]
-            img = pytsk3.Img_Info(p.vss[partition])
+            dev = self.vss_partitions[partition]
+            img = pytsk3.Img_Info(dev)
             fs = pytsk3.FS_Info(img)
         return fs
 
@@ -346,10 +346,10 @@ class FileSystem(base.job.BaseModule):
                 continue
 
             if vss:
-                for v, device in p.vss.items():
+                for v, device in p.vss_mounted.items():
                     if device:
                         cmd = 'fls -{}pr -b {} {}'.format('d' if deleted else 'u', sectorsize, device)
-                        self.logger().info('Generating inode-paths association for {} files of device {}'.format('deleted' if deleted else 'allocated', device))
+                        self.logger().debug('Generating inode-paths association for {} files of device {}'.format('deleted' if deleted else 'allocated', device))
                         self.save_inode_path_files(*self._process_fls(cmd, deleted=deleted), partition=v, deleted=deleted)
                 continue
 
@@ -359,7 +359,7 @@ class FileSystem(base.job.BaseModule):
             else:
                 cmd = 'fls -{}pr -o {} -b {} {}'.format('d' if deleted else 'u', int(p.obytes / int(sectorsize)), sectorsize, self.disk.imagefile)
 
-            self.logger().info('Generating inode-paths association for {} files of partition {}'.format('deleted' if deleted else 'allocated', p_name))
+            self.logger().debug('Generating inode-paths association for {} files of partition {}'.format('deleted' if deleted else 'allocated', p_name))
             self.save_inode_path_files(*self._process_fls(cmd, deleted=deleted), partition=p_name, deleted=deleted)
 
     def _process_fls(self, cmd, deleted=False):
@@ -413,7 +413,7 @@ class FileSystem(base.job.BaseModule):
             cmd = "{} -e -o {} {} | cut -d'|' -f1,2".format(ils, str(p.osects), self.disk.imagefile)
             if p.encrypted:
                 cmd = "sudo {} -e {} | cut -d'|' -f1,2".format(ils, p.loop)
-            self.logger().info('Creating inode status for partition p{}'.format(p.partition))
+            self.logger().debug('Creating inode status for partition p{}'.format(p.partition))
             self._process_ils(cmd, p.partition)
 
     def _process_ils(self, cmd, partition):
@@ -512,9 +512,9 @@ class FileSystem(base.job.BaseModule):
         CAUTION: This method is VERY slow. Use self.inode_path instead
         """
         if partition:
-            self.logger().info('Generating inode-paths association for partition {}'.format(partition.partition))
+            self.logger().debug('Generating inode-paths association for partition {}'.format(partition.partition))
         elif device:
-            self.logger().info('Generating inode-paths association for device {}'.format(device))
+            self.logger().debug('Generating inode-paths association for device {}'.format(device))
         result = defaultdict(OrderedDict)
 
         if self.vss:

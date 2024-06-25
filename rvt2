@@ -20,12 +20,15 @@ fi
 # check if a virtual environment inside the project exists. If not, create it
 MYPYTHON="$RVT2HOME/.venv/bin/python"
 if [ ! -e "$MYPYTHON" ]; then
-    (
+    if hash pipenv 2>/dev/null; then (
         cd $RVT2HOME
         env PIPENV_VENV_IN_PROJECT=1 pipenv --python /usr/bin/python3
         #env PIPENV_VENV_IN_PROJECT=1 pipenv --three
         pipenv install
-    )
+    ) else
+        echo 'This program needs pipenv in your system'
+        exit 1
+    fi
 fi
 
 # Set PDB_ENABLE=1 to enable Python Debugger (pdb).

@@ -1,0 +1,208 @@
+{
+  "1000": {
+    "description": "An antimalware scan started.",
+    "provider": "Microsoft-Windows-Windows Defender",
+    "path": {
+      "EventData":{
+        "Name": ["Domain", "Product Name", "Product Version", "SID", "Scan ID", "Scan Parameters", "Scan Parameters Index", "Scan Resources", "Scan Type", "Scan Type Index", "User"],
+        "transform": {"Product Name": "data.productname", "Product Version": "data.version", "SID": "data.SID", "Scan Parameters": "data.scanParameters", "Scan Type": "data.scanType"}
+      }
+    }
+  },
+  "1001": {
+    "description": "An antimalware scan finished.",
+    "provider": "Microsoft-Windows-Windows Defender",
+    "path": {
+      "EventData":{
+        "Name": ["Domain", "Product Name", "Product Version", "SID", "Scan ID", "Scan Parameters", "Scan Parameters Index", "Scan Time Hours", "Scan Time Minutes", "Scan Time Seconds", "Scan Type", "Scan Type Index", "User"],
+        "transform": {"Product Name": "data.productname", "Product Version": "data.version", "SID": "data.SID", "Scan Parameters": "data.scanParameters", "Scan Type": "data.scanType","Scan Time Hours": "data.scanHours", "Scan Time Minutes": "data.scanMinutes", "Scan Time Seconds": "data.scanSeconds"}
+      }
+    }
+  },
+  "1002": {
+    "description": "An antimalware scan was stopped before it finished.",
+    "provider": "Microsoft-Windows-Windows Defender",
+    "path": {
+      "EventData":{
+        "Name": ["Domain", "Product Name", "Product Version", "SID", "Scan ID", "Scan Parameters", "Scan Parameters Index", "Scan Type", "Scan Type Index", "User"],
+        "transform": {"Product Name": "data.productname", "Product Version": "data.version", "SID": "data.SID", "Scan Parameters": "data.scanParameters", "Scan Type": "data.scanType"}
+      }
+    }
+  },
+  "1011": {
+    "description": "The antimalware platform deleted an item from quarantine.",
+    "provider": "Microsoft-Windows-Windows Defender",
+    "path": {
+      "EventData":{
+        "Name": ["Product Name", "Product Version", "Domain", "User", "SID", "Threat Name", "Threat ID", "Severity ID", "Category ID", "FWLink", "Path", "Severity Name", "Category Name", "Signature Version", "Engine Version"],
+        "transform": {"Product Name": "data.productname", "Product Version": "data.version", "SID": "data.SID", "Threat Name": "data.threatname", "Severity Name": "data.severity", "Category Name": "data.categoryname"}
+      }
+    }
+  },
+  "1013": {
+    "description": "The antimalware platform deleted history of malware and other potentially unwanted software.",
+    "provider": "Microsoft-Windows-Windows Defender",
+    "path": {
+      "EventData":{
+        "Name": ["Product Name", "Product Version", "Timestamp", "Domain", "User", "SID"],
+        "transform": {"Product Name": "data.productname", "Product Version": "data.version", "SID": "data.SID"}
+      }
+    }
+  },
+  "1116": {
+    "description": "The antimalware platform detected malware or other potentially unwanted software.",
+    "provider": "Microsoft-Windows-Windows Defender",
+    "path": {
+      "System/Correlation/#attributes":{
+        "Name": ["ActivityID"]},
+      "EventData":{
+        "Name": ["Product Name", "Product Version", "Detection ID", "Detection Time", "Threat ID", "Threat Name", "Severity ID", "Severity Name", "Category ID", "Category Name", "FWLink", "Status Code", "Status Description", "State", "Source ID", "Source Name", "Process Name", "Detection User", "Path", "Origin ID", "Origin Name", "Execution ID", "Execution Name", "Type ID", "Type Name", "Pre Execution Status", "Action ID", "Action Name", "Error Code", "Error Description", "Post Clean Status", "Additional Actions ID", "Additional Actions String", "Remediation User", "Signature Version", "Engine Version"],
+        "transform": {"Product Name": "data.productname", "Product Version": "data.version", "Threat Name": "data.threatname", "Severity Name": "data.severity", "Category Name": "data.categoryname", "Status Description": "data.status", "Process Name": "process.name", "Origin Name": "data.origin", "Action Name": "data.action", "Error Description": "data.error"}
+      }
+    }
+  },
+  "1117": {
+    "description": "The antimalware platform encountered a critical error when trying to take action on malware or other potentially unwanted software. There are more details in the event message.",
+    "provider": "Microsoft-Windows-Windows Defender",
+    "path": {
+      "System/Correlation/#attributes":{
+        "Name": ["ActivityID"]},
+      "EventData":{
+        "Name": ["Product Name", "Product Version", "Detection ID", "Detection Time", "Threat ID", "Threat Name", "Category ID", "Category Name", "FWLink", "Status Code", "Status Description", "State", "Source ID", "Source Name", "Process Name", "Detection User", "Path", "Origin ID", "Origin Name", "Execution ID", "Execution Name", "Type ID", "Type Name", "Pre Execution Status", "Action ID", "Action Name", "Error Code", "Error Description", "Post Clean Status", "Additional Actions ID", "Additional Actions String", "Remediation User", "Signature Version", "Engine Version"],
+        "transform": {"Product Name": "data.productname", "Product Version": "data.version", "Threat Name": "data.threatname", "Category Name": "data.categoryname", "Status Description": "data.status", "Process Name": "process.name", "Origin Name": "data.origin", "Action Name": "data.action", "Error Description": "data.error"}
+      }
+    }
+  },
+  "1119": {
+    "description": "The antimalware platform performed an action to protect your system from malware or other potentially unwanted software.",
+    "provider": "Microsoft-Windows-Windows Defender",
+    "path": {
+      "System/Correlation/#attributes":{
+        "Name": ["ActivityID"]},
+      "EventData":{
+        "Name": ["Product Name", "Product Version", "Detection ID", "Detection Time", "Threat ID", "Threat Name", "Severity ID", "Severity Name", "Category ID", "Category Name", "FWLink", "Status Code", "Status Description", "State", "Source ID", "Source Name", "Process Name", "Detection User", "Path", "Origin ID", "Origin Name", "Execution ID", "Execution Name", "Type ID", "Type Name", "Pre Execution Status", "Action ID", "Action Name", "Error Code", "Error Description", "Post Clean Status", "Additional Actions ID", "Additional Actions String", "Remediation User", "Signature Version", "Engine Version"],
+        "transform": {"Product Name": "data.productname", "Product Version": "data.version", "Threat Name": "data.threatname", "Severity Name": "data.severity", "Category Name": "data.categoryname", "Status Description": "data.status", "Process Name": "process.name", "Origin Name": "data.origin", "Action Name": "data.action", "Error Description": "data.error"}
+      }
+    }
+  },
+  "2000": {
+    "description": "The antimalware definitions updated successfully.",
+    "provider": "Microsoft-Windows-Windows Defender",
+    "path": {
+      "EventData":{
+        "Name": ["Current Engine Version", "Current Signature Version", "Domain", "Previous Engine Version", "Previous Signature Version", "Product Name", "Product Version", "SID", "Signature Type", "Signature Type Index", "Update Type", "Update Type Index", "User"],
+        "transform": {"Current Engine Version": "data.engineVersion", "Current Signature Version": "data.signatureVersion", "Domain": "data.domain", "Previous Engine Version": "data.previousEngineVersion","Previous Signature Version": "data.previousSignatureVersion", "Product Name": "data.productname", "Product Version": "data.version", "SID": "data.SID"}
+      }
+    }
+  },
+  "2001": {
+    "description": "The security intelligence update failed.",
+    "provider": "Microsoft-Windows-Windows Defender",
+    "path": {
+      "EventData":{
+        "Name": ["Current Engine Version", "Current Signature Version", "Domain", "Error Code", "Error Description", "Previous Engine Version", "Previous Signature Version", "Product Name", "Product Version", "SID", "Signature Type", "Signature Type Index", "Source Path", "Update Source", "Update Source Index", "Update State", "Update State Index", "Update Type","Update Type Index", "User"],
+        "transform": {"Current Engine Version": "data.engineVersion", "Current Signature Version": "data.signatureVersion", "Domain": "data.domain", "Error Code": "data.errorcode", "Error Description": "data.error", "Previous Engine Version": "data.previousEngineVersion","Previous Signature Version": "data.previousSignatureVersion", "Product Name": "data.productname", "Product Version": "data.version", "SID": "data.SID"}
+      }
+    }
+  },
+  "2002": {
+    "description": "The antimalware engine updated successfully.",
+    "provider": "Microsoft-Windows-Windows Defender",
+    "path": {
+      "EventData":{
+        "Name": ["Current Engine Version", "Domain", "Feature Index", "Feature Name", "Previous Engine Version", "Product Name", "Product Version", "SID", "User"],
+        "transform": {"Current Engine Version": "data.engineVersion", "Domain": "data.domain", "Feature Index": "data.featureIndex", "Feature Name": "data.featureName", "Previous Engine Version": "data.previousEngineVersion", "Product Name": "data.productname", "Product Version": "data.version", "SID": "data.SID"}
+      }
+    }
+  },
+  "2004": {
+    "description": "There was a problem loading antimalware definitions. The antimalware engine will attempt to load the last-known good set of definitions.",
+    "provider": "Microsoft-Windows-Windows Defender",
+    "path": {
+      "EventData":{
+        "Name": ["Product Name", "Product Version", "Signatures Attempted Index", "Signatures Attempted", "Error Code", "Error Description", "Loading signature version", "Loading engine version"],
+        "transform": {"Product Name": "data.productname", "Product Version": "data.version", "Signatures Attempted Index": "data.signaturesAttemptedIndex", "Signatures Attempted": "data.signaturesAttempted", "Error Code": "data.errorcode", "Error Description": "data.error"}
+      }
+    }
+  },
+  "2010": {
+    "description": "The antimalware engine used the Dynamic Signature Service to get additional definitions.",
+    "provider": "Microsoft-Windows-Windows Defender",
+    "path": {
+      "EventData":{
+        "Name": ["Current Engine Version", "Current Signature Version", "Domain", "Dynamic Signature Compilation Timestamp", "Dynamic Signature Type", "Dynamic Signature Type Index", "Dynamic Signature Version", "Persistence Limit Type", "Persistence Limit Type Index", "Persistence Limit Value", "Persistence Path", "Product Name", "Product Version", "SID", "Signature Type", "Signature Type Index", "User"],
+        "transform": {"Current Engine Version": "data.engineVersion", "Current Signature Version": "data.signatureVersion", "Domain": "data.domain", "Dynamic Signature Compilation Timestamp": "data.dynamicSignatureTimestamp", "Dynamic Signature Type":"data.dynamicSignatureType", "Dynamic Signature Type Index": "data.dynamicSignatureTypeIndex", "Dynamic Signature Version": "data.dynamicSignatureVersion", "Persistence Limit Type": "data.persistenceLimitType", "Persistence Limit Type Index": "data.persistenceLimitTypeIndex", "Persistence Limit Value": "data.persistenceLimitValue", "Persistence Path": "data.persistencePath", "Product Name": "data.productname", "Product Version": "data.version", "SID": "data.SID", "Signature Type": "data.signatureType", "Signature Type Index": "data.signatureTypeIndex"}
+      }
+    }
+  },
+  "3002": {
+    "description": "Real-time protection encountered an error and failed.",
+    "provider": "Microsoft-Windows-Windows Defender",
+    "path": {
+      "EventData":{
+        "Name": ["Product Name", "Product Version", "Feature Name", "Reason", "Error Code", "Error Description", "Feature ID"],
+        "transform": {"Product Name": "data.productname", "Product Version": "data.version", "Error Code": "data.errorcode", "Error Description": "data.error", "Feature ID": "data.featureID", "Feature Name": "data.featureName"}
+      }
+    }
+  },
+  "5000": {
+    "description": "Real-time protection is enabled.",
+    "provider": "Microsoft-Windows-Windows Defender",
+    "path": {
+      "EventData":{
+        "Name": ["Product Name", "Product Version"],
+        "transform": {"Product Name": "data.productname", "Product Version": "data.version"}
+      }
+    }
+  },
+  "5001": {
+    "description": "Real-time protection is disabled.",
+    "provider": "Microsoft-Windows-Windows Defender",
+    "path": {
+      "EventData":{
+        "Name": ["Product Name", "Product Version"],
+        "transform": {"Product Name": "data.productname", "Product Version": "data.version"}
+      }
+    }
+  },
+  "5004": {
+    "description": "Real-time Protection agent configuration has changed.",
+    "provider": "Microsoft-Windows-Windows Defender",
+    "path": {
+      "EventData":{
+        "Name": ["Configuration", "Feature ID", "Feature Name", "Product Name", "Product Version"],
+        "transform": {"Configuration": "data.configuration", "Feature ID": "data.featureID", "Feature Name": "data.featureName", "Product Name": "data.productname", "Product Version": "data.version"}
+      }
+    }
+  },
+  "5007": {
+    "description": "The antimalware platform configuration changed.",
+    "provider": "Microsoft-Windows-Windows Defender",
+    "path": {
+      "EventData":{
+        "Name": ["Product Name", "Product Version", "Old Value", "New Value"],
+        "transform": {"Product Name": "data.productname", "Product Version": "data.version", "Old Value": "data.oldvalue", "New Value": "data.newvalue"}
+      }
+    }
+  },
+  "5010": {
+    "description": "Scanning for malware and other potentially unwanted software is disabled.",
+    "provider": "Microsoft-Windows-Windows Defender",
+    "path": {
+      "EventData":{
+        "Name": ["Product Name", "Product Version"],
+        "transform": {"Product Name": "data.productname", "Product Version": "data.version"}
+      }
+    }
+  },
+  "5012": {
+    "description": "Scanning for viruses is disabled.",
+    "provider": "Microsoft-Windows-Windows Defender",
+    "path": {
+      "EventData":{
+        "Name": ["Product Name", "Product Version"],
+        "transform": {"Product Name": "data.productname", "Product Version": "data.version"}
+      }
+    }
+  }
+}

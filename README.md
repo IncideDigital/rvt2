@@ -16,9 +16,10 @@ The analyst/user manual for RVT2 is available at [rvt2-docs](https://incidedigit
 
 ## Installation
 
-Currently, there are two ways to install RVT2:
-  * Via Docker
-  * Standalone Version
+Currently, there are two ways of installing and using the RVT2:
+
+* Via Docker
+* Standalone Version
 
 ### Docker
 
@@ -26,7 +27,7 @@ RVT2 can be started with `docker` using the build at [rvt2-docker](https://githu
 
 ### Standalone
 
-RVT2 is designed to run on Debian Buster stable version, althought it is possible to install it on other other GNU-Linux flavours.
+RVT2 is designed to run on Ubuntu Jammy Jellyfish stable version, althought it is possible to install it on other other GNU-Linux flavours.
 
 These commands will clone the RVT2 source code and install the external dependencies:
 
@@ -40,10 +41,10 @@ The directory where the RVT2 was cloned will be referred as the `$RVT2_HOME` dir
 
 RVT2 manages the Python dependencies or the core plugins internally. The first time the RVT2 is run, it will create a pyenv environment and install these dependecies. As a result, the first run of the RVT2 will be very slow!
 
-If you prefer a manual installation of the Python dependencies, run these commands from the $RVT2_HOME directory.
+If you prefer a manual installation of the Python dependencies, run these commands from the `$RVT2_HOME` directory.
 
 ```bash
-pip3 install --user pipenv
+python3 -m pip install --user --force-reinstall pipenv
 pipenv --three
 pipenv install
 ```
@@ -95,8 +96,8 @@ Most of the time, you are going to run one of the predefined jobs with the defau
 
 ```bash
 rvt2 \
-    --casename 112233 --source 01 \
-    -j indexer.save_directory \
+    --client client --casename 112233 --source 01 \
+    -j allocfiles \
     --params option1=1 option2 -- \
     path_to_a_directory
 ```

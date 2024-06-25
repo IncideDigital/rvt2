@@ -51,11 +51,13 @@ ${colorize_section("# Section " + section['section'])}
 
 ${section['description']}
 
+% if len(section['jobs']) > 0:
 ${colorize_section('## Jobs')}
 
 % for job in section['jobs']:
 - `${colorize_param(job['job'])}`: ${job['short']}
 % endfor
+% endif
 % elif job is not None:
 <%doc>
 
@@ -83,7 +85,8 @@ ${colorize_section('## Context')}
 % for other_var in job.get('other_vars', {}):
 - ${colorize_param(other_var['var'])}: ${multiline_value(other_var['value'])}
 % endfor
-% elif job is not None:
+% endif
+% elif module is not None:
 <%doc>
 
 Template for a module
@@ -91,8 +94,7 @@ Template for a module
 </%doc>\
 ${colorize_section('# Module `{}`'.format(module['module']))}
 
-${module['description']}
-% endif
+${module.get('description', '')}
 % else:
-${colorize_section('`{}` not found. No package defined for this section, job or module.'.format(module['module']))}
+${colorize_section('`{}` not found. No package defined for this section, job or module. {}'.format(module['module'], data[0]))}
 % endif

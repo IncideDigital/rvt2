@@ -15,7 +15,7 @@
 
 import os
 import re
-from collections import OrderedDict
+from collections import OrderedDict, Counter
 import base.job
 from base.utils import save_csv, check_directory
 from plugins.common.RVT_files import GetFiles
@@ -23,60 +23,77 @@ from plugins.common.RVT_files import GetFiles
 
 class USBSetupAPI(base.job.BaseModule):
 
+    def read_config(self):
+        super().read_config()
+        self.set_default_config('volume_id', None)
+        self.set_default_config('outdir', self.config.config['plugins.windows']['usbdir'])
+
     def run(self, path=""):
-        vss = self.myflag('vss')
-        outdir = self.myconfig('voutdir') if vss else self.myconfig('outdir')
+        """ Extracts USB drives data about drivers installation from setupapi.dev.log
+
+            Arguments:
+                ** path ** (str): path to setupapi.dev.log file. If this argument is not provided,
+                                  all files with this pattern will be searched in allocated files.
+        """
+
+        outdir = self.myconfig('outdir')
         check_directory(outdir, create=True)
 
-        search = GetFiles(self.config, vss=self.myflag("vss"))
-        setupapi = search.search(r"setupapi.dev.log$")
+        # Case when path is provided
+        if path:
+            if not os.path.exists(path):
+                self.logger().warning('Provided path does not exist: {}'.format(path))
+                return []
+            self.logger().debug('Extracting USB devices information from {}'.format(path))
+            partition = self.myconfig('volume_id')
+            output_file = os.path.join(outdir, "usb_setupapi{}.csv".format('_{}'.format(partition) if partition else ''))
+            save_csv(self.parse_setupapi(path), outfile=output_file, file_exists='OVERWRITE')
+            if os.path.getsize(output_file) == 0:  # Remove unnecessary empty files
+                os.remove(output_file)
+            return []
 
+        # Search in allocfiles if path is not provided
+        search = GetFiles(self.config)
+        setupapi = search.search(r"setupapi.dev.log$")
         if len(setupapi) < 1:
             self.logger().warning("File setupapi.dev.log not found")
             return []
 
-        for setupapi_file in setupapi:
-            self.logger().info('Extracting USB devices information from {}'.format(setupapi_file))
-            folders = setupapi_file.split('/')
-            partition = folders[2]
-            if not vss:
-                output_file = os.path.join(outdir, "{}_usb_setupapi.csv".format(partition))
-                setupapi_path = os.path.join(self.myconfig('casedir'), setupapi_file)
-                if not os.path.isfile(setupapi_path):
-                    self.logger().warning("{} does not exist. Try to mount disk's partition.".format(setupapi_path))
-                    continue
-                save_csv(self.parse_setupapi(setupapi_path, partition), outfile=output_file)
-                if os.path.getsize(output_file) == 0:
-                    os.remove(output_file)
-            else:
-                vpartitions = [v for v in os.listdir(self.myconfig('mountdir')) if v.startswith('v') and v.find(partition) != -1]
-                for vpart in vpartitions:
-                    output_file = os.path.join(outdir, "{}_usb_setupapi.csv".format(vpart))
-                    setupapi_path = os.path.join(self.myconfig('casedir'), '/'.join(folders[:2]), vpart, '/'.join(folders[3:]))
-                    if not os.path.isfile(setupapi_path):
-                        self.logger().warning("{} does not exist in vss partition {}.".format(setupapi_path, vpart))
-                        continue
-                    save_csv(self.parse_setupapi(setupapi_path, vpart), outfile=output_file)
-                    if os.path.getsize(output_file) == 0:
-                        os.remove(output_file)
+        files_by_partition = Counter()
+        for i, setupapi_file in enumerate(setupapi):
+            self.logger().debug('Extracting USB devices information from {}'.format(setupapi_file))
+            setupapi_path = os.path.join(self.myconfig('casedir'), setupapi_file)
+            if not os.path.isfile(setupapi_path):
+                self.logger().warning("{} does not exist. Try to mount disk's partition.".format(setupapi_path))
+                continue
+
+            # Set a name for the output file based on the partition is found
+            partition = setupapi_file.split('/')[2]  # allocfiles format: source/mnt/pXX/path
+            files_in_partition = files_by_partition[partition]
+            output_file = os.path.join(outdir, "usb_setupapi_{}{}.csv".format(partition, '_{}'.format(files_in_partition) if files_in_partition else ''))
+            files_by_partition[partition] += 1
+
+            self.logger().debug('Saving output in {}'.format(output_file))
+            save_csv(self.parse_setupapi(setupapi_path), outfile=output_file, file_exists='OVERWRITE')
+            # Remove unnecessary empty files
+            if os.path.getsize(output_file) == 0:
+                os.remove(output_file)
 
         return []
 
-    def parse_setupapi(self, setupapi_file, partition):
+    def parse_setupapi(self, setupapi_file):
         """ Extracts USB sticks' data about drivers installation
 
         Args:
             setupapi_file (str): path to setupapi.dev.log file
-            partition (str): partition identifier (ex: 'p05')
         """
-        self.logger().info("Parsing setupapi.dev.log for partiton {}".format(partition))
 
         with open(setupapi_file, "r", encoding="cp1252") as file:
             regex = re.compile(r'>>>\s\s\[Device\sInstall\s\(Hardware\sinitiated\) - (.*USBSTOR.*)\]', re.I)
-            regexstart = re.compile(r'>>>\s+Section start ([\d/:.]+)')
+            regexstart = re.compile(r'>>>\s+Section start ([\d /:.]+)')
             regex1 = re.compile(r"\s+(ump|cmd):\s+(.*)")
             regex2 = re.compile(r"\s+dvi:\s+(HardwareID|DevDesc|DrvDesc|Provider|Signer|DrvDate|Version)\s+-\s+(.*)")
-            regexend = re.compile(r'<<<\s+Section end ([\d\s/:.]+)')
+            regexend = re.compile(r'<<<\s+Section end ([\d /:.]+)')
 
             for line in file:
                 aux = regex.search(line)
@@ -106,9 +123,8 @@ class USBSetupAPI(base.job.BaseModule):
                             else:
                                 a["Status"] = "ERROR"
                             break
-                    yield a
 
-        self.logger().info("Done parsing setupapi_file for partiton {}".format(partition))
+                    yield a
 
 
 class USBAnalysis(base.job.BaseModule):

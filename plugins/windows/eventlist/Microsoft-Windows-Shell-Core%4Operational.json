@@ -1,0 +1,68 @@
+{
+  "9705": {
+    "description": "Started enumeration of commands for registry key",
+    "provider": "Microsoft-Windows-Shell-Core",
+    "type": ["start"],
+    "path": {
+      "EventData": {
+         "Name": ["KeyName"]
+      },
+      "System/Security/#attributes": {
+         "Name": ["UserID"],
+         "transform": {"UserID": "user.id"}
+      }
+    }
+  },
+  "9706": {
+    "description": "Finished enumeration of commands for registry key",
+    "provider": "Microsoft-Windows-Shell-Core",
+    "type": ["end"],
+    "path": {
+      "EventData": {
+         "Name": ["KeyName"]
+      },
+      "System/Security/#attributes": {
+         "Name": ["UserID"],
+         "transform": {"UserID": "user.id"}
+      }
+    }
+  },
+  "9707": {
+    "description": "Started execution of command",
+    "provider": "Microsoft-Windows-Shell-Core",
+    "type": ["start"], 
+    "path": {
+      "EventData": {
+         "Name": ["Command"]
+      },
+      "System/Security/#attributes": {
+         "Name": ["UserID"],
+         "transform": {"UserID": "user.id"}
+      }
+    }
+  },
+  "9708": {
+    "description": "Finished execution of command",
+    "provider": "Microsoft-Windows-Shell-Core",
+    "type": ["end"],
+    "path": {
+      "EventData": {
+         "Name": ["Command", "PID"]
+      },
+      "System/Security/#attributes": {
+         "Name": ["UserID"],
+         "transform": {"UserID": "user.id"}
+      }
+    }
+  },
+  "28115": {
+    "description": "Description Shortcut creation log after program installation",
+    "provider": "Microsoft-Windows-Shell-Core",
+    "type": ["end"],
+    "path": {
+      "EventData": {
+         "Name": ["Name", "AppID"]
+      }
+    }
+  }
+}
